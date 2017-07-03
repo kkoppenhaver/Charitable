@@ -15,8 +15,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Clear the campaign page cache after a donation is received.
  *
- * @param   int $campaign_id The campaign ID.
- * @return  void
+ * @param  int  $campaign_id The campaign ID.
+ * @return void
  * @since   1.4.18
  */
 function charitable_compat_wp_fastest_cache_clear_campaign_cache( $campaign_id ) {
