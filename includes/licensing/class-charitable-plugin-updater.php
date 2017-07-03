@@ -23,10 +23,10 @@ class Charitable_Plugin_Updater {
 	 * @uses    plugin_basename()
 	 * @uses    hook()
 	 *
-	 * @param   string $api_url The URL pointing to the custom API endpoint.
-	 * @param   string $plugin_file Path to the plugin file.
-	 * @param   array $api_data Optional data to send with API calls.
-	 * @return  void
+	 * @param  string $api_url     The URL pointing to the custom API endpoint.
+	 * @param  string $plugin_file Path to the plugin file.
+	 * @param  array  $api_data    Optional data to send with API calls.
+	 * @return void
 	 */
 	public function __construct( $api_url, $plugin_file, $api_data = null ) {
 		$this->api_url  = trailingslashit( $api_url );
@@ -44,7 +44,7 @@ class Charitable_Plugin_Updater {
 	 *
 	 * @uses    add_filter()
 	 *
-	 * @return  void
+	 * @return void
 	 * @access  public
 	 * @since   1.0.0
 	 */
@@ -57,22 +57,19 @@ class Charitable_Plugin_Updater {
 	/**
 	 * Return the update information for the plugin.
 	 *
-	 * @return  false|object
+	 * @return false|object
 	 * @access  public
 	 * @since   1.4.0
 	 */
 	public function get_version_info() {
-
 		if ( ! isset( $this->version_info ) ) {
 
 			$update_transient = get_site_transient( 'update_plugins' );
 
 			if ( ! isset( $update_transient->response[ $this->name ] ) ) {
 
-				$this->version_info = false; 
-			}
-
-			else {
+				$this->version_info = false;
+			} else {
 
 				$this->version_info = $update_transient->response[ $this->name ];
 
@@ -81,16 +78,15 @@ class Charitable_Plugin_Updater {
 		}
 
 		return $this->version_info;
-	}   
+	}
 
 	/**
 	 * Show update nofication row -- needed for multisite subsites, because WP won't tell you otherwise!
 	 *
-	 * @param string  $file
-	 * @param array   $plugin
+	 * @param string $file
+	 * @param array  $plugin
 	 */
 	public function show_update_notification( $file, $plugin ) {
-
 		if ( ! current_user_can( 'update_plugins' ) ) {
 			return;
 		}
@@ -110,10 +106,10 @@ class Charitable_Plugin_Updater {
 
 		if ( ! is_object( $update_cache ) || empty( $update_cache->response ) || empty( $update_cache->response[ $this->name ] ) ) {
 
-			$cache_key    = md5( 'edd_plugin_' .sanitize_key( $this->name ) . '_version_info' );
+			$cache_key    = md5( 'edd_plugin_' . sanitize_key( $this->name ) . '_version_info' );
 			$version_info = get_transient( $cache_key );
 
-			if( false === $version_info ) {
+			if ( false === $version_info ) {
 
 				$version_info = $this->api_request( 'plugin_latest_version', array( 'slug' => $this->slug ) );
 
@@ -131,7 +127,7 @@ class Charitable_Plugin_Updater {
 
 			}
 
-			$update_cache->last_checked = time();
+			$update_cache->last_checked           = time();
 			$update_cache->checked[ $this->name ] = $this->version;
 
 			set_site_transient( 'update_plugins', $update_cache );
@@ -179,15 +175,14 @@ class Charitable_Plugin_Updater {
 	 *
 	 * @uses    api_request()
 	 *
-	 * @param   mixed $data
-	 * @param   string $action
-	 * @param   object $args
-	 * @return  object $data
+	 * @param  mixed  $data
+	 * @param  string $action
+	 * @param  object $args
+	 * @return object $data
 	 * @access  public
 	 * @since   1.0.0
 	 */
 	public function plugins_api_filter( $data, $action = '', $args = null ) {
-
 		if ( $action != 'plugin_information' ) {
 
 			return $data;
@@ -198,7 +193,7 @@ class Charitable_Plugin_Updater {
 
 			return $data;
 
-		}        
+		}
 
 		$version_info = $this->get_version_info();
 
@@ -218,14 +213,13 @@ class Charitable_Plugin_Updater {
 	 * @uses    wp_remote_post()
 	 * @uses    is_wp_error()
 	 *
-	 * @param   string $action The requested action.
-	 * @param   array $data Parameters for the API action.
-	 * @return  false||object
+	 * @param  string        $action The requested action.
+	 * @param  array         $data   Parameters for the API action.
+	 * @return false||object
 	 * @access  private
 	 * @since   1.0.0
 	 */
 	private function api_request( $action, $data ) {
-
 		$data = array_merge( $this->api_data, $data );
 
 		if ( $data['slug'] != $this->slug ) {
@@ -268,12 +262,11 @@ class Charitable_Plugin_Updater {
 	/**
 	 * Display the changelog.
 	 *
-	 * @return  void
+	 * @return void
 	 * @access  public
 	 * @since   1.0.0
 	 */
 	public function show_changelog() {
-
 		if ( empty( $_REQUEST['edd_sl_action'] ) || 'view_plugin_changelog' != $_REQUEST['edd_sl_action'] ) {
 			return;
 		}
