@@ -33,7 +33,7 @@ endif;
 do_action( 'charitable_campaign_loop_before', $campaigns, $args );
 
 ?>
-<ol class="<?php echo $loop_class ?>">
+<ol class="<?php echo $loop_class; ?>">
 
 <?php
 while ( $campaigns->have_posts() ) :
