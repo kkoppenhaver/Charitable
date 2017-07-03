@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Return currency helper class.
  *
- * @return  Charitable_Currency
+ * @return Charitable_Currency
  * @since   1.0.0
  */
 function charitable_get_currency_helper() {
@@ -25,7 +25,7 @@ function charitable_get_currency_helper() {
 /**
  * Return the site currency.
  *
- * @return  string
+ * @return string
  * @since   1.0.0
  */
 function charitable_get_currency() {
@@ -35,8 +35,8 @@ function charitable_get_currency() {
 /**
  * Formats the monetary amount.
  *
- * @param   string $amount The amount to be formatted.
- * @return  string
+ * @param  string $amount The amount to be formatted.
+ * @return string
  * @since   1.1.5
  */
 function charitable_format_money( $amount ) {
@@ -46,8 +46,8 @@ function charitable_format_money( $amount ) {
 /**
  * Sanitize an amount, converting it into a float.
  *
- * @param   string $amount The amount to be sanitized.
- * @return  float|WP_Error
+ * @param  string         $amount The amount to be sanitized.
+ * @return float|WP_Error
  * @since   1.4.0
  */
 function charitable_sanitize_amount( $amount ) {
