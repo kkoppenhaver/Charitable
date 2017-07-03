@@ -20,33 +20,34 @@ if ( ! class_exists( 'Charitable_Profile_Shortcode' ) ) :
  */
 class Charitable_Profile_Shortcode {
 
-    /**
-     * The callback method for the campaigns shortcode.
-     *
-     * This receives the user-defined attributes and passes the logic off to the class.
+	/**
+	 * The callback method for the campaigns shortcode.
+	 *
+	 * This receives the user-defined attributes and passes the logic off to the class.
 
-     *
-     * @param   array $atts User-defined shortcode attributes.
-     * @return  string
-     * @access  public
-     * @static
-     * @since   1.0.0
-     */
-    public static function display( $atts ) {                
-        if ( ! is_user_logged_in() ) {
-            return Charitable_Login_Shortcode::display( $atts );
-        }
+	 *
+	 * @param  array  $atts User-defined shortcode attributes.
+	 * @return string
+	 * @access  public
+	 * @static
+	 * @since   1.0.0
+	 */
+	public static function display( $atts ) {
+		if ( ! is_user_logged_in() ) {
+			return Charitable_Login_Shortcode::display( $atts );
+		}
 
-        $args = shortcode_atts( array(), $atts, 'charitable_profile' );
+		$args = shortcode_atts( array(), $atts, 'charitable_profile' );
 
-        ob_start();
+		ob_start();
 
-        charitable_template( 'shortcodes/profile.php', array( 
-            'form' => new Charitable_Profile_Form( $args ) 
-        ) );
+		charitable_template( 'shortcodes/profile.php', array(
+			'form' => new Charitable_Profile_Form( $args )
+		) );
 
-        return apply_filters( 'charitable_profile_shortcode', ob_get_clean() );      
-    }
+		return apply_filters( 'charitable_profile_shortcode', ob_get_clean() );
+	}
+
 }
 
 endif;
