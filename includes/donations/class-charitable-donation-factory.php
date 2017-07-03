@@ -26,13 +26,12 @@ if ( ! class_exists( 'Charitable_Donation_Factory' ) ) :
 		/**
 		 * Get donation.
 		 *
-		 * @param 	bool $donation (default: false)
-		 * @return 	Charitable_Donation|bool
+		 * @param  bool                     $donation (default: false)
+		 * @return Charitable_Donation|bool
 		 * @access 	public
 		 * @since 	1.4.0
 		 */
 		public function get_donation( $donation = false ) {
-
 			global $post;
 
 			if ( false === $donation ) {
@@ -60,14 +59,13 @@ if ( ! class_exists( 'Charitable_Donation_Factory' ) ) :
 			}
 
 			return new $classname( $donation );
-
 		}
 
 		/**
 		 * Create a class name e.g. Charitable_Donation_Type_Class instead of chartiable_donation_type-class.
 		 *
-		 * @param  	string $donation_type
-		 * @return 	string|false
+		 * @param  string       $donation_type
+		 * @return string|false
 		 * @access 	private
 		 * @since 	1.4.0
 		 */
@@ -78,20 +76,21 @@ if ( ! class_exists( 'Charitable_Donation_Factory' ) ) :
 		/**
 		 * Get the product class name.
 		 *
-		 * @param  	WP_Post $the_donation
-		 * @return 	string
+		 * @param  WP_Post $the_donation
+		 * @return string
 		 * @access 	private
 		 * @since 	1.4.0
 		 */
 		private function get_donation_class( $the_donation ) {
-			$donation_id = absint( $the_donation->ID );
-			$donation_type  = $the_donation->post_type;
+			$donation_id   = absint( $the_donation->ID );
+			$donation_type = $the_donation->post_type;
 
 			$classname = $this->get_classname_from_donation_type( $donation_type );
 
 			// Filter classname so that the class can be overridden if extended.
 			return apply_filters( 'charitable_donation_class', $classname, $donation_type, $donation_id );
 		}
+
 	}
 
 endif;
