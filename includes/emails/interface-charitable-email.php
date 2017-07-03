@@ -22,7 +22,7 @@ if ( ! interface_exists( 'Charitable_Email_Interface' ) ) :
  * @since       1.2.0
  */
 interface Charitable_Email_Interface {
-    public static function get_email_id();
+	public static function get_email_id();
 }
 
 endif; // End interface_exists check.
