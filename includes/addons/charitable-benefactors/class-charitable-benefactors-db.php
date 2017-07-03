@@ -63,14 +63,14 @@ if ( ! class_exists( 'Charitable_Benefactors_DB' ) ) :
 
 			$sql = "CREATE TABLE IF NOT EXISTS {$this->table_name} (
 				`campaign_benefactor_id` bigint(20) NOT NULL AUTO_INCREMENT,
-				`campaign_id` bigint(20) NOT NULL,				
+				`campaign_id` bigint(20) NOT NULL,
 				`contribution_amount` float NOT NULL,
 				`contribution_amount_is_percentage` tinyint(1) NOT NULL DEFAULT 0,
 				`contribution_amount_is_per_item` tinyint(1) NOT NULL DEFAULT 0,
 				`date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
 				`date_deactivated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
 				PRIMARY KEY (`campaign_benefactor_id`),
-				KEY `campaign` (`campaign_id`), 
+				KEY `campaign` (`campaign_id`),
 				KEY `active_dates` (`date_created`, `date_deactivated`)
 				) $charset_collate;";
 
@@ -80,48 +80,47 @@ if ( ! class_exists( 'Charitable_Benefactors_DB' ) ) :
 		/**
 		 * Whitelist of columns.
 		 *
-		 * @return  array
+		 * @return array
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function get_columns() {
 			return array(
-				'campaign_benefactor_id'			=> '%d',
-				'campaign_id'						=> '%d',
-				'contribution_amount'				=> '%f',
-				'contribution_amount_is_percentage'	=> '%d',
-				'contribution_amount_is_per_item'	=> '%d',
-				'date_created'						=> '%s',
-				'date_deactivated'					=> '%s',
+				'campaign_benefactor_id'            => '%d',
+				'campaign_id'                       => '%d',
+				'contribution_amount'               => '%f',
+				'contribution_amount_is_percentage' => '%d',
+				'contribution_amount_is_per_item'   => '%d',
+				'date_created'                      => '%s',
+				'date_deactivated'                  => '%s',
 			);
 		}
 
 		/**
 		 * Default column values.
 		 *
-		 * @return 	array
+		 * @return array
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function get_column_defaults() {
 			return array(
-				'contribution_amount_is_percentage'	=> 1,
-				'contribution_amount_is_per_item'	=> 0,
-				'date_created'						=> date( 'Y-m-d H:i:s' ),
-				'date_deactivated'					=> '0000-00-00 00:00:00',
+				'contribution_amount_is_percentage' => 1,
+				'contribution_amount_is_per_item'   => 0,
+				'date_created'                      => date( 'Y-m-d H:i:s' ),
+				'date_deactivated'                  => '0000-00-00 00:00:00',
 			);
 		}
 
 		/**
 		 * Add a new benefactor object.
 		 *
-		 * @param 	array 	$data
-		 * @return 	int 				Positive ID if successful. 0 if failed.
+		 * @param  array $data
+		 * @return int         Positive ID if successful. 0 if failed.
 		 * @access 	public
 		 * @since 	1.0.0
 		 */
 		public function insert( $data, $type = 'campaign_benefactor' ) {
-
 			/* Allow plugins to filter the data before inserting to database */
 			$data = apply_filters( 'charitable_benefactor_data', $data );
 
@@ -168,15 +167,14 @@ if ( ! class_exists( 'Charitable_Benefactors_DB' ) ) :
 		/**
 		 * Update a benefactor object.
 		 *
-		 * @param 	int 		$row_id
-		 * @param 	array 		$data
-		 * @param 	string 		$where 			Column used in where argument.
-		 * @return 	boolean
+		 * @param  int     $row_id
+		 * @param  array   $data
+		 * @param  string  $where  Column used in where argument.
+		 * @return boolean
 		 * @access  public
 		 * @since 	1.0.0
 		 */
 		public function update( $row_id, $data = array(), $where = '' ) {
-
 			/* Allow plugins to filter the data before inserting to database */
 			$data = apply_filters( 'charitable_benefactor_data', $data );
 
@@ -196,13 +194,12 @@ if ( ! class_exists( 'Charitable_Benefactors_DB' ) ) :
 		/**
 		 * Delete a row identified by the primary key.
 		 *
-		 * @param 	int 		$row_id
+		 * @param int $row_id
 		 * @access  public
 		 * @since   1.0.0
-		 * @return  bool
+		 * @return bool
 		 */
 		public function delete( $row_id = 0 ) {
-
 			/* Allow plugins to hook into this event */
 			do_action( 'charitable_benefactor_deleted', $row_id );
 
@@ -213,8 +210,8 @@ if ( ! class_exists( 'Charitable_Benefactors_DB' ) ) :
 		 * Get all active benefactors for a campaign.
 		 *
 		 * @global 	WPDB 		$wpdb
-		 * @param 	int 		$campaign_id
-		 * @return 	Object[]
+		 * @param  int      $campaign_id
+		 * @return Object[]
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -224,7 +221,7 @@ if ( ! class_exists( 'Charitable_Benefactors_DB' ) ) :
 			return $wpdb->get_results(
 				$wpdb->prepare(
 					"SELECT *
-					FROM $this->table_name 
+					FROM $this->table_name
 					WHERE campaign_id = %d
 					AND date_created < UTC_TIMESTAMP()
 					AND ( date_deactivated = '0000-00-00 00:00:00' OR date_deactivated > UTC_TIMESTAMP() );",
@@ -237,15 +234,16 @@ if ( ! class_exists( 'Charitable_Benefactors_DB' ) ) :
 		/**
 		 * Get active benefactors for a campaign created through a specific extension.
 		 *
-		 * @param 	int 			$campaign_id
-		 * @param 	string 			$extension
-		 * @return 	Object[]|false 	False if extensions return nothing. Object otherwise.
+		 * @param  int            $campaign_id
+		 * @param  string         $extension
+		 * @return Object[]|false              False if extensions return nothing. Object otherwise.
 		 * @access  public
 		 * @since 	1.0.0
 		 */
 		public function get_campaign_benefactors_by_extension( $campaign_id, $extension ) {
 			return apply_filters( 'charitable_get_campaign_benefactors', false, $campaign_id, $extension );
 		}
+
 	}
 
 endif;
