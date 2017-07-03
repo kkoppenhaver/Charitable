@@ -43,7 +43,7 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_Gateway_Settings
+		 * @return Charitable_Gateway_Settings
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -58,7 +58,7 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		/**
 		 * Returns all the payment gateway settings fields.
 		 *
-		 * @return  array
+		 * @return array
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -68,27 +68,27 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 			}
 
 			return array(
-				'section' => array(
-					'title'             => '',
-					'type'              => 'hidden',
-					'priority'          => 10000,
-					'value'             => 'gateways',
-					'save'              => false,
+				'section'          => array(
+					'title'    => '',
+					'type'     => 'hidden',
+					'priority' => 10000,
+					'value'    => 'gateways',
+					'save'     => false,
 				),
 				'section_gateways' => array(
-					'title'             => __( 'Available Payment Gateways', 'charitable' ),
-					'type'              => 'heading',
-					'priority'          => 5,
+					'title'    => __( 'Available Payment Gateways', 'charitable' ),
+					'type'     => 'heading',
+					'priority' => 5,
 				),
-				'gateways' => array(
-					'title'             => false,
-					'callback'          => array( $this, 'render_gateways_table' ),
-					'priority'          => 10,
+				'gateways'         => array(
+					'title'    => false,
+					'callback' => array( $this, 'render_gateways_table' ),
+					'priority' => 10,
 				),
-				'test_mode' => array(
-					'title'             => __( 'Turn on Test Mode', 'charitable' ),
-					'type'              => 'checkbox',
-					'priority'          => 15,
+				'test_mode'        => array(
+					'title'    => __( 'Turn on Test Mode', 'charitable' ),
+					'type'     => 'checkbox',
+					'priority' => 15,
 				),
 			);
 		}
@@ -96,7 +96,7 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		/**
 		 * Add settings for each individual payment gateway.
 		 *
-		 * @return  array[]
+		 * @return array[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -106,7 +106,7 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 					continue;
 				}
 
-				$gateway = new $gateway;
+				$gateway                                            = new $gateway;
 				$fields[ 'gateways_' . $gateway->get_gateway_id() ] = apply_filters( 'charitable_settings_fields_gateways_gateway', array(), $gateway );
 			}
 
@@ -116,8 +116,8 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		/**
 		 * Add gateway keys to the settings groups.
 		 *
-		 * @param   string[] $groups
-		 * @return  string[]
+		 * @param  string[] $groups
+		 * @return string[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -136,7 +136,7 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		/**
 		 * Display table with available payment gateways.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -147,30 +147,27 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		/**
 		 * Display the PayPal sandbox testing tool at the end of the PayPal gateway settings page.
 		 *
-		 * @param   string $group
-		 * @return  void
+		 * @param  string $group
+		 * @return void
 		 * @access  public
 		 * @since   1.4.3
 		 */
 		public function render_paypal_sandbox_test( $group ) {
-
 			if ( 'gateways_paypal' != $group ) {
 				return;
 			}
 
 			charitable_admin_view( 'settings/paypal-sandbox-test', array() );
-
 		}
 
 		/**
 		 * Redirect the user to PayPal after they initiate the sandbox test.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.4.3
 		 */
 		public function redirect_paypal_sandbox_test() {
-
 			$protocol    = is_ssl() ? 'https://' : 'http://';
 			$paypal_url  = $protocol . 'www.sandbox.paypal.com/cgi-bin/webscr/?';
 			$paypal_args = $_POST;
@@ -185,23 +182,21 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 			$paypal_args['custom'] = $token;
 
 			$paypal_url .= http_build_query( $paypal_args );
-			$paypal_url = str_replace( '&amp;', '&', $paypal_url );
+			$paypal_url  = str_replace( '&amp;', '&', $paypal_url );
 
 			wp_redirect( $paypal_url );
 
 			exit();
-
 		}
 
 		/**
 		 * Redirect the user to PayPal after they initiate the sandbox test.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.4.3
 		 */
 		public function redirect_paypal_sandbox_test_return() {
-
 			$return_url = add_query_arg( array(
 				'page'         => 'charitable-settings',
 				'tab'          => 'gateways',
@@ -212,8 +207,8 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 			wp_safe_redirect( $return_url );
 
 			exit();
-
 		}
+
 	}
 
 endif;
