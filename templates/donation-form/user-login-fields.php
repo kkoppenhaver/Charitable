@@ -7,9 +7,9 @@
  * @version 1.0.0
  */
 
-$form 			= charitable_get_current_donation_form();
+$form           = charitable_get_current_donation_form();
 $account_fields = $form->get_user_account_fields();
-$user 			= wp_get_current_user();
+$user           = wp_get_current_user();
 
 if ( 0 !== $user->ID ) {
 	return;
@@ -20,8 +20,8 @@ if ( empty( $account_fields ) ) {
 }
 ?>
 <div class="charitable-login-details">
-	<h4 class="charitable-form-header"><?php _e( 'Login Details', 'charitable' ) ?></h4>
-	<p class="charitable-description"><?php _e( 'When you make your donation, a new donor account will be created for you.', 'charitable' ) ?></p>
+	<h4 class="charitable-form-header"><?php _e( 'Login Details', 'charitable' ); ?></h4>
+	<p class="charitable-description"><?php _e( 'When you make your donation, a new donor account will be created for you.', 'charitable' ); ?></p>
 	<?php
 	/**
 	 * @hook 	charitable_donation_form_before_login_fields
