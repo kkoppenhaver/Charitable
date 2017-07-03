@@ -24,7 +24,7 @@ if ( ! class_exists( 'Charitable_Recipients' ) ) :
 		/**
 		 * Responsible for creating class instances.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @static
 		 * @since   1.0.0
@@ -49,7 +49,7 @@ if ( ! class_exists( 'Charitable_Recipients' ) ) :
 		/**
 		 * Include required files.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  private
 		 * @since   1.0.0
 		 */
@@ -61,7 +61,7 @@ if ( ! class_exists( 'Charitable_Recipients' ) ) :
 		/**
 		 * Set up hooks and filter.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  private
 		 * @since   1.0.0
 		 */
@@ -71,7 +71,7 @@ if ( ! class_exists( 'Charitable_Recipients' ) ) :
 		/**
 		 * Activate the addon.
 		 *
-		 * @return  boolean Whether the add-on was activated.
+		 * @return boolean Whether the add-on was activated.
 		 * @access  public
 		 * @static
 		 * @since   1.0.0
@@ -85,6 +85,7 @@ if ( ! class_exists( 'Charitable_Recipients' ) ) :
 
 			return true;
 		}
+
 	}
 
 endif;
