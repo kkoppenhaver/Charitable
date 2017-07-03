@@ -55,19 +55,17 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		 * @since   1.0.0
 		 */
 		private function __construct() {
-
 			/* Register email shortcode */
 			add_shortcode( 'charitable_email', array( $this, 'email_shortcode' ) );
 
 			/* 3rd party hook for overriding anything we've done above. */
 			do_action( 'charitable_emails_start', $this );
-
 		}
 
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_Emails
+		 * @return Charitable_Emails
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -82,7 +80,7 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		/**
 		 * Register Charitable emails.
 		 *
-		 * @return  string[]
+		 * @return string[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -100,8 +98,8 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		/**
 		 * Receives a request to enable or disable an email and validates it before passing it off.
 		 *
-		 * @param   array
-		 * @return  array
+		 * @param  array
+		 * @return array
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -133,7 +131,7 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		/**
 		 * Returns all available emails.
 		 *
-		 * @return  string
+		 * @return string
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -144,7 +142,7 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		/**
 		 * Returns the currently enabled emails.
 		 *
-		 * @return  string[]
+		 * @return string[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -160,7 +158,7 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		/**
 		 * Returns a list of the names of currently enabled emails.
 		 *
-		 * @return  string[]
+		 * @return string[]
 		 * @access  public
 		 * @since   1.3.0
 		 */
@@ -168,12 +166,12 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 			$emails = array();
 
 			foreach ( $this->get_enabled_emails() as $class ) {
-				
+
 				if ( ! class_exists( $class ) || $class === 'Charitable_Email_Password_Reset' ) {
 					continue;
 				}
 
-				$email = new $class;
+				$email    = new $class;
 				$emails[] = $email->get_name();
 			}
 
@@ -183,8 +181,8 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		/**
 		 * Return the email class name for a given email.
 		 *
-		 * @param   string  $email
-		 * @return  string|false
+		 * @param  string       $email
+		 * @return string|false
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -195,8 +193,8 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		/**
 		 * Returns whether the passed email is enabled.
 		 *
-		 * @param   string  $email_id
-		 * @return  boolean
+		 * @param  string  $email_id
+		 * @return boolean
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -207,9 +205,9 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		/**
 		 * Register email settings fields.
 		 *
-		 * @param   array   		 $settings
-		 * @param   Charitable_Email $email    The email's helper object.
-		 * @return  array
+		 * @param  array            $settings
+		 * @param  Charitable_Email $email    The email's helper object.
+		 * @return array
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -226,8 +224,8 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		 * the email is required in order to allow the shortcode function (below)
 		 * to gather the correct information to display.
 		 *
-		 * @param   Charitable_Email $email
-		 * @return  void
+		 * @param  Charitable_Email $email
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -238,8 +236,8 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		/**
 		 * Handles the parsing of the [charitable_email] shortcode.
 		 *
-		 * @param   mixed[] $atts
-		 * @return  string
+		 * @param  mixed[] $atts
+		 * @return string
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -260,15 +258,15 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		/**
 		 * Enable an email.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  protected
 		 * @since   1.0.0
 		 */
 		protected function enable_email( $email ) {
 			$settings = get_option( 'charitable_settings' );
 
-			$enabled_emails = isset( $settings['enabled_emails'] ) ? $settings['enabled_emails'] : array();
-			$enabled_emails[ $email ] = $this->emails[ $email ];
+			$enabled_emails             = isset( $settings['enabled_emails'] ) ? $settings['enabled_emails'] : array();
+			$enabled_emails[ $email ]   = $this->emails[ $email ];
 			$settings['enabled_emails'] = $enabled_emails;
 
 			update_option( 'charitable_settings', $settings );
@@ -281,7 +279,7 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		/**
 		 * Disable an email.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  protected
 		 * @since   1.0.0
 		 */
@@ -300,6 +298,7 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 
 			do_action( 'charitable_email_disable', $email );
 		}
+
 	}
 
 endif;
