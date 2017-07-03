@@ -42,7 +42,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		/**
 		 * Instantiate the email class, defining its key values.
 		 *
-		 * @param   mixed[]  $objects
+		 * @param mixed[] $objects
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -55,7 +55,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		/**
 		 * Returns the current email's ID.
 		 *
-		 * @return  string
+		 * @return string
 		 * @access  public
 		 * @static
 		 * @since   1.0.3
@@ -67,8 +67,8 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		/**
 		 * Static method that is fired right after a donation is completed, sending the donation receipt.
 		 *
-		 * @param   int     $donation_id
-		 * @return  boolean
+		 * @param  int     $donation_id
+		 * @return boolean
 		 * @access  public
 		 * @static
 		 * @since   1.0.0
@@ -118,7 +118,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		/**
 		 * Return the default recipient for the email.
 		 *
-		 * @return  string
+		 * @return string
 		 * @access  protected
 		 * @since   1.0.0
 		 */
@@ -129,7 +129,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		/**
 		 * Return the default subject line for the email.
 		 *
-		 * @return  string
+		 * @return string
 		 * @access  protected
 		 * @since   1.0.0
 		 */
@@ -140,7 +140,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		/**
 		 * Return the default headline for the email.
 		 *
-		 * @return  string
+		 * @return string
 		 * @access  protected
 		 * @since   1.0.0
 		 */
@@ -151,14 +151,14 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		/**
 		 * Return the default body for the email.
 		 *
-		 * @return  string
+		 * @return string
 		 * @access  protected
 		 * @since   1.0.0
 		 */
 		protected function get_default_body() {
 			ob_start();
 ?>
-<p><?php _e( '[charitable_email show=donor] has just made a donation!', 'charitable' ) ?></p>
+<p><?php _e( '[charitable_email show=donor] has just made a donation!', 'charitable' ); ?></p>
 <p><strong>Summary</strong><br />
 [charitable_email show=donation_summary]</p>
 <?php
@@ -166,6 +166,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 
 			return apply_filters( 'charitable_email_new_donation_default_body', $body, $this );
 		}
+
 	}
 
 endif;
