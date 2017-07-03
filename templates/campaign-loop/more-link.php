@@ -14,11 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * @var Charitable_Campaign
  */
-$campaign = $view_args[ 'campaign' ];
+$campaign = $view_args['campaign'];
 
 if ( $campaign->has_ended() ) :
-    return;
+	return;
 endif;
 
 ?>
-<p><a class="button" href="<?php echo get_permalink( $campaign->ID ) ?>" aria-label="<?php echo esc_attr( sprintf( _x( 'Continue reading about %s', 'Continue reading about campaign', 'charitable' ), get_the_title( $campaign->ID ) ) ) ?>"><?php _e( 'Read More', 'charitable' ) ?></a></p>
+<p><a class="button" href="<?php echo get_permalink( $campaign->ID ); ?>" aria-label="<?php echo esc_attr( sprintf( _x( 'Continue reading about %s', 'Continue reading about campaign', 'charitable' ), get_the_title( $campaign->ID ) ) ); ?>"><?php _e( 'Read More', 'charitable' ); ?></a></p>
