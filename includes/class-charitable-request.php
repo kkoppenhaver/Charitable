@@ -79,7 +79,7 @@ if ( ! class_exists( 'Charitable_Request' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_Request
+		 * @return Charitable_Request
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -94,8 +94,8 @@ if ( ! class_exists( 'Charitable_Request' ) ) :
 		/**
 		 * When the_post is set, sets the current campaign to the current post if it is a campaign.
 		 *
-		 * @param 	WP_Post $post The Post object.
-		 * @return 	void
+		 * @param  WP_Post $post The Post object.
+		 * @return void
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -114,7 +114,7 @@ if ( ! class_exists( 'Charitable_Request' ) ) :
 		/**
 		 * Returns the current campaign. If there is no current campaign, return false.
 		 *
-		 * @return 	Charitable_Campaign|false Campaign object if we're viewing a campaign within a loop. False otherwise.
+		 * @return Charitable_Campaign|false Campaign object if we're viewing a campaign within a loop. False otherwise.
 		 * @access 	public
 		 * @since 	1.0.0
 		 */
@@ -138,7 +138,7 @@ if ( ! class_exists( 'Charitable_Request' ) ) :
 		/**
 		 * Returns the current campaign ID. If there is no current campaign, return 0.
 		 *
-		 * @return 	int
+		 * @return int
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -179,7 +179,7 @@ if ( ! class_exists( 'Charitable_Request' ) ) :
 		/**
 		 * Returns the campaign ID from a form submission.
 		 *
-		 * @return  int
+		 * @return int
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -200,7 +200,7 @@ if ( ! class_exists( 'Charitable_Request' ) ) :
 		/**
 		 * Returns the current donation object. If there is no current donation, return false.
 		 *
-		 * @return  Charitable_Donation|false
+		 * @return Charitable_Donation|false
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -218,7 +218,7 @@ if ( ! class_exists( 'Charitable_Request' ) ) :
 		/**
 		 * Returns the current donation ID. If there is no current donation, return 0.
 		 *
-		 * @return  int
+		 * @return int
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -231,6 +231,7 @@ if ( ! class_exists( 'Charitable_Request' ) ) :
 
 			return $donation_id;
 		}
+
 	}
 
 endif;
