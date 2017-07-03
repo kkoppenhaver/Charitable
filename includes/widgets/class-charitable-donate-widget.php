@@ -29,29 +29,26 @@ if ( ! class_exists( 'Charitable_Donate_Widget' ) ) :
 		 * @since   1.0.0
 		 */
 		public function __construct() {
-
 			parent::__construct(
 				'charitable_donate_widget',
 				__( 'Campaign Donation', 'charitable' ),
 				array(
-					'description' => __( 'Display a donation widget.', 'charitable' ),
+					'description'                 => __( 'Display a donation widget.', 'charitable' ),
 					'customize_selective_refresh' => true,
 				)
 			);
-
 		}
 
 		/**
 		 * Displays the widget on the frontend.
 		 *
-		 * @param   array $args 	Widget args.
-		 * @param   array $instance Widget instance.
-		 * @return  void
+		 * @param  array $args     Widget args.
+		 * @param  array $instance Widget instance.
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function widget( $args, $instance ) {
-
 			if ( ! array_key_exists( 'campaign_id', $instance ) || '' == $instance['campaign_id'] ) {
 				return;
 			}
@@ -62,13 +59,12 @@ if ( ! class_exists( 'Charitable_Donate_Widget' ) ) :
 		/**
 		 * Displays the widget form.
 		 *
-		 * @param   array $instance Widget instance. 
-		 * @return  void
+		 * @param  array $instance Widget instance.
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function form( $instance ) {
-
 			$defaults = array(
 				'title'       => '',
 				'campaign_id' => '',
@@ -80,31 +76,31 @@ if ( ! class_exists( 'Charitable_Donate_Widget' ) ) :
 			$campaigns   = Charitable_Campaigns::query( array( 'posts_per_page' => -1 ) );
 			?>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'charitable' ) ?>
+				<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'charitable' ); ?>
 					<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 				</label>
-			</p> 
+			</p>
 			<p>
-				<label for="<?php echo $this->get_field_id( 'campaign_id' ); ?>"><?php _e( 'Campaign:', 'charitable' ) ?>        
-					<select name="<?php echo $this->get_field_name( 'campaign_id' ) ?>">
-						<option value="current"><?php _e( 'Campaign currently viewed', 'charitable' ) ?></option>
-						<optgroup label="<?php _e( 'Specific campaigns', 'charitable' ) ?>">
+				<label for="<?php echo $this->get_field_id( 'campaign_id' ); ?>"><?php _e( 'Campaign:', 'charitable' ); ?>
+					<select name="<?php echo $this->get_field_name( 'campaign_id' ); ?>">
+						<option value="current"><?php _e( 'Campaign currently viewed', 'charitable' ); ?></option>
+						<optgroup label="<?php _e( 'Specific campaigns', 'charitable' ); ?>">
 							<?php foreach ( $campaigns->posts as $campaign ) : ?>
-								<option value="<?php echo $campaign->ID ?>" <?php selected( $campaign->ID, $campaign_id ) ?>><?php echo $campaign->post_title ?></option>
-							<?php endforeach ?>
+								<option value="<?php echo $campaign->ID; ?>" <?php selected( $campaign->ID, $campaign_id ); ?>><?php echo $campaign->post_title; ?></option>
+							<?php endforeach; ?>
 						</optgroup>
-					</select>    
-				</label>      
-			</p>       
+					</select>
+				</label>
+			</p>
 			<?php
 		}
 
 		/**
 		 * Update the widget settings.
 		 *
-		 * @param   array $new_instance New widget instance arguments.
-		 * @param   array $old_instance Old widget instance arguments.
-		 * @return  array
+		 * @param  array $new_instance New widget instance arguments.
+		 * @param  array $old_instance Old widget instance arguments.
+		 * @return array
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -114,6 +110,7 @@ if ( ! class_exists( 'Charitable_Donate_Widget' ) ) :
 			$instance['campaign_id'] = $new_instance['campaign_id'];
 			return $instance;
 		}
+
 	}
 
 endif;
