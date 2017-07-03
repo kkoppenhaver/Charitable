@@ -43,15 +43,13 @@ if ( ! class_exists( 'Charitable_Endpoint' ) ) :
 		 *
 		 * Unless the child class defines this, this won't do anything for an endpoint.
 		 *
-		 * @param 	array $vars
+		 * @param array $vars
 		 * @access 	public
 		 * @since 	1.5.0
 		 */
 		public function add_query_vars( array $vars ) {
-
 			/* Return vars unchanged by default. */
 			return $vars;
-
 		}
 
 		/**
@@ -59,8 +57,8 @@ if ( ! class_exists( 'Charitable_Endpoint' ) ) :
 		 *
 		 * By default, we will return the default template that WordPress already selected.
 		 *
-		 * @param 	string $template The default template.
-		 * @return  string
+		 * @param  string $template The default template.
+		 * @return string
 		 * @access  public
 		 * @since   1.5.0
 		 */
@@ -73,8 +71,8 @@ if ( ! class_exists( 'Charitable_Endpoint' ) ) :
 		 *
 		 * By default, we will return the default content that is passed by WordPress.
 		 *
-		 * @param 	string $content
-		 * @return  string
+		 * @param  string $content
+		 * @return string
 		 * @access  public
 		 * @since   1.5.0
 		 */
@@ -87,13 +85,14 @@ if ( ! class_exists( 'Charitable_Endpoint' ) ) :
 		 *
 		 * By default, this will be the endpoint ID with underscores replaced by hyphens.
 		 *
-		 * @return 	string
+		 * @return string
 		 * @access 	public
 		 * @since 	1.5.0
 		 */
 		public function get_body_class() {
 			return str_replace( '_', '-', $this->get_endpoint_id() );
 		}
+
 	}
 
 endif;
