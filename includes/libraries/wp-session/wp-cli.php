@@ -153,6 +153,7 @@ class WP_Session_Command extends \WP_CLI_Command {
 		$wp_object_cache->memcache_debug = array();
 		$wp_object_cache->cache          = array();
 	}
+
 }
 
 \WP_CLI::add_command( 'session', 'WP_Session_Command' );
