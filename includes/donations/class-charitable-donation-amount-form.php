@@ -52,7 +52,7 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 		/**
 		 * Set up callbacks for actions and filters.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  protected
 		 * @since   1.0.0
 		 */
@@ -68,7 +68,7 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 		/**
 		 * Return the donation form fields.
 		 *
-		 * @return  array[]
+		 * @return array[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -79,12 +79,11 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 		/**
 		 * Validate the form submission.
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 * @access  public
 		 * @since   1.4.4
 		 */
 		public function validate_submission() {
-
 			/* If we have already validated the submission, return the value. */
 			if ( $this->validated ) {
 				return $this->valid;
@@ -99,13 +98,12 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 			$this->valid = apply_filters( 'charitable_validate_donation_amount_form_submission', $this->valid, $this );
 
 			return $this->valid;
-
 		}
 
 		/**
 		 * Return the donation values.
 		 *
-		 * @return  array
+		 * @return array
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -123,9 +121,9 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 		/**
 		 * Redirect to payment form after submission.
 		 *
-		 * @param   int     $campaign_id
-		 * @param   int     $amount
-		 * @return  void
+		 * @param  int  $campaign_id
+		 * @param  int  $amount
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -150,12 +148,11 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 		/**
 		 * Render the donation form.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function render() {
-
 			/* Load the script if it hasn't been loaded yet. */
 			if ( ! wp_script_is( 'charitable-script', 'enqueued' ) ) {
 
@@ -172,6 +169,7 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 				'form_id'  => 'charitable-donation-amount-form',
 			) );
 		}
+
 	}
 
 endif;
