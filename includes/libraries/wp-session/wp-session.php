@@ -53,7 +53,7 @@ function wp_session_encode() {
 /**
  * Regenerate the session ID.
  *
- * @param bool $delete_old_session
+ * @param  bool $delete_old_session
  *
  * @return bool
  */
@@ -78,6 +78,7 @@ function wp_session_start() {
 
 	return $wp_session->session_started();
 }
+
 if ( ! defined( 'WP_CLI' ) || false === WP_CLI ) {
 	add_action( 'plugins_loaded', 'wp_session_start' );
 }
@@ -115,6 +116,7 @@ function wp_session_write_close() {
 	$wp_session->write_data();
 	do_action( 'wp_session_commit' );
 }
+
 if ( ! defined( 'WP_CLI' ) || false === WP_CLI ) {
 	add_action( 'shutdown', 'wp_session_write_close' );
 }
