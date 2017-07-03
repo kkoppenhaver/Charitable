@@ -15,7 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * @deprecated 1.0.1
  */
-
 function charitable_user_dashboard() {
 	charitable_get_deprecated()->deprecated_function(
 		__FUNCTION__,
@@ -45,7 +44,6 @@ function charitable_user_can_access_receipt( Charitable_Donation $donation ) {
 if ( ! function_exists( 'charitable_template_campaign_content' ) ) :
 
 	function charitable_template_campaign_content( $content ) {
-
 		charitable_get_deprecated()->deprecated_function(
 			__FUNCTION__,
 			'1.5.0',
@@ -53,7 +51,6 @@ if ( ! function_exists( 'charitable_template_campaign_content' ) ) :
 		);
 
 		return charitable()->get_endpoints()->get_content( $content, 'campaign' );
-
 	}
 
 endif;
@@ -64,7 +61,6 @@ endif;
 if ( ! function_exists( 'charitable_template_donation_form_content' ) ) :
 
 	function charitable_template_donation_form_content( $content ) {
-
 		charitable_get_deprecated()->deprecated_function(
 			__FUNCTION__,
 			'1.5.0',
@@ -72,7 +68,6 @@ if ( ! function_exists( 'charitable_template_donation_form_content' ) ) :
 		);
 
 		return charitable()->get_endpoints()->get_content( $content, 'campaign_donation' );
-
 	}
 
 endif;
@@ -83,7 +78,6 @@ endif;
 if ( ! function_exists( 'charitable_template_donation_receipt_content' ) ) :
 
 	function charitable_template_donation_receipt_content( $content ) {
-
 		charitable_get_deprecated()->deprecated_function(
 			__FUNCTION__,
 			'1.5.0',
@@ -91,7 +85,6 @@ if ( ! function_exists( 'charitable_template_donation_receipt_content' ) ) :
 		);
 
 		return charitable()->get_endpoints()->get_content( $content, 'donation_receipt' );
-
 	}
 
 endif;
@@ -102,7 +95,6 @@ endif;
 if ( ! function_exists( 'charitable_template_donation_processing_content' ) ) :
 
 	function charitable_template_donation_processing_content( $content ) {
-
 		charitable_get_deprecated()->deprecated_function(
 			__FUNCTION__,
 			'1.5.0',
@@ -110,7 +102,6 @@ if ( ! function_exists( 'charitable_template_donation_processing_content' ) ) :
 		);
 
 		return charitable()->get_endpoints()->get_content( $content, 'donation_processing' );
-
 	}
 
 endif;
@@ -121,7 +112,6 @@ endif;
 if ( ! function_exists( 'charitable_template_forgot_password_content' ) ) :
 
 	function charitable_template_forgot_password_content( $content ) {
-
 		charitable_get_deprecated()->deprecated_function(
 			__FUNCTION__,
 			'1.5.0',
@@ -129,7 +119,6 @@ if ( ! function_exists( 'charitable_template_forgot_password_content' ) ) :
 		);
 
 		return charitable()->get_endpoints()->get_content( $content, 'forgot_password' );
-
 	}
 
 endif;
@@ -140,7 +129,6 @@ endif;
 if ( ! function_exists( 'charitable_template_reset_password_content' ) ) :
 
 	function charitable_template_reset_password_content( $content ) {
-
 		charitable_get_deprecated()->deprecated_function(
 			__FUNCTION__,
 			'1.5.0',
@@ -148,7 +136,6 @@ if ( ! function_exists( 'charitable_template_reset_password_content' ) ) :
 		);
 
 		return charitable()->get_endpoints()->get_content( $content, 'reset_password' );
-
 	}
 
 endif;
@@ -159,7 +146,6 @@ endif;
 if ( ! function_exists( 'charitable_add_body_classes' ) ) :
 
 	function charitable_add_body_classes( $classes ) {
-
 		charitable_get_deprecated()->deprecated_function(
 			__FUNCTION__,
 			'1.5.0',
