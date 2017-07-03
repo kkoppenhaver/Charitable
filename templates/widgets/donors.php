@@ -42,12 +42,12 @@ endif;
 
 if ( $donors->count() ) :
 	?>
-	
+
 	<ol class="donors-list">
 
 		<?php foreach ( $donors as $donor ) : ?>
 
-			<li class="donor">  
+			<li class="donor">
 
 				<?php
 
@@ -55,7 +55,7 @@ if ( $donors->count() ) :
 
 				if ( $view_args['show_name'] ) : ?>
 
-					<p class="donor-name"><?php echo $donor->get_name() ?></p>
+					<p class="donor-name"><?php echo $donor->get_name(); ?></p>
 
 				<?php
 
@@ -63,7 +63,7 @@ if ( $donors->count() ) :
 
 				if ( $view_args['show_location'] && strlen( $donor->get_location() ) ) : ?>
 
-					<div class="donor-location"><?php echo $donor->get_location() ?></div>
+					<div class="donor-location"><?php echo $donor->get_location(); ?></div>
 
 				<?php
 
@@ -71,13 +71,13 @@ if ( $donors->count() ) :
 
 				if ( $view_args['show_amount'] ) : ?>
 
-					<div class="donor-donation-amount"><?php echo charitable_format_money( $donor->get_amount( $campaign_id ) ) ?></div>
+					<div class="donor-donation-amount"><?php echo charitable_format_money( $donor->get_amount( $campaign_id ) ); ?></div>
 
-				<?php endif ?>
+				<?php endif; ?>
 
 			</li>
 
-		<?php endforeach ?>
+		<?php endforeach; ?>
 
 	</ol>
 
@@ -86,7 +86,7 @@ else :
 
 	?>
 
-	<p><?php _e( 'No donors yet. Be the first!', 'charitable' ) ?></p>
+	<p><?php _e( 'No donors yet. Be the first!', 'charitable' ); ?></p>
 
 	<?php
 
