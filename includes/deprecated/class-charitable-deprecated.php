@@ -68,10 +68,10 @@ if ( ! class_exists( 'Charitable_Deprecated' ) ) :
 		/**
 		 * Log a deprecated argument.
 		 *
-		 * @param   string      $function      The deprecated function.
-		 * @param   string      $version       The version when this argument became deprecated.
-		 * @param   string|null $extra_message An extra message to include for the notice.
-		 * @return  boolean Whether the notice was logged.
+		 * @param  string      $function      The deprecated function.
+		 * @param  string      $version       The version when this argument became deprecated.
+		 * @param  string|null $extra_message An extra message to include for the notice.
+		 * @return boolean                    Whether the notice was logged.
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -94,10 +94,10 @@ if ( ! class_exists( 'Charitable_Deprecated' ) ) :
 		/**
 		 * Log a deprecated function.
 		 *
-		 * @param   string      $function    The function that has been deprecated.
-		 * @param   string      $version     The version of Charitable where the function was deprecated.
-		 * @param   string|null $replacement Optional. The function to use instead.
-		 * @return  boolean Whether the notice was logged.
+		 * @param  string      $function    The function that has been deprecated.
+		 * @param  string      $version     The version of Charitable where the function was deprecated.
+		 * @param  string|null $replacement Optional. The function to use instead.
+		 * @return boolean                  Whether the notice was logged.
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -120,10 +120,10 @@ if ( ! class_exists( 'Charitable_Deprecated' ) ) :
 		/**
 		 * Log a general "doing it wrong" notice.
 		 *
-		 * @param   string $function
-		 * @param   string $message
-		 * @param   string $version
-		 * @return  boolean Whether the notice was logged.
+		 * @param  string  $function
+		 * @param  string  $message
+		 * @param  string  $version
+		 * @return boolean           Whether the notice was logged.
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -144,7 +144,7 @@ if ( ! class_exists( 'Charitable_Deprecated' ) ) :
 		/**
 		 * Returns whether logging is enabled.
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -155,6 +155,7 @@ if ( ! class_exists( 'Charitable_Deprecated' ) ) :
 
 			return self::$logging;
 		}
+
 	}
 
 endif;
