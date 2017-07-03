@@ -43,15 +43,15 @@ if ( ! class_exists( 'Charitable_Donations_Dashboard_Widget' ) ) :
 		/**
 		 * Print the widget contents.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @static
 		 * @since   1.2.0
 		 */
 		public static function display() {
-	?>        
+	?>
 			<p class="hide-if-no-js">
-				<img src="<?php echo charitable()->get_path( 'assets', false ) ?>/images/charitable-loading.gif" width="60" height="60" alt="<?php esc_attr_e( 'Loading&hellip;', 'charitable' ) ?>" />
+				<img src="<?php echo charitable()->get_path( 'assets', false ); ?>/images/charitable-loading.gif" width="60" height="60" alt="<?php esc_attr_e( 'Loading&hellip;', 'charitable' ); ?>" />
 			</p>
 	<?php
 		}
@@ -59,7 +59,7 @@ if ( ! class_exists( 'Charitable_Donations_Dashboard_Widget' ) ) :
 		/**
 		 * Return the content to display inside the widget.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @static
 		 * @since   1.2.0
@@ -68,6 +68,7 @@ if ( ! class_exists( 'Charitable_Donations_Dashboard_Widget' ) ) :
 			charitable_admin_view( 'dashboard-widgets/donations-widget' );
 			die();
 		}
+
 	}
 
 endif;
