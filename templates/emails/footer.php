@@ -13,18 +13,18 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 // For gmail compatibility, including CSS styles in head/body are stripped out therefore styles need to be inline. These variables contain rules which are added to the template inline.
-$template_footer = "
-    border-top:0;
-    -webkit-border-radius:3px;
-";
+$template_footer = '
+	border-top:0;
+	-webkit-border-radius:3px;
+';
 
 $credit = "
-    border:0;
-    color: #000000;
-    font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-    font-size:12px;
-    line-height:125%;
-    text-align:center;
+	border:0;
+	color: #000000;
+	font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+	font-size:12px;
+	line-height:125%;
+	text-align:center;
 ";
 ?>
                                                             </div>
