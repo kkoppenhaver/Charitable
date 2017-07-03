@@ -12,11 +12,11 @@ if ( ! isset( $view_args['form'] ) || ! isset( $view_args['field'] ) ) {
 	return;
 }
 
-$form           = $view_args['form'];
-$field          = $view_args['field'];
-$classes        = esc_attr( $view_args['classes'] );
-$is_required    = isset( $field['required'] ) ? $field['required'] : false;
-$value          = isset( $field['value'] ) ? $field['value'] : '';
+$form        = $view_args['form'];
+$field       = $view_args['field'];
+$classes     = esc_attr( $view_args['classes'] );
+$is_required = isset( $field['required'] ) ? $field['required'] : false;
+$value       = isset( $field['value'] ) ? $field['value'] : '';
 
 /* Set the default pattern */
 if ( ! isset( $field['attrs']['pattern'] ) ) {
@@ -29,14 +29,14 @@ if ( ! isset( $field['attrs']['onblur'] ) ) {
 }
 
 ?>
-<div id="charitable_field_<?php echo $field['key'] ?>" class="<?php echo $classes ?>">
+<div id="charitable_field_<?php echo $field['key']; ?>" class="<?php echo $classes; ?>">
 	<?php if ( isset( $field['label'] ) ) : ?>
-		<label for="charitable_field_<?php echo $field['key'] ?>_element">
-			<?php echo $field['label'] ?>
+		<label for="charitable_field_<?php echo $field['key']; ?>_element">
+			<?php echo $field['label']; ?>
 			<?php if ( $is_required ) : ?>
 				<abbr class="required" title="required">*</abbr>
-			<?php endif ?>
+			<?php endif; ?>
 		</label>
-	<?php endif ?>
-	<input type="url" name="<?php echo $field['key'] ?>" id="charitable_field_<?php echo $field['key'] ?>_element" value="<?php echo esc_attr( stripslashes( $value ) ) ?>" <?php echo charitable_get_arbitrary_attributes( $field ) ?>/>
+	<?php endif; ?>
+	<input type="url" name="<?php echo $field['key']; ?>" id="charitable_field_<?php echo $field['key']; ?>_element" value="<?php echo esc_attr( stripslashes( $value ) ); ?>" <?php echo charitable_get_arbitrary_attributes( $field ); ?>/>
 </div>
