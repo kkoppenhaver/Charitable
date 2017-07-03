@@ -23,13 +23,13 @@ endif;
 ?>
 <ul class="donation-stats">
 	<li>
-		<?php printf( '<span class="figure">%d</span> %s', $campaigns_count, $campaigns_text ) ?>
-	</li>
-	<li>                
-		<?php printf( '<span class="figure">%s</span> %s', charitable_format_money( charitable_get_table( 'campaign_donations' )->get_total() ), __( 'Donated', 'charitable' ) ) ?>
+		<?php printf( '<span class="figure">%d</span> %s', $campaigns_count, $campaigns_text ); ?>
 	</li>
 	<li>
-		<?php printf( '<span class="figure">%d</span> %s', charitable_get_table( 'donors' )->count_donors_with_donations(), __( 'Donors', 'charitable' ) ) ?>        
+		<?php printf( '<span class="figure">%s</span> %s', charitable_format_money( charitable_get_table( 'campaign_donations' )->get_total() ), __( 'Donated', 'charitable' ) ); ?>
+	</li>
+	<li>
+		<?php printf( '<span class="figure">%d</span> %s', charitable_get_table( 'donors' )->count_donors_with_donations(), __( 'Donors', 'charitable' ) ); ?>
 	</li>
 </ul>
 
