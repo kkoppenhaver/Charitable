@@ -11,8 +11,8 @@
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-$form 	= $view_args['form'];
-$donor	= charitable_get_user( wp_get_current_user() );
+$form  = $view_args['form'];
+$donor = charitable_get_user( wp_get_current_user() );
 
 /**
  * @hook 	charitable_user_profile_before
@@ -25,8 +25,8 @@ do_action( 'charitable_user_profile_before' );
 	/**
 	 * @hook 	charitable_form_before_fields
 	 */
-	do_action( 'charitable_form_before_fields', $form ) ?>
-	
+	do_action( 'charitable_form_before_fields', $form ); ?>
+
 	<div class="charitable-form-fields cf">
 
 	<?php
@@ -42,7 +42,7 @@ do_action( 'charitable_user_profile_before' );
 	endforeach;
 
 	?>
-	
+
 	</div>
 
 	<?php
