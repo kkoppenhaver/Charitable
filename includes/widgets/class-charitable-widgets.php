@@ -36,7 +36,7 @@ if ( ! class_exists( 'Charitable_Widgets' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_Widgets
+		 * @return Charitable_Widgets
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -63,7 +63,7 @@ if ( ! class_exists( 'Charitable_Widgets' ) ) :
 		 *
 		 * @see 	widgets_init hook
 		 *
-		 * @return 	void
+		 * @return void
 		 * @access 	public
 		 * @since 	1.0.0
 		 */
@@ -74,6 +74,7 @@ if ( ! class_exists( 'Charitable_Widgets' ) ) :
 			register_widget( 'Charitable_Donate_Widget' );
 			register_widget( 'Charitable_Donation_Stats_Widget' );
 		}
+
 	}
 
 endif;
