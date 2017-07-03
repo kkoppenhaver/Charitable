@@ -12,12 +12,12 @@ if ( ! isset( $view_args['form'] ) || ! isset( $view_args['field'] ) ) {
 	return;
 }
 
-$form 			= $view_args['form'];
-$field 			= $view_args['field'];
-$classes 		= $view_args['classes'];
-$is_required 	= isset( $field['required'] ) ? $field['required'] : false;
-$value			= isset( $field['value'] ) ? $field['value'] : '';
-$editor_args 	= isset( $field['editor'] ) ? $field['editor'] : array();
+$form                = $view_args['form'];
+$field               = $view_args['field'];
+$classes             = $view_args['classes'];
+$is_required         = isset( $field['required'] ) ? $field['required'] : false;
+$value               = isset( $field['value'] ) ? $field['value'] : '';
+$editor_args         = isset( $field['editor'] ) ? $field['editor'] : array();
 $default_editor_args = array(
 	'media_buttons' => true,
 	'teeny'         => true,
@@ -32,15 +32,15 @@ $default_editor_args = array(
 
 $editor_args = wp_parse_args( $editor_args, $default_editor_args );
 ?>
-<div id="charitable_field_<?php echo $field['key'] ?>" class="<?php echo $classes ?>">
+<div id="charitable_field_<?php echo $field['key']; ?>" class="<?php echo $classes; ?>">
 	<?php if ( isset( $field['label'] ) ) : ?>
-		<label for="<?php echo esc_attr( $field['key'] ) ?>">
-			<?php echo $field['label'] ?>
+		<label for="<?php echo esc_attr( $field['key'] ); ?>">
+			<?php echo $field['label']; ?>
 			<?php if ( $is_required ) : ?>
 				<abbr class="required" title="required">*</abbr>
-			<?php endif ?>
+			<?php endif; ?>
 		</label>
-	<?php endif ?>
+	<?php endif; ?>
 	<?php
 		wp_editor( $value, $field['key'], $editor_args );
 	?>
