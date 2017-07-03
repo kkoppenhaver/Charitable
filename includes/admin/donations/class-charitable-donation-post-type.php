@@ -105,7 +105,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_Donation_Post_Type
+		 * @return Charitable_Donation_Post_Type
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -120,7 +120,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Sets up the meta boxes to display on the donation admin page.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -141,7 +141,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Remove default meta boxes.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -164,29 +164,29 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Returns an array of all meta boxes added to the donation post type screen.
 		 *
-		 * @return  array
+		 * @return array
 		 * @access  private
 		 * @since   1.0.0
 		 */
 		private function get_meta_boxes() {
 			$meta_boxes = array(
-				'donation-overview'  => array(
-					'title'         => __( 'Donation Overview', 'charitable' ),
-					'context'       => 'normal',
-					'priority'      => 'high',
-					'view'          => 'metaboxes/donation/donation-overview',
+				'donation-overview' => array(
+					'title'    => __( 'Donation Overview', 'charitable' ),
+					'context'  => 'normal',
+					'priority' => 'high',
+					'view'     => 'metaboxes/donation/donation-overview',
 				),
-				'donation-details'     => array(
-					'title'         => __( 'Donation Details', 'charitable' ),
-					'context'       => 'side',
-					'priority'      => 'high',
-					'view'          => 'metaboxes/donation/donation-details',
+				'donation-details'  => array(
+					'title'    => __( 'Donation Details', 'charitable' ),
+					'context'  => 'side',
+					'priority' => 'high',
+					'view'     => 'metaboxes/donation/donation-details',
 				),
 				'donation-log'      => array(
-					'title'         => __( 'Donation Log', 'charitable' ),
-					'context'       => 'normal',
-					'priority'      => 'low',
-					'view'          => 'metaboxes/donation/donation-log',
+					'title'    => __( 'Donation Log', 'charitable' ),
+					'context'  => 'normal',
+					'priority' => 'low',
+					'view'     => 'metaboxes/donation/donation-log',
 				),
 			);
 
@@ -198,7 +198,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		 *
 		 * @see     get_column_headers
 		 *
-		 * @return  array
+		 * @return array
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -220,14 +220,13 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		 *
 		 * @see     WP_Posts_List_Table::single_row()
 		 *
-		 * @param   string  $column_name    The name of the column to display.
-		 * @param   int     $post_id        The current post ID.
-		 * @return  void
+		 * @param  string $column_name The name of the column to display.
+		 * @param  int    $post_id     The current post ID.
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function dashboard_column_item( $column_name, $post_id ) {
-
 			$donation = charitable_get_donation( $post_id );
 
 			switch ( $column_name ) {
@@ -267,8 +266,8 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 
 				case 'amount' :
 
-					$display = charitable_format_money( $donation->get_total_donation_amount() );
-					$display .= '<span class="meta">' . sprintf( _x( 'via %s', 'charitable' ), $donation->get_gateway_label() ). '</span>';
+					$display  = charitable_format_money( $donation->get_total_donation_amount() );
+					$display .= '<span class="meta">' . sprintf( _x( 'via %s', 'charitable' ), $donation->get_gateway_label() ) . '</span>';
 
 					break;
 
@@ -309,8 +308,8 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Make columns sortable.
 		 *
-		 * @param   array $columns  .
-		 * @return  array
+		 * @param  array $columns .
+		 * @return array
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -361,10 +360,10 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 
 			if ( isset( $actions['edit'] ) ) {
 
-				$title  = esc_attr__( 'View Details', 'charitable' );
-				$text   = __( 'View', 'charitable' );
-				$url    = esc_url( add_query_arg( array(
-					'post' => $post->ID,
+				$title = esc_attr__( 'View Details', 'charitable' );
+				$text  = __( 'View', 'charitable' );
+				$url   = esc_url( add_query_arg( array(
+					'post'   => $post->ID,
 					'action' => 'edit',
 				), admin_url( 'post.php' ) ) );
 
@@ -373,18 +372,17 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 			}
 
 			return $actions;
-		}   
+		}
 
 		/**
 		 * Customize the output of the status views.
 		 *
-		 * @param   string[] $views
-		 * @return  string[]
+		 * @param  string[] $views
+		 * @return string[]
 		 * @access  public
 		 * @since   1.4.0
 		 */
 		public function set_status_views( $views ) {
-
 			$counts  = $this->get_status_counts();
 			$current = array_key_exists( 'post_status', $_GET ) ? $_GET['post_status'] : '';
 
@@ -417,8 +415,8 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Add Custom bulk actions
 		 *
-		 * @param   array $actions
-		 * @return  array
+		 * @param  array $actions
+		 * @return array
 		 * @since   1.4.7
 		 */
 		public function custom_bulk_actions( $actions ) {
@@ -432,14 +430,13 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Process bulk actions
 		 *
-		 * @param   int    $redirect_to
-		 * @param   string $action
-		 * @param   int[]  $post_ids
-		 * @return  string
+		 * @param  int    $redirect_to
+		 * @param  string $action
+		 * @param  int[]  $post_ids
+		 * @return string
 		 * @since   1.4.7
 		 */
 		public function bulk_action_handler( $redirect_to, $action, $post_ids ) {
-
 			// Bail out if this is not a status-changing action
 			if ( strpos( $action, 'set-' ) === false ) {
 				$sendback = remove_query_arg( array( 'trashed', 'untrashed', 'deleted', 'locked', 'ids' ), wp_get_referer() );
@@ -450,7 +447,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 
 			$donation_statuses = charitable_get_valid_donation_statuses();
 
-			$new_status    = str_replace( 'set-', '', $action ); // get the status name from action
+			$new_status = str_replace( 'set-', '', $action ); // get the status name from action
 
 			$report_action = 'bulk_' . Charitable::DONATION_POST_TYPE . '_status_update';
 
@@ -471,12 +468,11 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 			return $redirect_to;
 		}
 
-
 		/**
 		 * Remove edit from the bulk actions.
 		 *
-		 * @param   array $actions
-		 * @return  array
+		 * @param  array $actions
+		 * @return array
 		 * @since   1.4.0
 		 */
 		public function remove_bulk_actions( $actions ) {
@@ -490,7 +486,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Retrieve the bulk actions
 		 *
-		 * @return  array $actions Array of the bulk actions
+		 * @return array $actions Array of the bulk actions
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -510,7 +506,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		 * Using Javascript until WordPress core fixes: https://core.trac.wordpress.org/ticket/16031
 		 *
 		 * @global  string $post_type
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -520,7 +516,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 			if ( Charitable::DONATION_POST_TYPE == $post_type ) {
 				?>
 				<script type="text/javascript">
-				(function($) { 
+				(function($) {
 
 					<?php
 					foreach ( $this->get_bulk_actions() as $status_key => $label ) {
@@ -528,7 +524,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 					}
 					?>
 
-					
+
 				})(jQuery);
 				</script>
 				<?php
@@ -538,12 +534,11 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Process the new bulk actions for changing order status.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.4.0
 		 */
 		public function process_bulk_action() {
-
 			// We only want to deal with donations. In case any other CPTs have an 'active' action
 			if ( ! isset( $_REQUEST['post_type'] ) || Charitable::DONATION_POST_TYPE !== $_REQUEST['post_type'] || ! isset( $_REQUEST['post'] ) ) {
 				return;
@@ -556,7 +551,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 
 			if ( isset( $_REQUEST['action'] ) && -1 != $_REQUEST['action'] ) {
 				$action = $_REQUEST['action'];
-			} else if ( isset( $_REQUEST['action2'] ) && -1 != $_REQUEST['action2'] ) {
+			} elseif ( isset( $_REQUEST['action2'] ) && -1 != $_REQUEST['action2'] ) {
 				$action = $_REQUEST['action2'];
 			}
 
@@ -570,7 +565,6 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 
 			exit();
 		}
-
 
 		/**
 		 * Show confirmation message that order status changed for number of orders.
@@ -587,11 +581,10 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 			$report_action = 'bulk_' . Charitable::DONATION_POST_TYPE . '_status_update';
 
 			if ( ! empty( $_REQUEST[ $report_action ] ) ) {
-				$number = absint( $_REQUEST[ $report_action ] );
+				$number  = absint( $_REQUEST[ $report_action ] );
 				$message = sprintf( _n( 'Donation status changed.', '%s donation statuses changed.', $number, 'charitable' ), number_format_i18n( $number ) );
 				echo '<div class="updated"><p>' . $message . '</p></div>';
 			}
-
 		}
 
 		/**
@@ -604,19 +597,19 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 			global $post, $post_ID;
 
 			$messages[ Charitable::DONATION_POST_TYPE ] = array(
-				0 => '', // Unused. Messages start at index 1.
-				1 => sprintf( __( 'Donation updated. <a href="%s">View Donation</a>', 'charitable' ), esc_url( get_permalink( $post_ID ) ) ),
-				2 => __( 'Custom field updated.', 'charitable' ),
-				3 => __( 'Custom field deleted.', 'charitable' ),
-				4 => __( 'Donation updated.', 'charitable' ),
-				5 => isset( $_GET['revision'] ) ? sprintf( __( 'Donation restored to revision from %s', 'charitable' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-				6 => sprintf( __( 'Donation published. <a href="%s">View Donation</a>', 'charitable' ), esc_url( get_permalink( $post_ID ) ) ),
-				7 => __( 'Donation saved.', 'charitable' ),
-				8 => sprintf(
+				0  => '', // Unused. Messages start at index 1.
+				1  => sprintf( __( 'Donation updated. <a href="%s">View Donation</a>', 'charitable' ), esc_url( get_permalink( $post_ID ) ) ),
+				2  => __( 'Custom field updated.', 'charitable' ),
+				3  => __( 'Custom field deleted.', 'charitable' ),
+				4  => __( 'Donation updated.', 'charitable' ),
+				5  => isset( $_GET['revision'] ) ? sprintf( __( 'Donation restored to revision from %s', 'charitable' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+				6  => sprintf( __( 'Donation published. <a href="%s">View Donation</a>', 'charitable' ), esc_url( get_permalink( $post_ID ) ) ),
+				7  => __( 'Donation saved.', 'charitable' ),
+				8  => sprintf(
 					__( 'Donation submitted. <a target="_blank" href="%s">Preview Donation</a>', 'charitable' ),
 					esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) )
 				),
-				9 => sprintf(
+				9  => sprintf(
 					__( 'Donation scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview Donation</a>', 'charitable' ),
 					date_i18n( __( 'M j, Y @ G:i', 'charitable' ), strtotime( $post->post_date ) ),
 					esc_url( get_permalink( $post_ID ) )
@@ -633,32 +626,30 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Modify bulk messages
 		 *
-		 * @param 	array $bulk_messages
-		 * @param 	array $bulk_counts
-		 * @return 	array
+		 * @param  array $bulk_messages
+		 * @param  array $bulk_counts
+		 * @return array
 		 * @access 	public
 		 * @since 	1.4.7
 		 */
 		public function bulk_messages( $bulk_messages, $bulk_counts ) {
-
 			$bulk_messages[ Charitable::DONATION_POST_TYPE ] = array(
 				'updated'   => _n( '%d donation updated.', '%d donations updated.', $bulk_counts['updated'], 'charitable' ),
 				'locked'    => ( 1 == $bulk_counts['locked'] ) ? __( '1 donation not updated, somebody is editing it.' ) :
-								   _n( '%s donation not updated, somebody is editing it.', '%s donations not updated, somebody is editing them.', $bulk_counts['locked'], 'charitable' ),
+									_n( '%s donation not updated, somebody is editing it.', '%s donations not updated, somebody is editing them.', $bulk_counts['locked'], 'charitable' ),
 				'deleted'   => _n( '%s donation permanently deleted.', '%s donations permanently deleted.', $bulk_counts['deleted'], 'charitable' ),
 				'trashed'   => _n( '%s donation moved to the Trash.', '%s donations moved to the Trash.', $bulk_counts['trashed'], 'charitable' ),
 				'untrashed' => _n( '%s donation restored from the Trash.', '%s donations restored from the Trash.', $bulk_counts['untrashed'], 'charitable' ),
 			);
 
 			return $bulk_messages;
-
 		}
 
 		/**
 		 * Disable the month's dropdown (will replace with custom range search).
 		 *
-		 * @param mixed $public_query_vars
-		 * @param  str $post_type
+		 * @param  mixed $public_query_vars
+		 * @param  str   $post_type
 		 * @return array
 		 * @since  1.4.0
 		 */
@@ -673,7 +664,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Add date-based filters above the donations table.
 		 *
-		 * @param  string $post_type
+		 * @param string $post_type
 		 * @since  1.4.0
 		 */
 		public function restrict_manage_posts( $post_type = '' ) {
@@ -690,8 +681,8 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Add extra buttons after filters
 		 *
-		 * @param   string $which
-		 * @return  void
+		 * @param  string $which
+		 * @return void
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -702,15 +693,13 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 			if ( 'top' == $which && in_array( $typenow, array( Charitable::DONATION_POST_TYPE ) ) ) {
 				charitable_admin_view( 'donations-page/export' );
 			}
-
 		}
-
 
 		/**
 		 * Add modal template to footer
 		 *
-		 * @param   string $which
-		 * @return  void
+		 * @param  string $which
+		 * @return void
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -722,7 +711,6 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 				charitable_admin_view( 'donations-page/export-form' );
 				charitable_admin_view( 'donations-page/filter-form' );
 			}
-
 		}
 
 		/**
@@ -730,12 +718,11 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		 *
 		 * Set up the scripts & styles used for the modal.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.4.0
 		 */
 		public function load_scripts( $hook ) {
-
 			if ( 'edit.php' != $hook ) {
 				return;
 			}
@@ -783,14 +770,13 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 				wp_enqueue_script( 'lean-modal' );
 				wp_enqueue_script( 'charitable-admin-donations' );
 			}
-
 		}
 
 		/**
 		 * Add custom filters to the query that returns the donations to be displayed.
 		 *
-		 * @param   array $vars
-		 * @return  array
+		 * @param  array $vars
+		 * @return array
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -844,8 +830,8 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Column sorting handler.
 		 *
-		 * @param   array $vars
-		 * @return  array
+		 * @param  array $vars
+		 * @return array
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -866,7 +852,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 			switch ( $_GET['orderby'] ) {
 
 				case 'amount' :
-					$clauses['join'] = "JOIN {$wpdb->prefix}charitable_campaign_donations cd ON cd.donation_id = $wpdb->posts.ID ";
+					$clauses['join']    = "JOIN {$wpdb->prefix}charitable_campaign_donations cd ON cd.donation_id = $wpdb->posts.ID ";
 					$clauses['orderby'] = 'cd.amount ' . $order;
 					break;
 
@@ -878,7 +864,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Return the status counts, taking into account any current filters.
 		 *
-		 * @return  array
+		 * @return array
 		 * @access  protected
 		 * @since   1.4.0
 		 */
@@ -916,7 +902,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Given a date, returns an array containing the date, month and year.
 		 *
-		 * @return  string[]
+		 * @return string[]
 		 * @access  protected
 		 * @since   1.4.0
 		 */
@@ -933,17 +919,16 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 		/**
 		 * Respond to changes in donation status.
 		 *
-		 * @param   string $new_status
-		 * @param   string $old_status
-		 * @param   WP_Post $post
-		 * @return  void
+		 * @param  string  $new_status
+		 * @param  string  $old_status
+		 * @param  WP_Post $post
+		 * @return void
 		 * @access  public
 		 * @since   1.2.0
 		 *
 		 * @deprecated   1.4.0
 		 */
 		public function handle_donation_status_change( $new_status, $old_status, $post ) {
-
 			charitable_get_deprecated()->deprecated_function(
 				__METHOD__,
 				'1.4.0',
