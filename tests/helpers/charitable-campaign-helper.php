@@ -7,9 +7,9 @@
 class Charitable_Campaign_Helper extends WP_UnitTestCase {
 
 	/**
-	 * Delete a campaign 
+	 * Delete a campaign
 	 *
-	 * @return 	void
+	 * @return void
 	 * @access  public
 	 * @since 	1.0.0
 	 */
@@ -20,42 +20,42 @@ class Charitable_Campaign_Helper extends WP_UnitTestCase {
 	/**
 	 * Create a campaign.
 	 *
-	 * @param 	array 		$args 				Optional arguments.
-	 * @return 	int 		$campaign_id
+	 * @param  array $args        Optional arguments.
+	 * @return int   $campaign_id
 	 * @access  public
 	 * @static
-	 * @since 	1.0.0	 
+	 * @since 	1.0.0
 	 */
 	public static function create_campaign( $args = array() ) {
 		$defaults = array(
-			'post_title'					   => 'Test Campaign', 
-			'post_name'						   => 'test-campaign', 
-			'post_type'						   => 'campaign', 
-			'post_status'					   => 'publish', 
-			'_campaign_goal' 				   => 0, 
-			'_campaign_end_date'			   => 0, 
-			'_campaign_suggested_donations'	   => '',
+			'post_title'                       => 'Test Campaign',
+			'post_name'                        => 'test-campaign',
+			'post_type'                        => 'campaign',
+			'post_status'                      => 'publish',
+			'_campaign_goal'                   => 0,
+			'_campaign_end_date'               => 0,
+			'_campaign_suggested_donations'    => '',
 			'_campaign_allow_custom_donations' => 1,
 		);
 
 		$args = array_merge( $defaults, $args );
 
 		$campaign_id = wp_insert_post( array(
-			'post_title'    => $args['post_title'],
-			'post_name'     => $args['post_name'], 
-			'post_type'     => $args['post_type'], 
-			'post_status'   => $args['post_status']
+			'post_title'  => $args['post_title'],
+			'post_name'   => $args['post_name'],
+			'post_type'   => $args['post_type'],
+			'post_status' => $args['post_status']
 		) );
 
 		$meta_keys = array(
-			'_campaign_goal', 
+			'_campaign_goal',
 			'_campaign_end_date',
 			'_campaign_suggested_donations',
 			'_campaign_allow_custom_donations',
 		);
 
 		foreach ( $meta_keys as $key ) {
-			update_post_meta( $campaign_id, $key, $args[$key] );
+			update_post_meta( $campaign_id, $key, $args[ $key ] );
 		}
 
 		return $campaign_id;
@@ -64,14 +64,14 @@ class Charitable_Campaign_Helper extends WP_UnitTestCase {
 	/**
 	 * Create a campaign with a goal.
 	 *
-	 * @param 	string 		$goal
-	 * @param 	array 		$args 				Optional arguments.
-	 * @return 	int 		$campaign_id
+	 * @param  string $goal
+	 * @param  array  $args        Optional arguments.
+	 * @return int    $campaign_id
 	 * @access  public
 	 * @static
 	 * @since 	1.0.0
 	 */
-	public static function create_campaign_with_goal( $amount, $args = array()  ) {
+	public static function create_campaign_with_goal( $amount, $args = array() ) {
 		$args['_campaign_goal'] = $amount;
 		return self::create_campaign( $args );
 	}
@@ -79,9 +79,9 @@ class Charitable_Campaign_Helper extends WP_UnitTestCase {
 	/**
 	 * Create a campaign with an end date.
 	 *
-	 * @param 	string 		$end_date
-	 * @param 	array 		$args 				Optional arguments.
-	 * @return 	int 		$campaign_id
+	 * @param  string $end_date
+	 * @param  array  $args        Optional arguments.
+	 * @return int    $campaign_id
 	 * @access  public
 	 * @static
 	 * @since 	1.0.0
@@ -90,4 +90,5 @@ class Charitable_Campaign_Helper extends WP_UnitTestCase {
 		$args['_campaign_end_date'] = $amount;
 		return self::create_campaign( $args );
 	}
+
 }
