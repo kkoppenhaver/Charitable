@@ -19,7 +19,7 @@ if ( ! class_exists( 'Charitable_Template_Part' ) ) :
  *
  * @since		1.0.0
  */
-class Charitable_Template_Part {	
+class Charitable_Template_Part {
 
 	/**
 	 * @var 	string 			The template's slug.
@@ -34,13 +34,13 @@ class Charitable_Template_Part {
 	/**
 	 * Class constructor.
 	 *
-	 * @param 	string $slug
-	 * @param 	string $name 	Optional name.
-	 * @return 	void
+	 * @param  string $slug
+	 * @param  string $name Optional name.
+	 * @return void
 	 * @access 	public
 	 * @since 	1.0.0
 	 */
-	public function __construct($slug, $name = "" ) {
+	public function __construct( $slug, $name = '' ) {
 		$this->slug = $slug;
 		$this->name = $name;
 
@@ -50,7 +50,7 @@ class Charitable_Template_Part {
 	/**
 	 * Returns the array of template names.
 	 *
-	 * @return 	array
+	 * @return array
 	 * @access 	private
 	 * @since 	1.0.0
 	 */
@@ -68,6 +68,7 @@ class Charitable_Template_Part {
 
 		return $names;
 	}
+
 }
 
 endif;
