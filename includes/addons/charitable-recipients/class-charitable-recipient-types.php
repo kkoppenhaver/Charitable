@@ -45,7 +45,7 @@ if ( ! class_exists( 'Charitable_Recipient_Types' ) ) :
 		/**
 		 * Returns the single instance of this class.
 		 *
-		 * @return  Charitable_Recipient_Types
+		 * @return Charitable_Recipient_Types
 		 * @access  public
 		 * @static
 		 * @since   1.0.0
@@ -61,19 +61,19 @@ if ( ! class_exists( 'Charitable_Recipient_Types' ) ) :
 		/**
 		 * Registers a new recipient type.
 		 *
-		 * @return  Charitable_Recipient_Types
+		 * @return Charitable_Recipient_Types
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function register( $recipient_type, $args = array() ) {
 			$defaults = array(
-				'label' => '',
-				'description' => '',
-				'admin_label' => '',
-				'admin_description' => '',
-				'searchable' => false,
+				'label'              => '',
+				'description'        => '',
+				'admin_label'        => '',
+				'admin_description'  => '',
+				'searchable'         => false,
 				'search_placeholder' => '',
-				'options' => array(),
+				'options'            => array(),
 			);
 
 			$args = wp_parse_args( $args, $defaults );
@@ -84,13 +84,14 @@ if ( ! class_exists( 'Charitable_Recipient_Types' ) ) :
 		/**
 		 * Returns all registered recipient types.
 		 *
-		 * @return  array
+		 * @return array
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function get_types() {
 			return $this->types;
 		}
+
 	}
 
 endif;
