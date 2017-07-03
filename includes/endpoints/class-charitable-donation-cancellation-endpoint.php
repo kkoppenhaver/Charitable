@@ -29,7 +29,7 @@ if ( ! class_exists( 'Charitable_Donation_Cancellation_Endpoint' ) ) :
 		/**
 		 * Return the endpoint ID.
 		 *
-		 * @return 	string
+		 * @return string
 		 * @access 	public
 		 * @static
 		 * @since 	1.5.0
@@ -51,13 +51,12 @@ if ( ! class_exists( 'Charitable_Donation_Cancellation_Endpoint' ) ) :
 		 * Return the endpoint URL.
 		 *
 		 * @global 	WP_Rewrite $wp_rewrite
-		 * @param 	array      $args
-		 * @return  string
+		 * @param  array  $args
+		 * @return string
 		 * @access  public
 		 * @since   1.5.0
 		 */
 		public function get_page_url( $args = array() ) {
-
 			global $wp_rewrite;
 
 			/* A donation ID must be provided. */
@@ -74,30 +73,28 @@ if ( ! class_exists( 'Charitable_Donation_Cancellation_Endpoint' ) ) :
 
 			return esc_url_raw( add_query_arg( array(
 				'donation_id' => $args['donation_id'],
-				'cancel' => true,
+				'cancel'      => true,
 			), $donation_page ) );
-
 		}
 
 		/**
 		 * Return whether we are currently viewing the endpoint.
 		 *
 		 * @global  WP_Query $wp_query
-		 * @param 	array    $args
-		 * @return  boolean
+		 * @param  array   $args
+		 * @return boolean
 		 * @access  public
 		 * @since   1.5.0
 		 */
 		public function is_page( $args = array() ) {
-
 			global $wp_query;
 
 			return charitable_is_page( 'campaign_donation_page' )
 				&& array_key_exists( 'donation_id', $wp_query->query_vars )
 				&& array_key_exists( 'cancel', $wp_query->query_vars )
 				&& $wp_query->query_vars['cancel'];
-
 		}
+
 	}
 
 endif;
