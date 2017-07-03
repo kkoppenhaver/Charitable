@@ -21,10 +21,10 @@ if ( empty( $notices ) ) {
 ?>
 <div class="charitable-notice">
 <?php foreach ( $notices as $type => $messages ) : ?>
-	<ul class="charitable-notice-<?php echo esc_attr( $type ) ?>">
+	<ul class="charitable-notice-<?php echo esc_attr( $type ); ?>">
 		<?php foreach ( $messages as $message ) : ?>
-			<li><?php echo $message ?></li>
-		<?php endforeach ?>
-	</ul><!-- charitable-notice-<?php esc_attr( $type ) ?> -->
-<?php endforeach ?>
+			<li><?php echo $message; ?></li>
+		<?php endforeach; ?>
+	</ul><!-- charitable-notice-<?php esc_attr( $type ); ?> -->
+<?php endforeach; ?>
 </div><!-- .charitable-notices -->
