@@ -43,7 +43,7 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_Licenses_Settings
+		 * @return Charitable_Licenses_Settings
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -58,13 +58,12 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 		/**
 		 * Optionally add the licenses tab.
 		 *
-		 * @param   string[] $tabs Settings tabs.
-		 * @return  string[]
+		 * @param  string[] $tabs Settings tabs.
+		 * @return string[]
 		 * @access  public
 		 * @since   1.4.7
 		 */
 		public function maybe_add_licenses_tab( $tabs ) {
-
 			$products = charitable_get_helper( 'licenses' )->get_products();
 
 			if ( empty( $products ) ) {
@@ -81,13 +80,12 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 			);
 
 			return $tabs;
-
 		}
 
 		/**
 		 * Add the licenses tab settings fields.
 		 *
-		 * @return  array
+		 * @return array
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -97,25 +95,25 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 			}
 
 			$fields = array(
-				'section' => array(
-					'title'     => '',
-					'type'      => 'hidden',
-					'priority'  => 10000,
-					'value'     => 'licenses',
-					'save'      => false,
+				'section'  => array(
+					'title'    => '',
+					'type'     => 'hidden',
+					'priority' => 10000,
+					'value'    => 'licenses',
+					'save'     => false,
 				),
 				'licenses' => array(
-					'title'     => false,
-					'callback'  => array( $this, 'render_licenses_table' ),
-					'priority'  => 4,
+					'title'    => false,
+					'callback' => array( $this, 'render_licenses_table' ),
+					'priority' => 4,
 				),
 			);
 
 			foreach ( charitable_get_helper( 'licenses' )->get_products() as $key => $product ) {
 				$fields[ $key ] = array(
-					'type'      => 'text',
-					'render'    => false,
-					'priority'  => 6,
+					'type'     => 'text',
+					'render'   => false,
+					'priority' => 6,
 				);
 			}
 
@@ -125,8 +123,8 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 		/**
 		 * Add the licenses group.
 		 *
-		 * @param   string[] $groups Settings groups.
-		 * @return  string[]
+		 * @param  string[] $groups Settings groups.
+		 * @return string[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -138,7 +136,7 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 		/**
 		 * Render the licenses table.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -149,9 +147,9 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 		/**
 		 * Checks for updated license and invalidates status field if not set.
 		 *
-		 * @param   mixed[] $values The parsed values combining old values & new values.
-		 * @param   mixed[] $new_values The newly submitted values.
-		 * @return  mixed[]
+		 * @param  mixed[] $values     The parsed values combining old values & new values.
+		 * @param  mixed[] $new_values The newly submitted values.
+		 * @return mixed[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -182,6 +180,7 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 
 			return $values;
 		}
+
 	}
 
 endif;
