@@ -56,7 +56,7 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_Licenses
+		 * @return Charitable_Licenses
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -84,8 +84,8 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Checks for any Charitable extensions with updates.
 		 *
-		 * @param  	array $_transient_data The plugin updates data.
-		 * @return  array
+		 * @param  array $_transient_data The plugin updates data.
+		 * @return array
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -145,7 +145,7 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 
 						}
 
-						$_transient_data->last_checked = time();
+						$_transient_data->last_checked            = time();
 						$_transient_data->checked[ $plugin_file ] = $product['version'];
 
 					}//end foreach
@@ -158,12 +158,12 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Register a product that requires licensing.
 		 *
-		 * @param   string $item_name The title of the product.
-		 * @param   string $author The author of the product.
-		 * @param   string $version The current product version we have installed.
-		 * @param 	string $file The path to the plugin file.
-		 * @param   string $url The base URL where the plugin is licensed. Defaults to Charitable_Licenses::UPDATE_URL.
-		 * @return  void
+		 * @param  string $item_name The title of the product.
+		 * @param  string $author    The author of the product.
+		 * @param  string $version   The current product version we have installed.
+		 * @param  string $file      The path to the plugin file.
+		 * @param  string $url       The base URL where the plugin is licensed. Defaults to Charitable_Licenses::UPDATE_URL.
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -175,15 +175,15 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 			$product_key = $this->get_item_key( $item_name );
 
 			$this->products[ $product_key ] = array(
-				'name'      => $item_name,
-				'author'    => $author,
-				'version'   => $version,
-				'url'       => $url,
-				'file'      => $file,
+				'name'    => $item_name,
+				'author'  => $author,
+				'version' => $version,
+				'url'     => $url,
+				'file'    => $file,
 			);
 
 			$licenses = $this->get_licenses();
-			$license = isset( $licenses[ $product_key ]['license'] ) ? trim( $licenses[ $product_key ]['license'] ) : '';
+			$license  = isset( $licenses[ $product_key ]['license'] ) ? trim( $licenses[ $product_key ]['license'] ) : '';
 
 			new Charitable_Plugin_Updater( $url, $file, array(
 				'version'   => $version,
@@ -196,7 +196,7 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Return the list of products requiring licensing.
 		 *
-		 * @return  array[]
+		 * @return array[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -207,8 +207,8 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Return a specific product's details.
 		 *
-		 * @param 	string $item The item for which we are getting product details.
-		 * @return  string[]
+		 * @param  string   $item The item for which we are getting product details.
+		 * @return string[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -219,8 +219,8 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Returns whether the given product has a valid license.
 		 *
-		 * @param   string $item The item to check.
-		 * @return  boolean
+		 * @param  string  $item The item to check.
+		 * @return boolean
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -237,15 +237,15 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Returns the license details for the given product.
 		 *
-		 * @param   string $item The item to get the license for.
-		 * @return  mixed[]
+		 * @param  string  $item The item to get the license for.
+		 * @return mixed[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function get_license( $item ) {
 			$license = $this->get_license_details( $item );
 
-			if ( ! $license || ! is_array( $license )  ) {
+			if ( ! $license || ! is_array( $license ) ) {
 				return false;
 			}
 
@@ -255,8 +255,8 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Returns the active license details for the given product.
 		 *
-		 * @param   string $item The item to get active licensing details for.
-		 * @return  mixed[]
+		 * @param  string  $item The item to get active licensing details for.
+		 * @return mixed[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -276,7 +276,7 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		 * Note: The licenses are not necessarily valid. If a user enters an invalid
 		 * license, the license will be stored but it will be flagged as invalid.
 		 *
-		 * @return  array[]
+		 * @return array[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -291,9 +291,9 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Verify a license.
 		 *
-		 * @param   string $item The item to verify.
-		 * @param   string $license The license key for the item.
-		 * @return  mixed[]
+		 * @param  string  $item    The item to verify.
+		 * @param  string  $license The license key for the item.
+		 * @return mixed[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -314,16 +314,16 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 			/* Data to send in our API request */
 			$api_params = array(
 				'edd_action' => 'activate_license',
-				'license' => $license,
-				'item_name' => urlencode( $product_details['name'] ),
-				'url' => home_url(),
+				'license'    => $license,
+				'item_name'  => urlencode( $product_details['name'] ),
+				'url'        => home_url(),
 			);
 
 			/* Call the custom API */
 			$response = wp_remote_post( $product_details['url'], array(
-				'timeout' => 15,
+				'timeout'   => 15,
 				'sslverify' => false,
-				'body' => $api_params,
+				'body'      => $api_params,
 			) );
 
 			/* Make sure the response came back okay */
@@ -334,17 +334,17 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 
 			return array(
-				'license' => $license,
+				'license'         => $license,
 				'expiration_date' => $license_data->expires,
-				'valid' => ( 'valid' === $license_data->license ),
+				'valid'           => ( 'valid' === $license_data->license ),
 			);
 		}
 
 		/**
 		 * Return the URL to deactivate a specific license.
 		 *
-		 * @param   string $item The item to deactivate.
-		 * @return  string
+		 * @param  string $item The item to deactivate.
+		 * @return string
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -359,7 +359,7 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Deactivate a license.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -387,9 +387,9 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 			/* Data to send to wpcharitable.com to deactivate the license. */
 			$api_params = array(
 				'edd_action' => 'deactivate_license',
-				'license' => $license,
-				'item_name' => urlencode( $product['name'] ),
-				'url' => home_url(),
+				'license'    => $license,
+				'item_name'  => urlencode( $product['name'] ),
+				'url'        => home_url(),
 			);
 
 			/* Call the custom API. */
@@ -413,8 +413,8 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Return a key for the item, based on the item name.
 		 *
-		 * @param   string $item_name Name of the item.
-		 * @return  string
+		 * @param  string $item_name Name of the item.
+		 * @return string
 		 * @access  protected
 		 * @since   1.0.0
 		 */
@@ -425,7 +425,7 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 		/**
 		 * Return the latest versions of Charitable plugins.
 		 *
-		 * @return  array
+		 * @return array
 		 * @access  protected
 		 * @since   1.4.0
 		 */
@@ -447,8 +447,8 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 					Charitable_Licenses::UPDATE_URL . '/edd-api/versions/',
 					array(
 						'sslverify' => false,
-						'timeout' => 15,
-						'body' => array(
+						'timeout'   => 15,
+						'body'      => array(
 							'licenses' => $licenses,
 							'url'      => home_url(),
 						),
@@ -464,6 +464,7 @@ if ( ! class_exists( 'Charitable_Licenses' ) ) :
 
 			return $versions;
 		}
+
 	}
 
 endif;
