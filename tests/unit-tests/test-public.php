@@ -14,15 +14,15 @@ class Test_Charitable_Public extends Charitable_UnitTestCase {
 		self::$donation_id = Charitable_Donation_Helper::create_donation( array(
 			'campaigns' => array(
 				array(
-					'campaign_id' => self::$campaign_id,
-					'amount' => 50,
+					'campaign_id'   => self::$campaign_id,
+					'amount'        => 50,
 					'campaign_name' => 'Test Campaign',
 				),
 			),
-			'user' => array(
+			'user'      => array(
 				'first_name' => 'Matthew',
-				'last_name' => 'Murdoch',
-				'email' => 'matthew.murdoch@example.com',
+				'last_name'  => 'Murdoch',
+				'email'      => 'matthew.murdoch@example.com',
 			),
 		) );
 	}
@@ -78,7 +78,6 @@ class Test_Charitable_Public extends Charitable_UnitTestCase {
 	 * @covers Charitable_Public::disable_comments_on_application_pages()
 	 */
 	function test_comments_not_disabled_on_campaign_page_in_separate_page_mode() {
-
 		$this->set_charitable_option( 'donation_form_display', 'separate_page' );
 
 		$page = get_permalink( self::$campaign_id );
@@ -88,14 +87,12 @@ class Test_Charitable_Public extends Charitable_UnitTestCase {
 		$comments_enabled = Charitable_Public::get_instance()->disable_comments_on_application_pages( true, self::$campaign_id );
 
 		$this->assertTrue( $comments_enabled );
-
 	}
 
 	/**
 	 * @covers Charitable_Public::disable_comments_on_application_pages()
 	 */
 	function test_comments_not_disabled_on_campaign_page_in_modal_mode() {
-
 		$this->set_charitable_option( 'donation_form_display', 'modal' );
 
 		$page = get_permalink( self::$campaign_id );
@@ -105,14 +102,12 @@ class Test_Charitable_Public extends Charitable_UnitTestCase {
 		$comments_enabled = Charitable_Public::get_instance()->disable_comments_on_application_pages( true, self::$campaign_id );
 
 		$this->assertTrue( $comments_enabled );
-
 	}
 
 	/**
 	 * @covers Charitable_Public::disable_comments_on_application_pages()
 	 */
 	function test_comments_not_disabled_on_campaign_page_in_same_page_mode() {
-
 		$this->set_charitable_option( 'donation_form_display', 'same_page' );
 
 		$page = get_permalink( self::$campaign_id );
@@ -122,14 +117,12 @@ class Test_Charitable_Public extends Charitable_UnitTestCase {
 		$comments_enabled = Charitable_Public::get_instance()->disable_comments_on_application_pages( true, self::$campaign_id );
 
 		$this->assertTrue( $comments_enabled );
-
 	}
 
 	/**
 	 * @covers Charitable_Public::disable_comments_on_application_pages()
 	 */
 	function test_comments_disabled_on_donation_receipt_page() {
-
 		charitable()->get_endpoints()->setup_rewrite_rules();
 
 		$this->set_charitable_option( 'donation_form_display', 'separate_page' );
@@ -141,14 +134,12 @@ class Test_Charitable_Public extends Charitable_UnitTestCase {
 		$comments_enabled = Charitable_Public::get_instance()->disable_comments_on_application_pages( true, self::$donation_id );
 
 		$this->assertFalse( $comments_enabled );
-
 	}
 
 	/**
 	 * @covers Charitable_Public::disable_comments_on_application_pages()
 	 */
 	function test_comments_disabled_on_donation_processing_page() {
-
 		charitable()->get_endpoints()->setup_rewrite_rules();
 
 		$this->set_charitable_option( 'donation_form_display', 'separate_page' );
@@ -160,6 +151,6 @@ class Test_Charitable_Public extends Charitable_UnitTestCase {
 		$comments_enabled = Charitable_Public::get_instance()->disable_comments_on_application_pages( true, self::$donation_id );
 
 		$this->assertFalse( $comments_enabled );
-
 	}
+
 }
