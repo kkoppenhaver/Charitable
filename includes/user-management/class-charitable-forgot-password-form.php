@@ -46,7 +46,7 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Form' ) ) :
 		/**
 		 * Create class object.
 		 *
-		 * @param   array $args User-defined shortcode attributes.
+		 * @param array $args User-defined shortcode attributes.
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -58,7 +58,7 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Form' ) ) :
 		/**
 		 * Forgot password fields to be displayed.
 		 *
-		 * @return  array
+		 * @return array
 		 * @access  public
 		 * @since   1.4.0
 		 */
@@ -80,13 +80,12 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Form' ) ) :
 		/**
 		 * Send the password reset email.
 		 *
-		 * @return  bool|WP_Error True: when finish. WP_Error on error
+		 * @return bool|WP_Error True: when finish. WP_Error on error
 		 * @access  public
 		 * @static
 		 * @since   1.4.0
 		 */
 		public static function retrieve_password() {
-
 			$form = new Charitable_Forgot_Password_Form();
 
 			if ( ! $form->validate_nonce() || ! $form->validate_honeypot() ) {
@@ -106,7 +105,7 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Form' ) ) :
 			} else {
 
 				$login = trim( $_POST['user_login'] );
-				$user = get_user_by( 'login', $login );
+				$user  = get_user_by( 'login', $login );
 
 			}
 
@@ -151,6 +150,7 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Form' ) ) :
 
 			exit();
 		}
+
 	}
 
 endif;
