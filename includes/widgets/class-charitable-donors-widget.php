@@ -31,7 +31,7 @@ if ( ! class_exists( 'Charitable_Donors_Widget' ) ) :
 				'charitable_donors_widget',
 				__( 'Donors', 'charitable' ),
 				array(
-					'description' => __( 'Display a list of donors.', 'charitable' ),
+					'description'                 => __( 'Display a list of donors.', 'charitable' ),
 					'customize_selective_refresh' => true,
 				)
 			);
@@ -40,15 +40,15 @@ if ( ! class_exists( 'Charitable_Donors_Widget' ) ) :
 		/**
 		 * Display the widget contents on the front-end.
 		 *
-		 * @param   array $args
-		 * @param   array $instance
-		 * @return  void
+		 * @param  array $args
+		 * @param  array $instance
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function widget( $args, $instance ) {
-			$instance 			 = $this->get_parsed_args( $instance );
-			$view_args 			 = array_merge( $args, $instance );
+			$instance            = $this->get_parsed_args( $instance );
+			$view_args           = array_merge( $args, $instance );
 			$view_args['donors'] = $this->get_widget_donors( $instance );
 
 			charitable_template( 'widgets/donors.php', $view_args );
@@ -57,8 +57,8 @@ if ( ! class_exists( 'Charitable_Donors_Widget' ) ) :
 		/**
 		 * Display the widget form in the admin.
 		 *
-		 * @param   array $instance The current settings for the widget options.
-		 * @return  void
+		 * @param  array $instance The current settings for the widget options.
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -66,51 +66,51 @@ if ( ! class_exists( 'Charitable_Donors_Widget' ) ) :
 			$args = $this->get_parsed_args( $instance );
 			?>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ) ?>"><?php _e( 'Title', 'charitable' ) ?>:</label>
-				<input type="text" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ) ?>" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ) ?>" value="<?php echo esc_attr( $args['title'] ) ?>" class="widefat" />
+				<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title', 'charitable' ); ?>:</label>
+				<input type="text" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" value="<?php echo esc_attr( $args['title'] ); ?>" class="widefat" />
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ) ?>"><?php _e( 'Number of donors to display', 'charitable' ) ?>:</label>
-				<input type="number" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ) ?>" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ) ?>" value="<?php echo intval( $args['number'] ) ?>" min="1" size="3" />
+				<label for="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>"><?php _e( 'Number of donors to display', 'charitable' ); ?>:</label>
+				<input type="number" name="<?php echo esc_attr( $this->get_field_name( 'number' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'number' ) ); ?>" value="<?php echo intval( $args['number'] ); ?>" min="1" size="3" />
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ) ?>"><?php _e( 'Order by', 'charitable' ) ?>:</label>
-				<select name="<?php echo esc_attr( $this->get_field_name( 'order' ) ) ?>" id="<?php echo esc_attr( $this->get_field_id( 'order' ) ) ?>">
-					<option value="recent" <?php selected( 'recent', $args['order'] ) ?>><?php _e( 'Most recent', 'charitable' ) ?></option>
-					<option value="amount" <?php selected( 'amount', $args['order'] ) ?>><?php _e( 'Amount donated', 'charitable' ) ?></option>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>"><?php _e( 'Order by', 'charitable' ); ?>:</label>
+				<select name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>" id="<?php echo esc_attr( $this->get_field_id( 'order' ) ); ?>">
+					<option value="recent" <?php selected( 'recent', $args['order'] ); ?>><?php _e( 'Most recent', 'charitable' ); ?></option>
+					<option value="amount" <?php selected( 'amount', $args['order'] ); ?>><?php _e( 'Amount donated', 'charitable' ); ?></option>
 				</select>
 			</p>
 			<p>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'campaign_id' ) ) ?>"><?php _e( 'Show donors by campaign', 'charitable' ) ?>:</label>
-				<select name="<?php echo esc_attr( $this->get_field_name( 'campaign_id' ) ) ?>">
-					<option value="all" <?php selected( 'all', $args['campaign_id'] ) ?>><?php _e( 'Include all campaigns' ) ?></option>
-					<option value="current" <?php selected( 'current', $args['campaign_id'] ) ?>><?php _e( 'Campaign currently viewed', 'charitable' ) ?></option>
-					<optgroup label="<?php _e( 'Specific campaign', 'charitable' ) ?>">
+				<label for="<?php echo esc_attr( $this->get_field_id( 'campaign_id' ) ); ?>"><?php _e( 'Show donors by campaign', 'charitable' ); ?>:</label>
+				<select name="<?php echo esc_attr( $this->get_field_name( 'campaign_id' ) ); ?>">
+					<option value="all" <?php selected( 'all', $args['campaign_id'] ); ?>><?php _e( 'Include all campaigns' ); ?></option>
+					<option value="current" <?php selected( 'current', $args['campaign_id'] ); ?>><?php _e( 'Campaign currently viewed', 'charitable' ); ?></option>
+					<optgroup label="<?php _e( 'Specific campaign', 'charitable' ); ?>">
 						<?php foreach ( Charitable_Campaigns::query()->posts as $campaign ) : ?>
-							<option value="<?php echo intval( $campaign->ID ) ?>" <?php selected( $campaign->ID, $args['campaign_id'] ) ?>><?php echo $campaign->post_title ?></option>
-						<?php endforeach ?>
+							<option value="<?php echo intval( $campaign->ID ); ?>" <?php selected( $campaign->ID, $args['campaign_id'] ); ?>><?php echo $campaign->post_title; ?></option>
+						<?php endforeach; ?>
 					</optgroup>
-				</select>                
+				</select>
 			</p>
 			<p>
-				<input id="<?php echo esc_attr( $this->get_field_id( 'show_distinct' ) ) ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'show_distinct' ) ); ?>" <?php checked( $args['show_distinct'] ) ?>>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'show_distinct' ) ) ?>"><?php _e( 'Group donations by the same person', 'charitable' ) ?></label>        
+				<input id="<?php echo esc_attr( $this->get_field_id( 'show_distinct' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'show_distinct' ) ); ?>" <?php checked( $args['show_distinct'] ); ?>>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'show_distinct' ) ); ?>"><?php _e( 'Group donations by the same person', 'charitable' ); ?></label>
 			</p>
 			<p>
-				<input id="<?php echo esc_attr( $this->get_field_id( 'show_name' ) ) ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'show_name' ) ); ?>" <?php checked( $args['show_name'] ) ?>>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'show_name' ) ) ?>"><?php _e( 'Show donor\'s name', 'charitable' ) ?></label>            
+				<input id="<?php echo esc_attr( $this->get_field_id( 'show_name' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'show_name' ) ); ?>" <?php checked( $args['show_name'] ); ?>>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'show_name' ) ); ?>"><?php _e( 'Show donor\'s name', 'charitable' ); ?></label>
 			</p>
 			<p>
-				<input id="<?php echo esc_attr( $this->get_field_id( 'show_amount' ) ) ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'show_amount' ) ); ?>" <?php checked( $args['show_amount'] ) ?>>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'show_amount' ) ) ?>"><?php _e( 'Show donor\'s donation amount', 'charitable' ) ?></label>            
+				<input id="<?php echo esc_attr( $this->get_field_id( 'show_amount' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'show_amount' ) ); ?>" <?php checked( $args['show_amount'] ); ?>>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'show_amount' ) ); ?>"><?php _e( 'Show donor\'s donation amount', 'charitable' ); ?></label>
 			</p>
-			<p>            
-				<input id="<?php echo esc_attr( $this->get_field_id( 'show_location' ) ) ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'show_location' ) ); ?>" <?php checked( $args['show_location'] ) ?>>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'show_location' ) ) ?>"><?php _e( 'Show donor\'s location', 'charitable' ) ?></label>
+			<p>
+				<input id="<?php echo esc_attr( $this->get_field_id( 'show_location' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'show_location' ) ); ?>" <?php checked( $args['show_location'] ); ?>>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'show_location' ) ); ?>"><?php _e( 'Show donor\'s location', 'charitable' ); ?></label>
 			</p>
-			<p>            
-				<input id="<?php echo esc_attr( $this->get_field_id( 'hide_if_no_donors' ) ) ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'hide_if_no_donors' ) ); ?>" <?php checked( $args['hide_if_no_donors'] ) ?>>
-				<label for="<?php echo esc_attr( $this->get_field_id( 'hide_if_no_donors' ) ) ?>"><?php _e( 'Hide if there are no donors', 'charitable' ) ?></label>
+			<p>
+				<input id="<?php echo esc_attr( $this->get_field_id( 'hide_if_no_donors' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'hide_if_no_donors' ) ); ?>" <?php checked( $args['hide_if_no_donors'] ); ?>>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'hide_if_no_donors' ) ); ?>"><?php _e( 'Hide if there are no donors', 'charitable' ); ?></label>
 			</p>
 			<?php
 
@@ -120,14 +120,14 @@ if ( ! class_exists( 'Charitable_Donors_Widget' ) ) :
 		/**
 		 * Update the widget settings in the admin.
 		 *
-		 * @param   array $new_instance         The updated settings.
-		 * @param   array $new_instance         The old settings.
-		 * @return  void
+		 * @param  array $new_instance The updated settings.
+		 * @param  array $new_instance The old settings.
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
 		public function update( $new_instance, $old_instance ) {
-			$instance = array();
+			$instance                      = array();
 			$instance['title']             = isset( $new_instance['title'] ) ? $new_instance['title'] : $old_instance['title'];
 			$instance['number']            = isset( $new_instance['number'] ) ? intval( $new_instance['number'] ) : $old_instance['number'];
 			$instance['order']             = isset( $new_instance['order'] ) ? $new_instance['order'] : $old_instance['order'];
@@ -143,21 +143,21 @@ if ( ! class_exists( 'Charitable_Donors_Widget' ) ) :
 		/**
 		 * Return parsed array of arguments.
 		 *
-		 * @param   mixed[] $instance
-		 * @return  mixed[]
+		 * @param  mixed[] $instance
+		 * @return mixed[]
 		 * @access  protected
 		 * @since   1.0.0
 		 */
 		protected function get_parsed_args( $instance ) {
 			$defaults = apply_filters( 'charitable_donors_widget_default_args', array(
-				'title'         	=> '',
-				'number'        	=> 10,
-				'order'         	=> 'recent',
-				'campaign_id'   	=> 'all',
-				'show_distinct' 	=> true,
-				'show_location' 	=> false,
-				'show_amount'   	=> false,
-				'show_name'     	=> false,
+				'title'             => '',
+				'number'            => 10,
+				'order'             => 'recent',
+				'campaign_id'       => 'all',
+				'show_distinct'     => true,
+				'show_location'     => false,
+				'show_amount'       => false,
+				'show_name'         => false,
 				'hide_if_no_donors' => false,
 			), $instance );
 
@@ -167,8 +167,8 @@ if ( ! class_exists( 'Charitable_Donors_Widget' ) ) :
 		/**
 		 * Return the donors to display in the widget.
 		 *
-		 * @param   mixed[] $instance
-		 * @return  array
+		 * @param  mixed[] $instance
+		 * @return array
 		 * @access  protected
 		 * @since   1.0.0
 		 */
@@ -194,6 +194,7 @@ if ( ! class_exists( 'Charitable_Donors_Widget' ) ) :
 
 			return new Charitable_Donor_Query( $query_args );
 		}
+
 	}
 
 endif;
