@@ -43,7 +43,7 @@ if ( ! class_exists( 'Charitable_Advanced_Settings' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_Advanced_Settings
+		 * @return Charitable_Advanced_Settings
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -58,7 +58,7 @@ if ( ! class_exists( 'Charitable_Advanced_Settings' ) ) :
 		/**
 		 * Add the advanced tab settings fields.
 		 *
-		 * @return  array<string,array>
+		 * @return array <string,array>
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -68,25 +68,26 @@ if ( ! class_exists( 'Charitable_Advanced_Settings' ) ) :
 			}
 
 			return array(
-				'section'               => array(
-					'title'             => '',
-					'type'              => 'hidden',
-					'priority'          => 10000,
-					'value'             => 'advanced',
+				'section'                  => array(
+					'title'    => '',
+					'type'     => 'hidden',
+					'priority' => 10000,
+					'value'    => 'advanced',
 				),
-				'section_dangerous'     => array(
-					'title'             => __( 'Dangerous Settings', 'charitable' ),
-					'type'              => 'heading',
-					'priority'          => 100,
+				'section_dangerous'        => array(
+					'title'    => __( 'Dangerous Settings', 'charitable' ),
+					'type'     => 'heading',
+					'priority' => 100,
 				),
-				'delete_data_on_uninstall'  => array(
-					'label_for'         => __( 'Reset Data', 'charitable' ),
-					'type'              => 'checkbox',
-					'help'              => __( 'DELETE ALL DATA when uninstalling the plugin.', 'charitable' ),
-					'priority'          => 105,
+				'delete_data_on_uninstall' => array(
+					'label_for' => __( 'Reset Data', 'charitable' ),
+					'type'      => 'checkbox',
+					'help'      => __( 'DELETE ALL DATA when uninstalling the plugin.', 'charitable' ),
+					'priority'  => 105,
 				),
 			);
 		}
+
 	}
 
 endif;
