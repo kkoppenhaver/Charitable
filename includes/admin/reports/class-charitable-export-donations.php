@@ -38,10 +38,10 @@ if ( ! class_exists( 'Charitable_Export_Donations' ) ) :
 		 * @access  protected
 		 */
 		protected $defaults = array(
-			'start_date'    => '',
-			'end_date'      => '',
-			'campaign_id'   => 'all',
-			'status'        => 'all',
+			'start_date'  => '',
+			'end_date'    => '',
+			'campaign_id' => 'all',
+			'status'      => 'all',
 		);
 
 		/**
@@ -55,7 +55,7 @@ if ( ! class_exists( 'Charitable_Export_Donations' ) ) :
 		/**
 		 * Create class object.
 		 *
-		 * @param   mixed[] $args Arguments for the report.
+		 * @param mixed[] $args Arguments for the report.
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -70,10 +70,10 @@ if ( ! class_exists( 'Charitable_Export_Donations' ) ) :
 		/**
 		 * Filter the date and time fields.
 		 *
-		 * @param   mixed  $value The value to set.
-		 * @param   string $key   The key to set.
-		 * @param   array  $data  The set of data.
-		 * @return  mixed
+		 * @param  mixed  $value The value to set.
+		 * @param  string $key   The key to set.
+		 * @param  array  $data  The set of data.
+		 * @return mixed
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -144,7 +144,7 @@ if ( ! class_exists( 'Charitable_Export_Donations' ) ) :
 		 *
 		 * The columns are set as a key=>label array, where the key is used to retrieve the data for that column.
 		 *
-		 * @return  string[]
+		 * @return string[]
 		 * @access  protected
 		 * @since   1.0.0
 		 */
@@ -158,10 +158,10 @@ if ( ! class_exists( 'Charitable_Export_Donations' ) ) :
 				'email'             => __( 'Email', 'charitable' ),
 				'address'           => __( 'Address', 'charitable' ),
 				'address_2'         => __( 'Address 2', 'charitable' ),
-				'city'			    => __( 'City', 'charitable' ),
-				'state'			    => __( 'State', 'charitable' ),
-				'postcode'		    => __( 'Postcode', 'charitable' ),
-				'country' 		    => __( 'Country', 'charitable' ),
+				'city'              => __( 'City', 'charitable' ),
+				'state'             => __( 'State', 'charitable' ),
+				'postcode'          => __( 'Postcode', 'charitable' ),
+				'country'           => __( 'Country', 'charitable' ),
 				'phone'             => __( 'Phone Number', 'charitable' ),
 				'address_formatted' => __( 'Address Formatted', 'charitable' ),
 				'amount'            => __( 'Donation Amount', 'charitable' ),
@@ -177,7 +177,7 @@ if ( ! class_exists( 'Charitable_Export_Donations' ) ) :
 		/**
 		 * Get the data to be exported.
 		 *
-		 * @return  array
+		 * @return array
 		 * @access  protected
 		 * @since   1.0.0
 		 */
@@ -206,6 +206,7 @@ if ( ! class_exists( 'Charitable_Export_Donations' ) ) :
 
 			return charitable_get_table( 'campaign_donations' )->get_donations_report( $query_args );
 		}
+
 	}
 
 endif;
