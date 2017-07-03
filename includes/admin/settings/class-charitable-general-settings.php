@@ -43,7 +43,7 @@ if ( ! class_exists( 'Charitable_General_Settings' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_General_Settings
+		 * @return Charitable_General_Settings
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -58,8 +58,8 @@ if ( ! class_exists( 'Charitable_General_Settings' ) ) :
 		/**
 		 * Add the general tab settings fields.
 		 *
-		 * @param   array[] $fields
-		 * @return  array
+		 * @param  array[] $fields
+		 * @return array
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -70,58 +70,58 @@ if ( ! class_exists( 'Charitable_General_Settings' ) ) :
 
 			$general_fields = array(
 				'section'               => array(
-					'title'             => '',
-					'type'              => 'hidden',
-					'priority'          => 10000,
-					'value'             => 'general',
+					'title'    => '',
+					'type'     => 'hidden',
+					'priority' => 10000,
+					'value'    => 'general',
 				),
 				'section_locale'        => array(
-					'title'             => __( 'Currency & Location', 'charitable' ),
-					'type'              => 'heading',
-					'priority'          => 2,
+					'title'    => __( 'Currency & Location', 'charitable' ),
+					'type'     => 'heading',
+					'priority' => 2,
 				),
 				'country'               => array(
-					'title'             => __( 'Base Country', 'charitable' ),
-					'type'              => 'select',
-					'priority'          => 4,
-					'default'           => 'AU',
-					'options'           => charitable_get_location_helper()->get_countries(),
+					'title'    => __( 'Base Country', 'charitable' ),
+					'type'     => 'select',
+					'priority' => 4,
+					'default'  => 'AU',
+					'options'  => charitable_get_location_helper()->get_countries(),
 				),
 				'currency'              => array(
-					'title'             => __( 'Currency', 'charitable' ),
-					'type'              => 'select',
-					'priority'          => 10,
-					'default'           => 'AUD',
-					'options'           => charitable_get_currency_helper()->get_all_currencies(),
+					'title'    => __( 'Currency', 'charitable' ),
+					'type'     => 'select',
+					'priority' => 10,
+					'default'  => 'AUD',
+					'options'  => charitable_get_currency_helper()->get_all_currencies(),
 				),
 				'currency_format'       => array(
-					'title'             => __( 'Currency Format', 'charitable' ),
-					'type'              => 'select',
-					'priority'          => 12,
-					'default'           => 'left',
-					'options'           => array(
-						'left'              => '$23.00',
-						'right'             => '23.00$',
-						'left-with-space'   => '$ 23.00',
-						'right-with-space'  => '23.00 $',
+					'title'    => __( 'Currency Format', 'charitable' ),
+					'type'     => 'select',
+					'priority' => 12,
+					'default'  => 'left',
+					'options'  => array(
+						'left'             => '$23.00',
+						'right'            => '23.00$',
+						'left-with-space'  => '$ 23.00',
+						'right-with-space' => '23.00 $',
 					),
 				),
 				'decimal_separator'     => array(
-					'title'             => __( 'Decimal Separator', 'charitable' ),
-					'type'              => 'select',
-					'priority'          => 14,
-					'default'           => '.',
-					'options'           => array(
+					'title'    => __( 'Decimal Separator', 'charitable' ),
+					'type'     => 'select',
+					'priority' => 14,
+					'default'  => '.',
+					'options'  => array(
 						'.' => 'Period (12.50)',
 						',' => 'Comma (12,50)',
 					),
 				),
 				'thousands_separator'   => array(
-					'title'             => __( 'Thousands Separator', 'charitable' ),
-					'type'              => 'select',
-					'priority'          => 16,
-					'default'           => ',',
-					'options'           => array(
+					'title'    => __( 'Thousands Separator', 'charitable' ),
+					'type'     => 'select',
+					'priority' => 16,
+					'default'  => ',',
+					'options'  => array(
 						',' => __( 'Comma (10,000)', 'charitable' ),
 						'.' => __( 'Period (10.000)', 'charitable' ),
 						' ' => __( 'Space (10 000)', 'charitable' ),
@@ -129,82 +129,82 @@ if ( ! class_exists( 'Charitable_General_Settings' ) ) :
 					),
 				),
 				'decimal_count'         => array(
-					'title'             => __( 'Number of Decimals', 'charitable' ),
-					'type'              => 'number',
-					'priority'          => 18,
-					'default'           => 2,
-					'class'             => 'short',
+					'title'    => __( 'Number of Decimals', 'charitable' ),
+					'type'     => 'number',
+					'priority' => 18,
+					'default'  => 2,
+					'class'    => 'short',
 				),
 				'section_donation_form' => array(
-					'title'             => __( 'Donation Form', 'charitable' ),
-					'type'              => 'heading',
-					'priority'          => 20,
+					'title'    => __( 'Donation Form', 'charitable' ),
+					'type'     => 'heading',
+					'priority' => 20,
 				),
 				'donation_form_display' => array(
-					'title'             => __( 'Display Options', 'charitable' ),
-					'type'              => 'select',
-					'priority'          => 22,
-					'default'           => 'separate_page',
-					'options'           => array(
+					'title'    => __( 'Display Options', 'charitable' ),
+					'type'     => 'select',
+					'priority' => 22,
+					'default'  => 'separate_page',
+					'options'  => array(
 						'separate_page' => __( 'Show on a Separate Page', 'charitable' ),
 						'same_page'     => __( 'Show on the Same Page', 'charitable' ),
 						'modal'         => __( 'Reveal in a Modal', 'charitable' ),
 					),
-					'help'              => __( 'Choose how you want a campaign\'s donation form to show.', 'charitable' ),
+					'help'     => __( 'Choose how you want a campaign\'s donation form to show.', 'charitable' ),
 				),
 				'section_pages'         => array(
-					'title'             => __( 'Pages', 'charitable' ),
-					'type'              => 'heading',
-					'priority'          => 30,
+					'title'    => __( 'Pages', 'charitable' ),
+					'type'     => 'heading',
+					'priority' => 30,
 				),
 				'login_page'            => array(
-					'title'             => __( 'Login Page', 'charitable' ),
-					'type'              => 'select',
-					'priority'          => 32,
-					'default'           => 'wp',
-					'options'           => array(
-						'wp'            => __( 'Use WordPress Login', 'charitable' ),
-						'pages'         => array(
-							'options'   => charitable_get_admin_settings()->get_pages(),
-							'label'     => __( 'Choose a Static Page', 'charitable' ),
+					'title'    => __( 'Login Page', 'charitable' ),
+					'type'     => 'select',
+					'priority' => 32,
+					'default'  => 'wp',
+					'options'  => array(
+						'wp'    => __( 'Use WordPress Login', 'charitable' ),
+						'pages' => array(
+							'options' => charitable_get_admin_settings()->get_pages(),
+							'label'   => __( 'Choose a Static Page', 'charitable' ),
 						),
 					),
-					'help'              => __( 'Allow users to login via the normal WordPress login page or via a static page. The static page should contain the <code>[charitable_login]</code> shortcode.', 'charitable' ),
+					'help'     => __( 'Allow users to login via the normal WordPress login page or via a static page. The static page should contain the <code>[charitable_login]</code> shortcode.', 'charitable' ),
 				),
-				'registration_page' => array(
-					'title'             => __( 'Registration Page', 'charitable' ),
-					'type'              => 'select',
-					'priority'          => 34,
-					'default'           => 'wp',
-					'options'           => array(
-						'wp'            => __( 'Use WordPress Registration Page', 'charitable' ),
-						'pages'         => array(
-							'options'   => charitable_get_admin_settings()->get_pages(),
-							'label'     => __( 'Choose a Static Page', 'charitable' ),
+				'registration_page'     => array(
+					'title'    => __( 'Registration Page', 'charitable' ),
+					'type'     => 'select',
+					'priority' => 34,
+					'default'  => 'wp',
+					'options'  => array(
+						'wp'    => __( 'Use WordPress Registration Page', 'charitable' ),
+						'pages' => array(
+							'options' => charitable_get_admin_settings()->get_pages(),
+							'label'   => __( 'Choose a Static Page', 'charitable' ),
 						),
 					),
-					'help'              => __( 'Allow users to register via the default WordPress login or via a static page. The static page should contain the <code>[charitable_registration]</code> shortcode.', 'charitable' ),
+					'help'     => __( 'Allow users to register via the default WordPress login or via a static page. The static page should contain the <code>[charitable_registration]</code> shortcode.', 'charitable' ),
 				),
 				'profile_page'          => array(
-					'title'             => __( 'Profile Page', 'charitable' ),
-					'type'              => 'select',
-					'priority'          => 36,
-					'options'           => charitable_get_admin_settings()->get_pages(),
-					'help'              => __( 'The static page should contain the <code>[charitable_profile]</code> shortcode.', 'charitable' ),
+					'title'    => __( 'Profile Page', 'charitable' ),
+					'type'     => 'select',
+					'priority' => 36,
+					'options'  => charitable_get_admin_settings()->get_pages(),
+					'help'     => __( 'The static page should contain the <code>[charitable_profile]</code> shortcode.', 'charitable' ),
 				),
 				'donation_receipt_page' => array(
-					'title'             => __( 'Donation Receipt Page', 'charitable' ),
-					'type'              => 'select',
-					'priority'          => 38,
-					'default'           => 'auto',
-					'options'           => array(
-						'auto'          => __( 'Automatic', 'charitable' ),
-						'pages'         => array(
-							'options'   => charitable_get_admin_settings()->get_pages(),
-							'label'     => __( 'Choose a Static Page', 'charitable' ),
+					'title'    => __( 'Donation Receipt Page', 'charitable' ),
+					'type'     => 'select',
+					'priority' => 38,
+					'default'  => 'auto',
+					'options'  => array(
+						'auto'  => __( 'Automatic', 'charitable' ),
+						'pages' => array(
+							'options' => charitable_get_admin_settings()->get_pages(),
+							'label'   => __( 'Choose a Static Page', 'charitable' ),
 						),
 					),
-					'help'              => __( 'Choose the page that users will be redirected to after donating. Leave it set to automatic to use the built-in Charitable receipt. If you choose a static page, it should contain the <code>[donation_receipt]</code> shortcode.', 'charitable' ),
+					'help'     => __( 'Choose the page that users will be redirected to after donating. Leave it set to automatic to use the built-in Charitable receipt. If you choose a static page, it should contain the <code>[donation_receipt]</code> shortcode.', 'charitable' ),
 				),
 			);
 
@@ -212,6 +212,7 @@ if ( ! class_exists( 'Charitable_General_Settings' ) ) :
 
 			return $fields;
 		}
+
 	}
 
 endif;
