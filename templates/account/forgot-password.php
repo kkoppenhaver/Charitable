@@ -22,8 +22,8 @@ $form = $view_args['form'];
 <div class="charitable-forgot-password-form">
 	<?php
 	/**
-	* @hook charitable_forgot_password_before
-	*/
+	 * @hook charitable_forgot_password_before
+	 */
 	do_action( 'charitable_forgot_password_before' );
 
 	?>
@@ -49,15 +49,15 @@ $form = $view_args['form'];
 		<?php do_action( 'charitable_form_after_fields', $form ); ?>
 
 		<div class="charitable-form-field charitable-submit-field">
-			<button class="button button-primary lostpassword-button" type="submit"><?php esc_attr_e( 'Reset Password', 'charitable' ) ?></button>
+			<button class="button button-primary lostpassword-button" type="submit"><?php esc_attr_e( 'Reset Password', 'charitable' ); ?></button>
 		</div>
 
 	</form>
 	<?php
 
 	/**
-	* @hook charitable_forgot_password_after
-	*/
+	 * @hook charitable_forgot_password_after
+	 */
 	do_action( 'charitable_forgot_password_after' );
 	?>
 </div>
