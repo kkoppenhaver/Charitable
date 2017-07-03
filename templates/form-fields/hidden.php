@@ -12,8 +12,8 @@ if ( ! isset( $view_args['form'] ) || ! isset( $view_args['field'] ) ) {
 	return;
 }
 
-$form 			= $view_args['form'];
-$field 			= $view_args['field'];
-$value			= isset( $field['value'] ) ? $field['value'] : '';
+$form  = $view_args['form'];
+$field = $view_args['field'];
+$value = isset( $field['value'] ) ? $field['value'] : '';
 ?>
-<input type="hidden" name="<?php echo $field['key'] ?>" value="<?php echo $value ?>" <?php echo charitable_get_arbitrary_attributes( $field ) ?>/>
+<input type="hidden" name="<?php echo $field['key']; ?>" value="<?php echo $value; ?>" <?php echo charitable_get_arbitrary_attributes( $field ); ?>/>
