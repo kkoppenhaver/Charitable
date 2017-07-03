@@ -34,7 +34,7 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_Public
+		 * @return Charitable_Public
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -77,7 +77,7 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 		 *
 		 * This gives themes time to override the functions.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.2.3
 		 */
@@ -89,12 +89,11 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 		/**
 		 * Loads public facing scripts and stylesheets.
 		 *
-		 * @return 	void
+		 * @return void
 		 * @access 	public
 		 * @since 	1.0.0
 		 */
 		public function setup_scripts() {
-
 			if ( ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ) {
 				$suffix  = '';
 				$version = '';
@@ -107,23 +106,23 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 
 			/* Main Charitable script. */
 			$vars = apply_filters( 'charitable_javascript_vars', array(
-				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-				'loading_gif' => $assets_dir . '/images/charitable-loading.gif',
+				'ajaxurl'                      => admin_url( 'admin-ajax.php' ),
+				'loading_gif'                  => $assets_dir . '/images/charitable-loading.gif',
 				'currency_format_num_decimals' => esc_attr( charitable_get_option( 'decimal_count', 2 ) ),
-				'currency_format_decimal_sep' => esc_attr( charitable_get_option( 'decimal_separator', '.' ) ),
+				'currency_format_decimal_sep'  => esc_attr( charitable_get_option( 'decimal_separator', '.' ) ),
 				'currency_format_thousand_sep' => esc_attr( charitable_get_option( 'thousands_separator', ',' ) ),
-				'currency_format' => esc_attr( charitable_get_currency_helper()->get_accounting_js_format() ), // For accounting.js.
-				'error_invalid_amount' => sprintf( __( 'You must donate more than %s.', 'charitable' ), charitable_format_money( '0' ) ),
-				'error_required_fields' => __( 'Please fill out all required fields.', 'charitable' ),
-				'error_unknown' => __( 'Your donation could not be processed. Please reload the page and try again.', 'charitable' ),
-				'error_invalid_cc_number' => __( 'The credit card passed is not valid.', 'charitable' ),
-				'error_invalid_cc_expiry' => __( 'The credit card expiry date is not valid.', 'charitable' ),
+				'currency_format'              => esc_attr( charitable_get_currency_helper()->get_accounting_js_format() ), // For accounting.js.
+				'error_invalid_amount'         => sprintf( __( 'You must donate more than %s.', 'charitable' ), charitable_format_money( '0' ) ),
+				'error_required_fields'        => __( 'Please fill out all required fields.', 'charitable' ),
+				'error_unknown'                => __( 'Your donation could not be processed. Please reload the page and try again.', 'charitable' ),
+				'error_invalid_cc_number'      => __( 'The credit card passed is not valid.', 'charitable' ),
+				'error_invalid_cc_expiry'      => __( 'The credit card expiry date is not valid.', 'charitable' ),
 			) );
 
 			/* Accounting.js */
 			wp_register_script(
 				'accounting',
-				$assets_dir . 'js/libraries/accounting'. $suffix . '.js',
+				$assets_dir . 'js/libraries/accounting' . $suffix . '.js',
 				array( 'jquery-core' ),
 				$version,
 				true
@@ -131,7 +130,7 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 
 			wp_register_script(
 				'charitable-script',
-				$assets_dir . 'js/charitable'. $suffix . '.js',
+				$assets_dir . 'js/charitable' . $suffix . '.js',
 				array( 'accounting', 'jquery-core' ),
 				$version,
 				true
@@ -146,7 +145,7 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 			/* Credit card validation */
 			wp_register_script(
 				'charitable-credit-card',
-				$assets_dir . 'js/charitable-credit-card'. $suffix . '.js',
+				$assets_dir . 'js/charitable-credit-card' . $suffix . '.js',
 				array( 'charitable-script' ),
 				$version,
 				true
@@ -155,7 +154,7 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 			/* Main styles */
 			wp_register_style(
 				'charitable-styles',
-				$assets_dir . 'css/charitable' . $suffix .'.css',
+				$assets_dir . 'css/charitable' . $suffix . '.css',
 				array(),
 				$version
 			);
@@ -174,7 +173,7 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 
 				wp_register_style(
 					'lean-modal-css',
-					$assets_dir . 'css/modal' . $suffix .'.css',
+					$assets_dir . 'css/modal' . $suffix . '.css',
 					array(),
 					$version
 				);
@@ -183,18 +182,18 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 
 			wp_register_style(
 				'charitable-datepicker',
-				$assets_dir . 'css/charitable-datepicker' . $suffix .'.css',
+				$assets_dir . 'css/charitable-datepicker' . $suffix . '.css',
 				array(),
 				$version
 			);
 
 			/* pupload Fields is also registered but NOT enqueued. */
 			$upload_vars = array(
-				'remove_image' => _x( 'Remove', 'remove image button text', 'charitable' ),
+				'remove_image'            => _x( 'Remove', 'remove image button text', 'charitable' ),
 				'max_file_uploads_single' => __( 'You can only upload %d file', 'charitable' ),
 				'max_file_uploads_plural' => __( 'You can only upload a maximum of %d files', 'charitable' ),
-				'max_file_size' => __( '%1$s exceeds the max upload size of %2$s', 'charitable' ),
-				'upload_problem' => __( '%s failed to upload. Please try again.', 'charitable' ),
+				'max_file_size'           => __( '%1$s exceeds the max upload size of %2$s', 'charitable' ),
+				'upload_problem'          => __( '%s failed to upload. Please try again.', 'charitable' ),
 			);
 
 			wp_register_script(
@@ -222,12 +221,11 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 		/**
 		 * Conditionally load the donation form scripts if we're viewing the donation form.
 		 *
-		 * @return  boolean True if scripts were loaded. False otherwise.
+		 * @return boolean True if scripts were loaded. False otherwise.
 		 * @access  public
 		 * @since   1.4.0
 		 */
 		public function maybe_enqueue_donation_form_scripts() {
-
 			$load = charitable_is_page( 'campaign_donation_page' );
 
 			if ( ! $load ) {
@@ -244,12 +242,11 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 		/**
 		 * Enqueues the donation form scripts.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.4.6
 		 */
 		public function enqueue_donation_form_scripts() {
-
 			wp_enqueue_script( 'charitable-script' );
 
 			if ( Charitable_Gateways::get_instance()->any_gateway_supports( 'credit-card' ) ) {
@@ -260,8 +257,8 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 		/**
 		 * Adds custom post classes when viewing campaign.
 		 *
-		 * @param 	string[] $classes List of classes to be added with post_class().
-		 * @return  string[]
+		 * @param  string[] $classes List of classes to be added with post_class().
+		 * @return string[]
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -280,13 +277,12 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 		/**
 		 * Disable comments on application pages like the donation page.
 		 *
-		 * @param   boolean $open Whether comments are open.
-		 * @return  boolean
+		 * @param  boolean $open Whether comments are open.
+		 * @return boolean
 		 * @access  public
 		 * @since   1.3.0
-	 	 */
+		 */
 		public function disable_comments_on_application_pages( $open ) {
-
 			/* If open is already false, just hit return. */
 			if ( ! $open ) {
 				return $open;
@@ -296,11 +292,12 @@ if ( ! class_exists( 'Charitable_Public' ) ) :
 			|| charitable_is_page( 'campaign_widget_page' )
 			|| charitable_is_page( 'donation_receipt_page' )
 			|| charitable_is_page( 'donation_processing_page' ) ) {
-				 $open = false;
+				$open = false;
 			}
 
 			return $open;
 		}
+
 	}
 
 endif;
