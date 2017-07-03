@@ -33,7 +33,7 @@ if ( ! class_exists( 'Charitable_Cron' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_Cron
+		 * @return Charitable_Cron
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -58,7 +58,7 @@ if ( ! class_exists( 'Charitable_Cron' ) ) :
 		/**
 		 * Schedule Charitable event hooks.
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 * @access  public
 		 * @static
 		 * @since   1.1.0
@@ -74,7 +74,7 @@ if ( ! class_exists( 'Charitable_Cron' ) ) :
 		/**
 		 * Check for expired campaigns.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.1.0
 		 */
@@ -82,16 +82,16 @@ if ( ! class_exists( 'Charitable_Cron' ) ) :
 			$yesterday = date( 'Y-m-d H:i:s', strtotime( '-24 hours' ) );
 
 			$args = array(
-				'fields' => 'ids',
-				'post_type' => Charitable::CAMPAIGN_POST_TYPE,
+				'fields'         => 'ids',
+				'post_type'      => Charitable::CAMPAIGN_POST_TYPE,
 				'posts_per_page' => -1,
-				'post_status' => 'publish',
-				'meta_query' => array(
+				'post_status'    => 'publish',
+				'meta_query'     => array(
 					array(
-						'key'       => '_campaign_end_date',
-						'value'     => array( $yesterday, date( 'Y-m-d H:i:s' ) ),
-						'compare'   => 'BETWEEN',
-						'type'      => 'datetime'
+						'key'     => '_campaign_end_date',
+						'value'   => array( $yesterday, date( 'Y-m-d H:i:s' ) ),
+						'compare' => 'BETWEEN',
+						'type'    => 'datetime'
 					)
 				)
 			);
@@ -106,6 +106,7 @@ if ( ! class_exists( 'Charitable_Cron' ) ) :
 				do_action( 'charitable_campaign_end', $campaign_id );
 			}
 		}
+
 	}
 
 endif;
