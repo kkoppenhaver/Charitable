@@ -41,7 +41,7 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return 	Charitable_Notices
+		 * @return Charitable_Notices
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -56,31 +56,30 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Create class object. A private constructor, so this is used in a singleton context.
 		 *
-		 * @return 	void
+		 * @return void
 		 * @access 	private
 		 * @since	1.0.0
 		 */
 		private function __construct() {
-
 			/* Retrieve the notices from the session */
 			$this->notices = charitable_get_session()->get_notices();
 
 			/* Reset the session back to empty */
 			charitable_get_session()->set( 'notices', array(
-				'error'		=> array(),
-				'warning'	=> array(),
-				'success'	=> array(),
-				'info'		=> array(),
+				'error'   => array(),
+				'warning' => array(),
+				'success' => array(),
+				'info'    => array(),
 			) );
 		}
 
 		/**
 		 * Adds a notice message.
 		 *
-		 * @param 	string $message The message to display.
-		 * @param 	string $type    The type of message.
-		 * @param 	string $key 	Optional. If not set, next numeric key is used.
-		 * @return 	void
+		 * @param  string $message The message to display.
+		 * @param  string $type    The type of message.
+		 * @param  string $key     Optional. If not set, next numeric key is used.
+		 * @return void
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -95,9 +94,9 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Add multiple notices at once.
 		 *
-		 * @param 	array  $messages Array of messages.
-		 * @param 	string $type     Type of message we're adding.
-		 * @return  void
+		 * @param  array  $messages Array of messages.
+		 * @param  string $type     Type of message we're adding.
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -112,9 +111,9 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Adds an error message.
 		 *
-		 * @param 	string $message The error message to add.
-		 * @param 	string $key 	Optional. If not set, next numeric key is used.
-		 * @return 	void
+		 * @param  string $message The error message to add.
+		 * @param  string $key     Optional. If not set, next numeric key is used.
+		 * @return void
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -125,9 +124,9 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Adds a warning message.
 		 *
-		 * @param 	string $message The warning message to add.
-		 * @param 	string $key 	Optional. If not set, next numeric key is used.
-		 * @return 	void
+		 * @param  string $message The warning message to add.
+		 * @param  string $key     Optional. If not set, next numeric key is used.
+		 * @return void
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -138,9 +137,9 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Adds a success message.
 		 *
-		 * @param 	string $message The success message to add.
-		 * @param 	string $key 	Optional. If not set, next numeric key is used.
-		 * @return 	void
+		 * @param  string $message The success message to add.
+		 * @param  string $key     Optional. If not set, next numeric key is used.
+		 * @return void
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -151,9 +150,9 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Adds an info message.
 		 *
-		 * @param 	string $message The info message to add.
-		 * @param 	string $key 	Optional. If not set, next numeric key is used.
-		 * @return 	void
+		 * @param  string $message The info message to add.
+		 * @param  string $key     Optional. If not set, next numeric key is used.
+		 * @return void
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -164,8 +163,8 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Receives a WP_Error object and adds the error messages to our array.
 		 *
-		 * @param 	WP_Error $error The WP_Error object to add to the messages queue.
-		 * @return  void
+		 * @param  WP_Error $error The WP_Error object to add to the messages queue.
+		 * @return void
 		 * @access  public
 		 * @since   1.0.0
 		 */
@@ -176,7 +175,7 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Return all errors as an array.
 		 *
-		 * @return 	array
+		 * @return array
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -187,7 +186,7 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Return all warnings as an array.
 		 *
-		 * @return 	array
+		 * @return array
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -198,7 +197,7 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Return all successs as an array.
 		 *
-		 * @return 	array
+		 * @return array
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -209,7 +208,7 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Return all infos as an array.
 		 *
-		 * @return 	array
+		 * @return array
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -220,7 +219,7 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Return all notices as an array.
 		 *
-		 * @return 	array
+		 * @return array
 		 * @access  public
 		 * @since 	1.0.0
 		 */
@@ -231,22 +230,23 @@ if ( ! class_exists( 'Charitable_Notices' ) ) :
 		/**
 		 * Clear out all existing notices.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.4.0
 		 */
 		public function clear() {
 			$clear = array(
-				'error'		=> array(),
-				'warning'	=> array(),
-				'success'	=> array(),
-				'info'		=> array(),
+				'error'   => array(),
+				'warning' => array(),
+				'success' => array(),
+				'info'    => array(),
 			);
 
 			$this->notices = $clear;
 
 			charitable_get_session()->set( 'notices', $clear );
 		}
+
 	}
 
 endif;
