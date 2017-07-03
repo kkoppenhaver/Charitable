@@ -29,7 +29,7 @@ if ( ! class_exists( 'Charitable_Donation_Receipt_Endpoint' ) ) :
 		/**
 		 * Return the endpoint ID.
 		 *
-		 * @return 	string
+		 * @return string
 		 * @access 	public
 		 * @static
 		 * @since 	1.5.0
@@ -45,23 +45,20 @@ if ( ! class_exists( 'Charitable_Donation_Receipt_Endpoint' ) ) :
 		 * @since 	1.5.0
 		 */
 		public function setup_rewrite_rules() {
-
 			add_rewrite_endpoint( 'donation_receipt', EP_ROOT );
 			add_rewrite_rule( 'donation-receipt/([0-9]+)/?$', 'index.php?donation_id=$matches[1]&donation_receipt=1', 'top' );
-
 		}
 
 		/**
 		 * Return the endpoint URL.
 		 *
 		 * @global 	WP_Rewrite $wp_rewrite
-		 * @param 	array      $args
-		 * @return  string
+		 * @param  array  $args
+		 * @return string
 		 * @access  public
 		 * @since   1.5.0
 		 */
 		public function get_page_url( $args = array() ) {
-
 			global $wp_rewrite;
 
 			$receipt_page = charitable_get_option( 'donation_receipt_page', 'auto' );
@@ -77,25 +74,23 @@ if ( ! class_exists( 'Charitable_Donation_Receipt_Endpoint' ) ) :
 			} else {
 				$url = esc_url_raw( add_query_arg( array(
 					'donation_receipt' => 1,
-					'donation_id' => $donation_id,
+					'donation_id'      => $donation_id,
 				), home_url() ) );
 			}
 
 			return $url;
-
 		}
 
 		/**
 		 * Return whether we are currently viewing the endpoint.
 		 *
 		 * @global  WP_Query $wp_query
-		 * @param 	array    $args
-		 * @return  boolean
+		 * @param  array   $args
+		 * @return boolean
 		 * @access  public
 		 * @since   1.5.0
 		 */
 		public function is_page( $args = array() ) {
-
 			global $wp_query;
 
 			$receipt_page = charitable_get_option( 'donation_receipt_page', 'auto' );
@@ -107,19 +102,17 @@ if ( ! class_exists( 'Charitable_Donation_Receipt_Endpoint' ) ) :
 			return is_main_query()
 				&& isset( $wp_query->query_vars['donation_receipt'] )
 				&& isset( $wp_query->query_vars['donation_id'] );
-
 		}
 
 		/**
 		 * Return the template to display for this endpoint.
 		 *
-		 * @param 	string $template The default template.
-		 * @return  string
+		 * @param  string $template The default template.
+		 * @return string
 		 * @access  public
 		 * @since   1.5.0
 		 */
 		public function get_template( $template ) {
-
 			if ( 'auto' != charitable_get_option( 'donation_receipt_page', 'auto' ) ) {
 				return $template;
 			}
@@ -127,24 +120,22 @@ if ( ! class_exists( 'Charitable_Donation_Receipt_Endpoint' ) ) :
 			$donation_receipt_page_title = apply_filters( 'charitable_donation_receipt_page_title', __( 'Your Receipt', 'charitable' ) );
 
 			new Charitable_Ghost_Page( 'donation-receipt-page', array(
-				'title'     => $donation_receipt_page_title,
-				'content'   => sprintf( '<p>%s</p>', __( 'Thank you for your donation!', 'charitable' ) ),
+				'title'   => $donation_receipt_page_title,
+				'content' => sprintf( '<p>%s</p>', __( 'Thank you for your donation!', 'charitable' ) ),
 			) );
 
 			return array( 'donation-receipt-page.php', 'page.php', 'index.php' );
-
 		}
 
 		/**
 		 * Get the content to display for the endpoint.
 		 *
-		 * @param 	string $content
-		 * @return  string
+		 * @param  string $content
+		 * @return string
 		 * @access  public
 		 * @since   1.5.0
 		 */
 		public function get_content( $content ) {
-
 			if ( ! in_the_loop() ) {
 				return $content;
 			}
@@ -155,21 +146,19 @@ if ( ! class_exists( 'Charitable_Donation_Receipt_Endpoint' ) ) :
 			}
 
 			return charitable_template_donation_receipt_output( $content );
-
 		}
 
 		/**
 		 * Return the body class to add for the endpoint.
 		 *
-		 * @return 	string
+		 * @return string
 		 * @access 	public
 		 * @since 	1.5.0
 		 */
 		public function get_body_class() {
-
 			return 'campaign-donation-receipt';
-
 		}
+
 	}
 
 endif;
