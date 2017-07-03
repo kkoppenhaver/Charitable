@@ -19,7 +19,7 @@ if ( ! function_exists( 'charitable_ajax_get_donation_form' ) ) :
 	/**
 	 * Returns the donation form content for a particular campaign, through AJAX.
 	 *
-	 * @return  void
+	 * @return void
 	 * @since   1.2.3
 	 */
 	function charitable_ajax_get_donation_form() {
@@ -59,7 +59,7 @@ if ( ! function_exists( 'charitable_plupload_image_upload' ) ) :
 
 		check_ajax_referer( 'charitable-upload-images-' . $field_id );
 
-		$file = $_FILES['async-upload'];
+		$file      = $_FILES['async-upload'];
 		$file_attr = wp_handle_upload( $file, array( 'test_form' => false ) );
 
 		if ( isset( $file_attr['error'] ) ) {
@@ -67,9 +67,9 @@ if ( ! function_exists( 'charitable_plupload_image_upload' ) ) :
 		}
 
 		$attachment = array(
-			'guid'              => $file_attr['url'],
-			'post_mime_type'    => $file_attr['type'],
-			'post_title'        => preg_replace( '/\.[^.]+$/', '', basename( $file['name'] ) ),
+			'guid'           => $file_attr['url'],
+			'post_mime_type' => $file_attr['type'],
+			'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $file['name'] ) ),
 			'post_content'   => '',
 			'post_status'    => 'inherit',
 		);
@@ -85,7 +85,7 @@ if ( ! function_exists( 'charitable_plupload_image_upload' ) ) :
 
 		wp_update_attachment_metadata( $attachment_id, wp_generate_attachment_metadata( $attachment_id, $file_attr['file'] ) );
 
-		$size = (string) filter_input( INPUT_POST, 'size' );
+		$size        = (string) filter_input( INPUT_POST, 'size' );
 		$max_uploads = (int) filter_input( INPUT_POST, 'max_uploads', FILTER_SANITIZE_NUMBER_INT );
 
 		if ( ! $size ) {
@@ -97,8 +97,8 @@ if ( ! function_exists( 'charitable_plupload_image_upload' ) ) :
 		charitable_template( 'form-fields/picture-preview.php', array(
 			'image' => $attachment_id,
 			'field' => array(
-			'key' => $field_id,
-			'size' => $size,
+			'key'         => $field_id,
+			'size'        => $size,
 			'max_uploads' => $max_uploads,
 			),
 		) );
