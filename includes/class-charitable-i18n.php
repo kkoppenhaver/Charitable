@@ -69,8 +69,8 @@ if ( ! class_exists( 'Charitable_i18n' ) ) :
 		 */
 		private function __construct() {
 			$this->languages_directory = apply_filters( 'charitable_languages_directory', 'charitable/i18n/languages' );
-			$this->locale = apply_filters( 'plugin_locale', get_locale(), $this->textdomain );
-			$this->mofile = sprintf( '%1$s-%2$s.mo', $this->textdomain, $this->locale );
+			$this->locale              = apply_filters( 'plugin_locale', get_locale(), $this->textdomain );
+			$this->mofile              = sprintf( '%1$s-%2$s.mo', $this->textdomain, $this->locale );
 
 			$this->load_textdomain();
 		}
@@ -78,7 +78,7 @@ if ( ! class_exists( 'Charitable_i18n' ) ) :
 		/**
 		 * Returns and/or create the single instance of this class.
 		 *
-		 * @return  Charitable_i18n
+		 * @return Charitable_i18n
 		 * @access  public
 		 * @since   1.2.0
 		 */
@@ -93,7 +93,7 @@ if ( ! class_exists( 'Charitable_i18n' ) ) :
 		/**
 		 * Create class object.
 		 *
-		 * @return  void
+		 * @return void
 		 * @access  public
 		 * @since   1.1.2
 		 */
@@ -115,8 +115,8 @@ if ( ! class_exists( 'Charitable_i18n' ) ) :
 		/**
 		 * Get the path to the MO file.
 		 *
-		 * @param   string $source Either 'local' or 'global'.
-		 * @return  string
+		 * @param  string $source Either 'local' or 'global'.
+		 * @return string
 		 * @access  private
 		 * @since   1.1.2
 		 */
@@ -139,7 +139,7 @@ if ( ! class_exists( 'Charitable_i18n' ) ) :
 		 *
 		 * @deprecated
 		 *
-		 * @param 	Charitable $charitable The core Charitable object.
+		 * @param Charitable $charitable The core Charitable object.
 		 */
 		public static function charitable_start( Charitable $charitable ) {
 			if ( ! $charitable->is_start() ) {
@@ -149,6 +149,7 @@ if ( ! class_exists( 'Charitable_i18n' ) ) :
 			$class = get_called_class();
 			$charitable->register_object( new $class );
 		}
+
 	}
 
 endif;
