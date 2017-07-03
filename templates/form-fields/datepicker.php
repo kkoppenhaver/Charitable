@@ -12,15 +12,15 @@ if ( ! isset( $view_args['form'] ) || ! isset( $view_args['field'] ) ) {
 	return;
 }
 
-$form 		 = $view_args['form'];
-$field 		 = $view_args['field'];
-$classes 	 = esc_attr( $view_args['classes'] );
+$form        = $view_args['form'];
+$field       = $view_args['field'];
+$classes     = esc_attr( $view_args['classes'] );
 $is_required = isset( $field['required'] ) ? $field['required'] : false;
-$value		 = isset( $field['value'] ) ? esc_attr( $field['value'] ) : '';
-$min_date	 = isset( $field['min_date'] ) ? esc_attr( $field['min_date'] ) : '';
-$max_date	 = isset( $field['max_date'] ) ? esc_attr( $field['max_date'] ) : '';
+$value       = isset( $field['value'] ) ? esc_attr( $field['value'] ) : '';
+$min_date    = isset( $field['min_date'] ) ? esc_attr( $field['min_date'] ) : '';
+$max_date    = isset( $field['max_date'] ) ? esc_attr( $field['max_date'] ) : '';
 
-$json_args   = array(
+$json_args = array(
 	'changeMonth' => true,
 	'changeYear'  => true,
 	'dateFormat'  => 'MM d, yy',
@@ -48,14 +48,14 @@ wp_add_inline_script( 'jquery-ui-datepicker', "jQuery(document).ready( function(
 wp_enqueue_style( 'charitable-datepicker' );
 
 ?>
-<div id="charitable_field_<?php echo $field['key'] ?>" class="<?php echo $classes ?>">
+<div id="charitable_field_<?php echo $field['key']; ?>" class="<?php echo $classes; ?>">
 	<?php if ( isset( $field['label'] ) ) : ?>
-		<label for="charitable_field_<?php echo $field['key'] ?>_element">
-			<?php echo $field['label'] ?>
+		<label for="charitable_field_<?php echo $field['key']; ?>_element">
+			<?php echo $field['label']; ?>
 			<?php if ( $is_required ) : ?>
 				<abbr class="required" title="required">*</abbr>
-			<?php endif ?>
+			<?php endif; ?>
 		</label>
-	<?php endif ?>
-	<input type="text" class="datepicker" name="<?php echo $field['key'] ?>" value="<?php echo $value ?>" id="charitable_field_<?php echo $field['key'] ?>_element" <?php echo charitable_get_arbitrary_attributes( $field ) ?>/>
+	<?php endif; ?>
+	<input type="text" class="datepicker" name="<?php echo $field['key']; ?>" value="<?php echo $value; ?>" id="charitable_field_<?php echo $field['key']; ?>_element" <?php echo charitable_get_arbitrary_attributes( $field ); ?>/>
 </div>
