@@ -26,7 +26,7 @@ $default  = isset( $field['default'] ) && isset( $gateways[ $field['default'] ] 
 	<?php
 	if ( isset( $field['legend'] ) ) : ?>
 
-		<div class="charitable-form-header"><?php echo $field['legend'] ?></div>
+		<div class="charitable-form-header"><?php echo $field['legend']; ?></div>
 
 	<?php
 	endif;
@@ -34,18 +34,18 @@ $default  = isset( $field['default'] ) && isset( $gateways[ $field['default'] ] 
 	if ( count( $gateways ) > 1 ) :
 	?>
 		<fieldset class="charitable-fieldset-field-wrapper">
-			<div class="charitable-fieldset-field-header" id="charitable-gateway-selector-header"><?php _e( 'Choose Your Payment Method', 'charitable' ) ?></div>
+			<div class="charitable-fieldset-field-header" id="charitable-gateway-selector-header"><?php _e( 'Choose Your Payment Method', 'charitable' ); ?></div>
 			<ul id="charitable-gateway-selector" class="charitable-radio-list charitable-form-field">
 				<?php foreach ( $gateways as $gateway_id => $details ) : ?>
-					<li><input type="radio" 
-							id="gateway-<?php echo esc_attr( $gateway_id ) ?>"
+					<li><input type="radio"
+							id="gateway-<?php echo esc_attr( $gateway_id ); ?>"
 							name="gateway"
-							value="<?php echo esc_attr( $gateway_id ) ?>"
+							value="<?php echo esc_attr( $gateway_id ); ?>"
 							aria-describedby="charitable-gateway-selector-header"
-							<?php checked( $default, $gateway_id ) ?> />
-						<label for="gateway-<?php echo esc_attr( $gateway_id ) ?>"><?php echo $details['label'] ?></label>
+							<?php checked( $default, $gateway_id ); ?> />
+						<label for="gateway-<?php echo esc_attr( $gateway_id ); ?>"><?php echo $details['label']; ?></label>
 					</li>
-				<?php endforeach ?>
+				<?php endforeach; ?>
 			</ul>
 		</fieldset>
 	<?php
@@ -58,7 +58,7 @@ $default  = isset( $field['default'] ) && isset( $gateways[ $field['default'] ] 
 		endif;
 
 		?>
-		<div id="charitable-gateway-fields-<?php echo $gateway_id ?>" class="charitable-gateway-fields charitable-form-fields cf" data-gateway="<?php echo $gateway_id ?>">
+		<div id="charitable-gateway-fields-<?php echo $gateway_id; ?>" class="charitable-gateway-fields charitable-form-fields cf" data-gateway="<?php echo $gateway_id; ?>">
 			<?php
 			$i = 1;
 
@@ -69,7 +69,7 @@ $default  = isset( $field['default'] ) && isset( $gateways[ $field['default'] ] 
 				$i += apply_filters( 'charitable_form_field_increment', 1, $field, $key, $form, $i );
 
 			endforeach; ?>
-		</div><!-- #charitable-gateway-fields-<?php echo $gateway_id ?> -->
-	
-	<?php endforeach ?>
+		</div><!-- #charitable-gateway-fields-<?php echo $gateway_id; ?> -->
+
+	<?php endforeach; ?>
 </fieldset><!-- .charitable-fieldset -->
