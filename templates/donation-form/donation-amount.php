@@ -64,17 +64,17 @@ do_action( 'charitable_donation_form_before_donation_amount', $view_args['form']
 			endif; ?>
 
 			<li class="donation-amount suggested-donation-amount">
-				<label for="<?php echo $field_id ?>">
+				<label for="<?php echo $field_id; ?>">
 					<input
-						id="<?php echo $field_id ?>"
+						id="<?php echo $field_id; ?>"
 						type="radio"
 						name="donation_amount"
-						value="<?php echo $suggestion['amount'] ?>" <?php echo $checked ?>
+						value="<?php echo $suggestion['amount']; ?>" <?php echo $checked; ?>
 					/><?php printf(
 						'<span class="amount">%s</span> <span class="description">%s</span>',
 						charitable_format_money( $suggestion['amount'] ),
 						isset( $suggestion['description'] ) ? $suggestion['description'] : ''
-					) ?>
+					); ?>
 				</label>
 			</li>
 
@@ -86,24 +86,24 @@ do_action( 'charitable_donation_form_before_donation_amount', $view_args['form']
 
 			<li class="donation-amount custom-donation-amount">
 				<span class="custom-donation-amount-wrapper">
-					<label for="form-<?php echo esc_attr( $view_args['form']->get_form_identifier() ) ?>-field-custom-amount">
+					<label for="form-<?php echo esc_attr( $view_args['form']->get_form_identifier() ); ?>-field-custom-amount">
 						<input
-							id="form-<?php echo esc_attr( $view_args['form']->get_form_identifier() ) ?>-field-custom-amount"
+							id="form-<?php echo esc_attr( $view_args['form']->get_form_identifier() ); ?>-field-custom-amount"
 							type="radio"
 							name="donation_amount"
-							value="custom" <?php checked( $has_custom_donation_amount ) ?>
-						/><span class="description"><?php echo apply_filters( 'charitable_donation_amount_form_custom_amount_text', __( 'Custom amount', 'charitable' ) ) ?></span>
+							value="custom" <?php checked( $has_custom_donation_amount ); ?>
+						/><span class="description"><?php echo apply_filters( 'charitable_donation_amount_form_custom_amount_text', __( 'Custom amount', 'charitable' ) ); ?></span>
 					</label>
 					<input
 						type="text"
 						class="custom-donation-input"
 						name="custom_donation_amount"
-						value="<?php if ( $has_custom_donation_amount ) { echo $amount; } ?>" 
+						value="<?php if ( $has_custom_donation_amount ) { echo $amount; } ?>"
 					/>
 				</span>
 			</li>
 
-		<?php endif ?>
+		<?php endif; ?>
 
 	</ul>
 
@@ -114,12 +114,12 @@ do_action( 'charitable_donation_form_before_donation_amount', $view_args['form']
 			type="text"
 			class="custom-donation-input"
 			name="custom_donation_amount"
-			placeholder="<?php esc_attr_e( 'Enter donation amount', 'charitable' ) ?>"
-			value="<?php if ( $amount ) { echo esc_attr( $amount ); } ?>" 
+			placeholder="<?php esc_attr_e( 'Enter donation amount', 'charitable' ); ?>"
+			value="<?php if ( $amount ) { echo esc_attr( $amount ); } ?>"
 		/>
 	</div>
 
-<?php endif ?>
+<?php endif; ?>
 
 	<?php
 	/**
@@ -128,7 +128,7 @@ do_action( 'charitable_donation_form_before_donation_amount', $view_args['form']
 	do_action( 'charitable_donation_form_after_donation_amounts', $view_args['form'] );
 	?>
 
-</div><!-- #charitable-donation-options-<?php echo $view_args['form']->get_form_identifier() ?> -->
+</div><!-- #charitable-donation-options-<?php echo $view_args['form']->get_form_identifier(); ?> -->
 
 <?php
 /**
