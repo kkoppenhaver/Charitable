@@ -5,8 +5,8 @@ class Charitable_UnitTestCase extends WP_UnitTestCase {
 	/**
 	 * Set a Charitable setting.
 	 *
-	 * @param 	string $setting
-	 * @param 	mixed  $value
+	 * @param string $setting
+	 * @param mixed  $value
 	 * @since 	1.4.0
 	 */
 	public function set_charitable_option( $setting, $value ) {
@@ -25,7 +25,7 @@ class Charitable_UnitTestCase extends WP_UnitTestCase {
 	 *
 	 * @global  WP_Rewrite $wp_rewrite
 	 *
-	 * @param   string $structure Optional. Permalink structure to set. Default empty.
+	 * @param string $structure Optional. Permalink structure to set. Default empty.
 	 * @since   1.4.0
 	 */
 	public function set_permalink_structure( $structure = '' ) {
@@ -65,12 +65,12 @@ class Charitable_UnitTestCase extends WP_UnitTestCase {
 		$this->flush_cache();
 		unset( $GLOBALS['wp_query'], $GLOBALS['wp_the_query'] );
 		$GLOBALS['wp_the_query'] = new WP_Query();
-		$GLOBALS['wp_query'] = $GLOBALS['wp_the_query'];
+		$GLOBALS['wp_query']     = $GLOBALS['wp_the_query'];
 
 		$public_query_vars  = $GLOBALS['wp']->public_query_vars;
 		$private_query_vars = $GLOBALS['wp']->private_query_vars;
 
-		$GLOBALS['wp'] = new WP();
+		$GLOBALS['wp']                     = new WP();
 		$GLOBALS['wp']->public_query_vars  = $public_query_vars;
 		$GLOBALS['wp']->private_query_vars = $private_query_vars;
 
@@ -78,4 +78,5 @@ class Charitable_UnitTestCase extends WP_UnitTestCase {
 
 		$GLOBALS['wp']->main( $parts['query'] );
 	}
+
 }
