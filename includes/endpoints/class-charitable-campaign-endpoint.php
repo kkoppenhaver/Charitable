@@ -29,7 +29,7 @@ if ( ! class_exists( 'Charitable_Campaign_Endpoint' ) ) :
 		/**
 		 * Return the endpoint ID.
 		 *
-		 * @return 	string
+		 * @return string
 		 * @access 	public
 		 * @static
 		 * @since 	1.5.0
@@ -42,30 +42,27 @@ if ( ! class_exists( 'Charitable_Campaign_Endpoint' ) ) :
 		 * Return the endpoint URL.
 		 *
 		 * @global 	WP_Rewrite $wp_rewrite
-		 * @param 	array      $args
-		 * @return  string
+		 * @param  array  $args
+		 * @return string
 		 * @access  public
 		 * @since   1.5.0
 		 */
 		public function get_page_url( $args = array() ) {
-
-			$campaign_id  = array_key_exists( 'campaign_id', $args ) ? $args['campaign_id'] : get_the_ID();
+			$campaign_id = array_key_exists( 'campaign_id', $args ) ? $args['campaign_id'] : get_the_ID();
 
 			return get_permalink( $campaign_id );
-
 		}
 
 		/**
 		 * Return whether we are currently viewing the endpoint.
 		 *
 		 * @global  WP_Query $wp_query
-		 * @param 	array    $args
-		 * @return  boolean
+		 * @param  array   $args
+		 * @return boolean
 		 * @access  public
 		 * @since   1.5.0
 		 */
 		public function is_page( $args = array() ) {
-
 			global $wp_query;
 
 			if ( ! $wp_query->is_singular( Charitable::CAMPAIGN_POST_TYPE ) ) {
@@ -73,19 +70,17 @@ if ( ! class_exists( 'Charitable_Campaign_Endpoint' ) ) :
 			}
 
 			return ! array_key_exists( 'donate', $wp_query->query_vars );
-
 		}
 
 		/**
 		 * Get the content to display for the endpoint.
 		 *
-		 * @param 	string $content
-		 * @return  string
+		 * @param  string $content
+		 * @return string
 		 * @access  public
 		 * @since   1.5.0
 		 */
 		public function get_content( $content ) {
-
 			if ( ! charitable_is_main_loop() ) {
 				return $content;
 			}
@@ -128,21 +123,19 @@ if ( ! class_exists( 'Charitable_Campaign_Endpoint' ) ) :
 			add_filter( 'the_content', 'charitable_template_campaign_content' );
 
 			return $content;
-
 		}
 
 		/**
 		 * Return the body class to add for the endpoint.
 		 *
-		 * @return 	string
+		 * @return string
 		 * @access 	public
 		 * @since 	1.5.0
 		 */
 		public function get_body_class() {
-
 			return 'campaign-donation-page';
-
 		}
+
 	}
 
 endif;
