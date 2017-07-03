@@ -29,7 +29,7 @@ if ( ! class_exists( 'Charitable_Registration_Endpoint' ) ) :
 		/**
 		 * Return the endpoint ID.
 		 *
-		 * @return 	string
+		 * @return string
 		 * @access 	public
 		 * @static
 		 * @since 	1.5.0
@@ -42,30 +42,27 @@ if ( ! class_exists( 'Charitable_Registration_Endpoint' ) ) :
 		 * Return the endpoint URL.
 		 *
 		 * @global 	WP_Rewrite $wp_rewrite
-		 * @param 	array      $args
-		 * @return  string
+		 * @param  array  $args
+		 * @return string
 		 * @access  public
 		 * @since   1.5.0
 		 */
 		public function get_page_url( $args = array() ) {
-
 			$page = charitable_get_option( 'registration_page', 'wp' );
 			$url  = 'wp' == $page ? wp_registration_url() : get_permalink( $page );
 			return $url;
-
 		}
 
 		/**
 		 * Return whether we are currently viewing the endpoint.
 		 *
 		 * @global  WP_Post $post
-		 * @param 	array   $args
-		 * @return  boolean
+		 * @param  array   $args
+		 * @return boolean
 		 * @access  public
 		 * @since   1.5.0
 		 */
 		public function is_page( $args = array() ) {
-
 			global $post;
 
 			$page = charitable_get_option( 'registration_page', 'wp' );
@@ -79,8 +76,8 @@ if ( ! class_exists( 'Charitable_Registration_Endpoint' ) ) :
 			}
 
 			return false;
-
 		}
+
 	}
 
 endif;
