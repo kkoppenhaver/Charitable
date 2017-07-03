@@ -7,5 +7,4 @@
  * @since   1.0.0
  */
 
-echo $view_args[ 'content' ];
-?>
+echo $view_args['content'];
