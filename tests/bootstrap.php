@@ -1,5 +1,5 @@
 <?php
-$_tests_dir = getenv('WP_TESTS_DIR');
+$_tests_dir = getenv( 'WP_TESTS_DIR' );
 
 // Look for a wordpress-tests-lib directory on the same level as the WordPress installation.
 if ( ! $_tests_dir ) {
@@ -10,18 +10,19 @@ if ( ! defined( 'COOKIE_DOMAIN' ) ) {
 	define( 'COOKIE_DOMAIN', false );
 }
 
-if ( !defined('COOKIEPATH') ) {
-	define('COOKIEPATH', 'charitable.test' );
+if ( ! defined( 'COOKIEPATH' ) ) {
+	define( 'COOKIEPATH', 'charitable.test' );
 }
 
 require_once $_tests_dir . '/includes/functions.php';
 
 function _manually_load_plugin() {
-	require dirname( __FILE__ ) . '/../charitable.php';	
+	require dirname( __FILE__ ) . '/../charitable.php';
 
-    // Remove this hook to prevent issue when bootstrap deletes all existing content.
-    remove_action( 'deleted_post', array( 'Charitable_Campaign_Donations_DB', 'delete_donation_records' ) );
+	// Remove this hook to prevent issue when bootstrap deletes all existing content.
+	remove_action( 'deleted_post', array( 'Charitable_Campaign_Donations_DB', 'delete_donation_records' ) );
 }
+
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 
 // Prevent output to avoid Session related warning.
@@ -46,8 +47,8 @@ update_option( 'WPLANG', 'en' );
 update_option( 'timezone_string', 'Australia/Darwin' );
 
 global $current_user;
-$current_user = new WP_User(1);
-$current_user->set_role('administrator');
+$current_user = new WP_User( 1 );
+$current_user->set_role( 'administrator' );
 
 require 'includes/charitable-testcase.php';
 require 'helpers/charitable-campaign-helper.php';
