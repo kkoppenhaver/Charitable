@@ -228,7 +228,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 				if ( isset( $upgrade_progress['page'] ) && 'charitable-upgrade' == $upgrade_progress['page'] ) {
 					$upgrade_progress['page'] = 'charitable-upgrades';
 				}
-	?>		
+	?>
 				<div class="error">
 					<p><?php printf( __( 'Charitable needs to complete an upgrade that was started earlier. Click <a href="%s">here</a> to continue the upgrade.', 'charitable' ), esc_url( add_query_arg( $upgrade_progress, admin_url( 'index.php' ) ) ) ) ?>
 					</p>
@@ -734,7 +734,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @param 	false|string $db_version   The version stored in the database.
 		 * @param 	string 		 $edge_version The new version to upgrade to.
-	 	 * @return 	void
+		 * @return 	void
 		 * @since 	1.0.0
 		 */
 		public static function upgrade_from( $db_version, $edge_version ) {
