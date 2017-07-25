@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Register the custom script.
  *
- * @see     Charitable_Benefactors::register_script() 
+ * @see     Charitable_Benefactors::register_script()
  */
 add_action( 'admin_enqueue_scripts', array( Charitable_Benefactors::get_instance(), 'register_script' ) );
 
@@ -55,7 +55,7 @@ add_action( 'wp_ajax_charitable_add_benefactor', array( Charitable_Benefactors::
  * @see     Charitable_Benefactors::benefactor_meta_box()
  * @see     Charitable_Benefactors::benefactor_form()
  */
-add_action( 'charitable_campaign_benefactor_meta_box', array( Charitable_Benefactors::get_instance(), 'benefactor_meta_box' ), 5, 2);
+add_action( 'charitable_campaign_benefactor_meta_box', array( Charitable_Benefactors::get_instance(), 'benefactor_meta_box' ), 5, 2 );
 add_action( 'charitable_campaign_benefactor_meta_box', array( Charitable_Benefactors::get_instance(), 'benefactor_form' ), 10, 2 );
 
 /**
