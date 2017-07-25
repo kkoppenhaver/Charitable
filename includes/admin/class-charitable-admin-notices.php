@@ -231,7 +231,7 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 * @since	1.4.13
 		 */
 		public function shutdown() {
-			set_transient( 'charitable_notices', $this->notices );	
+			set_transient( 'charitable_notices', $this->notices );
 		}
 
 		/**
@@ -244,7 +244,7 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 */
 		public function load_notices() {
 			$this->notices = get_transient( 'charitable_notices' );
-			
+
 			if ( ! is_array( $this->notices ) ) {
 				$this->clear();
 			}
