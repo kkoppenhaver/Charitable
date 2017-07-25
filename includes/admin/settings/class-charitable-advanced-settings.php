@@ -42,7 +42,7 @@ if ( ! class_exists( 'Charitable_Advanced_Settings' ) ) :
 		 *
 		 * @since 1.2.0
 		 *
-		 * @return  Charitable_Advanced_Settings
+		 * @return Charitable_Advanced_Settings
 		 */
 		public static function get_instance() {
 			if ( is_null( self::$instance ) ) {
@@ -57,7 +57,7 @@ if ( ! class_exists( 'Charitable_Advanced_Settings' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  array<string,array>
+		 * @return array <string,array>
 		 */
 		public function add_advanced_fields() {
 			if ( ! charitable_is_settings_view( 'advanced' ) ) {
@@ -65,25 +65,26 @@ if ( ! class_exists( 'Charitable_Advanced_Settings' ) ) :
 			}
 
 			return array(
-				'section'               => array(
-					'title'             => '',
-					'type'              => 'hidden',
-					'priority'          => 10000,
-					'value'             => 'advanced',
+				'section'                  => array(
+					'title'    => '',
+					'type'     => 'hidden',
+					'priority' => 10000,
+					'value'    => 'advanced',
 				),
-				'section_dangerous'     => array(
-					'title'             => __( 'Dangerous Settings', 'charitable' ),
-					'type'              => 'heading',
-					'priority'          => 100,
+				'section_dangerous'        => array(
+					'title'    => __( 'Dangerous Settings', 'charitable' ),
+					'type'     => 'heading',
+					'priority' => 100,
 				),
-				'delete_data_on_uninstall'  => array(
-					'label_for'         => __( 'Reset Data', 'charitable' ),
-					'type'              => 'checkbox',
-					'help'              => __( 'DELETE ALL DATA when uninstalling the plugin.', 'charitable' ),
-					'priority'          => 105,
+				'delete_data_on_uninstall' => array(
+					'label_for' => __( 'Reset Data', 'charitable' ),
+					'type'      => 'checkbox',
+					'help'      => __( 'DELETE ALL DATA when uninstalling the plugin.', 'charitable' ),
+					'priority'  => 105,
 				),
 			);
 		}
+
 	}
 
 endif;
