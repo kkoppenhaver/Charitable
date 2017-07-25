@@ -24,8 +24,8 @@ do_action( 'charitable_user_registration_before', $form );
 	/**
 	 * @hook    charitable_form_before_fields
 	 */
-	do_action( 'charitable_form_before_fields', $form ) ?>
-	
+	do_action( 'charitable_form_before_fields', $form ); ?>
+
 	<div class="charitable-form-fields cf">
 
 	<?php
@@ -41,7 +41,7 @@ do_action( 'charitable_user_registration_before', $form );
 	endforeach;
 
 	?>
-	
+
 	</div>
 
 	<?php
@@ -52,7 +52,7 @@ do_action( 'charitable_user_registration_before', $form );
 
 	?>
 	<div class="charitable-form-field charitable-submit-field">
-		<button class="button button-primary" type="submit" name="register"><?php esc_attr_e( 'Register', 'charitable' ) ?></button>
+		<button class="button button-primary" type="submit" name="register"><?php esc_attr_e( 'Register', 'charitable' ); ?></button>
 	</div>
 </form>
 <?php
