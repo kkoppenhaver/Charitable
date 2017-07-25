@@ -12,5 +12,5 @@ $campaign = $view_args['campaign'];
 
 ?>
 <div class="campaign-figures campaign-summary-item">
-	<?php echo $campaign->get_donation_summary() ?>
+	<?php echo $campaign->get_donation_summary(); ?>
 </div>
