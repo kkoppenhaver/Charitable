@@ -187,7 +187,7 @@ if ( ! class_exists( 'Charitable_Admin_Pages' ) ) :
 		 *
 		 * @return  void
 		 * @since   1.0.0
-         *
+		 *
 		 * @deprecated 1.4.0
 		 */
 		public function render_donations_page() {
