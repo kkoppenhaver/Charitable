@@ -42,7 +42,7 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 		 *
 		 * @since 1.2.0
 		 *
-		 * @return  Charitable_Licenses_Settings
+		 * @return Charitable_Licenses_Settings
 		 */
 		public static function get_instance() {
 			if ( is_null( self::$instance ) ) {
@@ -57,11 +57,10 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 		 *
 		 * @since 1.4.7
 		 *
-		 * @param   string[] $tabs Settings tabs.
-		 * @return  string[]
+		 * @param  string[] $tabs Settings tabs.
+		 * @return string[]
 		 */
 		public function maybe_add_licenses_tab( $tabs ) {
-
 			$products = charitable_get_helper( 'licenses' )->get_products();
 
 			if ( empty( $products ) ) {
@@ -78,7 +77,6 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 			);
 
 			return $tabs;
-
 		}
 
 		/**
@@ -86,7 +84,7 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		public function add_licenses_fields() {
 			if ( ! charitable_is_settings_view( 'licenses' ) ) {
@@ -94,25 +92,25 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 			}
 
 			$fields = array(
-				'section' => array(
-					'title'     => '',
-					'type'      => 'hidden',
-					'priority'  => 10000,
-					'value'     => 'licenses',
-					'save'      => false,
+				'section'  => array(
+					'title'    => '',
+					'type'     => 'hidden',
+					'priority' => 10000,
+					'value'    => 'licenses',
+					'save'     => false,
 				),
 				'licenses' => array(
-					'title'     => false,
-					'callback'  => array( $this, 'render_licenses_table' ),
-					'priority'  => 4,
+					'title'    => false,
+					'callback' => array( $this, 'render_licenses_table' ),
+					'priority' => 4,
 				),
 			);
 
 			foreach ( charitable_get_helper( 'licenses' )->get_products() as $key => $product ) {
 				$fields[ $key ] = array(
-					'type'      => 'text',
-					'render'    => false,
-					'priority'  => 6,
+					'type'     => 'text',
+					'render'   => false,
+					'priority' => 6,
 				);
 			}
 
@@ -124,8 +122,8 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   string[] $groups Settings groups.
-		 * @return  string[]
+		 * @param  string[] $groups Settings groups.
+		 * @return string[]
 		 */
 		public function add_licenses_group( $groups ) {
 			$groups['licenses'] = array();
@@ -137,7 +135,7 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function render_licenses_table() {
 			charitable_admin_view( 'settings/licenses' );
@@ -148,9 +146,9 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   mixed[] $values The parsed values combining old values & new values.
-		 * @param   mixed[] $new_values The newly submitted values.
-		 * @return  mixed[]
+		 * @param  mixed[] $values     The parsed values combining old values & new values.
+		 * @param  mixed[] $new_values The newly submitted values.
+		 * @return mixed[]
 		 */
 		public function save_license( $values, $new_values ) {
 			/* If we didn't just submit licenses, stop here. */
@@ -179,6 +177,7 @@ if ( ! class_exists( 'Charitable_Licenses_Settings' ) ) :
 
 			return $values;
 		}
+
 	}
 
 endif;
