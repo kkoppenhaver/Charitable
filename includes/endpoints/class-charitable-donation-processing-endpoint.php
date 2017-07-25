@@ -31,7 +31,7 @@ if ( ! class_exists( 'Charitable_Donation_Processing_Endpoint' ) ) :
 		 *
 		 * @since 1.5.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public static function get_endpoint_id() {
 			return self::ID;
@@ -43,10 +43,8 @@ if ( ! class_exists( 'Charitable_Donation_Processing_Endpoint' ) ) :
 		 * @since 1.5.0
 		 */
 		public function setup_rewrite_rules() {
-
 			add_rewrite_endpoint( 'donation_processing', EP_ROOT );
 			add_rewrite_rule( 'donation-processing/([0-9]+)/?$', 'index.php?donation_id=$matches[1]&donation_processing=1', 'top' );
-
 		}
 
 		/**
@@ -55,11 +53,10 @@ if ( ! class_exists( 'Charitable_Donation_Processing_Endpoint' ) ) :
 		 * @global 	WP_Rewrite $wp_rewrite
 		 * @since 1.5.0
 		 *
-		 * @param 	array      $args
-		 * @return  string
+		 * @param  array  $args
+		 * @return string
 		 */
 		public function get_page_url( $args = array() ) {
-
 			global $wp_rewrite;
 
 			$donation_id = array_key_exists( 'donation_id', $args ) ? $args['donation_id'] : get_the_ID();
@@ -69,12 +66,11 @@ if ( ! class_exists( 'Charitable_Donation_Processing_Endpoint' ) ) :
 			} else {
 				$url = esc_url_raw( add_query_arg( array(
 					'donation_processing' => 1,
-					'donation_id' => $donation_id,
+					'donation_id'         => $donation_id,
 				), home_url() ) );
 			}
 
 			return $url;
-
 		}
 
 		/**
@@ -83,16 +79,14 @@ if ( ! class_exists( 'Charitable_Donation_Processing_Endpoint' ) ) :
 		 * @global  WP_Query $wp_query
 		 * @since 1.5.0
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 */
 		public function is_page() {
-
 			global $wp_query;
 
 			return is_main_query()
 				&& array_key_exists( 'donation_processing', $wp_query->query_vars )
 				&& array_key_exists( 'donation_id', $wp_query->query_vars );
-
 		}
 
 		/**
@@ -100,18 +94,16 @@ if ( ! class_exists( 'Charitable_Donation_Processing_Endpoint' ) ) :
 		 *
 		 * @since 1.5.0
 		 *
-		 * @param 	string $template The default template.
-		 * @return  string
+		 * @param  string $template The default template.
+		 * @return string
 		 */
 		public function get_template( $template ) {
-
 			new Charitable_Ghost_Page( 'donation-processing-page', array(
-				'title'     => __( 'Thank you for your donation', 'charitable' ),
-				'content'   => sprintf( '<p>%s</p>', __( 'You will shortly be redirected to the payment gateway to complete your donation.', 'charitable' ) ),
+				'title'   => __( 'Thank you for your donation', 'charitable' ),
+				'content' => sprintf( '<p>%s</p>', __( 'You will shortly be redirected to the payment gateway to complete your donation.', 'charitable' ) ),
 			) );
 
 			return array( 'donation-processing-page.php', 'page.php', 'index.php' );
-
 		}
 
 		/**
@@ -119,11 +111,10 @@ if ( ! class_exists( 'Charitable_Donation_Processing_Endpoint' ) ) :
 		 *
 		 * @since 1.5.0
 		 *
-		 * @param 	string $content
-		 * @return  string
+		 * @param  string $content
+		 * @return string
 		 */
 		public function get_content( $content ) {
-
 			$donation = charitable_get_current_donation();
 
 			if ( ! $donation ) {
@@ -131,7 +122,6 @@ if ( ! class_exists( 'Charitable_Donation_Processing_Endpoint' ) ) :
 			}
 
 			return apply_filters( 'charitable_processing_donation_' . $donation->get_gateway(), $content, $donation );
-
 		}
 
 		/**
@@ -139,13 +129,12 @@ if ( ! class_exists( 'Charitable_Donation_Processing_Endpoint' ) ) :
 		 *
 		 * @since 1.5.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public function get_body_class() {
-
 			return 'campaign-donation-processing';
-
 		}
+
 	}
 
 endif;
