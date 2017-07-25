@@ -21,9 +21,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * @since 1.0.0
  *
- * @param   int     $user_id The ID of the user to retrieve.
- * @param   boolean $force Optional. Whether to force an update of the local cache from the persistent.
- * @return  Charitable_User
+ * @param  int             $user_id The ID of the user to retrieve.
+ * @param  boolean         $force   Optional. Whether to force an update of the local cache from the persistent.
+ * @return Charitable_User
  */
 function charitable_get_user( $user_id, $force = false ) {
 	if ( is_a( $user_id, 'WP_User' ) ) {
@@ -47,20 +47,20 @@ function charitable_get_user( $user_id, $force = false ) {
  *
  * @since 1.4.0
  *
- * @return 	string[]
+ * @return string[]
  */
 function charitable_get_user_mapped_keys() {
 	return apply_filters( 'charitable_donor_mapped_keys', array(
-		'email' 		   => 'user_email',
-		'company' 		   => 'donor_company',
-		'address' 		   => 'donor_address',
-		'address_2' 	   => 'donor_address_2',
-		'city' 			   => 'donor_city',
-		'state' 		   => 'donor_state',
-		'postcode' 		   => 'donor_postcode',
-		'zip' 			   => 'donor_postcode',
-		'country' 		   => 'donor_country',
-		'phone' 		   => 'donor_phone',
+		'email'            => 'user_email',
+		'company'          => 'donor_company',
+		'address'          => 'donor_address',
+		'address_2'        => 'donor_address_2',
+		'city'             => 'donor_city',
+		'state'            => 'donor_state',
+		'postcode'         => 'donor_postcode',
+		'zip'              => 'donor_postcode',
+		'country'          => 'donor_country',
+		'phone'            => 'donor_phone',
 		'user_description' => 'description',
 	) );
 }
@@ -75,7 +75,7 @@ function charitable_get_user_mapped_keys() {
  *
  * @since 1.4.0
  *
- * @return 	string[]
+ * @return string[]
  */
 function charitable_get_user_core_keys() {
 	return array(
