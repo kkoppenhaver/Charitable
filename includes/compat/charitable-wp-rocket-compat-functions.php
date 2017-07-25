@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * @since 1.4.18
  *
- * @param   int $campaign_id The campaign ID.
- * @return  void
+ * @param  int  $campaign_id The campaign ID.
+ * @return void
  */
 function charitable_compat_wp_rocket_clear_campaign_cache( $campaign_id ) {
 	rocket_clean_post( $campaign_id );
