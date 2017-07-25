@@ -45,7 +45,7 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 		 * @global  WP_Customize_Manager $wp_customize
 		 * @since 1.2.0
 		 *
-		 * @return  Charitable_Customizer
+		 * @return Charitable_Customizer
 		 */
 		public static function start() {
 			global $wp_customize;
@@ -67,7 +67,7 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 		 * @see     customize_save_after hook
 		 * @since 1.2.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function customize_save_after() {
 			delete_transient( 'charitable_custom_styles' );
@@ -76,30 +76,30 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 		/**
 		 * Plugin customization.
 		 *
-		 * @param   WP_Customize_Manager $wp_customize The customize manager object.
-		 * @return  void
+		 * @param  WP_Customize_Manager $wp_customize The customize manager object.
+		 * @return void
 		 */
 		public function register_customizer_fields( $wp_customize ) {
 			$fields = array(
-				'title'     => __( 'Charitable', 'charitable' ),
-				'priority'  => 1000,
+				'title'      => __( 'Charitable', 'charitable' ),
+				'priority'   => 1000,
 				'capability' => 'manage_charitable_settings',
-				'sections'  => array(
+				'sections'   => array(
 					'charitable_donation_form' => array(
-						'title'     => __( 'Donation Form', 'charitable' ),
-						'priority'  => 1020,
-						'settings'  => array(
-							'donation_form_display' => array(
+						'title'    => __( 'Donation Form', 'charitable' ),
+						'priority' => 1020,
+						'settings' => array(
+							'donation_form_display'        => array(
 								'setting' => array(
 									'transport'         => 'refresh',
 									'default'           => 'separate_page',
 									'sanitize_callback' => array( $this, 'sanitize_donation_form_display_option' ),
 								),
 								'control' => array(
-									'type'              => 'select',
-									'label'             => __( 'How do you want a campaign\'s donation form to show?', 'charitable' ),
-									'priority'          => 1022,
-									'choices'           => array(
+									'type'     => 'select',
+									'label'    => __( 'How do you want a campaign\'s donation form to show?', 'charitable' ),
+									'priority' => 1022,
+									'choices'  => array(
 										'separate_page' => __( 'Show on a Separate Page', 'charitable' ),
 										'same_page'     => __( 'Show on the Same Page', 'charitable' ),
 										'modal'         => __( 'Reveal in a Modal', 'charitable' ),
@@ -108,14 +108,14 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 							),
 							'donation_form_minimal_fields' => array(
 								'setting' => array(
-									'transport'         => 'refresh',
-									'default'           => 0,
+									'transport' => 'refresh',
+									'default'   => 0,
 								),
 								'control' => array(
-									'type'              => 'radio',
-									'label'             => __( 'Only show required fields', 'charitable' ),
-									'priority'          => 1024,
-									'choices'           => array(
+									'type'     => 'radio',
+									'label'    => __( 'Only show required fields', 'charitable' ),
+									'priority' => 1024,
+									'choices'  => array(
 										1 => __( 'Yes', 'charitable' ),
 										0 => __( 'No', 'charitable' ),
 									),
@@ -130,19 +130,19 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 				$highlight_colour = apply_filters( 'charitable_default_highlight_colour', '#f89d35' );
 
 				$fields['sections']['charitable_design'] = array(
-					'title'     => __( 'Design Options', 'charitable' ),
-					'priority'  => 1010,
-					'settings'  => array(
+					'title'    => __( 'Design Options', 'charitable' ),
+					'priority' => 1010,
+					'settings' => array(
 						'highlight_colour' => array(
-							'setting'   => array(
+							'setting' => array(
 								'transport'         => 'postMessage',
 								'default'           => $highlight_colour,
 								'sanitize_callback' => 'sanitize_hex_color',
 							),
-							'control'   => array(
-								'control_type'      => 'WP_Customize_Color_Control',
-								'priority'          => 1110,
-								'label'             => __( 'Highlight Color', 'charitable' ),
+							'control' => array(
+								'control_type' => 'WP_Customize_Color_Control',
+								'priority'     => 1110,
+								'label'        => __( 'Highlight Color', 'charitable' ),
 							),
 						),
 					),
@@ -159,7 +159,7 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 		 *
 		 * @since 1.2.0
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 */
 		public function sanitize_donation_form_display_option( $option ) {
 			if ( ! in_array( $option, array( 'separate_page', 'same_page', 'modal' ) ) ) {
@@ -174,9 +174,9 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 		 *
 		 * @since 1.2.0
 		 *
-		 * @param   string  $panel_id
-		 * @param   array   $panel
-		 * @return  void
+		 * @param  string $panel_id
+		 * @param  array  $panel
+		 * @return void
 		 */
 		private function add_panel( $panel_id, $panel ) {
 			global $wp_customize;
@@ -198,9 +198,9 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 		 *
 		 * @since 1.2.0
 		 *
-		 * @param   string  $panel_id
-		 * @param   array   $sections
-		 * @return  void
+		 * @param  string $panel_id
+		 * @param  array  $sections
+		 * @return void
 		 */
 		private function add_panel_sections( $panel_id, $sections ) {
 			global $wp_customize;
@@ -219,10 +219,10 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 		 *
 		 * @since 1.2.0
 		 *
-		 * @param   string $section_id
-		 * @param   array $section
-		 * @param   string $panel
-		 * @return  void
+		 * @param  string $section_id
+		 * @param  array  $section
+		 * @param  string $panel
+		 * @return void
 		 */
 		private function add_section( $section_id, $section, $panel ) {
 			global $wp_customize;
@@ -242,15 +242,14 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 			$this->add_section_settings( $section_id, $settings );
 		}
 
-
 		/**
 		 * Adds settings to a given section.
 		 *
 		 * @since 1.2.0
 		 *
-		 * @param   string $section_id
-		 * @param   array $settings
-		 * @return  void
+		 * @param  string $section_id
+		 * @param  array  $settings
+		 * @return void
 		 */
 		private function add_section_settings( $section_id, $settings ) {
 			global $wp_customize;
@@ -268,7 +267,7 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 
 				$wp_customize->add_setting( $setting_id, $setting['setting'] );
 
-				$setting_control = $setting['control'];
+				$setting_control            = $setting['control'];
 				$setting_control['section'] = $section_id;
 
 				if ( isset( $setting_control['control_type'] ) ) {
@@ -292,7 +291,7 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 		 *
 		 * @since 1.2.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function load_customizer_script() {
 			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
@@ -306,8 +305,8 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 			);
 
 			wp_enqueue_script( 'charitable-customizer' );
-
 		}
+
 	}
 
 endif;
