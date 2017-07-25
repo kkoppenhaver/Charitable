@@ -37,8 +37,8 @@ class Test_Charitable_Roles extends Charitable_UnitTestCase {
 		}
 
 		$this->assertArrayHasKey( 'read', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
-		$this->assertArrayHasKey( 'delete_posts', (array) $wp_roles->roles['campaign_manager']['capabilities'] );	
-		$this->assertArrayHasKey( 'edit_posts', (array) $wp_roles->roles['campaign_manager']['capabilities'] );	
+		$this->assertArrayHasKey( 'delete_posts', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
+		$this->assertArrayHasKey( 'edit_posts', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
 		$this->assertArrayHasKey( 'delete_published_posts', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
 		$this->assertArrayHasKey( 'publish_posts', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
 		$this->assertArrayHasKey( 'upload_files', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
@@ -63,12 +63,12 @@ class Test_Charitable_Roles extends Charitable_UnitTestCase {
 		$this->assertArrayHasKey( 'manage_categories', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
 		$this->assertArrayHasKey( 'moderate_comments', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
 
-		$this->assertArrayHasKey( 'import', (array) $wp_roles->roles['campaign_manager']['capabilities'] );	
+		$this->assertArrayHasKey( 'import', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
 		$this->assertArrayHasKey( 'export', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
 		$this->assertArrayHasKey( 'unfiltered_html', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
 
 		$this->assertArrayHasKey( 'view_charitable_sensitive_data', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
-		$this->assertArrayHasKey( 'export_charitable_reports', (array) $wp_roles->roles['campaign_manager']['capabilities'] );		
+		$this->assertArrayHasKey( 'export_charitable_reports', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
 
 		$this->assertArrayHasKey( 'edit_campaign', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
 		$this->assertArrayHasKey( 'read_campaign', (array) $wp_roles->roles['campaign_manager']['capabilities'] );
@@ -129,4 +129,5 @@ class Test_Charitable_Roles extends Charitable_UnitTestCase {
 		$this->assertFalse( array_key_exists( 'campaign_manager', (array) $wp_roles->role_names ) );
 		$this->assertFalse( array_key_exists( 'donor', (array) $wp_roles->role_names ) );
 	}
+
 }
