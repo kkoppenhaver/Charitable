@@ -31,7 +31,7 @@ if ( ! class_exists( 'Charitable_Profile_Endpoint' ) ) :
 		 *
 		 * @since 1.5.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public static function get_endpoint_id() {
 			return self::ID;
@@ -43,11 +43,10 @@ if ( ! class_exists( 'Charitable_Profile_Endpoint' ) ) :
 		 * @global 	WP_Rewrite $wp_rewrite
 		 * @since 1.5.0
 		 *
-		 * @param 	array      $args
-		 * @return  string
+		 * @param  array  $args
+		 * @return string
 		 */
 		public function get_page_url( $args = array() ) {
-
 			$page = charitable_get_option( 'profile_page', false );
 
 			if ( ! $page ) {
@@ -55,7 +54,6 @@ if ( ! class_exists( 'Charitable_Profile_Endpoint' ) ) :
 			}
 
 			return get_permalink( $page );
-
 		}
 
 		/**
@@ -64,18 +62,17 @@ if ( ! class_exists( 'Charitable_Profile_Endpoint' ) ) :
 		 * @global  WP_Post $post
 		 * @since 1.5.0
 		 *
-		 * @param 	array   $args
-		 * @return  boolean
+		 * @param  array   $args
+		 * @return boolean
 		 */
 		public function is_page( $args = array() ) {
-
 			global $post;
 
 			$page = charitable_get_option( 'profile_page', false );
 
 			return false == $page || is_null( $post ) ? false : $page == $post->ID;
-
 		}
+
 	}
 
 endif;
