@@ -24,26 +24,26 @@ if ( ! class_exists( 'Charitable_Donors_Shortcode' ) ) :
 		 *
 		 * @since  1.5.0
 		 *
-		 * @param  array $atts The user-defined shortcode attributes.
+		 * @param  array  $atts The user-defined shortcode attributes.
 		 * @return string
 		 */
 		public static function display( $atts ) {
 			$default = array(
-				'number'			=> 10,
-				'orderby'			=> 'date',
-				'order'			    => 'DESC',
-				'campaign'			=> 0,
+				'number'            => 10,
+				'orderby'           => 'date',
+				'order'             => 'DESC',
+				'campaign'          => 0,
 				'distinct_donors'   => 1,
-				'orientation'      	=> 'horizontal',
-				'show_name'			=> 1,
-				'show_location'		=> 0,
-				'show_amount'		=> 0,
-				'show_avatar'		=> 0,
-				'hide_if_no_donors'	=> 0,
+				'orientation'       => 'horizontal',
+				'show_name'         => 1,
+				'show_location'     => 0,
+				'show_amount'       => 0,
+				'show_avatar'       => 0,
+				'hide_if_no_donors' => 0,
 			);
 
-			$args                = shortcode_atts( $default, $atts, 'donors' );
-			$args['donors']      = self::get_donors( $args );
+			$args           = shortcode_atts( $default, $atts, 'donors' );
+			$args['donors'] = self::get_donors( $args );
 
 			/**
 			 * Replace the default template with your own.
@@ -52,10 +52,10 @@ if ( ! class_exists( 'Charitable_Donors_Shortcode' ) ) :
 			 *
 			 * @since 	1.5.0
 			 *
-			 * @param 	false|Charitable_Template The template. If false (the default), we will use our own template.
-			 * @param 	array $args               All the parsed arguments.
-	         * @return 	false|Charitable_Template
-	         */
+			 * @param  false|Charitable_Template       The template. If false (the default), we will use our own template.
+			 * @param  array                     $args All the parsed arguments.
+			 * @return false|Charitable_Template
+			 */
 			$template = apply_filters( 'charitable_donors_shortcode_template', false, $args );
 
 			/* Fall back to default Charitable_Template if no template returned or if template was not object of 'Charitable_Template' class. */
@@ -72,10 +72,10 @@ if ( ! class_exists( 'Charitable_Donors_Shortcode' ) ) :
 			 *
 			 * @since 	1.5.0
 			 *
-			 * @param 	array $view_args The arguments to pass.
-			 * @param 	array $args      All the parsed arguments.
-	         * @return 	array
-	         */
+			 * @param  array $view_args The arguments to pass.
+			 * @param  array $args      All the parsed arguments.
+			 * @return array
+			 */
 			$view_args = apply_filters( 'charitable_donors_shortcode_view_args', charitable_array_subset( $args, array(
 					'donors',
 					'number',
@@ -102,10 +102,10 @@ if ( ! class_exists( 'Charitable_Donors_Shortcode' ) ) :
 			 *
 			 * @since 	1.5.0
 			 *
-			 * @param 	string $content The content to be displayed.
-			 * @param 	array  $args    All the parsed arguments.
-	         * @return 	string
-	         */
+			 * @param  string $content The content to be displayed.
+			 * @param  array  $args    All the parsed arguments.
+			 * @return string
+			 */
 			return apply_filters( 'charitable_donors_shortcode', ob_get_clean(), $args );
 		}
 
@@ -114,28 +114,27 @@ if ( ! class_exists( 'Charitable_Donors_Shortcode' ) ) :
 		 *
 		 * @since  1.5.0
 		 *
-		 * @param  array $args The query arguments to be used to retrieve donors.
+		 * @param  array                  $args The query arguments to be used to retrieve donors.
 		 * @return Charitable_Donor_Query
 		 */
 		public static function get_donors( $args ) {
-
 			/**
 			 * Filter the arguments passed to Charitable_Donor_Query.
 			 *
 			 * @since 	1.5.0
 			 *
-			 * @param 	array $query_args The arguments to be passed to Charitable_Donor_Query::__construct.
-			 * @param 	array $args       All the parsed arguments.
-	         * @return 	array
-	         */
+			 * @param  array $query_args The arguments to be passed to Charitable_Donor_Query::__construct.
+			 * @param  array $args       All the parsed arguments.
+			 * @return array
+			 */
 			$query_args = apply_filters( 'charitable_donors_shortcode_donor_query_args',
 				charitable_array_subset( $args, array( 'number', 'orderby', 'order', 'campaign', 'distinct_donors' ) ),
 				$args
 			);
 
 			return new Charitable_Donor_Query( $query_args );
-
 		}
+
 	}
 
 endif;
