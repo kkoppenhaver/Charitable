@@ -40,7 +40,7 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @return  Charitable_Admin_Notices
+		 * @return Charitable_Admin_Notices
 		 */
 		public static function get_instance() {
 			if ( is_null( self::$instance ) ) {
@@ -55,7 +55,7 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		private function __construct() {
 			$this->load_notices();
@@ -66,10 +66,10 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @param   string $message
-		 * @param   string $type
-		 * @param   string $key     Optional. If not set, next numeric key is used.
-		 * @return  void
+		 * @param  string $message
+		 * @param  string $type
+		 * @param  string $key     Optional. If not set, next numeric key is used.
+		 * @return void
 		 */
 		public function add_notice( $message, $type, $key = false, $dismissible = false ) {
 			if ( false === $key ) {
@@ -94,9 +94,9 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @param   string $message
-		 * @param   string $key     Optional. If not set, next numeric key is used.
-		 * @return  void
+		 * @param  string $message
+		 * @param  string $key     Optional. If not set, next numeric key is used.
+		 * @return void
 		 */
 		public function add_error( $message, $key = false, $dismissible = false ) {
 			$this->add_notice( $message, 'error', $key, $dismissible );
@@ -107,9 +107,9 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @param   string $message
-		 * @param   string $key     Optional. If not set, next numeric key is used.
-		 * @return  void
+		 * @param  string $message
+		 * @param  string $key     Optional. If not set, next numeric key is used.
+		 * @return void
 		 */
 		public function add_warning( $message, $key = false, $dismissible = false ) {
 			$this->add_notice( $message, 'warning', $key, $dismissible );
@@ -120,9 +120,9 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @param   string $message
-		 * @param   string $key     Optional. If not set, next numeric key is used.
-		 * @return  void
+		 * @param  string $message
+		 * @param  string $key     Optional. If not set, next numeric key is used.
+		 * @return void
 		 */
 		public function add_success( $message, $key = false, $dismissible = false ) {
 			$this->add_notice( $message, 'success', $key, $dismissible );
@@ -133,9 +133,9 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @param   string $message
-		 * @param   string $key     Optional. If not set, next numeric key is used.
-		 * @return  void
+		 * @param  string $message
+		 * @param  string $key     Optional. If not set, next numeric key is used.
+		 * @return void
 		 */
 		public function add_info( $message, $key = false, $dismissible = false ) {
 			$this->add_notice( $message, 'info', $key, $dismissible );
@@ -146,10 +146,10 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @param   string  $message
-		 * @param   string  $key         Optional. If not set, next numeric key is used.
-		 * @param 	boolean $dismissible Optional. Set to true by default.
-		 * @return  void
+		 * @param  string  $message
+		 * @param  string  $key         Optional. If not set, next numeric key is used.
+		 * @param  boolean $dismissible Optional. Set to true by default.
+		 * @return void
 		 */
 		public function add_version_update( $message, $key = false, $dismissible = true ) {
 			$this->add_notice( $message, 'version', $key, $dismissible );
@@ -160,10 +160,9 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function render() {
-
 			foreach ( charitable_get_admin_notices()->get_notices() as $type => $notices ) {
 
 				foreach ( $notices as $key => $notice ) {
@@ -177,14 +176,13 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @param 	string 	$notice
-		 * @param 	string  $type
-		 * @param 	boolean $dismissible
-		 * @param 	string  $notice_key
-		 * @return  void
+		 * @param  string  $notice
+		 * @param  string  $type
+		 * @param  boolean $dismissible
+		 * @param  string  $notice_key
+		 * @return void
 		 */
 		public function render_notice( $notice, $type, $dismissible = false, $notice_key = '' ) {
-
 			if ( ! isset( $this->script_enqueued ) ) {
 
 				if ( ! wp_script_is( 'charitable-admin-notice' ) ) {
@@ -231,7 +229,6 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 			if ( strlen( $notice_key ) ) {
 				unset( $this->notices[ $type ][ $notice_key ] );
 			}
-
 		}
 
 		/**
@@ -239,10 +236,10 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.13
 		 *
-		 * @return	void
+		 * @return void
 		 */
 		public function shutdown() {
-			set_transient( 'charitable_notices', $this->notices );	
+			set_transient( 'charitable_notices', $this->notices );
 		}
 
 		/**
@@ -252,11 +249,11 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.13
 		 *
-		 * @return	void
+		 * @return void
 		 */
 		public function load_notices() {
 			$this->notices = get_transient( 'charitable_notices' );
-			
+
 			if ( ! is_array( $this->notices ) ) {
 				$this->clear();
 			}
@@ -267,7 +264,7 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function clear() {
 			$clear = array(
@@ -280,6 +277,7 @@ if ( ! class_exists( 'Charitable_Admin_Notices' ) ) :
 
 			$this->notices = $clear;
 		}
+
 	}
 
 endif;
