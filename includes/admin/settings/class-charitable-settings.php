@@ -502,7 +502,7 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		 */
 		private function get_dynamic_groups() {
 			return apply_filters( 'charitable_dynamic_groups', array() );
-		}		
+		}
 
 		/**
 		 * Returns whether the given key indicates the start of a new section of the settings.
@@ -549,13 +549,13 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		 * @deprecated 1.4.13
 		 */
 		public function get_update_messages() {
-			
+
 			charitable_get_deprecated()->deprecated_function(
 				__METHOD__,
 				'1.4.13',
 				'Charitable_Admin_Notices::get_notices()'
 			);
-			
+
 			return charitable_get_admin_notices()->get_notices();
 		}
 	}
