@@ -19,9 +19,9 @@ if ( ! isset( $view_args['extension'] ) ) {
 	return;
 }
 
-$extension = $view_args['extension'];
+$extension   = $view_args['extension'];
 $benefactors = charitable_get_table( 'benefactors' )->get_campaign_benefactors_by_extension( $post->ID, $extension );
-$ended = charitable_get_campaign( $post->ID )->has_ended();
+$ended       = charitable_get_campaign( $post->ID )->has_ended();
 
 ?>
 <div class="charitable-metabox charitable-metabox-wrap">
@@ -30,11 +30,11 @@ $ended = charitable_get_campaign( $post->ID )->has_ended();
 
 		if ( $ended ) : ?>
 
-			<p><?php _e( 'You did not add any contribution rules.', 'charitable' ) ?></p>
+			<p><?php _e( 'You did not add any contribution rules.', 'charitable' ); ?></p>
 
 		<?php else : ?>
 
-			<p><?php _e( 'You have not added any contribution rules yet.', 'charitable' ) ?></p>
+			<p><?php _e( 'You have not added any contribution rules yet.', 'charitable' ); ?></p>
 
 		<?php
 		endif;
@@ -52,20 +52,20 @@ $ended = charitable_get_campaign( $post->ID )->has_ended();
 			}
 
 			?>
-			<div class="charitable-metabox-block charitable-benefactor <?php echo $active_class ?>">
-				<?php do_action( 'charitable_campaign_benefactor_meta_box', $benefactor_object, $extension ) ?>
+			<div class="charitable-metabox-block charitable-benefactor <?php echo $active_class; ?>">
+				<?php do_action( 'charitable_campaign_benefactor_meta_box', $benefactor_object, $extension ); ?>
 			</div>
 			<?php
 
 		endforeach;
 	endif;
 
-	charitable_admin_view( 'metaboxes/campaign-benefactors/form', array( 'benefactor' => null, 'extension' => $extension ) ); 
+	charitable_admin_view( 'metaboxes/campaign-benefactors/form', array( 'benefactor' => null, 'extension' => $extension ) );
 
 	if ( ! $ended ) :
 	?>
-		<p><a href="#" class="button" data-charitable-toggle="campaign_benefactor__0"><?php _e( '+ Add New Contribution Rule', 'charitable' ) ?></a></p> 
+		<p><a href="#" class="button" data-charitable-toggle="campaign_benefactor__0"><?php _e( '+ Add New Contribution Rule', 'charitable' ); ?></a></p>
 	<?php
 	endif;
-	?>    
+	?>
 </div>
