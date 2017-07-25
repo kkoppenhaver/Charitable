@@ -42,7 +42,7 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 		 *
 		 * @since 1.1.0
 		 *
-		 * @param   mixed[]  $objects
+		 * @param mixed[] $objects
 		 */
 		public function __construct( $objects = array() ) {
 			parent::__construct( $objects );
@@ -55,7 +55,7 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 		 *
 		 * @since 1.1.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public static function get_email_id() {
 			return self::ID;
@@ -66,8 +66,8 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 		 *
 		 * @since 1.1.0
 		 *
-		 * @param   int $campaign_id
-		 * @return  boolean
+		 * @param  int     $campaign_id
+		 * @return boolean
 		 */
 		public static function send_with_campaign_id( $campaign_id ) {
 			if ( ! charitable_get_helper( 'emails' )->is_enabled_email( self::get_email_id() ) ) {
@@ -111,7 +111,7 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 		 *
 		 * @since 1.3.2
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 */
 		public function is_time_to_send() {
 			$time_since_ended = $this->get_campaign()->get_time_since_ended();
@@ -123,7 +123,7 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 		 *
 		 * @since 1.1.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_recipient() {
 			return get_option( 'admin_email' );
@@ -134,7 +134,7 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 		 *
 		 * @since 1.1.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_subject() {
 			return __( 'A campaign has finished', 'charitable' );
@@ -145,7 +145,7 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 		 *
 		 * @since 1.1.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_headline() {
 			return apply_filters( 'charitable_email_campaign_end_default_headline', __( 'Campaign has ended', 'charitable' ), $this );
@@ -156,25 +156,25 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 		 *
 		 * @since 1.1.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_body() {
 			ob_start();
 ?>
-<p><?php _e( '[charitable_email show=campaign_title] by [charitable_email show=campaign_creator] finished on [charitable_email show=campaign_end_date].', 'charitable' ) ?></p>
-<p>[charitable_email show=campaign_achieved_goal success="<?php _e( 'The campaign achieved its fundraising goal.', 'charitable' ) ?>" failure="<?php _e( 'The campaign did not reach its fundraising goal.', 'charitable' ) ?>"]</p>
+<p><?php _e( '[charitable_email show=campaign_title] by [charitable_email show=campaign_creator] finished on [charitable_email show=campaign_end_date].', 'charitable' ); ?></p>
+<p>[charitable_email show=campaign_achieved_goal success="<?php _e( 'The campaign achieved its fundraising goal.', 'charitable' ); ?>" failure="<?php _e( 'The campaign did not reach its fundraising goal.', 'charitable' ); ?>"]</p>
 <table>
 <tbody>
 <tr>
-	<th><?php _e( 'Amount raised', 'charitable' ) ?></th>
+	<th><?php _e( 'Amount raised', 'charitable' ); ?></th>
 	<td>[charitable_email show=campaign_donated_amount]</td>
 </tr>
 <tr>
-	<th><?php _e( 'Number of donors', 'charitable' ) ?></th>
+	<th><?php _e( 'Number of donors', 'charitable' ); ?></th>
 	<td>[charitable_email show=campaign_donor_count]</td>
 </tr>
 <tr>
-	<th><?php _e( 'Fundraising goal', 'charitable' ) ?></th>
+	<th><?php _e( 'Fundraising goal', 'charitable' ); ?></th>
 	<td>[charitable_email show=campaign_goal]</td>
 </tr>
 </tbody>
@@ -184,6 +184,7 @@ if ( ! class_exists( 'Charitable_Email_Campaign_End' ) ) :
 
 			return apply_filters( 'charitable_email_campaign_end_default_body', $body, $this );
 		}
+
 	}
 
 endif;
