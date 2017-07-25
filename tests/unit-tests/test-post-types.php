@@ -70,4 +70,5 @@ class Test_Charitable_Post_Types extends Charitable_UnitTestCase {
 		$this->assertArrayHasKey( 'charitable-refunded', $wp_post_statuses );
 		$this->assertArrayHasKey( 'charitable-preapproved', $wp_post_statuses );
 	}
+
 }
