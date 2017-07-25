@@ -57,10 +57,10 @@ if ( ! class_exists( 'Charitable_Registration_Form' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   array       $args       User-defined shortcode attributes.
+		 * @param array $args User-defined shortcode attributes.
 		 */
 		public function __construct( $args = array() ) {
-			$this->id = uniqid();
+			$this->id             = uniqid();
 			$this->shortcode_args = $args;
 			$this->attach_hooks_and_filters();
 		}
@@ -70,7 +70,7 @@ if ( ! class_exists( 'Charitable_Registration_Form' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  mixed[]
+		 * @return mixed[]
 		 */
 		public function get_shortcode_args() {
 			return $this->shortcode_args;
@@ -81,30 +81,30 @@ if ( ! class_exists( 'Charitable_Registration_Form' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		public function get_fields() {
 			$fields = apply_filters( 'charitable_user_registration_fields', array(
 				'user_email' => array(
-					'label'     => __( 'Email', 'charitable' ),
-					'type'      => 'email',
-					'required'  => true,
-					'priority'  => 4,
-					'value'     => isset( $_POST['user_email'] ) ? $_POST['user_email'] : '',
+					'label'    => __( 'Email', 'charitable' ),
+					'type'     => 'email',
+					'required' => true,
+					'priority' => 4,
+					'value'    => isset( $_POST['user_email'] ) ? $_POST['user_email'] : '',
 				),
 				'user_login' => array(
-					'label'     => __( 'Username', 'charitable' ),
-					'type'      => 'text',
-					'priority'  => 6,
-					'required'  => true,
-					'value'     => isset( $_POST['user_login'] ) ? $_POST['user_login'] : '',
+					'label'    => __( 'Username', 'charitable' ),
+					'type'     => 'text',
+					'priority' => 6,
+					'required' => true,
+					'value'    => isset( $_POST['user_login'] ) ? $_POST['user_login'] : '',
 				),
-				'user_pass' => array(
-					'label'     => __( 'Password', 'charitable' ),
-					'type'      => 'password',
-					'priority'  => 8,
-					'required'  => true,
-					'value'     => isset( $_POST['user_pass'] ) ? $_POST['user_pass'] : '',
+				'user_pass'  => array(
+					'label'    => __( 'Password', 'charitable' ),
+					'type'     => 'password',
+					'priority' => 8,
+					'required' => true,
+					'value'    => isset( $_POST['user_pass'] ) ? $_POST['user_pass'] : '',
 				),
 			) );
 
@@ -118,8 +118,8 @@ if ( ! class_exists( 'Charitable_Registration_Form' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	Charitable_Form 	$form
-		 * @return 	void
+		 * @param  Charitable_Form $form
+		 * @return void
 		 */
 		public function add_hidden_fields( $form ) {
 			$ret = parent::add_hidden_fields( $form );
@@ -145,7 +145,7 @@ if ( ! class_exists( 'Charitable_Registration_Form' ) ) :
 			}
 
 			?>
-			<input type="hidden" name="redirect_to" value="<?php echo esc_url( $redirect ) ?>" />
+			<input type="hidden" name="redirect_to" value="<?php echo esc_url( $redirect ); ?>" />
 			<?php
 		}
 
@@ -154,7 +154,7 @@ if ( ! class_exists( 'Charitable_Registration_Form' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public static function save_registration() {
 			$form = new Charitable_Registration_Form();
@@ -204,10 +204,9 @@ if ( ! class_exists( 'Charitable_Registration_Form' ) ) :
 		 *
 		 * @since 1.4.2
 		 *
-		 * @return  false|string
+		 * @return false|string
 		 */
 		public function get_login_link() {
-
 			if ( false == $this->shortcode_args['login_link_text'] || 'false' == $this->shortcode_args['login_link_text'] ) {
 				return false;
 			}
@@ -227,6 +226,7 @@ if ( ! class_exists( 'Charitable_Registration_Form' ) ) :
 				$this->shortcode_args['login_link_text']
 			);
 		}
+
 	}
 
 endif;
