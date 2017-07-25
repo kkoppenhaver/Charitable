@@ -20,8 +20,8 @@ class Test_Charitable_Campaigns extends Charitable_UnitTestCase {
 		 * End date: 			300 days from now
 		 * Donations received: 	$1000
 		 */
-		$campaign_1_id = Charitable_Campaign_Helper::create_campaign( array( 
-			'_campaign_end_date' 	=> date( 'Y-m-d H:i:s', strtotime( '+300 days') )
+		$campaign_1_id = Charitable_Campaign_Helper::create_campaign( array(
+			'_campaign_end_date' => date( 'Y-m-d H:i:s', strtotime( '+300 days' ) )
 		) );
 
 		Charitable_Donation_Helper::create_campaign_donation_for_user( $user_id, $campaign_1_id, 1000 );
@@ -32,8 +32,8 @@ class Test_Charitable_Campaigns extends Charitable_UnitTestCase {
 		 * End date: 			100 days from now
 		 * Donations received: 	$50
 		 */
-		$campaign_2_id = Charitable_Campaign_Helper::create_campaign( array( 
-			'_campaign_end_date' 	=> date( 'Y-m-d H:i:s', strtotime( '+100 days') )
+		$campaign_2_id = Charitable_Campaign_Helper::create_campaign( array(
+			'_campaign_end_date' => date( 'Y-m-d H:i:s', strtotime( '+100 days' ) )
 		) );
 
 		Charitable_Donation_Helper::create_campaign_donation_for_user( $user_id, $campaign_2_id, 50 );
@@ -44,8 +44,8 @@ class Test_Charitable_Campaigns extends Charitable_UnitTestCase {
 		 * End date: 			2 days from now
 		 * Donations received: 	$200
 		 */
-		$campaign_3_id = Charitable_Campaign_Helper::create_campaign( array( 
-			'_campaign_end_date' 	=> date( 'Y-m-d H:i:s', strtotime( '+2 days') )
+		$campaign_3_id = Charitable_Campaign_Helper::create_campaign( array(
+			'_campaign_end_date' => date( 'Y-m-d H:i:s', strtotime( '+2 days' ) )
 		) );
 
 		Charitable_Donation_Helper::create_campaign_donation_for_user( $user_id, $campaign_3_id, 200 );
@@ -56,30 +56,30 @@ class Test_Charitable_Campaigns extends Charitable_UnitTestCase {
 		 * End date: 			2 days ago
 		 * Donations received: 	$40
 		 */
-		$campaign_4_id = Charitable_Campaign_Helper::create_campaign( array( 
-			'_campaign_end_date' 	=> date( 'Y-m-d H:i:s', strtotime( '-2 days') )
+		$campaign_4_id = Charitable_Campaign_Helper::create_campaign( array(
+			'_campaign_end_date' => date( 'Y-m-d H:i:s', strtotime( '-2 days' ) )
 		) );
 
 		Charitable_Donation_Helper::create_campaign_donation_for_user( $user_id, $campaign_4_id, 40 );
 
 		/* The array of campaign IDs */
-		$this->campaigns = array( 
-			$campaign_1_id, 
-			$campaign_2_id, 
-			$campaign_3_id, 
+		$this->campaigns = array(
+			$campaign_1_id,
+			$campaign_2_id,
+			$campaign_3_id,
 			$campaign_4_id
 		);
 
 		/* The array of campaign IDs, ordered by ending soon */
 		$this->campaigns_ordered_by_ending_soon = array(
-			$campaign_3_id, 
+			$campaign_3_id,
 			$campaign_2_id,
 			$campaign_1_id
 		);
 
 		/* The array of campaign IDs, ordered by amount raised */
 		$this->campaigns_ordered_by_amount = array(
-			$campaign_1_id, 
+			$campaign_1_id,
 			$campaign_3_id,
 			$campaign_2_id,
 			$campaign_4_id
@@ -98,14 +98,14 @@ class Test_Charitable_Campaigns extends Charitable_UnitTestCase {
 
 		$i = 0;
 
-		while( $query->have_posts() ) {
+		while ( $query->have_posts() ) {
 			$query->the_post();
 
-			$this->assertEquals( $this->campaigns_ordered_by_ending_soon[$i], get_the_ID(), sprintf( 'Index %d for campaigns orderd by date ending', $i ) );
+			$this->assertEquals( $this->campaigns_ordered_by_ending_soon[ $i ], get_the_ID(), sprintf( 'Index %d for campaigns orderd by date ending', $i ) );
 			$i++;
 		}
 
-		$query_2 = Charitable_Campaigns::ordered_by_ending_soon( array('posts_per_page' => 1 ) );
+		$query_2 = Charitable_Campaigns::ordered_by_ending_soon( array( 'posts_per_page' => 1 ) );
 		$this->assertEquals( 1, count( $query_2->posts ) );
 	}
 
@@ -123,4 +123,5 @@ class Test_Charitable_Campaigns extends Charitable_UnitTestCase {
 		// $query_2 = Charitable_Campaign_Query::ordered_by_amount( array('posts_per_page' => 1 ) );
 		// $this->assertEquals( 1, count( $query_2->posts ) );
 	}
+
 }
