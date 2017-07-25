@@ -171,10 +171,10 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 
 			$this->nonce_field();
 
-			?>			
+			?>
 			<input type="hidden" name="charitable_action" value="<?php echo esc_attr( $this->form_action ) ?>" />
 			<input type="hidden" name="charitable_form_id" value="<?php echo esc_attr( $this->id ) ?>" autocomplete="off" />
-			<input type="text" name="<?php echo esc_attr( $this->id ) ?>" class="charitable-hidden" value="" autocomplete="off" />			
+			<input type="text" name="<?php echo esc_attr( $this->id ) ?>" class="charitable-hidden" value="" autocomplete="off" />
 			<?php
 
 			return true;
