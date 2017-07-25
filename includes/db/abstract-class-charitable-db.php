@@ -8,7 +8,7 @@
  * @package     Charitable/Classes/Charitable_DB
  * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
  * @version 	1.0.0
-*/
+ */
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		/**
 		 * Whitelist of columns
 		 *
-		 * @return  array
+		 * @return array
 		 * @abstract
 		 * @since 1.0.0
 		 */
@@ -62,7 +62,7 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		/**
 		 * Default column values
 		 *
-		 * @return 	array
+		 * @return array
 		 * @abstract
 		 * @since 1.0.0
 		 */
@@ -73,12 +73,12 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	string $column
-		 * @return 	%s, %d or %f
+		 * @param  string $column
+		 * @return                %s, %d or %f
 		 */
 		public function get_column_format( $column ) {
 			$columns = $this->get_columns();
-			$format = isset( $columns[ $column ] ) ? $columns[ $column ] : false;
+			$format  = isset( $columns[ $column ] ) ? $columns[ $column ] : false;
 
 			// If the column isn't found, throw an exception.
 			if ( false === $format ) {
@@ -97,7 +97,7 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		 * Retrieve a row by the primary key
 		 *
 		 * @since 1.0.0
-		 * @return  object
+		 * @return object
 		 */
 		public function get( $row_id ) {
 			global $wpdb;
@@ -108,7 +108,7 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		 * Retrieve a row by a specific column / value
 		 *
 		 * @since 1.0.0
-		 * @return  object
+		 * @return object
 		 */
 		public function get_by( $column, $row_id ) {
 			global $wpdb;
@@ -119,7 +119,7 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		 * Retrieve a specific column's value by the primary key
 		 *
 		 * @since 1.0.0
-		 * @return  string
+		 * @return string
 		 */
 		public function get_column( $column, $row_id ) {
 			global $wpdb;
@@ -130,7 +130,7 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		 * Retrieve a specific column's value by the the specified column / value
 		 *
 		 * @since 1.0.0
-		 * @return  string
+		 * @return string
 		 */
 		public function get_column_by( $column, $column_where, $column_value ) {
 			global $wpdb;
@@ -142,7 +142,7 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return 	int
+		 * @return int
 		 */
 		public function count_all() {
 			global $wpdb;
@@ -154,7 +154,7 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return 	int
+		 * @return int
 		 */
 		public function count_by( $column, $column_value ) {
 			global $wpdb;
@@ -165,7 +165,7 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		 * Insert a new row
 		 *
 		 * @since 1.0.0
-		 * @return  int
+		 * @return int
 		 */
 		public function insert( $data, $type = '' ) {
 			global $wpdb;
@@ -185,7 +185,7 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 			$data = array_intersect_key( $data, $column_formats );
 
 			/* Reorder $column_formats to match the order of columns given in $data */
-			$data_keys = array_keys( $data );
+			$data_keys      = array_keys( $data );
 			$column_formats = array_merge( array_flip( $data_keys ), $column_formats );
 
 			$inserted = $wpdb->insert( $this->table_name, $data, $column_formats );
@@ -206,10 +206,10 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		 * @global 	WPDB $wpdb
 		 * @since 1.0.0
 		 *
-		 * @param 	int 	$row_id
-		 * @param 	array 	$data
-		 * @param 	string 	$where 	Column used in where argument.
-		 * @return  bool
+		 * @param  int    $row_id
+		 * @param  array  $data
+		 * @param  string $where  Column used in where argument.
+		 * @return bool
 		 */
 		public function update( $row_id, $data = array(), $where = '' ) {
 			global $wpdb;
@@ -235,7 +235,7 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 			$data = array_intersect_key( $data, $column_formats );
 
 			// Reorder $column_formats to match the order of columns given in $data
-			$data_keys = array_keys( $data );
+			$data_keys      = array_keys( $data );
 			$column_formats = array_merge( array_flip( $data_keys ), $column_formats );
 
 			if ( false === $wpdb->update( $this->table_name, $data, array( $where => $row_id ), $column_formats ) ) {
@@ -250,8 +250,8 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	int 	$row_id
-		 * @return  bool
+		 * @param  int  $row_id
+		 * @return bool
 		 */
 		public function delete( $row_id = 0 ) {
 			// Row ID must be positive integer
@@ -270,9 +270,9 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 		 * @global 	WPDB $wpdb
 		 * @since 1.2.0
 		 *
-		 * @param 	string $column
-		 * @param 	mixed $row_id
-		 * @return  bool
+		 * @param  string $column
+		 * @param  mixed  $row_id
+		 * @return bool
 		 */
 		public function delete_by( $column, $row_id = 0 ) {
 			global $wpdb;
@@ -282,23 +282,24 @@ if ( ! class_exists( 'Charitable_DB' ) ) :
 			return false !== $result;
 		}
 
-	    /**
-	     * Create the table.
-	     *
-	     * @global  $wpdb
-	     * @since 1.0.0
-	     *
-	     * @param 	string 	$sql
-	     */
-	    protected function _create_table( $sql ) {
-	        global $wpdb;
+		/**
+		 * Create the table.
+		 *
+		 * @global  $wpdb
+		 * @since 1.0.0
+		 *
+		 * @param string $sql
+		 */
+		protected function _create_table( $sql ) {
+			global $wpdb;
 
-	        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+			require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
-	        dbDelta( $sql );
+			dbDelta( $sql );
 
-	        update_option( $this->table_name . '_db_version', $this->version );
-	    }
+			update_option( $this->table_name . '_db_version', $this->version );
+		}
+
 	}
 
 endif;
