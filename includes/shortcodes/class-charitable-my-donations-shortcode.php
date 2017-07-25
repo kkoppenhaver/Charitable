@@ -27,8 +27,8 @@ if ( ! class_exists( 'Charitable_My_Donations_Shortcode' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @param   array $atts User-defined shortcode attributes.
-		 * @return  string
+		 * @param  array  $atts User-defined shortcode attributes.
+		 * @return string
 		 */
 		public static function display( $atts ) {
 			$defaults = array();
@@ -45,14 +45,14 @@ if ( ! class_exists( 'Charitable_My_Donations_Shortcode' ) ) :
 				) );
 
 				return;
-	        }
+			}
 
-	        $donor_id = charitable_get_user( get_current_user_id() )->get_donor_id();
+			$donor_id = charitable_get_user( get_current_user_id() )->get_donor_id();
 
-	        /* Only fetch donations if the donor ID exists. */
-	        if ( $donor_id ) {
+			/* Only fetch donations if the donor ID exists. */
+			if ( $donor_id ) {
 
-	        	$donations = new Charitable_Donations_Query( array(
+				$donations = new Charitable_Donations_Query( array(
 					'output'   => 'posts',
 					'donor_id' => $donor_id,
 					'orderby'  => 'date',
@@ -60,13 +60,13 @@ if ( ! class_exists( 'Charitable_My_Donations_Shortcode' ) ) :
 					'number'   => -1,
 				) );
 
-	        } else {
+			} else {
 
-	        	$donations = array();
+				$donations = array();
 
-	        }
+			}
 
-	        $view_args = array(
+			$view_args = array(
 				'donations' => $donations,
 			);
 
@@ -74,6 +74,7 @@ if ( ! class_exists( 'Charitable_My_Donations_Shortcode' ) ) :
 
 			return apply_filters( 'charitable_my_donations_shortcode', ob_get_clean(), $view_args, $args );
 		}
+
 	}
 
 endif;
