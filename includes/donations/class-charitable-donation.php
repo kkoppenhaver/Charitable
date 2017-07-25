@@ -32,16 +32,16 @@ if ( ! class_exists( 'Charitable_Donation' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   float $refund_amount
-		 * @param   string $message
-		 * @return  void
+		 * @param  float  $refund_amount
+		 * @param  string $message
+		 * @return void
 		 */
 		public function process_refund( $refund_amount, $message = '' ) {
 			$campaign_donations = $this->get_campaign_donations();
 
 			$refund_log = get_post_meta( $this->ID, 'donation_refund', true );
 
-			$total_refund = isset( $refund_log['total_refund'] ) ? $refund_log['total_refund'] : 0;
+			$total_refund         = isset( $refund_log['total_refund'] ) ? $refund_log['total_refund'] : 0;
 			$refunds_per_campaign = isset( $refund_log['campaign_refunds'] ) ? $refund_log['campaign_refunds'] : array();
 
 			foreach ( $this->get_campaign_donations() as $campaign_donation ) {
@@ -78,16 +78,17 @@ if ( ! class_exists( 'Charitable_Donation' ) ) :
 			}
 
 			$refund_log = array(
-				'time' => time(),
-				'message' => $message,
+				'time'             => time(),
+				'message'          => $message,
 				'campaign_refunds' => $refunds_per_campaign,
-				'total_refund' => $total_refund,
+				'total_refund'     => $total_refund,
 			);
 
 			update_post_meta( $this->ID, 'donation_refund', $refund_log );
 
 			$this->update_status( 'charitable-refunded' );
 		}
+
 	}
 
 endif;
