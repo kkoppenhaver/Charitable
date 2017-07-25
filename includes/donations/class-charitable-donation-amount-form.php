@@ -53,7 +53,7 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		protected function attach_hooks_and_filters() {
 			parent::attach_hooks_and_filters();
@@ -69,7 +69,7 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  array[]
+		 * @return array[]
 		 */
 		public function get_fields() {
 			return $this->get_donation_fields();
@@ -80,10 +80,9 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 		 *
 		 * @since 1.4.4
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 */
 		public function validate_submission() {
-
 			/* If we have already validated the submission, return the value. */
 			if ( $this->validated ) {
 				return $this->valid;
@@ -98,7 +97,6 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 			$this->valid = apply_filters( 'charitable_validate_donation_amount_form_submission', $this->valid, $this );
 
 			return $this->valid;
-
 		}
 
 		/**
@@ -106,7 +104,7 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		public function get_donation_values() {
 			$submitted = $this->get_submitted_values();
@@ -124,9 +122,9 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   int     $campaign_id
-		 * @param   int     $amount
-		 * @return  void
+		 * @param  int  $campaign_id
+		 * @param  int  $amount
+		 * @return void
 		 */
 		public function redirect_after_submission( $campaign_id, $amount ) {
 			if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
@@ -151,10 +149,9 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function render() {
-
 			/* Load the script if it hasn't been loaded yet. */
 			if ( ! wp_script_is( 'charitable-script', 'enqueued' ) ) {
 
@@ -171,6 +168,7 @@ if ( ! class_exists( 'Charitable_Donation_Amount_Form' ) ) :
 				'form_id'  => 'charitable-donation-amount-form',
 			) );
 		}
+
 	}
 
 endif;
