@@ -19,8 +19,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * @since 1.0.0
  *
- * @param   int     $campaign_id
- * @return  Charitable_Campaign
+ * @param  int                 $campaign_id
+ * @return Charitable_Campaign
  */
 function charitable_get_campaign( $campaign_id ) {
 	return new Charitable_Campaign( $campaign_id ); // @todo FILTER this
@@ -31,7 +31,7 @@ function charitable_get_campaign( $campaign_id ) {
  *
  * @since 1.0.0
  *
- * @return  Charitable_Campaign
+ * @return Charitable_Campaign
  */
 function charitable_get_current_campaign() {
 	return charitable_get_request()->get_current_campaign();
@@ -42,7 +42,7 @@ function charitable_get_current_campaign() {
  *
  * @since 1.0.0
  *
- * @return  int
+ * @return int
  */
 function charitable_get_current_campaign_id() {
 	return charitable_get_request()->get_current_campaign_id();
@@ -53,8 +53,8 @@ function charitable_get_current_campaign_id() {
  *
  * @since 1.0.0
  *
- * @param   int     $campaign_id
- * @return  boolean
+ * @param  int     $campaign_id
+ * @return boolean
  */
 function charitable_is_current_campaign_creator( $campaign_id = null ) {
 	if ( is_null( $campaign_id ) ) {
