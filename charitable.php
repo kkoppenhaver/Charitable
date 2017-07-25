@@ -68,7 +68,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 
 		/**
 		 * The absolute path to this plugin's directory.
-		 * 
+		 *
 		 * @var     string
 		 */
 		private $directory_path;
@@ -493,7 +493,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 			return $this->endpoints;
 		}
 
-		/*
+		/**
 		 * Load plugin compatibility files on plugins_loaded hook.
 		 *
 		 * @return  void
