@@ -18,9 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * @since 1.0.0
  *
- * @param   string $recipient_type The ID of the recipient type we're registering.
- * @param   array  $args           Set of arguments defining that recipient type.
- * @return  void
+ * @param  string $recipient_type The ID of the recipient type we're registering.
+ * @param  array  $args           Set of arguments defining that recipient type.
+ * @return void
  */
 function charitable_register_recipient_type( $recipient_type, $args = array() ) {
 	Charitable_Recipient_Types::get_instance()->register( $recipient_type, $args );
@@ -31,7 +31,7 @@ function charitable_register_recipient_type( $recipient_type, $args = array() ) 
  *
  * @since 1.0.0
  *
- * @return  array
+ * @return array
  */
 function charitable_get_recipient_types() {
 	return Charitable_Recipient_Types::get_instance()->get_types();
@@ -42,8 +42,8 @@ function charitable_get_recipient_types() {
  *
  * @since 1.0.0
  *
- * @param   string $recipient_type The recipient type we want to retrieve.
- * @return  array|false
+ * @param  string      $recipient_type The recipient type we want to retrieve.
+ * @return array|false
  */
 function charitable_get_recipient_type( $recipient_type ) {
 	$recipient_types = charitable_get_recipient_types();
