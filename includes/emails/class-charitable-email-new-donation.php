@@ -42,7 +42,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   mixed[]  $objects
+		 * @param mixed[] $objects
 		 */
 		public function __construct( $objects = array() ) {
 			parent::__construct( $objects );
@@ -55,7 +55,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		 *
 		 * @since 1.0.3
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public static function get_email_id() {
 			return self::ID;
@@ -66,8 +66,8 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   int     $donation_id
-		 * @return  boolean
+		 * @param  int     $donation_id
+		 * @return boolean
 		 */
 		public static function send_with_donation_id( $donation_id ) {
 			if ( ! charitable_get_helper( 'emails' )->is_enabled_email( self::get_email_id() ) ) {
@@ -116,7 +116,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_recipient() {
 			return get_option( 'admin_email' );
@@ -127,7 +127,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_subject() {
 			return __( 'You have received a new donation', 'charitable' );
@@ -138,7 +138,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_headline() {
 			return apply_filters( 'charitable_email_donation_receipt_default_headline', __( 'New Donation', 'charitable' ), $this );
@@ -149,12 +149,12 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_body() {
 			ob_start();
 ?>
-<p><?php _e( '[charitable_email show=donor] has just made a donation!', 'charitable' ) ?></p>
+<p><?php _e( '[charitable_email show=donor] has just made a donation!', 'charitable' ); ?></p>
 <p><strong>Summary</strong><br />
 [charitable_email show=donation_summary]</p>
 <?php
@@ -162,6 +162,7 @@ if ( ! class_exists( 'Charitable_Email_New_Donation' ) ) :
 
 			return apply_filters( 'charitable_email_new_donation_default_body', $body, $this );
 		}
+
 	}
 
 endif;
