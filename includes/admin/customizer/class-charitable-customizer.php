@@ -72,7 +72,7 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 		}
 
 		/**
-		 * Theme customization.
+		 * Plugin customization.
 		 *
 		 * @param   WP_Customize_Manager $wp_customize The customize manager object.
 		 * @return  void
@@ -145,7 +145,7 @@ if ( ! class_exists( 'Charitable_Customizer' ) ) :
 						),
 					),
 				);
-			}
+			}//end if
 
 			$fields = apply_filters( 'charitable_customizer_fields', $fields );
 

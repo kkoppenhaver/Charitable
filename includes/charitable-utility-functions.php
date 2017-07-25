@@ -41,8 +41,8 @@ function charitable_priority_sort( $a, $b ) {
  *
  * Full credit to Pippin Williamson and the EDD team.
  *
- * @param 	string  $function 	Name of the function.
- * @return 	bool 				Whether or not function is disabled.
+ * @param 	string $function Name of the function.
+ * @return 	bool 			 Whether or not function is disabled.
  * @since 	1.0.0
  */
 function charitable_is_func_disabled( $function ) {
@@ -54,9 +54,9 @@ function charitable_is_func_disabled( $function ) {
 /**
  * Verify a nonce. This also just ensures that the nonce is set.
  *
- * @param   string $nonce
- * @param   string $action
- * @param   array  $request_args
+ * @param   string $nonce        Nonce name.
+ * @param   string $action 		 Nonce action.
+ * @param   array  $request_args $_GET or $_POST vars.
  * @return  boolean
  * @since   1.0.0
  */
@@ -95,7 +95,7 @@ function charitable_get_timezone_id() {
 	$timezone = timezone_name_from_abbr( '', $utc_offset );
 
 	/* Last try, guess timezone string manually */
-	if ( $timezone === false ) {
+	if ( false === $timezone ) {
 
 		$is_dst = date( 'I' );
 
@@ -113,13 +113,40 @@ function charitable_get_timezone_id() {
 }
 
 /**
+ * Given an array and a separate array of keys, returns a new array that only contains the
+ * elements in the original array with the specified keys.
+ *
+ * @since   1.5.0
+ *
+ * @param   array $original_array The original array we need to pull a subset from.
+ * @param 	array $subset_keys    The keys to use for our subset.
+ * @return  array
+ */
+function charitable_array_subset( array $original_array, $subset_keys ) {
+	return array_intersect_key( $original_array, array_flip( $subset_keys ) );
+}
+
+/**
  * Ensure a number is a positive integer.
  *
+ * @param 	mixed $i Number received.
  * @return  int|false
  * @since   1.0.0
  */
 function charitable_validate_absint( $i ) {
 	return filter_var( $i, FILTER_VALIDATE_INT, array( 'min_range' => 1 ) );
+}
+
+/**
+ * Sanitize any checkbox value.
+ *
+ * @since   1.5.0
+ *
+ * @param 	mixed $value Value set for checkbox, or false.
+ * @return  boolean
+ */
+function charitable_sanitize_checkbox( $value = false ) {
+	return intval( true == $value || 'on' == $value );
 }
 
 /**
