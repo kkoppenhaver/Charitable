@@ -14,6 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 $campaign = $view_args['campaign'];
 
 ?>
-<div class="campaign-description">  
-	<?php echo $campaign->description ?>
+<div class="campaign-description">
+	<?php echo $campaign->description; ?>
 </div>
