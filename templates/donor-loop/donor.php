@@ -18,7 +18,7 @@ if ( ! array_key_exists( 'donor', $view_args ) ) {
 	return;
 }
 
-$donor  	 = $view_args['donor'];
+$donor       = $view_args['donor'];
 $campaign_id = $view_args['campaign'];
 
 ?>
@@ -29,8 +29,8 @@ $campaign_id = $view_args['campaign'];
 	 *
 	 * @since 	1.5.0
 	 *
-	 * @param 	Charitable_Donor $donor     The Donor object.
-	 * @param 	array 			 $view_args View arguments.
+	 * @param Charitable_Donor $donor     The Donor object.
+	 * @param array            $view_args View arguments.
 	 */
 	do_action( 'charitable_donor_loop_before_donor', $donor, $view_args );
 
@@ -39,15 +39,15 @@ $campaign_id = $view_args['campaign'];
 	endif;
 
 	if ( $view_args['show_name'] ) : ?>
-		<p class="donor-name"><?php echo $donor->get_name() ?></p>
+		<p class="donor-name"><?php echo $donor->get_name(); ?></p>
 	<?php endif;
 
 	if ( $view_args['show_location'] && strlen( $donor->get_location() ) ) : ?>
-		<div class="donor-location"><?php echo $donor->get_location() ?></div>
+		<div class="donor-location"><?php echo $donor->get_location(); ?></div>
 	<?php endif;
 
 	if ( $view_args['show_amount'] ) : ?>
-		<div class="donor-donation-amount"><?php echo charitable_format_money( $donor->get_amount( $campaign_id ) ) ?></div>
+		<div class="donor-donation-amount"><?php echo charitable_format_money( $donor->get_amount( $campaign_id ) ); ?></div>
 	<?php endif;
 
 	/**
@@ -55,10 +55,9 @@ $campaign_id = $view_args['campaign'];
 	 *
 	 * @since 	1.5.0
 	 *
-	 * @param 	Charitable_Donor $donor     The Donor object.
-	 * @param 	array 			 $view_args View arguments.
+	 * @param Charitable_Donor $donor     The Donor object.
+	 * @param array            $view_args View arguments.
 	 */
 	do_action( 'charitable_donor_loop_after_donor', $donor, $view_args );
 	?>
-</li><!-- .donor-<?php echo $donor->donor_id ?> -->
-
+</li><!-- .donor-<?php echo $donor->donor_id; ?> -->
