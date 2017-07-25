@@ -22,7 +22,7 @@ if ( ! class_exists( 'Charitable_Addons' ) ) :
 	class Charitable_Addons {
 
 		/**
-		 * Load addons. This is executed before the charitable_start hook 
+		 * Load addons. This is executed before the charitable_start hook
 		 * to allow addons to hook into that.
 		 *
 		 * @since 1.0.0
@@ -35,7 +35,7 @@ if ( ! class_exists( 'Charitable_Addons' ) ) :
 				return;
 			}
 
-			new Charitable_Addons();				
+			new Charitable_Addons();
 		}
 
 		/**
@@ -43,7 +43,7 @@ if ( ! class_exists( 'Charitable_Addons' ) ) :
 		 *
 		 * @since 1.0.0
 		 */
-		private function __construct() {		
+		private function __construct() {
 			add_action( 'charitable_activate_addon', array( $this, 'activate_addon' ) );
 			add_action( 'after_setup_theme', array( $this, 'load_addons' ) );
 
@@ -53,7 +53,7 @@ if ( ! class_exists( 'Charitable_Addons' ) ) :
 		/**
 		 * Activate an addon.
 		 *
-		 * This is programatically called on the charitable_activate_addon hook, 
+		 * This is programatically called on the charitable_activate_addon hook,
 		 * triggered by a plugin.
 		 *
 		 * @since 1.0.0
@@ -66,7 +66,7 @@ if ( ! class_exists( 'Charitable_Addons' ) ) :
 				return;
 			}
 
-			$filepath = $this->get_addon_filepath( $addon ); 
+			$filepath = $this->get_addon_filepath( $addon );
 
 			/* If we cannot read the file, bounce back with an error. */
 			if ( ! file_exists( $filepath ) || ! is_readable( $filepath ) ) {
@@ -74,7 +74,7 @@ if ( ! class_exists( 'Charitable_Addons' ) ) :
 				return;
 			}
 
-			$this->load_addon_dependencies();	
+			$this->load_addon_dependencies();
 
 			require_once( $filepath );
 
@@ -98,7 +98,7 @@ if ( ! class_exists( 'Charitable_Addons' ) ) :
 				return;
 			}
 
-			$this->load_addon_dependencies();		
+			$this->load_addon_dependencies();
 
 			foreach ( $active_addons as $addon ) {
 
