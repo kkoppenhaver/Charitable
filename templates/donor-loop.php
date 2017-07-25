@@ -34,8 +34,8 @@ if ( 'all' == $campaign_id ) {
 
 $orientation = array_key_exists( 'orientation', $view_args ) ? $view_args['orientation'] : 'vertical';
 
-if ( $donors->count() ) : ?>	
-	<ol class="donors-list donors-list-<?php echo $orientation ?>">
+if ( $donors->count() ) : ?>
+	<ol class="donors-list donors-list-<?php echo $orientation; ?>">
 		<?php
 		foreach ( $donors as $donor ) :
 
@@ -47,5 +47,5 @@ if ( $donors->count() ) : ?>
 		?>
 	</ol>
 <?php else : ?>
-	<p><?php _e( 'No donors yet. Be the first!', 'charitable' ) ?></p>
+	<p><?php _e( 'No donors yet. Be the first!', 'charitable' ); ?></p>
 <?php endif;
