@@ -52,7 +52,7 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public function get_name() {
 			return $this->name;
@@ -63,7 +63,7 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public function get_default_label() {
 			return isset( $this->defaults['label'] ) ? $this->defaults['label'] : $this->get_name();
@@ -74,22 +74,22 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   array   $settings
-		 * @return  array
+		 * @param  array $settings
+		 * @return array
 		 */
 		public function default_gateway_settings( $settings ) {
 			return array(
 				'section_gateway' => array(
-					'type'      => 'heading',
-					'title'     => $this->get_name(),
-					'priority'  => 2,
+					'type'     => 'heading',
+					'title'    => $this->get_name(),
+					'priority' => 2,
 				),
-				'label' => array(
-					'type'      => 'text',
-					'title'     => __( 'Gateway Label', 'charitable' ),
-					'help'      => __( 'The label that will be shown to donors on the donation form.', 'charitable' ),
-					'priority'  => 4,
-					'default'   => $this->get_default_label(),
+				'label'           => array(
+					'type'     => 'text',
+					'title'    => __( 'Gateway Label', 'charitable' ),
+					'help'     => __( 'The label that will be shown to donors on the donation form.', 'charitable' ),
+					'priority' => 4,
+					'default'  => $this->get_default_label(),
 				),
 			);
 		}
@@ -99,7 +99,7 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		public function get_settings() {
 			return charitable_get_option( 'gateways_' . $this->get_gateway_id(), array() );
@@ -110,7 +110,7 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public function get_label() {
 			return charitable_get_option( 'label', $this->get_default_label(), $this->get_settings() );
@@ -121,8 +121,8 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   string $setting
-		 * @return  mixed
+		 * @param  string $setting
+		 * @return mixed
 		 */
 		public function get_value( $setting ) {
 			$default = isset( $this->defaults[ $setting ] ) ? $this->defaults[ $setting ] : '';
@@ -136,8 +136,8 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 		 *
 		 * @since 1.3.0
 		 *
-		 * @param   string $feature string The name of a feature to test support for.
-		 * @return  bool True if the gateway supports the feature, false otherwise.
+		 * @param  string $feature string The name of a feature to test support for.
+		 * @return bool            True if the gateway supports the feature, false otherwise.
 		 */
 		public function supports( $feature ) {
 			$supported = in_array( $feature, $this->supports ) ? true : false;
@@ -158,25 +158,25 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  array[]
+		 * @return array[]
 		 */
 		public function get_credit_card_fields() {
 			return apply_filters( 'charitable_credit_card_fields', array(
-				'cc_name' => array(
+				'cc_name'       => array(
 					'label'     => __( 'Name on Card', 'charitable' ),
 					'type'      => 'text',
 					'required'  => true,
 					'priority'  => 2,
 					'data_type' => 'gateway',
 				),
-				'cc_number' => array(
+				'cc_number'     => array(
 					'label'     => __( 'Card Number', 'charitable' ),
 					'type'      => 'text',
 					'required'  => true,
 					'priority'  => 4,
 					'data_type' => 'gateway',
 				),
-				'cc_cvc' => array(
+				'cc_cvc'        => array(
 					'label'     => __( 'CVV Number', 'charitable' ),
 					'type'      => 'text',
 					'required'  => true,
@@ -198,9 +198,9 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   mixed $result
-		 * @param   int $donation_id
-		 * @return  array
+		 * @param  mixed $result
+		 * @param  int   $donation_id
+		 * @return array
 		 */
 		public static function redirect_to_processing( $result, $donation_id ) {
 			return array(
@@ -208,7 +208,7 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 					'donation_id' => $donation_id,
 					)
 				),
-				'safe' => true,
+				'safe'     => true,
 			);
 		}
 
@@ -217,7 +217,7 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 *
 		 * @deprecated
 		 */
@@ -231,8 +231,8 @@ if ( ! class_exists( 'Charitable_Gateway' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   array   $settings
-		 * @return  array
+		 * @param  array $settings
+		 * @return array
 		 */
 		abstract public function gateway_settings( $settings );
 	}
