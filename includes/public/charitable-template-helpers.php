@@ -19,9 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * @since 1.0.0
  *
- * @param 	string|string[] $template_name A single template name or an ordered array of template.
- * @param 	mixed[] $args 				   Optional array of arguments to pass to the view.
- * @return 	Charitable_Template
+ * @param  string|string[]     $template_name A single template name or an ordered array of template.
+ * @param  mixed[]             $args          Optional array of arguments to pass to the view.
+ * @return Charitable_Template
  */
 function charitable_template( $template_name, array $args = array() ) {
 	if ( empty( $args ) ) {
@@ -40,11 +40,11 @@ function charitable_template( $template_name, array $args = array() ) {
  *
  * @since 1.0.0
  *
- * @param 	string|string[] $template
- * @return  string The template path if the template exists. Otherwise, return default.
+ * @param  string|string[] $template
+ * @return string                    The template path if the template exists. Otherwise, return default.
  */
 function charitable_get_template_path( $template, $default = '' ) {
-	$t = new Charitable_Template( $template, false );
+	$t    = new Charitable_Template( $template, false );
 	$path = $t->locate_template();
 
 	if ( ! file_exists( $path ) ) {
@@ -63,8 +63,8 @@ function charitable_get_template_path( $template, $default = '' ) {
  *
  * @since 1.2.0
  *
- * @param   string $css The block of CSS to be compressed.
- * @return  string The compressed CSS
+ * @param  string $css The block of CSS to be compressed.
+ * @return string      The compressed CSS
  */
 function charitable_compress_css( $css ) {
 	/* 1. Remove comments */
@@ -84,8 +84,8 @@ function charitable_compress_css( $css ) {
  *
  * @since 1.2.3
  *
- * @param   mixed[] $view_args Optional. If called by the shortcode, this will contain the arguments passed to the shortcode.
- * @return  mixed[]
+ * @param  mixed[] $view_args Optional. If called by the shortcode, this will contain the arguments passed to the shortcode.
+ * @return mixed[]
  */
 function charitable_campaign_loop_args( $view_args = array() ) {
 	$defaults = array(
@@ -102,8 +102,8 @@ function charitable_campaign_loop_args( $view_args = array() ) {
  *
  * @since 1.3.0
  *
- * @param   array $field Array defining the form field attributes.
- * @return  string       The formatted HTML-safe attributes
+ * @param  array  $field Array defining the form field attributes.
+ * @return string        The formatted HTML-safe attributes
  * @see     Charitable_Form::render_field()
  */
 function charitable_get_arbitrary_attributes( $field ) {
@@ -121,8 +121,8 @@ function charitable_get_arbitrary_attributes( $field ) {
 	$output = '';
 
 	foreach ( $field['attrs'] as $key => $value ) {
-		$escaped_value = esc_attr( $value );
-		$output .= " $key=\"$escaped_value\" ";
+		$escaped_value  = esc_attr( $value );
+		$output        .= " $key=\"$escaped_value\" ";
 	}
 
 	return apply_filters( 'charitable_arbitrary_field_attributes', $output );
@@ -137,7 +137,7 @@ function charitable_get_arbitrary_attributes( $field ) {
  *
  * @since 1.4.11
  *
- * @return 	boolean
+ * @return boolean
  */
 function charitable_is_main_loop() {
 	return is_single() && in_the_loop() && is_main_query();
@@ -150,7 +150,7 @@ function charitable_is_main_loop() {
  * @global 	WP 		$wp
  * @since 1.0.0
  *
- * @return  string
+ * @return string
  */
 function charitable_get_current_url() {
 	return home_url( add_query_arg( null, null ) );
@@ -161,7 +161,7 @@ function charitable_get_current_url() {
  *
  * @since 1.0.0
  *
- * @return  string
+ * @return string
  */
 function charitable_get_login_redirect_url() {
 	if ( isset( $_REQUEST['redirect_to'] ) ) {
