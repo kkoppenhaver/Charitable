@@ -63,10 +63,10 @@ if ( ! class_exists( 'Charitable_Deprecated' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @param   string      $function      The deprecated function.
-		 * @param   string      $version       The version when this argument became deprecated.
-		 * @param   string|null $extra_message An extra message to include for the notice.
-		 * @return  boolean Whether the notice was logged.
+		 * @param  string      $function      The deprecated function.
+		 * @param  string      $version       The version when this argument became deprecated.
+		 * @param  string|null $extra_message An extra message to include for the notice.
+		 * @return boolean                    Whether the notice was logged.
 		 */
 		public function deprecated_argument( $function, $version, $extra_message = null ) {
 			if ( ! $this->is_logging_enabled() ) {
@@ -89,10 +89,10 @@ if ( ! class_exists( 'Charitable_Deprecated' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @param   string      $function    The function that has been deprecated.
-		 * @param   string      $version     The version of Charitable where the function was deprecated.
-		 * @param   string|null $replacement Optional. The function to use instead.
-		 * @return  boolean Whether the notice was logged.
+		 * @param  string      $function    The function that has been deprecated.
+		 * @param  string      $version     The version of Charitable where the function was deprecated.
+		 * @param  string|null $replacement Optional. The function to use instead.
+		 * @return boolean                  Whether the notice was logged.
 		 */
 		public function deprecated_function( $function, $version, $replacement = null ) {
 			if ( ! $this->is_logging_enabled() ) {
@@ -115,10 +115,10 @@ if ( ! class_exists( 'Charitable_Deprecated' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @param   string $function
-		 * @param   string $message
-		 * @param   string $version
-		 * @return  boolean Whether the notice was logged.
+		 * @param  string  $function
+		 * @param  string  $message
+		 * @param  string  $version
+		 * @return boolean           Whether the notice was logged.
 		 */
 		public function doing_it_wrong( $function, $message, $version ) {
 			if ( ! $this->is_logging_enabled() ) {
@@ -139,7 +139,7 @@ if ( ! class_exists( 'Charitable_Deprecated' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 */
 		private function is_logging_enabled() {
 			if ( ! isset( self::$logging ) ) {
@@ -148,6 +148,7 @@ if ( ! class_exists( 'Charitable_Deprecated' ) ) :
 
 			return self::$logging;
 		}
+
 	}
 
 endif;
