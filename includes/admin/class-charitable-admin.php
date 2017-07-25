@@ -256,7 +256,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 
 			}
 
-			$notices['release-1410-recurring-donations'] = sprintf( __( "<strong>NEW:</strong> Supercharge your online fundraising with Recurring Donations. <a href='%s'>Read more</a>", 'charitable' ), 
+			$notices['release-1410-recurring-donations'] = sprintf( __( "<strong>NEW:</strong> Supercharge your online fundraising with Recurring Donations. <a href='%s'>Read more</a>", 'charitable' ),
 				'https://www.wpcharitable.com/supercharge-your-online-fundraising-in-2017-with-recurring-donations/?utm_source=notices&utm_medium=wordpress-dashboard&utm_campaign=recurring-donations-release-post&utm_content=release-1410'
 			);
 
