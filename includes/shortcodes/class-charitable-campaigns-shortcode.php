@@ -24,23 +24,23 @@ if ( ! class_exists( 'Charitable_Campaigns_Shortcode' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param  array $atts The user-defined shortcode attributes.
+		 * @param  array  $atts The user-defined shortcode attributes.
 		 * @return string
 		 */
 		public static function display( $atts ) {
 			$default = array(
-				'id' 		   	   => '',
-				'orderby' 		   => 'post_date',
-				'order' 		   => '',
-				'number' 		   => get_option( 'posts_per_page' ),
-				'category' 		   => '',
-				'tag' 			   => '',
+				'id'               => '',
+				'orderby'          => 'post_date',
+				'order'            => '',
+				'number'           => get_option( 'posts_per_page' ),
+				'category'         => '',
+				'tag'              => '',
 				'creator'          => '',
 				'exclude'          => '',
 				'include_inactive' => false,
-				'columns' 		   => 2,
-				'button' 		   => 'donate',
-				'responsive' 	   => 1,
+				'columns'          => 2,
+				'button'           => 'donate',
+				'responsive'       => 1,
 			);
 
 			$args              = shortcode_atts( $default, $atts, 'campaigns' );
@@ -53,10 +53,10 @@ if ( ! class_exists( 'Charitable_Campaigns_Shortcode' ) ) :
 			 *
 			 * @since 	1.0.0
 			 *
-			 * @param 	false|Charitable_Template The template. If false (the default), we will use our own template.
-			 * @param 	array $args               All the parsed arguments.
-	         * @return 	false|Charitable_Template
-	         */
+			 * @param  false|Charitable_Template       The template. If false (the default), we will use our own template.
+			 * @param  array                     $args All the parsed arguments.
+			 * @return false|Charitable_Template
+			 */
 			$template = apply_filters( 'charitable_campaigns_shortcode_template', false, $args );
 
 			/* Fall back to default Charitable_Template if no template returned or if template was not object of 'Charitable_Template' class. */
@@ -73,10 +73,10 @@ if ( ! class_exists( 'Charitable_Campaigns_Shortcode' ) ) :
 			 *
 			 * @since 	1.0.0
 			 *
-			 * @param 	array $view_args The arguments to pass.
-			 * @param 	array $args      All the parsed arguments.
-	         * @return 	array
-	         */
+			 * @param  array $view_args The arguments to pass.
+			 * @param  array $args      All the parsed arguments.
+			 * @return array
+			 */
 			$view_args = apply_filters( 'charitable_campaigns_shortcode_view_args', charitable_array_subset( $args, array( 'campaigns', 'columns', 'button', 'responsive' ) ), $args );
 
 			$template->set_view_args( $view_args );
@@ -90,10 +90,10 @@ if ( ! class_exists( 'Charitable_Campaigns_Shortcode' ) ) :
 			 *
 			 * @since 	1.0.0
 			 *
-			 * @param 	string $content The content to be displayed.
-			 * @param 	array  $args    All the parsed arguments.
-	         * @return 	string
-	         */
+			 * @param  string $content The content to be displayed.
+			 * @param  array  $args    All the parsed arguments.
+			 * @return string
+			 */
 			return apply_filters( 'charitable_campaigns_shortcode', ob_get_clean(), $args );
 		}
 
@@ -102,7 +102,7 @@ if ( ! class_exists( 'Charitable_Campaigns_Shortcode' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param  array $args The query arguments to be used to retrieve campaigns.
+		 * @param  array    $args The query arguments to be used to retrieve campaigns.
 		 * @return WP_Query
 		 */
 		public static function get_campaigns( $args ) {
@@ -154,15 +154,15 @@ if ( ! class_exists( 'Charitable_Campaigns_Shortcode' ) ) :
 				$query_args['meta_query'] = array(
 					'relation' => 'OR',
 					array(
-						'key'       => '_campaign_end_date',
-						'value'     => date( 'Y-m-d H:i:s' ),
-						'compare'   => '>=',
-						'type'      => 'datetime',
+						'key'     => '_campaign_end_date',
+						'value'   => date( 'Y-m-d H:i:s' ),
+						'compare' => '>=',
+						'type'    => 'datetime',
 					),
 					array(
-						'key'       => '_campaign_end_date',
-						'value'     => 0,
-						'compare'   => '=',
+						'key'     => '_campaign_end_date',
+						'value'   => 0,
+						'compare' => '=',
 					),
 				);
 			}
@@ -198,6 +198,7 @@ if ( ! class_exists( 'Charitable_Campaigns_Shortcode' ) ) :
 
 			return Charitable_Campaigns::query( $query_args );
 		}
+
 	}
 
 endif;
