@@ -33,7 +33,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	mixed $benefactor Benefactor ID.
+		 * @param mixed $benefactor Benefactor ID.
 		 */
 		public function __construct( $benefactor ) {
 			if ( ! is_object( $benefactor ) ) {
@@ -46,9 +46,9 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	Object $benefactor Benefactor object.
-		 * @param 	string $extension  Extension generating the benefactor object.
-		 * @return  Charitable_Benefactor
+		 * @param  Object                $benefactor Benefactor object.
+		 * @param  string                $extension  Extension generating the benefactor object.
+		 * @return Charitable_Benefactor
 		 */
 		public static function get_object( $benefactor, $extension ) {
 			$class = apply_filters( 'charitable_benefactor_class_' . $extension, false );
@@ -69,7 +69,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public function __toString() {
 			return apply_filters( 'charitable_benefactor_summary', $this->get_contribution_description(), $this );
@@ -80,8 +80,8 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	string $key Key of the field to get.
-		 * @return 	string
+		 * @param  string $key Key of the field to get.
+		 * @return string
 		 */
 		public function __get( $key ) {
 			return isset( $this->benefactor->$key ) ? $this->benefactor->$key : null;
@@ -92,7 +92,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return 	Object
+		 * @return Object
 		 */
 		public function get_benefactor() {
 			return $this->benefactor;
@@ -101,7 +101,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		/**
 		 * Return a one-line description of the contribution.
 		 *
-		 * @return  string
+		 * @return string
 		 * @abstract
 		 * @since 1.0.0
 		 */
@@ -112,7 +112,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public function get_contribution_amount() {
 			if ( $this->benefactor->contribution_amount_is_percentage ) {
@@ -129,7 +129,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		 *
 		 * @since 1.2.0
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 */
 		public function is_active() {
 			return ! $this->is_expired;
@@ -140,7 +140,7 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		 *
 		 * @since 1.4.6
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 */
 		public function is_expired() {
 			return '0000-00-00 00:00:00' != $this->benefactor->date_deactivated && strtotime( $this->benefactor->date_deactivated ) < time();
@@ -151,9 +151,9 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   float $price    Price of the item.
-		 * @param   int   $quantity Number of items.
-		 * @return  float
+		 * @param  float $price    Price of the item.
+		 * @param  int   $quantity Number of items.
+		 * @return float
 		 */
 		protected function calculate_line_item_percent_contribution( $price, $quantity ) {
 			return $price * $quantity * ( $this->benefactor->contribution_amount / 100 );
@@ -164,8 +164,8 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   int $quantity The number of items.
-		 * @return  float
+		 * @param  int   $quantity The number of items.
+		 * @return float
 		 */
 		protected function calculate_line_item_fixed_contribution( $quantity = 1 ) {
 			return $quantity * $this->benefactor->contribution_amount;
@@ -178,11 +178,12 @@ if ( ! class_exists( 'Charitable_Benefactor' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 */
 		protected function benefit_is_per_cart() {
 			return false === ( $this->benefactor->contribution_amount_is_per_item || $this->benefactor->contribution_amount_is_percentage );
 		}
+
 	}
 
 endif;
