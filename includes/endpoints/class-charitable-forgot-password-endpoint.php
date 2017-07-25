@@ -31,7 +31,7 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Endpoint' ) ) :
 		 *
 		 * @since 1.5.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public static function get_endpoint_id() {
 			return self::ID;
@@ -43,10 +43,8 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Endpoint' ) ) :
 		 * @since 1.5.0
 		 */
 		public function setup_rewrite_rules() {
-
 			add_rewrite_endpoint( 'forgot_password', EP_PERMALINK );
 			add_rewrite_rule( '(.?.+?)(?:/([0-9]+))?/forgot-password/?$', 'index.php?pagename=$matches[1]&page=$matches[2]&forgot_password=1', 'top' );
-
 		}
 
 		/**
@@ -55,11 +53,10 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Endpoint' ) ) :
 		 * @global 	WP_Rewrite $wp_rewrite
 		 * @since 1.5.0
 		 *
-		 * @param 	array      $args
-		 * @return  string
+		 * @param  array  $args
+		 * @return string
 		 */
 		public function get_page_url( $args = array() ) {
-
 			global $wp_rewrite;
 
 			$login_page = charitable_get_permalink( 'login_page' );
@@ -74,7 +71,6 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Endpoint' ) ) :
 			}
 
 			return esc_url_raw( add_query_arg( array( 'forgot_password' => 1 ), $login_page ) );
-
 		}
 
 		/**
@@ -83,11 +79,10 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Endpoint' ) ) :
 		 * @global  WP_Query $wp_query
 		 * @since 1.5.0
 		 *
-		 * @param 	array    $args
-		 * @return  boolean
+		 * @param  array   $args
+		 * @return boolean
 		 */
 		public function is_page( $args = array() ) {
-
 			global $wp_query;
 
 			$login_page = charitable_get_option( 'login_page', 'wp' );
@@ -98,7 +93,6 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Endpoint' ) ) :
 
 			return $wp_query->is_main_query()
 				&& array_key_exists( 'forgot_password', $wp_query->query_vars );
-
 		}
 
 		/**
@@ -106,11 +100,10 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Endpoint' ) ) :
 		 *
 		 * @since 1.5.0
 		 *
-		 * @param 	string $template The default template.
-		 * @return  string
+		 * @param  string $template The default template.
+		 * @return string
 		 */
 		public function get_template( $template ) {
-
 			if ( 'wp' == charitable_get_option( 'login_page', 'wp' ) ) {
 				return $template;
 			}
@@ -121,7 +114,6 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Endpoint' ) ) :
 			) );
 
 			return array( 'forgot-password-page.php', 'page.php', 'index.php' );
-
 		}
 
 		/**
@@ -129,11 +121,10 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Endpoint' ) ) :
 		 *
 		 * @since 1.5.0
 		 *
-		 * @param 	string $content
-		 * @return  string
+		 * @param  string $content
+		 * @return string
 		 */
 		public function get_content( $content ) {
-
 			ob_start();
 
 			if ( isset( $_GET['email_sent'] ) ) {
@@ -149,8 +140,8 @@ if ( ! class_exists( 'Charitable_Forgot_Password_Endpoint' ) ) :
 			}
 
 			return ob_get_clean();
-
 		}
+
 	}
 
 endif;
