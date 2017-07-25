@@ -60,7 +60,7 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @param   array $args User-defined shortcode attributes.
+		 * @param array $args User-defined shortcode attributes.
 		 */
 		public function __construct( $args = array() ) {
 			$this->id = uniqid();
@@ -73,8 +73,8 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	Charitable_Form $form The form object.
-		 * @return 	void
+		 * @param  Charitable_Form $form The form object.
+		 * @return void
 		 */
 		public function add_hidden_fields( $form ) {
 			$ret = parent::add_hidden_fields( $form );
@@ -84,8 +84,8 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 			}
 
 			?>
-			<input type="hidden" name="login" value="<?php echo esc_attr( $this->login ) ?>" autocomplete="off" />
-			<input type="hidden" name="key" value="<?php echo esc_attr( $this->key ) ?>" />
+			<input type="hidden" name="login" value="<?php echo esc_attr( $this->login ); ?>" autocomplete="off" />
+			<input type="hidden" name="key" value="<?php echo esc_attr( $this->key ); ?>" />
 			<?php
 		}
 
@@ -94,7 +94,7 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		public function get_fields() {
 			$fields = apply_filters( 'charitable_reset_password_fields', array(
@@ -130,10 +130,9 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  bool|WP_Error True: when finish. WP_Error on error
+		 * @return bool|WP_Error True: when finish. WP_Error on error
 		 */
 		public static function reset_password() {
-
 			$form = new Charitable_Reset_Password_Form();
 
 			if ( ! $form->validate_nonce() || ! $form->validate_honeypot() ) {
@@ -176,7 +175,6 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 			wp_safe_redirect( charitable_get_permalink( 'login_page' ) );
 
 			exit();
-
 		}
 
 		/**
@@ -184,10 +182,9 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		protected function parse_reset_key() {
-
 			$this->key   = null;
 			$this->login = null;
 
@@ -218,8 +215,8 @@ if ( ! class_exists( 'Charitable_Reset_Password_Form' ) ) :
 			/* Reset key / login is correct, display reset password form with hidden key / login values */
 			$this->key   = $key;
 			$this->login = $login;
-
 		}
+
 	}
 
 endif;
