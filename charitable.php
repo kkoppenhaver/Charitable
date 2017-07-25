@@ -68,7 +68,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 
 		/**
 		 * The absolute path to this plugin's directory.
-		 * 
+		 *
 		 * @var     string
 		 */
 		private $directory_path;
@@ -131,7 +131,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  Charitable
+		 * @return Charitable
 		 */
 		public static function get_instance() {
 			return self::$instance;
@@ -144,7 +144,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function start() {
 			/* If we've already started (i.e. run this function once before), do not pass go. */
@@ -174,7 +174,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		private function load_dependencies() {
 			$includes_path = $this->get_path( 'includes' );
@@ -334,7 +334,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		private function attach_hooks_and_filters() {
 			add_action( 'wpmu_new_blog', array( $this, 'maybe_activate_charitable_on_new_site' ) );
@@ -358,7 +358,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		private function maybe_start_admin() {
 			if ( ! is_admin() ) {
@@ -382,7 +382,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		private function maybe_start_public() {
 			if ( is_admin() ) {
@@ -405,7 +405,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.4.17
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 */
 		public function maybe_start_qunit() {
 			/* Skip out early if ?qunit isn't included in the request. */
@@ -432,7 +432,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		private function maybe_start_ajax() {
 			if ( false === ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
@@ -458,7 +458,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function charitable_start() {
 			do_action( 'charitable_start', $this );
@@ -469,7 +469,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function setup_endpoints() {
 			$api = $this->get_endpoints();
@@ -486,7 +486,6 @@ if ( ! class_exists( 'Charitable' ) ) :
 			$api->register( new Charitable_Profile_Endpoint );
 			$api->register( new Charitable_Reset_Password_Endpoint );
 			$api->register( new Charitable_Registration_Endpoint );
-
 		}
 
 		/**
@@ -494,7 +493,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @return  Charitable_Endpoints
+		 * @return Charitable_Endpoints
 		 */
 		public function get_endpoints() {
 			if ( is_null( $this->endpoints ) ) {
@@ -504,12 +503,12 @@ if ( ! class_exists( 'Charitable' ) ) :
 			return $this->endpoints;
 		}
 
-		/*
+		/**
 		 * Load plugin compatibility files on plugins_loaded hook.
 		 *
 		 * @since   1.4.18
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function load_plugin_compat_files() {
 			$includes_path = $this->get_path( 'includes' );
@@ -530,7 +529,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 			}
 
 			/* WP Rocket */
-			if ( defined( 'WP_ROCKET_VERSION' )  ) {
+			if ( defined( 'WP_ROCKET_VERSION' ) ) {
 				require_once( $includes_path . 'compat/charitable-wp-rocket-compat-functions.php' );
 			}
 
@@ -546,7 +545,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.1
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function charitable_install() {
 			$install = get_transient( 'charitable_install' );
@@ -569,7 +568,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  bool
+		 * @return bool
 		 */
 		public function is_start() {
 			return current_filter() == 'charitable_start';
@@ -580,7 +579,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  bool
+		 * @return bool
 		 */
 		public function started() {
 			return did_action( 'charitable_start' ) || current_filter() == 'charitable_start';
@@ -591,7 +590,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  bool
+		 * @return bool
 		 */
 		public function is_activation() {
 			return current_filter() == 'activate_charitable/charitable.php';
@@ -602,7 +601,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  bool
+		 * @return bool
 		 */
 		public function is_deactivation() {
 			return current_filter() == 'deactivate_charitable/charitable.php';
@@ -613,8 +612,8 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   mixed $object Object to be registered.
-		 * @return  void
+		 * @param  mixed $object Object to be registered.
+		 * @return void
 		 */
 		public function register_object( $object ) {
 			if ( ! is_object( $object ) ) {
@@ -631,8 +630,8 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   string $class The type of class you want to retrieve.
-		 * @return  mixed         The object if its registered. Otherwise false.
+		 * @param  string $class The type of class you want to retrieve.
+		 * @return mixed         The object if its registered. Otherwise false.
 		 */
 		public function get_registered_object( $class ) {
 			return isset( $this->registry[ $class ] ) ? $this->registry[ $class ] : false;
@@ -643,9 +642,9 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   string  $type          If empty, returns the path to the plugin.
-		 * @param   boolean $absolute_path If true, returns the file system path. If false, returns it as a URL.
-		 * @return  string
+		 * @param  string  $type          If empty, returns the path to the plugin.
+		 * @param  boolean $absolute_path If true, returns the file system path. If false, returns it as a URL.
+		 * @return string
 		 */
 		public function get_path( $type = '', $absolute_path = true ) {
 			$base = $absolute_path ? $this->directory_path : $this->directory_url;
@@ -688,7 +687,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public function get_version() {
 			$version = self::VERSION;
@@ -706,7 +705,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  Charitable_Public
+		 * @return Charitable_Public
 		 */
 		public function get_public() {
 			return $this->get_registered_object( 'Charitable_Public' );
@@ -717,7 +716,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  Charitable_Admin
+		 * @return Charitable_Admin
 		 */
 		public function get_admin() {
 			return $this->get_registered_object( 'Charitable_Admin' );
@@ -728,7 +727,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  Charitable_Request
+		 * @return Charitable_Request
 		 */
 		public function get_request() {
 			$request = $this->get_registered_object( 'Charitable_Request' );
@@ -746,8 +745,8 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   string $table The database table to retrieve.
-		 * @return  Charitable_DB
+		 * @param  string        $table The database table to retrieve.
+		 * @return Charitable_DB
 		 */
 		public function get_db_table( $table ) {
 			$tables = $this->get_tables();
@@ -778,7 +777,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  string[]
+		 * @return string[]
 		 */
 		private function get_tables() {
 			$default_tables = array(
@@ -794,11 +793,10 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.4.6
 		 *
-		 * @param 	int $blog_id
-		 * @return  boolean
+		 * @param  int     $blog_id
+		 * @return boolean
 		 */
 		public function maybe_activate_charitable_on_new_site( $blog_id ) {
-
 			if ( is_plugin_active_for_network( basename( $this->directory_path ) . '/charitable.php' ) ) {
 
 				switch_to_blog( $blog_id );
@@ -814,14 +812,13 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @see 	register_activation_hook
 		 *
-		 * @param 	boolean $network_wide Whether to enable the plugin for all sites in the network
+		 * @param boolean $network_wide Whether to enable the plugin for all sites in the network
 		 *                           	  or just the current site. Multisite only. Default is false.
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function activate( $network_wide = false ) {
-
 			require_once( $this->get_path( 'includes' ) . 'class-charitable-install.php' );
 
 			if ( is_multisite() && $network_wide ) {
@@ -850,7 +847,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function deactivate() {
 			require_once( $this->get_path( 'includes' ) . 'class-charitable-uninstall.php' );
@@ -862,7 +859,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function do_charitable_actions() {
 			if ( isset( $_REQUEST['charitable_action'] ) ) {
@@ -879,7 +876,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 * This class is specifically designed to be instantiated once. You can retrieve the instance using charitable()
 		 *
 		 * @since   1.0.0
-		 * @return  void
+		 * @return void
 		 */
 		public function __clone() {
 			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'charitable' ), '1.0.0' );
@@ -889,7 +886,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 		 * Disable unserializing of the class.
 		 *
 		 * @since   1.0.0
-		 * @return  void
+		 * @return void
 		 */
 		public function __wakeup() {
 			_doing_it_wrong( __FUNCTION__, __( 'Cheatin&#8217; huh?', 'charitable' ), '1.0.0' );
@@ -914,6 +911,7 @@ if ( ! class_exists( 'Charitable' ) ) :
 			charitable_get_deprecated()->deprecated_function( __METHOD__, '1.2.0', 'charitable_get_location_helper' );
 			return charitable_get_location_helper();
 		}
+
 	}
 
 	$charitable = new Charitable();
