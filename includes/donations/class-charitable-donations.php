@@ -26,8 +26,8 @@ if ( ! class_exists( 'Charitable_Donation_Query' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	array $args Query arguments.
-		 * @return 	WP_Query
+		 * @param  array    $args Query arguments.
+		 * @return WP_Query
 		 */
 		public static function query( $args = array() ) {
 			$defaults = array(
@@ -46,14 +46,14 @@ if ( ! class_exists( 'Charitable_Donation_Query' ) ) :
 		 * @global 	WPDB   $wpdb
 		 * @since 1.0.0
 		 *
-		 * @param 	string $post_type Type of post to count.
-		 * @return 	int
+		 * @param  string $post_type Type of post to count.
+		 * @return int
 		 */
 		public static function count_all( $post_type = 'donation' ) {
 			global $wpdb;
 
-			$sql = "SELECT COUNT( * ) 
-					FROM $wpdb->posts 
+			$sql = "SELECT COUNT( * )
+					FROM $wpdb->posts
 					WHERE post_type = %s";
 
 			return $wpdb->get_var( $wpdb->prepare( $sql, $post_type ) );
@@ -65,8 +65,8 @@ if ( ! class_exists( 'Charitable_Donation_Query' ) ) :
 		 * @global 	WPDB  $wpdb
 		 * @since 1.0.0
 		 *
-		 * @param 	array $args Additional query arguments.
-		 * @return 	array
+		 * @param  array $args Additional query arguments.
+		 * @return array
 		 */
 		public static function count_by_status( $args = array() ) {
 			global $wpdb;
@@ -75,7 +75,7 @@ if ( ! class_exists( 'Charitable_Donation_Query' ) ) :
 				's'          => null,
 				'start_date' => null,
 				'end_date'   => null,
-				'post_type'	 => 'donation',
+				'post_type'  => 'donation',
 			);
 
 			$args = wp_parse_args( $args, $defaults );
@@ -114,12 +114,13 @@ if ( ! class_exists( 'Charitable_Donation_Query' ) ) :
 			}
 
 			$sql = "SELECT post_status, COUNT( * ) AS num_donations
-				FROM $wpdb->posts	
+				FROM $wpdb->posts
 				WHERE $where_clause
 				GROUP BY post_status";
 
 			return $wpdb->get_results( $sql, OBJECT_K );
 		}
+
 	}
 
 endif;
