@@ -13,7 +13,7 @@ $form_fields = charitable()->get_registered_object( 'Charitable_Campaign_Post_Ty
 $selected_fields = (array) get_post_meta( $post->ID, '_campaign_donation_form_fields', true );
 ?>
 <section class="charitable-metabox-section">
-	<h4 class="charitable-metabox-section-header"><?php _e( 'Donation Form', 'charitable' ) ?></h4>
+	<h4 class="charitable-metabox-section-header"><?php _e( 'Donation Form', 'charitable' ); ?></h4>
 	<p class="charitable-metabox-field">
 
 	</p>
@@ -21,26 +21,26 @@ $selected_fields = (array) get_post_meta( $post->ID, '_campaign_donation_form_fi
 		<?php foreach ( $form_fields as $field_key => $field ) : ?>
 		<li>
 			<?php if ( isset( $field['required_in_form'] ) && $field['required_in_form'] ) : ?>
-				<input type="checkbox" 
-					id="campaign_donation_form_fields_<?php echo $field_key ?>" 
-					name="_campaign_donation_form_fields[]" 
-					value="<?php echo $field_key ?>" 
-					checked 
-					disabled 
+				<input type="checkbox"
+					id="campaign_donation_form_fields_<?php echo $field_key; ?>"
+					name="_campaign_donation_form_fields[]"
+					value="<?php echo $field_key; ?>"
+					checked
+					disabled
 				/>
 			<?php else : ?>
-				<input type="checkbox" 
-					id="campaign_donation_form_fields_<?php echo $field_key ?>" 
-					name="_campaign_donation_form_fields[]" 
-					value="<?php echo $field_key ?>" 
-					<?php checked( in_array( $field_key, $selected_fields ) ) ?> 
+				<input type="checkbox"
+					id="campaign_donation_form_fields_<?php echo $field_key; ?>"
+					name="_campaign_donation_form_fields[]"
+					value="<?php echo $field_key; ?>"
+					<?php checked( in_array( $field_key, $selected_fields ) ); ?>
 				/>
-			<?php endif ?>
-			<label for="campaign_donation_form_fields_<?php echo $field_key ?>">
-				<?php echo $field['label'] ?>
+			<?php endif; ?>
+			<label for="campaign_donation_form_fields_<?php echo $field_key; ?>">
+				<?php echo $field['label']; ?>
 			</label>
 
 		</li>
-	<?php endforeach ?>
+	<?php endforeach; ?>
 	</ul>
 </section>
