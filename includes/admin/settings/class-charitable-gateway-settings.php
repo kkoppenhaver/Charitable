@@ -42,7 +42,7 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		 *
 		 * @since 1.2.0
 		 *
-		 * @return  Charitable_Gateway_Settings
+		 * @return Charitable_Gateway_Settings
 		 */
 		public static function get_instance() {
 			if ( is_null( self::$instance ) ) {
@@ -57,7 +57,7 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		public function add_gateway_fields() {
 			if ( ! charitable_is_settings_view( 'gateways' ) ) {
@@ -65,27 +65,27 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 			}
 
 			return array(
-				'section' => array(
-					'title'             => '',
-					'type'              => 'hidden',
-					'priority'          => 10000,
-					'value'             => 'gateways',
-					'save'              => false,
+				'section'          => array(
+					'title'    => '',
+					'type'     => 'hidden',
+					'priority' => 10000,
+					'value'    => 'gateways',
+					'save'     => false,
 				),
 				'section_gateways' => array(
-					'title'             => __( 'Available Payment Gateways', 'charitable' ),
-					'type'              => 'heading',
-					'priority'          => 5,
+					'title'    => __( 'Available Payment Gateways', 'charitable' ),
+					'type'     => 'heading',
+					'priority' => 5,
 				),
-				'gateways' => array(
-					'title'             => false,
-					'callback'          => array( $this, 'render_gateways_table' ),
-					'priority'          => 10,
+				'gateways'         => array(
+					'title'    => false,
+					'callback' => array( $this, 'render_gateways_table' ),
+					'priority' => 10,
 				),
-				'test_mode' => array(
-					'title'             => __( 'Turn on Test Mode', 'charitable' ),
-					'type'              => 'checkbox',
-					'priority'          => 15,
+				'test_mode'        => array(
+					'title'    => __( 'Turn on Test Mode', 'charitable' ),
+					'type'     => 'checkbox',
+					'priority' => 15,
 				),
 			);
 		}
@@ -95,7 +95,7 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  array[]
+		 * @return array[]
 		 */
 		public function add_individual_gateway_fields( $fields ) {
 			foreach ( charitable_get_helper( 'gateways' )->get_active_gateways() as $gateway ) {
@@ -103,7 +103,7 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 					continue;
 				}
 
-				$gateway = new $gateway;
+				$gateway                                            = new $gateway;
 				$fields[ 'gateways_' . $gateway->get_gateway_id() ] = apply_filters( 'charitable_settings_fields_gateways_gateway', array(), $gateway );
 			}
 
@@ -115,8 +115,8 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param   string[] $groups
-		 * @return  string[]
+		 * @param  string[] $groups
+		 * @return string[]
 		 */
 		public function add_gateway_settings_dynamic_groups( $groups ) {
 			foreach ( charitable_get_helper( 'gateways' )->get_active_gateways() as $gateway_key => $gateway ) {
@@ -135,7 +135,7 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function render_gateways_table( $args ) {
 			charitable_admin_view( 'settings/gateways', $args );
@@ -146,17 +146,15 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		 *
 		 * @since 1.4.3
 		 *
-		 * @param   string $group
-		 * @return  void
+		 * @param  string $group
+		 * @return void
 		 */
 		public function render_paypal_sandbox_test( $group ) {
-
 			if ( 'gateways_paypal' != $group ) {
 				return;
 			}
 
 			charitable_admin_view( 'settings/paypal-sandbox-test', array() );
-
 		}
 
 		/**
@@ -164,10 +162,9 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		 *
 		 * @since 1.4.3
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function redirect_paypal_sandbox_test() {
-
 			$protocol    = is_ssl() ? 'https://' : 'http://';
 			$paypal_url  = $protocol . 'www.sandbox.paypal.com/cgi-bin/webscr/?';
 			$paypal_args = $_POST;
@@ -182,12 +179,11 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 			$paypal_args['custom'] = $token;
 
 			$paypal_url .= http_build_query( $paypal_args );
-			$paypal_url = str_replace( '&amp;', '&', $paypal_url );
+			$paypal_url  = str_replace( '&amp;', '&', $paypal_url );
 
 			wp_redirect( $paypal_url );
 
 			exit();
-
 		}
 
 		/**
@@ -195,10 +191,9 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 		 *
 		 * @since 1.4.3
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function redirect_paypal_sandbox_test_return() {
-
 			$return_url = add_query_arg( array(
 				'page'         => 'charitable-settings',
 				'tab'          => 'gateways',
@@ -209,8 +204,8 @@ if ( ! class_exists( 'Charitable_Gateway_Settings' ) ) :
 			wp_safe_redirect( $return_url );
 
 			exit();
-
 		}
+
 	}
 
 endif;
