@@ -369,7 +369,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 			}
 
 			return $actions;
-		}   
+		}
 
 		/**
 		 * Customize the output of the status views.
@@ -519,7 +519,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 			if ( Charitable::DONATION_POST_TYPE == $post_type ) {
 				?>
 				<script type="text/javascript">
-				(function($) { 
+				(function($) {
 
 					<?php
 					foreach ( $this->get_bulk_actions() as $status_key => $label ) {
@@ -527,7 +527,7 @@ if ( ! class_exists( 'Charitable_Donation_Post_Type' ) ) :
 					}
 					?>
 
-					
+
 				})(jQuery);
 				</script>
 				<?php
