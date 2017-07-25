@@ -62,14 +62,13 @@ if ( ! class_exists( 'Charitable_Email_Password_Reset' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @param   mixed[] $objects
+		 * @param mixed[] $objects
 		 */
 		public function __construct( $objects = array() ) {
 			parent::__construct( $objects );
 
 			$this->name = apply_filters( 'charitable_email_password_reset_name', __( 'User: Password Reset', 'charitable' ) );
 			$this->user = isset( $objects['user'] ) ? $objects['user'] : false;
-
 		}
 
 		/**
@@ -77,7 +76,7 @@ if ( ! class_exists( 'Charitable_Email_Password_Reset' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public static function get_email_id() {
 			return self::ID;
@@ -88,15 +87,15 @@ if ( ! class_exists( 'Charitable_Email_Password_Reset' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		public function get_fields() {
 			return apply_filters( 'charitable_email_content_fields', array(
-				'site_name' => array(
+				'site_name'  => array(
 					'description' => __( 'Your website title', 'charitable' ),
 					'callback'    => array( $this, 'get_site_name' ),
 				),
-				'site_url' => array(
+				'site_url'   => array(
 					'description' => __( 'Your website URL', 'charitable' ),
 					'callback'    => home_url(),
 				),
@@ -116,7 +115,7 @@ if ( ! class_exists( 'Charitable_Email_Password_Reset' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  string|WP_Error|false If the reset key could not be generated, an error is returned.
+		 * @return string|WP_Error|false If the reset key could not be generated, an error is returned.
 		 */
 		public function get_reset_link() {
 			if ( ! isset( $this->reset_link ) ) {
@@ -134,7 +133,7 @@ if ( ! class_exists( 'Charitable_Email_Password_Reset' ) ) :
 				}
 
 				$base_url = charitable_get_permalink( 'reset_password_page' );
-				$key 	  = get_password_reset_key( $this->user );
+				$key      = get_password_reset_key( $this->user );
 
 				if ( is_wp_error( $key ) ) {
 					return $key;
@@ -155,7 +154,7 @@ if ( ! class_exists( 'Charitable_Email_Password_Reset' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public function get_user_login() {
 			if ( ! isset( $this->user ) || ! is_a( $this->user, 'WP_User' ) ) {
@@ -166,12 +165,12 @@ if ( ! class_exists( 'Charitable_Email_Password_Reset' ) ) :
 		}
 
 		/**
-		* Return the recipient for the email.
-		*
-		* @since 1.0.0
-		*
-		* @return  string
-		*/
+		 * Return the recipient for the email.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return string
+		 */
 		public function get_recipient() {
 			if ( ! isset( $this->user ) || ! is_a( $this->user, 'WP_User' ) ) {
 				return '';
@@ -185,7 +184,7 @@ if ( ! class_exists( 'Charitable_Email_Password_Reset' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_subject() {
 			return __( 'Password Reset for [charitable_email show=site_name]', 'charitable' );
@@ -196,7 +195,7 @@ if ( ! class_exists( 'Charitable_Email_Password_Reset' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_headline() {
 			return apply_filters( 'charitable_email_password_reset_default_headline', __( 'Reset your password', 'charitable' ), $this );
@@ -207,21 +206,22 @@ if ( ! class_exists( 'Charitable_Email_Password_Reset' ) ) :
 		 *
 		 * @since 1.4.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_body() {
 			ob_start();
 ?>
-<p><?php _e( 'Someone requested that the password be reset for the following account:', 'charitable' ) ?></p>
-<p><?php _e( 'Username: [charitable_email show=user_login]', 'charitable' ) ?></p>
-<p><?php _e( 'If this was a mistake, just ignore this email and nothing will happen.', 'charitable' ) ?></p>
-<p><?php _e( 'To reset your password, visit the following address:', 'charitable' ) ?></p>
+<p><?php _e( 'Someone requested that the password be reset for the following account:', 'charitable' ); ?></p>
+<p><?php _e( 'Username: [charitable_email show=user_login]', 'charitable' ); ?></p>
+<p><?php _e( 'If this was a mistake, just ignore this email and nothing will happen.', 'charitable' ); ?></p>
+<p><?php _e( 'To reset your password, visit the following address:', 'charitable' ); ?></p>
 <p><a href="[charitable_email show=reset_link]">[charitable_email show=reset_link]</a></p>
 <?php
 		$body = ob_get_clean();
 
 		return apply_filters( 'charitable_email_password_reset_default_body', $body, $this );
 		}
+
 	}
 
 endif;
