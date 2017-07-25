@@ -39,18 +39,18 @@ if ( ! class_exists( 'Charitable_Meta_Box_Helper' ) ) :
 		/**
 		 * Create a helper instance.
 		 *
-		 * @param 	string $nonce_action 
+		 * @param 	string $nonce_action
 		 * @return 	void
 		 * @since 	1.0.0
 		 */
 		public function __construct( $nonce_action = 'charitable' ) {
 			$this->nonce_action = $nonce_action;
-		} 
+		}
 
 		/**
 		 * Metabox callback wrapper.
 		 *
-		 * Every meta box is registered with this method as its callback, 
+		 * Every meta box is registered with this method as its callback,
 		 * and then delegates to the appropriate view.
 		 *
 		 * @param 	WP_Post $post 		The post object.
@@ -58,10 +58,10 @@ if ( ! class_exists( 'Charitable_Meta_Box_Helper' ) ) :
 		 * @return 	void
 		 * @since 	1.0.0
 		 */
-		public function metabox_display( WP_Post $post, array $args ) {	
+		public function metabox_display( WP_Post $post, array $args ) {
 			if ( ! isset( $args['args']['view'] ) ) {
 				return;
-			}	
+			}
 
 			$view_args = $args['args'];
 			unset( $view_args['view'] );
@@ -76,7 +76,7 @@ if ( ! class_exists( 'Charitable_Meta_Box_Helper' ) ) :
 		 * @return 	void
 		 * @since 	1.0.0
 		 */
-		public function display( $view, $view_args ) {		
+		public function display( $view, $view_args ) {
 			/**
 			 * Set the nonce.
 			 */
@@ -97,8 +97,8 @@ if ( ! class_exists( 'Charitable_Meta_Box_Helper' ) ) :
 		/**
 		 * Display the fields to show inside a metabox.
 		 *
-		 * The fields parameter should contain an array of fields, 
-		 * all of which are arrays with a 'priority' key and a 'view' 
+		 * The fields parameter should contain an array of fields,
+		 * all of which are arrays with a 'priority' key and a 'view'
 		 * key.
 		 *
 		 * @param 	array $fields
