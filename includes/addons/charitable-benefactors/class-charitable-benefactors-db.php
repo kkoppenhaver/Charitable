@@ -59,14 +59,14 @@ if ( ! class_exists( 'Charitable_Benefactors_DB' ) ) :
 
 			$sql = "CREATE TABLE IF NOT EXISTS {$this->table_name} (
 				`campaign_benefactor_id` bigint(20) NOT NULL AUTO_INCREMENT,
-				`campaign_id` bigint(20) NOT NULL,				
+				`campaign_id` bigint(20) NOT NULL,
 				`contribution_amount` float NOT NULL,
 				`contribution_amount_is_percentage` tinyint(1) NOT NULL DEFAULT 0,
 				`contribution_amount_is_per_item` tinyint(1) NOT NULL DEFAULT 0,
 				`date_created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
 				`date_deactivated` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
 				PRIMARY KEY (`campaign_benefactor_id`),
-				KEY `campaign` (`campaign_id`), 
+				KEY `campaign` (`campaign_id`),
 				KEY `active_dates` (`date_created`, `date_deactivated`)
 				) $charset_collate;";
 
@@ -214,7 +214,7 @@ if ( ! class_exists( 'Charitable_Benefactors_DB' ) ) :
 			return $wpdb->get_results(
 				$wpdb->prepare(
 					"SELECT *
-					FROM $this->table_name 
+					FROM $this->table_name
 					WHERE campaign_id = %d
 					AND date_created < UTC_TIMESTAMP()
 					AND ( date_deactivated = '0000-00-00 00:00:00' OR date_deactivated > UTC_TIMESTAMP() );",
