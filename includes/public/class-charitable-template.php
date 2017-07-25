@@ -61,14 +61,14 @@ if ( ! class_exists( 'Charitable_Template' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	string|array $template_name A single template name or an ordered array of template.
-		 * @param 	bool 		 $load          If true the template file will be loaded if it is found.
-	 	 * @param 	bool 		 $require_once  Whether to require_once or require. Default true. Has no effect if $load is false.
+		 * @param string|array $template_name A single template name or an ordered array of template.
+		 * @param bool         $load          If true the template file will be loaded if it is found.
+		 * @param bool         $require_once  Whether to require_once or require. Default true. Has no effect if $load is false.
 		 */
 		public function __construct( $template_name, $load = true, $require_once = true ) {
 			$this->load                = $load;
 			$this->theme_template_path = $this->get_theme_template_path();
-	        $this->base_template_path  = $this->get_base_template_path();
+			$this->base_template_path  = $this->get_base_template_path();
 			$this->template_names      = apply_filters( 'charitable_template_name', (array) $template_name );
 			$this->view_args           = array();
 
@@ -78,34 +78,34 @@ if ( ! class_exists( 'Charitable_Template' ) ) :
 		}
 
 		/**
-	     * Set theme template path.
-	     *
-	     * @since 1.0.0
-	     *
-	     * @return  string
-	     */
-	    public function get_theme_template_path() {
-	        return trailingslashit( apply_filters( 'charitable_theme_template_path', 'charitable' ) );
-	    }
+		 * Set theme template path.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return string
+		 */
+		public function get_theme_template_path() {
+			return trailingslashit( apply_filters( 'charitable_theme_template_path', 'charitable' ) );
+		}
 
-	    /**
-	     * Return the base template path.
-	     *
-	     * @since 1.0.0
-	     *
-	     * @return  string
-	     */
-	    public function get_base_template_path() {
-	        return charitable()->get_path( 'templates' );
-	    }
+		/**
+		 * Return the base template path.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return string
+		 */
+		public function get_base_template_path() {
+			return charitable()->get_path( 'templates' );
+		}
 
 		/**
 		 * Adds an array of view arguments.
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	array $args Arguments to include in the view.
-		 * @return 	void
+		 * @param  array $args Arguments to include in the view.
+		 * @return void
 		 */
 		public function set_view_args( $args ) {
 			$this->view_args = array_merge( $this->view_args, $args );
@@ -116,9 +116,9 @@ if ( ! class_exists( 'Charitable_Template' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	string $key   The key of the argument.
-		 * @param 	mixed  $value The vaalue of the argument.
-		 * @return 	void
+		 * @param  string $key   The key of the argument.
+		 * @param  mixed  $value The vaalue of the argument.
+		 * @return void
 		 */
 		public function set_view_arg( $key, $value ) {
 			$this->view_args[ $key ] = $value;
@@ -129,8 +129,8 @@ if ( ! class_exists( 'Charitable_Template' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	boolean $require_once Whether the template should be loaded with include_once instead of include.
-		 * @return 	false|string False if the template does not exist. Template file otherwise.
+		 * @param  boolean      $require_once Whether the template should be loaded with include_once instead of include.
+		 * @return false|string               False if the template does not exist. Template file otherwise.
 		 */
 		public function render( $require_once = true ) {
 			/* Make sure that the template file exists. */
@@ -165,7 +165,7 @@ if ( ! class_exists( 'Charitable_Template' ) ) :
 		 * @uses 	locate_template()
 		 * @since 1.0.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public function locate_template() {
 			/* Template options are first checked in the theme/child theme using locate_template. */
@@ -184,8 +184,8 @@ if ( ! class_exists( 'Charitable_Template' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param 	string $template The template file to check for.
-		 * @return  boolean
+		 * @param  string  $template The template file to check for.
+		 * @return boolean
 		 */
 		public function template_file_exists( $template = '' ) {
 			if ( empty( $template ) ) {
@@ -200,7 +200,7 @@ if ( ! class_exists( 'Charitable_Template' ) ) :
 		 *
 		 * @since 1.0.0
 		 *
-		 * @return 	string[]
+		 * @return string[]
 		 */
 		protected function get_theme_template_options() {
 			$options = array();
@@ -212,6 +212,7 @@ if ( ! class_exists( 'Charitable_Template' ) ) :
 
 			return $options;
 		}
+
 	}
 
 endif;
