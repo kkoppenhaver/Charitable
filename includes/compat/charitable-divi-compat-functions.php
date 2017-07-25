@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
  *
  * @since 1.5.0
  *
- * @param   string[] $shortcodes
- * @return  string[]
+ * @param  string[] $shortcodes
+ * @return string[]
  */
 function charitable_divi_compat_admin_excluded_shortcodes( $shortcodes ) {
 	if ( class_exists( 'WPSEO_Options' ) ) {
