@@ -19,9 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * @since 1.0.0
  *
- * @param   int     $donation_id
- * @param   boolean $force
- * @return  Charitable_Donation|false
+ * @param  int                       $donation_id
+ * @param  boolean                   $force
+ * @return Charitable_Donation|false
  */
 function charitable_get_donation( $donation_id, $force = false ) {
 	if ( ! did_action( 'charitable_start' ) && false === ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
@@ -51,7 +51,7 @@ function charitable_get_donation( $donation_id, $force = false ) {
  *
  * @since 1.0.0
  *
- * @return  Charitable_Donation
+ * @return Charitable_Donation
  */
 function charitable_get_current_donation() {
 	return charitable_get_helper( 'request' )->get_current_donation();
@@ -62,8 +62,8 @@ function charitable_get_current_donation() {
  *
  * @since 1.4.0
  *
- * @param   array $args Values for the donation.
- * @return  int
+ * @param  array $args Values for the donation.
+ * @return int
  */
 function charitable_create_donation( array $args ) {
 	$donation_id = Charitable_Donation_Processor::get_instance()->save_donation( $args );
@@ -78,15 +78,15 @@ function charitable_create_donation( array $args ) {
  *
  * @since 1.4.0
  *
- * @param   string $donation_key
- * @return  int|null
+ * @param  string   $donation_key
+ * @return int|null
  */
 function charitable_get_donation_by_key( $donation_key ) {
 	global $wpdb;
 
-	$sql = "SELECT post_id 
-			FROM $wpdb->postmeta 
-			WHERE meta_key = 'donation_key' 
+	$sql = "SELECT post_id
+			FROM $wpdb->postmeta
+			WHERE meta_key = 'donation_key'
 			AND meta_value = %s";
 
 	return $wpdb->get_var( $wpdb->prepare( $sql, $donation_key ) );
@@ -97,15 +97,15 @@ function charitable_get_donation_by_key( $donation_key ) {
  *
  * @since 1.4.7
  *
- * @param   string $transaction_id
- * @return  int|null
+ * @param  string   $transaction_id
+ * @return int|null
  */
 function charitable_get_donation_by_transaction_id( $transaction_id ) {
 	global $wpdb;
 
-	$sql = "SELECT post_id 
-			FROM $wpdb->postmeta 
-			WHERE meta_key = '_gateway_transaction_id' 
+	$sql = "SELECT post_id
+			FROM $wpdb->postmeta
+			WHERE meta_key = '_gateway_transaction_id'
 			AND meta_value = %s";
 
 	return $wpdb->get_var( $wpdb->prepare( $sql, $transaction_id ) );
@@ -118,8 +118,8 @@ function charitable_get_donation_by_transaction_id( $transaction_id ) {
  *
  * @since 1.4.0
  *
- * @param 	strign $gateway
- * @return  string
+ * @param  strign $gateway
+ * @return string
  */
 function charitable_get_ipn_url( $gateway ) {
 	return add_query_arg( 'charitable-listener', $gateway, home_url( 'index.php' ) );
@@ -134,7 +134,7 @@ function charitable_get_ipn_url( $gateway ) {
  *
  * @since 1.4.0
  *
- * @return  boolean True if this is a call to our IPN. False otherwise.
+ * @return boolean True if this is a call to our IPN. False otherwise.
  */
 function charitable_ipn_listener() {
 	if ( isset( $_GET['charitable-listener'] ) ) {
@@ -154,10 +154,9 @@ function charitable_ipn_listener() {
  *
  * @since 1.4.0
  *
- * @return  boolean Whether this is after a donation.
+ * @return boolean Whether this is after a donation.
  */
 function charitable_is_after_donation() {
-
 	if ( is_admin() ) {
 		return false;
 	}
@@ -179,7 +178,6 @@ function charitable_is_after_donation() {
 	delete_transient( 'charitable_donation_' . charitable_get_session()->get_session_id() );
 
 	return true;
-
 }
 
 /**
@@ -187,7 +185,7 @@ function charitable_is_after_donation() {
  *
  * @since 1.4.0
  *
- * @return  boolean
+ * @return boolean
  */
 function charitable_is_valid_donation_status( $status ) {
 	return array_key_exists( $status, charitable_get_valid_donation_statuses() );
@@ -201,7 +199,7 @@ function charitable_is_valid_donation_status( $status ) {
  *
  * @since 1.4.0
  *
- * @return  string[]
+ * @return string[]
  */
 function charitable_get_approval_statuses() {
 	return apply_filters( 'charitable_approval_donation_statuses', array( 'charitable-completed' ) );
@@ -212,8 +210,8 @@ function charitable_get_approval_statuses() {
  *
  * @since 1.4.0
  *
- * @param   string $key
- * @return  boolean
+ * @param  string  $key
+ * @return boolean
  */
 function charitable_is_approved_status( $status ) {
 	return in_array( $status, charitable_get_approval_statuses() );
@@ -224,15 +222,15 @@ function charitable_is_approved_status( $status ) {
  *
  * @since 1.4.0
  *
- * @return  array
+ * @return array
  */
 function charitable_get_valid_donation_statuses() {
 	return apply_filters( 'charitable_donation_statuses', array(
-		'charitable-completed'  => __( 'Paid', 'charitable' ),
-		'charitable-pending'    => __( 'Pending', 'charitable' ),
-		'charitable-failed'     => __( 'Failed', 'charitable' ),
-		'charitable-cancelled'  => __( 'Cancelled', 'charitable' ),
-		'charitable-refunded'   => __( 'Refunded', 'charitable' ),
+		'charitable-completed' => __( 'Paid', 'charitable' ),
+		'charitable-pending'   => __( 'Pending', 'charitable' ),
+		'charitable-failed'    => __( 'Failed', 'charitable' ),
+		'charitable-cancelled' => __( 'Cancelled', 'charitable' ),
+		'charitable-refunded'  => __( 'Refunded', 'charitable' ),
 	) );
 }
 
@@ -243,7 +241,7 @@ function charitable_get_valid_donation_statuses() {
  *
  * @since 1.4.0
  *
- * @return  boolean True if the donation was cancelled. False otherwise.
+ * @return boolean True if the donation was cancelled. False otherwise.
  */
 function charitable_cancel_donation() {
 	global $wp_query;
@@ -281,7 +279,7 @@ function charitable_cancel_donation() {
  *
  * @since 1.4.0
  *
- * @return  void
+ * @return void
  */
 function charitable_load_donation_form_script() {
 	wp_enqueue_script( 'charitable-donation-form' );
@@ -292,8 +290,8 @@ function charitable_load_donation_form_script() {
  *
  * @since 1.0.0
  *
- * @param   string $message
- * @return  void
+ * @param  string $message
+ * @return void
  */
 function charitable_update_donation_log( $donation_id, $message ) {
 	charitable_get_donation( $donation_id )->update_donation_log( $message );
@@ -304,7 +302,7 @@ function charitable_update_donation_log( $donation_id, $message ) {
  *
  * @since 1.0.0
  *
- * @return  array
+ * @return array
  */
 function charitable_get_donation_log( $donation_id ) {
 	charitable_get_donation( $donation_id )->get_donation_log();
@@ -315,8 +313,8 @@ function charitable_get_donation_log( $donation_id ) {
  *
  * @since 1.0.0
  *
- * @param   int $donation_id
- * @return  string
+ * @param  int    $donation_id
+ * @return string
  */
 function charitable_get_donation_gateway( $donation_id ) {
 	return get_post_meta( $donation_id, 'donation_gateway', true );
@@ -327,9 +325,9 @@ function charitable_get_donation_gateway( $donation_id ) {
  *
  * @since 1.0.0
  *
- * @param   mixed   $value
- * @param   string  $key
- * @return  mixed
+ * @param  mixed  $value
+ * @param  string $key
+ * @return mixed
  */
 function charitable_sanitize_donation_meta( $value, $key ) {
 	if ( 'donation_gateway' == $key ) {
@@ -346,8 +344,8 @@ function charitable_sanitize_donation_meta( $value, $key ) {
  *
  * @since 1.0.0
  *
- * @param   int $donation_id The donation ID.
- * @return  void
+ * @param  int  $donation_id The donation ID.
+ * @return void
  */
 function charitable_flush_campaigns_donation_cache( $donation_id ) {
 	$campaign_donations = charitable_get_table( 'campaign_donations' )->get_donation_records( $donation_id );
