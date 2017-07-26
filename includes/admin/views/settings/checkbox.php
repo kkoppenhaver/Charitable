@@ -14,12 +14,12 @@ if ( ! strlen( $value ) ) {
 }
 
 ?>
-<input type="checkbox" 
-	id="<?php printf( 'charitable_settings_%s', implode( '_', $view_args['key'] ) ) ?>" 
-	name="<?php printf( 'charitable_settings[%s]', $view_args['name'] ) ?>"
-	class="<?php echo esc_attr( $view_args['classes'] ) ?>"
-	<?php checked( $value ) ?> 
-	<?php echo charitable_get_arbitrary_attributes( $view_args ) ?>/>
+<input type="checkbox"
+	id="<?php printf( 'charitable_settings_%s', implode( '_', $view_args['key'] ) ); ?>"
+	name="<?php printf( 'charitable_settings[%s]', $view_args['name'] ); ?>"
+	class="<?php echo esc_attr( $view_args['classes'] ); ?>"
+	<?php checked( $value ); ?>
+	<?php echo charitable_get_arbitrary_attributes( $view_args ); ?>/>
 <?php if ( isset( $view_args['help'] ) ) : ?>
-	<div class="charitable-help"><?php echo $view_args['help']  ?></div>
+	<div class="charitable-help"><?php echo $view_args['help'];  ?></div>
 <?php endif;
