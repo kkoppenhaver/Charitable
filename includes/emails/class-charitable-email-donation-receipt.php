@@ -36,7 +36,7 @@ if ( ! class_exists( 'Charitable_Email_Donation_Receipt' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   array   $objects
+		 * @param array $objects
 		 */
 		public function __construct( $objects = array() ) {
 			parent::__construct( $objects );
@@ -49,7 +49,7 @@ if ( ! class_exists( 'Charitable_Email_Donation_Receipt' ) ) :
 		 *
 		 * @since   1.0.3
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public static function get_email_id() {
 			return self::ID;
@@ -60,8 +60,8 @@ if ( ! class_exists( 'Charitable_Email_Donation_Receipt' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   int     $donation_id
-		 * @return  boolean
+		 * @param  int     $donation_id
+		 * @return boolean
 		 */
 		public static function send_with_donation_id( $donation_id ) {
 			if ( ! charitable_get_helper( 'emails' )->is_enabled_email( self::get_email_id() ) ) {
@@ -110,7 +110,7 @@ if ( ! class_exists( 'Charitable_Email_Donation_Receipt' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public function get_recipient() {
 			if ( ! $this->has_valid_donation() ) {
@@ -125,7 +125,7 @@ if ( ! class_exists( 'Charitable_Email_Donation_Receipt' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_subject() {
 			return apply_filters( 'charitable_email_donation_receipt_default_subject', __( 'Thank you for your donation', 'charitable' ), $this );
@@ -136,7 +136,7 @@ if ( ! class_exists( 'Charitable_Email_Donation_Receipt' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_headline() {
 			return apply_filters( 'charitable_email_donation_receipt_default_headline', __( 'Your Donation Receipt', 'charitable' ), $this );
@@ -147,21 +147,22 @@ if ( ! class_exists( 'Charitable_Email_Donation_Receipt' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		protected function get_default_body() {
 			ob_start();
 ?>
-<p><?php _e( 'Dear [charitable_email show=donor_first_name],', 'charitable' ) ?></p>
-<p><?php _e( 'Thank you so much for your generous donation.', 'charitable' ) ?></p>
-<p><strong><?php _e( 'Your Receipt', 'charitable' ) ?></strong><br />
+<p><?php _e( 'Dear [charitable_email show=donor_first_name],', 'charitable' ); ?></p>
+<p><?php _e( 'Thank you so much for your generous donation.', 'charitable' ); ?></p>
+<p><strong><?php _e( 'Your Receipt', 'charitable' ); ?></strong><br />
 [charitable_email show=donation_summary]</p>
-<p><?php _e( 'With thanks, [charitable_email show=site_name]', 'charitable' ) ?></p>
+<p><?php _e( 'With thanks, [charitable_email show=site_name]', 'charitable' ); ?></p>
 <?php
 			$body = ob_get_clean();
 
 			return apply_filters( 'charitable_email_donation_receipt_default_body', $body, $this );
 		}
+
 	}
 
 endif;
