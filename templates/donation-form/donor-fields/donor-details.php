@@ -21,10 +21,10 @@ if ( ! $user ) {
 }
 
 ?>
-<address class="donor-address"><?php echo $user->get_address() ?></address>
+<address class="donor-address"><?php echo $user->get_address(); ?></address>
 <p class="donor-contact-details">
-	<?php printf( '%s: %s', __( 'Email', 'charitable ' ), $user->user_email ) ?>
+	<?php printf( '%s: %s', __( 'Email', 'charitable ' ), $user->user_email ); ?>
 	<?php if ( $user->__isset( 'donor_phone' ) ) :
 		printf( '<br />%s: %s', __( 'Phone number', 'charitable' ), $user->get( 'donor_phone' ) );
-	endif ?>
+	endif; ?>
 </p>
