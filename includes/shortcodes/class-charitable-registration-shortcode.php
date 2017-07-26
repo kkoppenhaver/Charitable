@@ -27,11 +27,10 @@ if ( ! class_exists( 'Charitable_Registration_Shortcode' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   array   $atts   User-defined shortcode attributes.
-		 * @return  string
+		 * @param  array  $atts User-defined shortcode attributes.
+		 * @return string
 		 */
 		public static function display( $atts = array() ) {
-
 			$defaults = array(
 				'logged_in_message' => __( 'You are already logged in!', 'charitable' ),
 				'redirect'          => false,
@@ -55,8 +54,8 @@ if ( ! class_exists( 'Charitable_Registration_Shortcode' ) ) :
 			) );
 
 			return apply_filters( 'charitable_registration_shortcode', ob_get_clean() );
-
 		}
+
 	}
 
 endif;
