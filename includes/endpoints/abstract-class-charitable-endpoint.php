@@ -44,13 +44,11 @@ if ( ! class_exists( 'Charitable_Endpoint' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @param 	array $vars
+		 * @param array $vars
 		 */
 		public function add_query_vars( array $vars ) {
-
 			/* Return vars unchanged by default. */
 			return $vars;
-
 		}
 
 		/**
@@ -60,8 +58,8 @@ if ( ! class_exists( 'Charitable_Endpoint' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @param 	string $template The default template.
-		 * @return  string
+		 * @param  string $template The default template.
+		 * @return string
 		 */
 		public function get_template( $template ) {
 			return $template;
@@ -74,8 +72,8 @@ if ( ! class_exists( 'Charitable_Endpoint' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @param 	string $content
-		 * @return  string
+		 * @param  string $content
+		 * @return string
 		 */
 		public function get_content( $content ) {
 			return $content;
@@ -88,11 +86,12 @@ if ( ! class_exists( 'Charitable_Endpoint' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public function get_body_class() {
 			return str_replace( '_', '-', $this->get_endpoint_id() );
 		}
+
 	}
 
 endif;
