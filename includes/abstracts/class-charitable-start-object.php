@@ -26,9 +26,9 @@ abstract class Charitable_Start_Object {
 	 * Instantiate the class, but only during the start phase.
 	 *
 	 * @uses 	charitable_start
-	 * @param 	Charitable 	$charitable 
-	 * @return 	void
-	 * @static 
+	 * @param  Charitable $charitable
+	 * @return void
+	 * @static
 	 * @since   1.0.0
 	 */
 	public static function charitable_start( Charitable $charitable ) {
@@ -43,8 +43,8 @@ abstract class Charitable_Start_Object {
 	/**
 	 * Set up the class.
 	 *
-	 * Note that the only way to instantiate an object is with the charitable_start method, 
-	 * which can only be called during the start phase. In other words, don't try 
+	 * Note that the only way to instantiate an object is with the charitable_start method,
+	 * which can only be called during the start phase. In other words, don't try
 	 * to instantiate this object.
 	 *
 	 * @since   1.0.0
