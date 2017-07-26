@@ -15,5 +15,5 @@ $campaign = $view_args['campaign'];
 	<?php printf(
 		_x( '%s Donors', 'number of donors', 'charitable' ),
 		'<span class="donors-count">' . $campaign->get_donor_count() . '</span>'
-	) ?>
+	); ?>
 </div>
