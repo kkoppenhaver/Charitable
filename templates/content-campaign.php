@@ -14,7 +14,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 $campaign = $view_args['campaign'];
-$content = $view_args['content'];
+$content  = $view_args['content'];
 
 /**
  * @hook charitable_campaign_content_before
