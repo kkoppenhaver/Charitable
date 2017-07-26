@@ -19,9 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * @since   1.0.0
  *
- * @param 	array $a First element.
- * @param 	array $b Element to compare against.
- * @return 	int
+ * @param  array $a First element.
+ * @param  array $b Element to compare against.
+ * @return int
  */
 function charitable_priority_sort( $a, $b ) {
 	foreach ( array( $a, $b ) as $item ) {
@@ -44,11 +44,11 @@ function charitable_priority_sort( $a, $b ) {
  *
  * @since   1.0.0
  *
- * @param 	string  $function 	Name of the function.
- * @return 	bool 				Whether or not function is disabled.
+ * @param  string $function Name of the function.
+ * @return bool             Whether or not function is disabled.
  */
 function charitable_is_func_disabled( $function ) {
-	$disabled = explode( ',',  ini_get( 'disable_functions' ) );
+	$disabled = explode( ',', ini_get( 'disable_functions' ) );
 
 	return in_array( $function, $disabled );
 }
@@ -58,10 +58,10 @@ function charitable_is_func_disabled( $function ) {
  *
  * @since   1.0.0
  *
- * @param   string $nonce
- * @param   string $action
- * @param   array  $request_args
- * @return  boolean
+ * @param  string  $nonce
+ * @param  string  $action
+ * @param  array   $request_args
+ * @return boolean
  */
 function charitable_verify_nonce( $nonce, $action, $request_args = array() ) {
 	if ( empty( $request_args ) ) {
@@ -78,7 +78,7 @@ function charitable_verify_nonce( $nonce, $action, $request_args = array() ) {
  *
  * @since   1.0.0
  *
- * @return  string
+ * @return string
  */
 function charitable_get_timezone_id() {
 	$timezone = get_option( 'timezone_string' );
@@ -122,9 +122,9 @@ function charitable_get_timezone_id() {
  *
  * @since   1.5.0
  *
- * @param   array $original_array The original array we need to pull a subset from.
- * @param 	array $subset_keys    The keys to use for our subset.
- * @return  array
+ * @param  array $original_array The original array we need to pull a subset from.
+ * @param  array $subset_keys    The keys to use for our subset.
+ * @return array
  */
 function charitable_array_subset( array $original_array, $subset_keys ) {
 	return array_intersect_key( $original_array, array_flip( $subset_keys ) );
@@ -135,8 +135,8 @@ function charitable_array_subset( array $original_array, $subset_keys ) {
  *
  * @since   1.0.0
  *
- * @param 	mixed $i Number received.
- * @return  int|false
+ * @param  mixed     $i Number received.
+ * @return int|false
  */
 function charitable_validate_absint( $i ) {
 	return filter_var( $i, FILTER_VALIDATE_INT, array( 'min_range' => 1 ) );
@@ -147,8 +147,8 @@ function charitable_validate_absint( $i ) {
  *
  * @since   1.5.0
  *
- * @param 	mixed $value Value set for checkbox, or false.
- * @return  boolean
+ * @param  mixed   $value Value set for checkbox, or false.
+ * @return boolean
  */
 function charitable_sanitize_checkbox( $value = false ) {
 	return intval( true == $value || 'on' == $value );
@@ -163,8 +163,8 @@ function charitable_sanitize_checkbox( $value = false ) {
  *
  * @since   1.3.0
  *
- * @param   string[] $list
- * @return  string
+ * @param  string[] $list
+ * @return string
  */
 function charitable_list_to_sentence_part( $list ) {
 	$list = array_values( $list );
@@ -190,12 +190,11 @@ function charitable_list_to_sentence_part( $list ) {
  * @global  WP_Locale $wp_locale
  * @since   1.4.10
  *
- * @param   string    $date
- * @param   string    $format The date format to return. Default is U (timestamp).
- * @return  string|false
+ * @param  string       $date
+ * @param  string       $format The date format to return. Default is U (timestamp).
+ * @return string|false
  */
 function charitable_sanitize_date( $date, $format = 'U' ) {
-
 	global $wp_locale;
 
 	if ( empty( $date ) || ! $date ) {
@@ -204,16 +203,15 @@ function charitable_sanitize_date( $date, $format = 'U' ) {
 
 	list( $month, $day, $year ) = explode( ' ', $date );
 
-	$day   = trim( $day, ',' );
+	$day = trim( $day, ',' );
 
 	$month = 1 + array_search( $month, array_values( $wp_locale->month ) );
 
-	$time  = mktime( 0, 0, 0, $month, $day, $year );
+	$time = mktime( 0, 0, 0, $month, $day, $year );
 
 	if ( 'U' == $format ) {
 		return $time;
 	}
 
 	return date( $format, $time );
-
 }
