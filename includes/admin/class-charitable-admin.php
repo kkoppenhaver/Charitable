@@ -49,7 +49,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 *
 		 * @since   1.2.0
 		 *
-		 * @return  Charitable_Admin
+		 * @return Charitable_Admin
 		 */
 		public static function get_instance() {
 			if ( is_null( self::$instance ) ) {
@@ -64,7 +64,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		private function load_dependencies() {
 			$admin_dir = charitable()->get_path( 'admin' );
@@ -115,10 +115,9 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function admin_enqueue_scripts() {
-
 			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
 				$suffix  = '';
 				$version = '';
@@ -202,10 +201,9 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 *
 		 * @since   1.4.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function add_notices() {
-
 			/* Get any version update notices first. */
 			$this->add_version_update_notices();
 
@@ -214,7 +212,6 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 
 			/* Render notices. */
 			charitable_get_admin_notices()->render();
-
 		}
 
 		/**
@@ -222,10 +219,9 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 *
 		 * @since   1.4.6
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function add_version_update_notices() {
-
 			if ( ! current_user_can( 'manage_options' ) ) {
 				return;
 			}
@@ -244,11 +240,11 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 
 				$notices['release-143-paypal'] = sprintf( __( "PayPal is upgrading its SSL certificates. <a href='%s'>Test your integration now to avoid disruption.</a>", 'charitable' ),
 					esc_url( add_query_arg( array(
-		                'page'         => 'charitable-settings',
-		                'tab'          => 'gateways',
-		                'group'        => 'gateways_paypal',
-		            ), admin_url( 'admin.php#paypal-sandbox-test' ) ) )
-		        );
+						'page'  => 'charitable-settings',
+						'tab'   => 'gateways',
+						'group' => 'gateways_paypal',
+					), admin_url( 'admin.php#paypal-sandbox-test' ) ) )
+				);
 
 			} else {
 
@@ -256,7 +252,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 
 			}
 
-			$notices['release-1410-recurring-donations'] = sprintf( __( "<strong>NEW:</strong> Supercharge your online fundraising with Recurring Donations. <a href='%s'>Read more</a>", 'charitable' ), 
+			$notices['release-1410-recurring-donations'] = sprintf( __( "<strong>NEW:</strong> Supercharge your online fundraising with Recurring Donations. <a href='%s'>Read more</a>", 'charitable' ),
 				'https://www.wpcharitable.com/supercharge-your-online-fundraising-in-2017-with-recurring-donations/?utm_source=notices&utm_medium=wordpress-dashboard&utm_campaign=recurring-donations-release-post&utm_content=release-1410'
 			);
 
@@ -278,7 +274,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 *
 		 * @since   1.4.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function dismiss_notice() {
 			if ( ! isset( $_POST['notice'] ) ) {
@@ -299,8 +295,8 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   string $classes Current body classes.
-		 * @return  string          Altered body classes.
+		 * @param  string $classes Current body classes.
+		 * @return string          Altered body classes.
 		 */
 		public function add_admin_body_class( $classes ) {
 			$screen = get_current_screen();
@@ -317,8 +313,8 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   string[] $links Plugin action links.
-		 * @return  string[]
+		 * @param  string[] $links Plugin action links.
+		 * @return string[]
 		 */
 		public function add_plugin_action_links( $links ) {
 			$links[] = '<a href="' . admin_url( 'admin.php?page=charitable-settings' ) . '">' . __( 'Settings', 'charitable' ) . '</a>';
@@ -330,9 +326,9 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 *
 		 * @since   1.2.0
 		 *
-		 * @param   string[] $links Plugin action links.
-		 * @param   string $file        The plugin file
-		 * @return  string[] $links
+		 * @param  string[] $links Plugin action links.
+		 * @param  string   $file  The plugin file
+		 * @return string[] $links
 		 */
 		public function add_plugin_row_meta( $links, $file ) {
 			if ( plugin_basename( charitable()->get_path() ) != $file ) {
@@ -357,7 +353,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 *
 		 * @since   1.2.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function remove_jquery_ui_styles_nf( $context ) {
 			wp_dequeue_style( 'jquery-smoothness' );
@@ -369,7 +365,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 *
 		 * @since   1.3.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function export_donations() {
 			if ( ! wp_verify_nonce( $_GET['_charitable_export_nonce'], 'charitable_export_donations' ) ) {
@@ -381,11 +377,11 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 			$report_type = $_GET['report_type'];
 
 			$export_args = apply_filters( 'charitable_donations_export_args', array(
-				'start_date'    => $_GET['start_date'],
-				'end_date'      => $_GET['end_date'],
-				'status'        => $_GET['post_status'],
-				'campaign_id'   => $_GET['campaign_id'],
-				'report_type'   => $report_type,
+				'start_date'  => $_GET['start_date'],
+				'end_date'    => $_GET['end_date'],
+				'status'      => $_GET['post_status'],
+				'campaign_id' => $_GET['campaign_id'],
+				'report_type' => $report_type,
 			) );
 
 			$export_class = apply_filters( 'charitable_donations_export_class', 'Charitable_Export_Donations', $report_type, $export_args );
@@ -401,7 +397,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		 * @uses    charitable_admin_screens
 		 * @since   1.0.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		public function get_charitable_screens() {
 			return apply_filters( 'charitable_admin_screens', array(
@@ -412,6 +408,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 				'dashboard',
 			) );
 		}
+
 	}
 
 endif;
