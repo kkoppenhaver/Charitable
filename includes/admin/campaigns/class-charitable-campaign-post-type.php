@@ -44,18 +44,18 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 			$this->meta_box_helper = new Charitable_Meta_Box_Helper( 'charitable-campaign' );
 
 			// Campaign columns.
-			add_filter( 'manage_edit-campaign_columns',                 array( $this, 'dashboard_columns' ), 11, 1 );
+			add_filter( 'manage_edit-campaign_columns', array( $this, 'dashboard_columns' ), 11, 1 );
 
-			add_action( 'add_meta_boxes',                               array( $this, 'add_meta_boxes' ), 10 );
-			add_action( 'add_meta_boxes_campaign',                      array( $this, 'wrap_editor' ) );
-			add_action( 'edit_form_after_title',                        array( $this, 'campaign_form_top' ) );
-			add_action( 'save_post_' . Charitable::CAMPAIGN_POST_TYPE,  array( $this, 'save_campaign' ), 10, 2 );
-			add_filter( 'wp_insert_post_data',                          array( $this, 'set_default_post_content' ) );
+			add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10 );
+			add_action( 'add_meta_boxes_campaign', array( $this, 'wrap_editor' ) );
+			add_action( 'edit_form_after_title', array( $this, 'campaign_form_top' ) );
+			add_action( 'save_post_' . Charitable::CAMPAIGN_POST_TYPE, array( $this, 'save_campaign' ), 10, 2 );
+			add_filter( 'wp_insert_post_data', array( $this, 'set_default_post_content' ) );
 			add_action( 'charitable_campaign_donation_options_metabox', array( $this, 'campaign_donation_options_metabox' ) );
-			add_filter( 'enter_title_here',                             array( $this, 'campaign_enter_title' ), 10, 2 );
-			add_filter( 'get_user_option_meta-box-order_campaign',      '__return_false' );
-			add_filter( 'post_updated_messages', 						array( $this, 'post_messages' ) );
-			add_filter( 'bulk_post_updated_messages',                   array( $this, 'bulk_messages' ), 10, 2 );
+			add_filter( 'enter_title_here', array( $this, 'campaign_enter_title' ), 10, 2 );
+			add_filter( 'get_user_option_meta-box-order_campaign', '__return_false' );
+			add_filter( 'post_updated_messages', array( $this, 'post_messages' ) );
+			add_filter( 'bulk_post_updated_messages', array( $this, 'bulk_messages' ), 10, 2 );
 		}
 
 		/**
@@ -63,7 +63,7 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.2.0
 		 *
-		 * @return  Charitable_Campaign_Post_Type
+		 * @return Charitable_Campaign_Post_Type
 		 */
 		public static function get_instance() {
 			if ( is_null( self::$instance ) ) {
@@ -80,11 +80,10 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   array $column_names The columns to show for campaigns.
-		 * @return  array
+		 * @param  array $column_names The columns to show for campaigns.
+		 * @return array
 		 */
 		public function dashboard_columns( $column_names ) {
-
 			/* The creator as an array for subsequent array manipulation. */
 			$creator = array( 'author' => __( 'Creator', 'charitable' ) );
 
@@ -104,7 +103,6 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 			return $column_names;
 		}
 
-
 		/**
 		 * Add meta boxes.
 		 *
@@ -112,53 +110,53 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function add_meta_boxes() {
 			$meta_boxes = array(
 				array(
-					'id'            => 'campaign-description',
-					'title'         => __( 'Campaign Description', 'charitable' ),
-					'context'       => 'campaign-top',
-					'priority'      => 'high',
-					'view'          => 'metaboxes/campaign-description',
+					'id'       => 'campaign-description',
+					'title'    => __( 'Campaign Description', 'charitable' ),
+					'context'  => 'campaign-top',
+					'priority' => 'high',
+					'view'     => 'metaboxes/campaign-description',
 				),
 				array(
-					'id'            => 'campaign-goal',
-					'title'         => __( 'Fundraising Goal ($)', 'charitable' ),
-					'context'       => 'campaign-top',
-					'priority'      => 'high',
-					'view'          => 'metaboxes/campaign-goal',
-					'description'   => __( 'Leave empty for campaigns without a fundraising goal.', 'charitable' ),
+					'id'          => 'campaign-goal',
+					'title'       => __( 'Fundraising Goal ($)', 'charitable' ),
+					'context'     => 'campaign-top',
+					'priority'    => 'high',
+					'view'        => 'metaboxes/campaign-goal',
+					'description' => __( 'Leave empty for campaigns without a fundraising goal.', 'charitable' ),
 				),
 				array(
-					'id'            => 'campaign-end-date',
-					'title'         => __( 'End Date', 'charitable' ),
-					'context'       => 'campaign-top',
-					'priority'      => 'high',
-					'view'          => 'metaboxes/campaign-end-date',
-					'description'   => __( 'Leave empty for ongoing campaigns.', 'charitable' ),
+					'id'          => 'campaign-end-date',
+					'title'       => __( 'End Date', 'charitable' ),
+					'context'     => 'campaign-top',
+					'priority'    => 'high',
+					'view'        => 'metaboxes/campaign-end-date',
+					'description' => __( 'Leave empty for ongoing campaigns.', 'charitable' ),
 				),
 				array(
-					'id'            => 'campaign-donation-options',
-					'title'         => __( 'Donation Options', 'charitable' ),
-					'context'       => 'campaign-advanced',
-					'priority'      => 'high',
-					'view'          => 'metaboxes/campaign-donation-options',
+					'id'       => 'campaign-donation-options',
+					'title'    => __( 'Donation Options', 'charitable' ),
+					'context'  => 'campaign-advanced',
+					'priority' => 'high',
+					'view'     => 'metaboxes/campaign-donation-options',
 				),
 				array(
-					'id'            => 'campaign-extended-description',
-					'title'         => __( 'Extended Description', 'charitable' ),
-					'context'       => 'campaign-advanced',
-					'priority'      => 'high',
-					'view'          => 'metaboxes/campaign-extended-description',
+					'id'       => 'campaign-extended-description',
+					'title'    => __( 'Extended Description', 'charitable' ),
+					'context'  => 'campaign-advanced',
+					'priority' => 'high',
+					'view'     => 'metaboxes/campaign-extended-description',
 				),
 				array(
-					'id'            => 'campaign-creator',
-					'title'         => __( 'Campaign Creator', 'charitable' ),
-					'context'       => 'campaign-advanced',
-					'priority'      => 'high',
-					'view'          => 'metaboxes/campaign-creator',
+					'id'       => 'campaign-creator',
+					'title'    => __( 'Campaign Creator', 'charitable' ),
+					'context'  => 'campaign-advanced',
+					'priority' => 'high',
+					'view'     => 'metaboxes/campaign-creator',
 				),
 			);
 
@@ -182,8 +180,8 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   WP_Post $post Current post.
-		 * @return  void
+		 * @param  WP_Post $post Current post.
+		 * @return void
 		 */
 		public function campaign_form_top( $post ) {
 			if ( Charitable::CAMPAIGN_POST_TYPE == $post->post_type ) {
@@ -196,7 +194,7 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function wrap_editor() {
 			add_filter( 'edit_form_after_title', array( $this, 'advanced_campaign_settings' ), 20 );
@@ -207,7 +205,7 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function editor_wrap_before() {
 			charitable_admin_view( 'metaboxes/campaign-advanced-wrap-before', array( 'meta_boxes' => $this->get_advanced_meta_boxes() ) );
@@ -218,7 +216,7 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function editor_wrap_after() {
 			charitable_admin_view( 'metaboxes/campaign-advanced-wrap-after' );
@@ -229,8 +227,8 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   WP_Post $post Current post object.
-		 * @return  void
+		 * @param  WP_Post $post Current post object.
+		 * @return void
 		 */
 		public function advanced_campaign_settings( $post ) {
 			charitable_admin_view( 'metaboxes/campaign-advanced-settings', array( 'meta_boxes' => $this->get_advanced_meta_boxes() ) );
@@ -242,7 +240,7 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 * @global  array       $wp_meta_boxes
 		 * @since   1.0.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		private function get_advanced_meta_boxes() {
 			global $wp_meta_boxes;
@@ -269,30 +267,30 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function campaign_donation_options_metabox() {
 			/* Get the array of fields to be displayed within the campaign donations metabox. */
 			$fields = array(
 				'donations'     => array(
-					'priority'  => 4,
-					'view'      => 'metaboxes/campaign-donation-options/suggested-amounts',
-					'label'     => __( 'Suggested Donation Amounts', 'charitable' ),
-					'fields'    => apply_filters( 'charitable_campaign_donation_suggested_amounts_fields', array(
-						'amount'    => array(
+					'priority' => 4,
+					'view'     => 'metaboxes/campaign-donation-options/suggested-amounts',
+					'label'    => __( 'Suggested Donation Amounts', 'charitable' ),
+					'fields'   => apply_filters( 'charitable_campaign_donation_suggested_amounts_fields', array(
+						'amount'      => array(
 							'column_header' => __( 'Amount', 'charitable' ),
 							'placeholder'   => __( 'Amount', 'charitable' ),
 						),
-						'description'   => array(
+						'description' => array(
 							'column_header' => __( 'Description (optional)', 'charitable' ),
 							'placeholder'   => __( 'Optional Description', 'charitable' ),
 						),
 					) ),
 				),
 				'permit_custom' => array(
-					'priority'  => 6,
-					'view'      => 'metaboxes/campaign-donation-options/permit-custom',
-					'label'     => __( 'Allow Custom Donations', 'charitable' ),
+					'priority' => 6,
+					'view'     => 'metaboxes/campaign-donation-options/permit-custom',
+					'label'    => __( 'Allow Custom Donations', 'charitable' ),
 				),
 			);
 
@@ -304,9 +302,9 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   int     $campaign_id The campaign ID.
-		 * @param   WP_Post $post        Current Post object.
-		 * @return  void
+		 * @param  int     $campaign_id The campaign ID.
+		 * @param  WP_Post $post        Current Post object.
+		 * @return void
 		 */
 		public function save_campaign( $campaign_id, WP_Post $post ) {
 			if ( ! $this->meta_box_helper->user_can_save( $campaign_id ) ) {
@@ -358,8 +356,8 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.4.0
 		 *
-		 * @param   array $data    Submitted data.
-		 * @return  array
+		 * @param  array $data Submitted data.
+		 * @return array
 		 */
 		public function set_default_post_content( $data ) {
 			if ( Charitable::CAMPAIGN_POST_TYPE != $data['post_type'] ) {
@@ -378,9 +376,9 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   string  $placeholder Placeholder text.
-		 * @param   WP_Post $post        Current Post object.
-		 * @return  string
+		 * @param  string  $placeholder Placeholder text.
+		 * @param  WP_Post $post        Current Post object.
+		 * @return string
 		 */
 		public function campaign_enter_title( $placeholder, WP_Post $post ) {
 			if ( 'campaign' == $post->post_type ) {
@@ -395,37 +393,37 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		 *
 		 * @global  WP_Post $post
 		 * @global  int     $post_ID
-		 * @param   array $messages Messages to display.
-		 * @return  array
+		 * @param  array $messages Messages to display.
+		 * @return array
 		 */
 		public function post_messages( $messages ) {
 			global $post, $post_ID;
 
 			$messages[ Charitable::CAMPAIGN_POST_TYPE ] = array(
 				// Unused. Messages start at index 1.
-				0 => '',
-				1 => sprintf(
+				0  => '',
+				1  => sprintf(
 					__( 'Campaign updated. <a href="%s">View Campaign</a>', 'charitable' ),
 					esc_url( get_permalink( $post_ID ) )
 				),
-				2 => __( 'Custom field updated.', 'charitable' ),
-				3 => __( 'Custom field deleted.', 'charitable' ),
-				4 => __( 'Campaign updated.', 'charitable' ),
-				5 => isset( $_GET['revision'] )
+				2  => __( 'Custom field updated.', 'charitable' ),
+				3  => __( 'Custom field deleted.', 'charitable' ),
+				4  => __( 'Campaign updated.', 'charitable' ),
+				5  => isset( $_GET['revision'] )
 					? sprintf( __( 'Campaign restored to revision from %s', 'charitable' ), wp_post_revision_title( (int) $_GET['revision'], false ) )
 					: false,
-				6 => sprintf(
+				6  => sprintf(
 					__( 'Campaign published. <a href="%s">View Campaign</a>', 'charitable' ),
 					esc_url( get_permalink( $post_ID ) )
 				),
-				7 => __( 'Campaign saved.', 'charitable' ),
-				8 => sprintf(
+				7  => __( 'Campaign saved.', 'charitable' ),
+				8  => sprintf(
 					__( 'Campaign submitted. <a target="_blank" href="%s">Preview Campaign</a>', 'charitable' ),
 					esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) )
 				),
-				9 => sprintf(
-					__( 'Campaign scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview Campaign</a>', 'charitable' ), 
-					date_i18n( __( 'M j, Y @ G:i', 'charitable' ),strtotime( $post->post_date ) ),
+				9  => sprintf(
+					__( 'Campaign scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview Campaign</a>', 'charitable' ),
+					date_i18n( __( 'M j, Y @ G:i', 'charitable' ), strtotime( $post->post_date ) ),
 					esc_url( get_permalink( $post_ID ) )
 				),
 				10 => sprintf(
@@ -440,24 +438,23 @@ if ( ! class_exists( 'Charitable_Campaign_Post_Type' ) ) :
 		/**
 		 * Modify bulk messages
 		 *
-		 * @param 	array $bulk_messages Messages to show after bulk actions.
-		 * @param 	array $bulk_counts   Array showing how many items were affected by the action.
-		 * @return 	array
+		 * @param  array $bulk_messages Messages to show after bulk actions.
+		 * @param  array $bulk_counts   Array showing how many items were affected by the action.
+		 * @return array
 		 */
 		public function bulk_messages( $bulk_messages, $bulk_counts ) {
-
 			$bulk_messages[ Charitable::CAMPAIGN_POST_TYPE ] = array(
 				'updated'   => _n( '%d campaign updated.', '%d campaigns updated.', $bulk_counts['updated'], 'charitable' ),
 				'locked'    => ( 1 == $bulk_counts['locked'] ) ? __( '1 campaign not updated, somebody is editing it.' ) :
-								   _n( '%s campaign not updated, somebody is editing it.', '%s campaigns not updated, somebody is editing them.', $bulk_counts['locked'], 'charitable' ),
+									_n( '%s campaign not updated, somebody is editing it.', '%s campaigns not updated, somebody is editing them.', $bulk_counts['locked'], 'charitable' ),
 				'deleted'   => _n( '%s campaign permanently deleted.', '%s campaigns permanently deleted.', $bulk_counts['deleted'], 'charitable' ),
 				'trashed'   => _n( '%s campaign moved to the Trash.', '%s campaigns moved to the Trash.', $bulk_counts['trashed'], 'charitable' ),
 				'untrashed' => _n( '%s campaign restored from the Trash.', '%s campaigns restored from the Trash.', $bulk_counts['untrashed'], 'charitable' ),
 			);
 
 			return $bulk_messages;
-
 		}
+
 	}
 
 endif;
