@@ -10,11 +10,11 @@
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-if ( ! isset( $_GET[ 'email_id' ] ) ) {
-    return;
+if ( ! isset( $_GET['email_id'] ) ) {
+	return;
 }
 
-$email = charitable_get_helper( 'emails' )->get_email( $_GET[ 'email_id' ] );
+$email        = charitable_get_helper( 'emails' )->get_email( $_GET['email_id'] );
 $email_object = new $email;
 
 echo $email_object->preview();
