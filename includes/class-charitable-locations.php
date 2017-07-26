@@ -56,7 +56,7 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 		 *
 		 * @since   1.2.0
 		 *
-		 * @return  Charitable_Locations
+		 * @return Charitable_Locations
 		 */
 		public static function get_instance() {
 			if ( is_null( self::$instance ) ) {
@@ -78,7 +78,7 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return 	string[]
+		 * @return string[]
 		 */
 		public function get_countries() {
 			if ( empty( $this->countries ) ) {
@@ -93,7 +93,7 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return 	string[]
+		 * @return string[]
 		 */
 		public function get_countries_with_states() {
 			return array(
@@ -129,10 +129,9 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return 	string[]
+		 * @return string[]
 		 */
 		public function get_all_states() {
-
 			foreach ( $this->get_countries_with_states() as $country_code ) {
 				$this->get_states_for_country( $country_code );
 			}
@@ -145,11 +144,10 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	string $country_code The three-character country code.
-		 * @return 	string[]
+		 * @param  string   $country_code The three-character country code.
+		 * @return string[]
 		 */
 		public function get_states_for_country( $country_code ) {
-
 			if ( ! in_array( $country_code, $this->get_countries_with_states() ) ) {
 				return array();
 			}
@@ -166,7 +164,7 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public function get_base_country() {
 			$country = esc_attr( get_option( 'charitable_default_country' ) );
@@ -179,49 +177,48 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return 	string[]
+		 * @return string[]
 		 */
 		public function get_address_formats() {
-
 			if ( ! isset( $this->address_formats ) ) {
 
 				// Common formats.
 				$postcode_before_city = "{company}\n{name}\n{address_1}\n{address_2}\n{postcode} {city}\n{country}";
 
 				// Define address formats.
-				$this->address_formats = apply_filters('charitable_localisation_address_formats', array(
+				$this->address_formats = apply_filters( 'charitable_localisation_address_formats', array(
 					'default' => "{name}\n{company}\n{address_1}\n{address_2}\n{city}\n{state}\n{postcode}\n{country}",
-					'AU' => "{name}\n{company}\n{address_1}\n{address_2}\n{city} {state} {postcode}\n{country}",
-					'AT' => $postcode_before_city,
-					'BE' => $postcode_before_city,
-					'CA' => "{company}\n{name}\n{address_1}\n{address_2}\n{city} {state} {postcode}\n{country}",
-					'CH' => $postcode_before_city,
-					'CN' => "{country} {postcode}\n{state}, {city}, {address_2}, {address_1}\n{company}\n{name}",
-					'CZ' => $postcode_before_city,
-					'DE' => $postcode_before_city,
-					'EE' => $postcode_before_city,
-					'FI' => $postcode_before_city,
-					'DK' => $postcode_before_city,
-					'FR' => "{company}\n{name}\n{address_1}\n{address_2}\n{postcode} {city_upper}\n{country}",
-					'HK' => "{company}\n{first_name} {last_name_upper}\n{address_1}\n{address_2}\n{city_upper}\n{state_upper}\n{country}",
-					'HU' => "{name}\n{company}\n{city}\n{address_1}\n{address_2}\n{postcode}\n{country}",
-					'IS' => $postcode_before_city,
-					'IT' => "{company}\n{name}\n{address_1}\n{address_2}\n{postcode}\n{city}\n{state_upper}\n{country}",
-					'JP' => "{postcode}\n{state}{city}{address_1}\n{address_2}\n{company}\n{last_name} {first_name}\n {country}",
-					'TW' => "{postcode}\n{city}{address_2}\n{address_1}\n{company}\n{last_name} {first_name}\n {country}",
-					'LI' => $postcode_before_city,
-					'NL' => $postcode_before_city,
-					'NZ' => "{name}\n{company}\n{address_1}\n{address_2}\n{city} {postcode}\n{country}",
-					'NO' => $postcode_before_city,
-					'PL' => $postcode_before_city,
-					'SK' => $postcode_before_city,
-					'SI' => $postcode_before_city,
-					'ES' => "{name}\n{company}\n{address_1}\n{address_2}\n{postcode} {city}\n{state}\n{country}",
-					'SE' => $postcode_before_city,
-					'TR' => "{name}\n{company}\n{address_1}\n{address_2}\n{postcode} {city} {state}\n{country}",
-					'US' => "{name}\n{company}\n{address_1}\n{address_2}\n{city}, {state_code} {postcode}\n{country}",
-					'VN' => "{name}\n{company}\n{address_1}\n{city}\n{country}",
-				));
+					'AU'      => "{name}\n{company}\n{address_1}\n{address_2}\n{city} {state} {postcode}\n{country}",
+					'AT'      => $postcode_before_city,
+					'BE'      => $postcode_before_city,
+					'CA'      => "{company}\n{name}\n{address_1}\n{address_2}\n{city} {state} {postcode}\n{country}",
+					'CH'      => $postcode_before_city,
+					'CN'      => "{country} {postcode}\n{state}, {city}, {address_2}, {address_1}\n{company}\n{name}",
+					'CZ'      => $postcode_before_city,
+					'DE'      => $postcode_before_city,
+					'EE'      => $postcode_before_city,
+					'FI'      => $postcode_before_city,
+					'DK'      => $postcode_before_city,
+					'FR'      => "{company}\n{name}\n{address_1}\n{address_2}\n{postcode} {city_upper}\n{country}",
+					'HK'      => "{company}\n{first_name} {last_name_upper}\n{address_1}\n{address_2}\n{city_upper}\n{state_upper}\n{country}",
+					'HU'      => "{name}\n{company}\n{city}\n{address_1}\n{address_2}\n{postcode}\n{country}",
+					'IS'      => $postcode_before_city,
+					'IT'      => "{company}\n{name}\n{address_1}\n{address_2}\n{postcode}\n{city}\n{state_upper}\n{country}",
+					'JP'      => "{postcode}\n{state}{city}{address_1}\n{address_2}\n{company}\n{last_name} {first_name}\n {country}",
+					'TW'      => "{postcode}\n{city}{address_2}\n{address_1}\n{company}\n{last_name} {first_name}\n {country}",
+					'LI'      => $postcode_before_city,
+					'NL'      => $postcode_before_city,
+					'NZ'      => "{name}\n{company}\n{address_1}\n{address_2}\n{city} {postcode}\n{country}",
+					'NO'      => $postcode_before_city,
+					'PL'      => $postcode_before_city,
+					'SK'      => $postcode_before_city,
+					'SI'      => $postcode_before_city,
+					'ES'      => "{name}\n{company}\n{address_1}\n{address_2}\n{postcode} {city}\n{state}\n{country}",
+					'SE'      => $postcode_before_city,
+					'TR'      => "{name}\n{company}\n{address_1}\n{address_2}\n{postcode} {city} {state}\n{country}",
+					'US'      => "{name}\n{company}\n{address_1}\n{address_2}\n{city}, {state_code} {postcode}\n{country}",
+					'VN'      => "{name}\n{company}\n{address_1}\n{city}\n{country}",
+				) );
 
 			}//end if
 
@@ -233,11 +230,10 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	array $address_fields Address fields.
-		 * @return 	string
+		 * @param  array  $address_fields Address fields.
+		 * @return string
 		 */
 		private function get_address_format( $address_fields ) {
-
 			$formats = $this->get_address_formats();
 			$country = $address_fields['country'];
 
@@ -256,7 +252,6 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 			}
 
 			return $format;
-
 		}
 
 		/**
@@ -264,11 +259,10 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	array $address_fields Address fields.
-		 * @return 	string[]
+		 * @param  array    $address_fields Address fields.
+		 * @return string[]
 		 */
 		private function sanitize_address_fields( $address_fields ) {
-
 			if ( ! is_array( $address_fields ) ) {
 				return $address_fields;
 			}
@@ -281,14 +275,14 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 			$defaults = array(
 				'first_name'   => '',
 				'last_name'    => '',
-				'company'	   => '',
-				'address'	   => '',
+				'company'      => '',
+				'address'      => '',
 				'address_2'    => '',
-				'city' 		   => '',
-				'state'		   => '',
+				'city'         => '',
+				'state'        => '',
 				'full_state'   => '',
-				'postcode'	   => '',
-				'country'	   => '',
+				'postcode'     => '',
+				'country'      => '',
 				'full_country' => '',
 			);
 
@@ -323,7 +317,6 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 			}
 
 			return $address_fields;
-
 		}
 
 		/**
@@ -331,11 +324,10 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	array $address_fields Address fields.
-		 * @return 	string
+		 * @param  array  $address_fields Address fields.
+		 * @return string
 		 */
 		public function get_formatted_address( $address_fields = array() ) {
-
 			$address_fields    = $this->sanitize_address_fields( $address_fields );
 			$formatted_address = '';
 
@@ -369,7 +361,7 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 				'{country_upper}'    => strtoupper( $address_fields['full_country'] ),
 			), $address_fields ) );
 
-			$format = $this->get_address_format( $address_fields );
+			$format            = $this->get_address_format( $address_fields );
 			$formatted_address = str_replace( array_keys( $replace ), $replace, $format );
 
 			/* Clean up white space */
@@ -385,7 +377,6 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 			$formatted_address = implode( '<br/>', $formatted_address );
 
 			return $formatted_address;
-
 		}
 
 		/**
@@ -393,12 +384,13 @@ if ( ! class_exists( 'Charitable_Locations' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param  	string $line The line to be trimmed.
-		 * @return 	string
+		 * @param  string $line The line to be trimmed.
+		 * @return string
 		 */
 		private function trim_formatted_address_line( $line ) {
 			return trim( $line, ', ' );
 		}
+
 	}
 
 endif;
