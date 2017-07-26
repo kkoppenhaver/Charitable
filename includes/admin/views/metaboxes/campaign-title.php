@@ -9,8 +9,8 @@
 
 global $post;
 
-$title 		= isset( $view_args['title'] ) 	? $view_args['title'] 	: '';
-$tooltip 	= isset( $view_args['tooltip'] )? '<span class="tooltip"> '. $view_args['tooltip'] . '</span>'	: '';
+$title   = isset( $view_args['title'] ) 	? $view_args['title'] 	: '';
+$tooltip = isset( $view_args['tooltip'] )? '<span class="tooltip"> ' . $view_args['tooltip'] . '</span>'	: '';
 
 /**
  * Filter the title field placeholder text.
@@ -24,5 +24,5 @@ $title_placeholder = apply_filters( 'enter_title_here', __( 'Enter campaign titl
 ?>
 <div id="charitable-campaign-title-metabox-wrap" class="charitable-metabox-wrap">
 	<label class="screen-reader-text" for="title"><?php echo $title_placeholder; ?></label>
-	<input type="text" name="post_title" size="30"  value="<?php echo esc_attr( htmlspecialchars( $post->post_title ) ); ?>" id="title" spellcheck="true" autocomplete="off" placeholder="<?php echo $title_placeholder ?>" tabindex="1" />
+	<input type="text" name="post_title" size="30"  value="<?php echo esc_attr( htmlspecialchars( $post->post_title ) ); ?>" id="title" spellcheck="true" autocomplete="off" placeholder="<?php echo $title_placeholder; ?>" tabindex="1" />
 </div>
