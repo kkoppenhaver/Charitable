@@ -28,7 +28,7 @@ if ( empty( $fields ) ) {
 	<?php
 	if ( isset( $field['legend'] ) ) : ?>
 
-		<div class="charitable-form-header"><?php echo $field['legend'] ?></div>
+		<div class="charitable-form-header"><?php echo $field['legend']; ?></div>
 
 	<?php
 	endif;
