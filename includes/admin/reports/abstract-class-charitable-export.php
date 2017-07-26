@@ -47,11 +47,11 @@ if ( ! class_exists( 'Charitable_Export' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   mixed[] $args
+		 * @param mixed[] $args
 		 */
 		public function __construct( $args = array() ) {
 			$this->columns = $this->get_csv_columns();
-			$this->args = wp_parse_args( $args, $this->defaults );
+			$this->args    = wp_parse_args( $args, $this->defaults );
 
 			$this->export();
 		}
@@ -61,7 +61,7 @@ if ( ! class_exists( 'Charitable_Export' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 */
 		public function can_export() {
 			return (bool) apply_filters( 'charitable_export_capability', current_user_can( 'export_charitable_reports' ), $this );
@@ -72,10 +72,9 @@ if ( ! class_exists( 'Charitable_Export' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		protected function export() {
-
 			$data = array_map( array( $this, 'map_data' ), $this->get_data() );
 
 			$this->print_headers();
@@ -101,8 +100,8 @@ if ( ! class_exists( 'Charitable_Export' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   object|array $data
-		 * @return  mixed
+		 * @param  object|array $data
+		 * @return mixed
 		 */
 		protected function map_data( $data ) {
 			/* Cast the data to array */
@@ -126,7 +125,7 @@ if ( ! class_exists( 'Charitable_Export' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		protected function print_headers() {
 			ignore_user_abort( true );
@@ -156,7 +155,7 @@ if ( ! class_exists( 'Charitable_Export' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  string[]
+		 * @return string[]
 		 */
 		abstract protected function get_csv_columns();
 
@@ -165,7 +164,7 @@ if ( ! class_exists( 'Charitable_Export' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		abstract protected function get_data();
 	}
