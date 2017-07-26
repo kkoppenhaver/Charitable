@@ -36,7 +36,7 @@ if ( ! class_exists( 'Charitable_Widgets' ) ) :
 		 *
 		 * @since   1.2.0
 		 *
-		 * @return  Charitable_Widgets
+		 * @return Charitable_Widgets
 		 */
 		public static function get_instance() {
 			if ( is_null( self::$instance ) ) {
@@ -62,7 +62,7 @@ if ( ! class_exists( 'Charitable_Widgets' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return 	void
+		 * @return void
 		 */
 		public function register_widgets() {
 			register_widget( 'Charitable_Campaign_Terms_Widget' );
@@ -71,6 +71,7 @@ if ( ! class_exists( 'Charitable_Widgets' ) ) :
 			register_widget( 'Charitable_Donate_Widget' );
 			register_widget( 'Charitable_Donation_Stats_Widget' );
 		}
+
 	}
 
 endif;
