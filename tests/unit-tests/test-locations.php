@@ -6,7 +6,7 @@ class Test_Charitable_Locations extends Charitable_UnitTestCase {
 	 * For this collection of test, we set up our default country as Australia.
 	 */
 	function setUp() {
-		parent::setUp();		
+		parent::setUp();
 	}
 
 	function test_get_countries() {
@@ -257,7 +257,7 @@ class Test_Charitable_Locations extends Charitable_UnitTestCase {
 		$this->assertArrayHasKey( 'ZW', $countries );
 	}
 
-	function test_get_base_country() {		
+	function test_get_base_country() {
 		add_option( 'charitable_default_country', 'AU' );
 		$this->assertEquals( 'AU', charitable_get_location_helper()->get_base_country() );
 	}
@@ -301,39 +301,40 @@ class Test_Charitable_Locations extends Charitable_UnitTestCase {
 		add_option( 'charitable_default_country', 'AU' );
 
 		$address_fields = array(
-			'first_name'	=> 'James',
-			'last_name'		=> 'Gordon',
-			'company'		=> 'Gotham City Police Department',
-			'address'		=> 'Unit 3',
-			'address_2'		=> '22 Batman Avenue',
-			'city'			=> 'Gotham',
-			'postcode'		=> '29292',
-			'state'			=> 'Gotham State',
-			'country'		=> 'US'
+			'first_name' => 'James',
+			'last_name'  => 'Gordon',
+			'company'    => 'Gotham City Police Department',
+			'address'    => 'Unit 3',
+			'address_2'  => '22 Batman Avenue',
+			'city'       => 'Gotham',
+			'postcode'   => '29292',
+			'state'      => 'Gotham State',
+			'country'    => 'US'
 		);
 
 		// "{name}\n{company}\n{address_1}\n{address_2}\n{city}, {state_code} {postcode}\n{country}"
-		$expected = "James Gordon<br/>Gotham City Police Department<br/>Unit 3<br/>22 Batman Avenue<br/>Gotham, GOTHAM STATE 29292<br/>United States (US)";
+		$expected = 'James Gordon<br/>Gotham City Police Department<br/>Unit 3<br/>22 Batman Avenue<br/>Gotham, GOTHAM STATE 29292<br/>United States (US)';
 
 		$this->assertEquals( $expected, charitable_get_location_helper()->get_formatted_address( $address_fields ) );
 
 		// Second address. Within country, with state code.
 
 		$address_fields = array(
-			'first_name'	=> 'Jack',
-			'last_name'		=> 'Daniels',
-			'company'		=> 'Jack Daniel\'s Tennessee Whiskey',
-			'address'		=> '299 Smith Street',
-			'address_2'		=> '',
-			'city'			=> 'Darwin',
-			'postcode'		=> '0800',
-			'state'			=> 'NT',
-			'country'		=> 'AU'
+			'first_name' => 'Jack',
+			'last_name'  => 'Daniels',
+			'company'    => 'Jack Daniel\'s Tennessee Whiskey',
+			'address'    => '299 Smith Street',
+			'address_2'  => '',
+			'city'       => 'Darwin',
+			'postcode'   => '0800',
+			'state'      => 'NT',
+			'country'    => 'AU'
 		);
 
 		// "{name}\n{company}\n{address_1}\n{address_2}\n{city} {state} {postcode}",
-		$expected = "Jack Daniels<br/>Jack Daniel&#039;s Tennessee Whiskey<br/>299 Smith Street<br/>Darwin Northern Territory 0800";
+		$expected = 'Jack Daniels<br/>Jack Daniel&#039;s Tennessee Whiskey<br/>299 Smith Street<br/>Darwin Northern Territory 0800';
 
 		$this->assertEquals( $expected, charitable_get_location_helper()->get_formatted_address( $address_fields ) );
 	}
+
 }
