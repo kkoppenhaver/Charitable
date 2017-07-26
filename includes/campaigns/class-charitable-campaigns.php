@@ -35,8 +35,8 @@ if ( ! class_exists( 'Charitable_Campaigns' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	array $args
-		 * @return 	WP_Query
+		 * @param  array    $args
+		 * @return WP_Query
 		 */
 		public static function query( $args = array() ) {
 			$defaults = array(
@@ -54,22 +54,22 @@ if ( ! class_exists( 'Charitable_Campaigns' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	array $args     Additional arguments to pass to WP_Query
-		 * @return	WP_Query
+		 * @param  array    $args Additional arguments to pass to WP_Query
+		 * @return WP_Query
 		 */
 		public static function ordered_by_ending_soon( $args = array() ) {
 			$defaults = array(
 				'meta_query' => array(
 					array(
-						'key' => '_campaign_end_date',
-						'value' => date( 'Y-m-d H:i:s' ),
+						'key'     => '_campaign_end_date',
+						'value'   => date( 'Y-m-d H:i:s' ),
 						'compare' => '>=',
-						'type' => 'datetime',
+						'type'    => 'datetime',
 					),
 				),
-				'meta_key' => '_campaign_end_date',
-				'orderby' => 'meta_value',
-				'order' => 'ASC',
+				'meta_key'   => '_campaign_end_date',
+				'orderby'    => 'meta_value',
+				'order'      => 'ASC',
 			);
 
 			$args = wp_parse_args( $args, $defaults );
@@ -83,8 +83,8 @@ if ( ! class_exists( 'Charitable_Campaigns' ) ) :
 		 * @global 	$wpdb
 		 * @since   1.0.0
 		 *
-		 * @param 	array $args     Additional arguments to pass to WP_Query
-		 * @return 	WP_Query
+		 * @param  array    $args Additional arguments to pass to WP_Query
+		 * @return WP_Query
 		 * @todo
 		 */
 		public static function ordered_by_amount( $args = array() ) {
@@ -116,8 +116,8 @@ if ( ! class_exists( 'Charitable_Campaigns' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	string $join_statement
-		 * @return  string
+		 * @param  string $join_statement
+		 * @return string
 		 */
 		public static function join_campaign_donations_table( $join_statement ) {
 			global $wpdb;
@@ -127,9 +127,9 @@ if ( ! class_exists( 'Charitable_Campaigns' ) ) :
 			$statuses = "'" . implode( "','", $statuses ) . "'";
 
 			$join_statement .= " LEFT JOIN ( SELECT cd1.campaign_donation_id, cd1.donation_id, cd1.donor_id, cd1.amount, cd1.campaign_id
-                FROM {$wpdb->prefix}charitable_campaign_donations cd1 
-                INNER JOIN $wpdb->posts po1 ON cd1.donation_id = po1.ID
-                WHERE po1.post_status IN ( $statuses )
+				FROM {$wpdb->prefix}charitable_campaign_donations cd1
+				INNER JOIN $wpdb->posts po1 ON cd1.donation_id = po1.ID
+				WHERE po1.post_status IN ( $statuses )
 			) cd ON cd.campaign_id = $wpdb->posts.ID";
 
 			return $join_statement;
@@ -140,7 +140,7 @@ if ( ! class_exists( 'Charitable_Campaigns' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public static function groupby_campaign_id() {
 			global $wpdb;
@@ -152,13 +152,14 @@ if ( ! class_exists( 'Charitable_Campaigns' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	string   $orderby The current orderby value.
-		 * @param 	WP_Query $wp_query The WP_Query object.
-		 * @return  string
+		 * @param  string   $orderby  The current orderby value.
+		 * @param  WP_Query $wp_query The WP_Query object.
+		 * @return string
 		 */
 		public static function orderby_campaign_donation_amount( $orderby, WP_Query $wp_query ) {
 			return 'COALESCE(SUM(cd.amount), 0) ' . $wp_query->get( 'order' );
 		}
+
 	}
 
 endif;
