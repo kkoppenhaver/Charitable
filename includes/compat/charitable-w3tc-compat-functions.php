@@ -17,8 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * @since   1.4.18
  *
- * @param   int $campaign_id The campaign ID.
- * @return  void
+ * @param  int  $campaign_id The campaign ID.
+ * @return void
  */
 function charitable_compat_w3tc_clear_campaign_cache( $campaign_id ) {
 	w3tc_flush_post( $campaign_id );
@@ -37,7 +37,7 @@ add_action( 'charitable_flush_campaign_cache', 'charitable_compat_w3tc_clear_cam
  *
  * @since   1.4.18
  *
- * @return 	void
+ * @return void
  */
 function charitable_compat_w3tc_turn_off_donation_cache() {
 	define( 'DONOTCACHEDB', true );
