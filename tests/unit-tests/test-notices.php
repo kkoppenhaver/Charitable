@@ -54,4 +54,5 @@ class Test_Charitable_Notices extends Charitable_UnitTestCase {
 		$this->assertArrayHasKey( 'success', $notices );
 		$this->assertArrayHasKey( 'info', $notices );
 	}
+
 }
