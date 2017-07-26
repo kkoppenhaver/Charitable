@@ -31,7 +31,7 @@ if ( ! class_exists( 'Charitable_Campaign_Endpoint' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public static function get_endpoint_id() {
 			return self::ID;
@@ -43,15 +43,13 @@ if ( ! class_exists( 'Charitable_Campaign_Endpoint' ) ) :
 		 * @global 	WP_Rewrite $wp_rewrite
 		 * @since   1.5.0
 		 *
-		 * @param 	array      $args
-		 * @return  string
+		 * @param  array  $args
+		 * @return string
 		 */
 		public function get_page_url( $args = array() ) {
-
-			$campaign_id  = array_key_exists( 'campaign_id', $args ) ? $args['campaign_id'] : get_the_ID();
+			$campaign_id = array_key_exists( 'campaign_id', $args ) ? $args['campaign_id'] : get_the_ID();
 
 			return get_permalink( $campaign_id );
-
 		}
 
 		/**
@@ -60,11 +58,10 @@ if ( ! class_exists( 'Charitable_Campaign_Endpoint' ) ) :
 		 * @global  WP_Query $wp_query
 		 * @since   1.5.0
 		 *
-		 * @param 	array    $args
-		 * @return  boolean
+		 * @param  array   $args
+		 * @return boolean
 		 */
 		public function is_page( $args = array() ) {
-
 			global $wp_query;
 
 			if ( ! $wp_query->is_singular( Charitable::CAMPAIGN_POST_TYPE ) ) {
@@ -72,7 +69,6 @@ if ( ! class_exists( 'Charitable_Campaign_Endpoint' ) ) :
 			}
 
 			return ! array_key_exists( 'donate', $wp_query->query_vars );
-
 		}
 
 		/**
@@ -80,11 +76,10 @@ if ( ! class_exists( 'Charitable_Campaign_Endpoint' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @param 	string $content
-		 * @return  string
+		 * @param  string $content
+		 * @return string
 		 */
 		public function get_content( $content ) {
-
 			if ( ! charitable_is_main_loop() ) {
 				return $content;
 			}
@@ -127,7 +122,6 @@ if ( ! class_exists( 'Charitable_Campaign_Endpoint' ) ) :
 			add_filter( 'the_content', 'charitable_template_campaign_content' );
 
 			return $content;
-
 		}
 
 		/**
@@ -135,13 +129,12 @@ if ( ! class_exists( 'Charitable_Campaign_Endpoint' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public function get_body_class() {
-
 			return 'campaign-donation-page';
-
 		}
+
 	}
 
 endif;
