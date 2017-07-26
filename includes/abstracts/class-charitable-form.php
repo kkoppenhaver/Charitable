@@ -69,7 +69,7 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return 	void
+		 * @return void
 		 */
 		protected function attach_hooks_and_filters() {
 			add_action( 'charitable_form_before_fields', array( $this, 'render_error_notices' ) );
@@ -83,8 +83,8 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	string $id Current form ID.
-		 * @return 	boolean
+		 * @param  string  $id Current form ID.
+		 * @return boolean
 		 */
 		public function is_current_form( $id ) {
 			return $id === $this->id;
@@ -95,7 +95,7 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.3.1
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public function get_form_action() {
 			return $this->form_action;
@@ -106,7 +106,7 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return 	string
+		 * @return string
 		 */
 		public function get_form_identifier() {
 			return $this->id;
@@ -117,8 +117,8 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	string $field_type Type of field.
-		 * @return 	boolean
+		 * @param  string  $field_type Type of field.
+		 * @return boolean
 		 */
 		protected function use_default_field_template( $field_type ) {
 			$default_field_types = apply_filters( 'charitable_default_template_field_types', array(
@@ -135,8 +135,8 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	Charitable_Form $form Form object.
-		 * @return 	boolean Whether the notices were rendered.
+		 * @param  Charitable_Form $form Form object.
+		 * @return boolean               Whether the notices were rendered.
 		 */
 		public function render_error_notices( $form ) {
 			if ( ! $form->is_current_form( $this->id ) ) {
@@ -161,8 +161,8 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	Charitable_Form $form The form object.
-		 * @return 	boolean Whether the output is added.
+		 * @param  Charitable_Form $form The form object.
+		 * @return boolean               Whether the output is added.
 		 */
 		public function add_hidden_fields( $form ) {
 			if ( ! $form->is_current_form( $this->id ) ) {
@@ -171,10 +171,10 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 
 			$this->nonce_field();
 
-			?>			
-			<input type="hidden" name="charitable_action" value="<?php echo esc_attr( $this->form_action ) ?>" />
-			<input type="hidden" name="charitable_form_id" value="<?php echo esc_attr( $this->id ) ?>" autocomplete="off" />
-			<input type="text" name="<?php echo esc_attr( $this->id ) ?>" class="charitable-hidden" value="" autocomplete="off" />			
+			?>
+			<input type="hidden" name="charitable_action" value="<?php echo esc_attr( $this->form_action ); ?>" />
+			<input type="hidden" name="charitable_form_id" value="<?php echo esc_attr( $this->id ); ?>" autocomplete="off" />
+			<input type="text" name="<?php echo esc_attr( $this->id ); ?>" class="charitable-hidden" value="" autocomplete="off" />
 			<?php
 
 			return true;
@@ -185,9 +185,9 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	int   $increment The number the index should be incremented by.
-		 * @param 	array $field     The field definition.
-		 * @return  int
+		 * @param  int   $increment The number the index should be incremented by.
+		 * @param  array $field     The field definition.
+		 * @return int
 		 */
 		public function increment_index( $increment, $field ) {
 			if ( in_array( $field['type'], array(
@@ -207,12 +207,12 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	array 		    $field     Field definition.
-		 * @param 	string 		    $key       Field key.
-		 * @param 	Charitable_Form $form      The form object.
-		 * @param 	int 			$index     The current index.
-		 * @param 	string 			$namespace Namespace for the form field's name attribute.
-		 * @return 	boolean False if the field was not rendered. True otherwise.
+		 * @param  array           $field     Field definition.
+		 * @param  string          $key       Field key.
+		 * @param  Charitable_Form $form      The form object.
+		 * @param  int             $index     The current index.
+		 * @param  string          $namespace Namespace for the form field's name attribute.
+		 * @return boolean                    False if the field was not rendered. True otherwise.
 		 */
 		public function render_field( $field, $key, $form, $index = 0, $namespace = null ) {
 			if ( ! $form->is_current_form( $this->id ) ) {
@@ -244,9 +244,9 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 			}
 
 			$template->set_view_args( array(
-				'form' 		=> $this,
-				'field' 	=> $field,
-				'classes'	=> $this->get_field_classes( $field, $index ),
+				'form'    => $this,
+				'field'   => $field,
+				'classes' => $this->get_field_classes( $field, $index ),
 			) );
 
 			$template->render();
@@ -259,8 +259,8 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	array $field Field definition.
-		 * @return 	string
+		 * @param  array  $field Field definition.
+		 * @return string
 		 */
 		public function get_template_name( $field ) {
 			if ( $this->use_default_field_template( $field['type'] ) ) {
@@ -277,9 +277,9 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	array $field Field definition.
-		 * @param 	int   $index Field index.
-		 * @return 	string
+		 * @param  array  $field Field definition.
+		 * @param  int    $index Field index.
+		 * @return string
 		 */
 		public function get_field_classes( $field, $index = 0 ) {
 			if ( 'hidden' == $field['type'] ) {
@@ -312,8 +312,8 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	string $type Type of field.
-		 * @return  string[]
+		 * @param  string   $type Type of field.
+		 * @return string[]
 		 */
 		public function get_field_type_classes( $type ) {
 			$classes = array();
@@ -341,7 +341,7 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return 	void
+		 * @return void
 		 */
 		public function nonce_field() {
 			wp_nonce_field( $this->nonce_action, $this->nonce_name );
@@ -352,7 +352,7 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return 	boolean
+		 * @return boolean
 		 */
 		public function validate_nonce() {
 			$submitted = $this->get_submitted_values();
@@ -370,7 +370,7 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.4.3
 		 *
-		 * @return 	boolean
+		 * @return boolean
 		 */
 		public function validate_honeypot() {
 			$submitted = $this->get_submitted_values();
@@ -389,8 +389,8 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   array $field Field definition.
-		 * @return 	array
+		 * @param  array $field Field definition.
+		 * @return array
 		 */
 		public function filter_required_fields( $field ) {
 			return isset( $field['required'] ) && true == $field['required'];
@@ -401,8 +401,8 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	array[] $fields Array of form fields.
-		 * @return 	array[]
+		 * @param  array[] $fields Array of form fields.
+		 * @return array[]
 		 */
 		public function get_required_fields( $fields ) {
 			$required_fields = array_filter( $fields, array( $this, 'filter_required_fields' ) );
@@ -415,12 +415,11 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	array $fields    Array of form fields.
-		 * @param 	array $submitted Submitted values.
-		 * @return 	boolean
+		 * @param  array   $fields    Array of form fields.
+		 * @param  array   $submitted Submitted values.
+		 * @return boolean
 		 */
 		public function check_required_fields( $fields, $submitted = array() ) {
-
 			if ( empty( $submitted ) ) {
 				$submitted = $this->get_submitted_values();
 			}
@@ -483,10 +482,10 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	string $key   Key of the field to sort.
-		 * @param 	array  $field Field definition.
-		 * @param 	array  $ret   Return value that we're carrying.
-		 * @return  array[]
+		 * @param  string  $key   Key of the field to sort.
+		 * @param  array   $field Field definition.
+		 * @param  array   $ret   Return value that we're carrying.
+		 * @return array[]
 		 */
 		public function sort_field_by_data_type( $key, $field, $ret ) {
 			/* Filter out paragraphs and fields without a type. */
@@ -512,7 +511,7 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		public function get_submitted_values() {
 			if ( ! isset( $this->submitted ) ) {
@@ -527,8 +526,8 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	string $key The key to search for.
-		 * @return  mixed Submitted value if set. NULL if value was not set.
+		 * @param  string $key The key to search for.
+		 * @return mixed       Submitted value if set. NULL if value was not set.
 		 */
 		public function get_submitted_value( $key ) {
 			$submitted = $this->get_submitted_values();
@@ -540,14 +539,13 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	string $file_key  Key of the file input.
-		 * @param 	int    $post_id   Post ID.
-		 * @param   array  $post_data Overwrite some of the attachment. Optional.
-		 * @param   array  $overrides Override the wp_handle_upload() behavior. Optional.
-		 * @return 	int|WP_Error ID of the attachment or a WP_Error object on failure.
+		 * @param  string       $file_key  Key of the file input.
+		 * @param  int          $post_id   Post ID.
+		 * @param  array        $post_data Overwrite some of the attachment. Optional.
+		 * @param  array        $overrides Override the wp_handle_upload() behavior. Optional.
+		 * @return int|WP_Error            ID of the attachment or a WP_Error object on failure.
 		 */
 		public function upload_post_attachment( $file_key, $post_id, $post_data = array(), $overrides = array() ) {
-
 			require_once( ABSPATH . 'wp-admin/includes/image.php' );
 			require_once( ABSPATH . 'wp-admin/includes/file.php' );
 			require_once( ABSPATH . 'wp-admin/includes/media.php' );
@@ -560,17 +558,16 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		/**
 		 * Upload a file.
 		 *
-		 * @param 	string $file_key  Reference to a single element of `$_FILES`. Call the
+		 * @param  string         $file_key  Reference to a single element of `$_FILES`. Call the
 		 * 							  function once for each uploaded file.
-		 * @param 	array  $overrides Optional. An associative array of names=>values to
+		 * @param  array          $overrides Optional. An associative array of names=>values to
 		 * 							  override default variables. Default false.
-		 * @return  array|WP_Error On success, returns an associative array of file attributes.
+		 * @return array|WP_Error            On success, returns an associative array of file attributes.
 		 *                         On failure, returns $overrides['upload_error_handler'](&$file, $message )
 		 *                         or array( 'error'=>$message ).
 		 * @since   1.0.0
 		 */
 		public function upload_file( $file_key, $overrides = array() ) {
-
 			require_once( ABSPATH . 'wp-admin/includes/file.php' );
 
 			$overrides = $this->get_file_overrides( $file_key, $overrides );
@@ -586,16 +583,15 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		/**
 		 * Return overrides array for use with upload_file() and upload_post_attachment() methods.
 		 *
-		 * @param 	string $file_key  Reference to a single element of `$_FILES`. Call the
+		 * @param string $file_key  Reference to a single element of `$_FILES`. Call the
 		 * 							  function once for each uploaded file.
-		 * @param 	array  $overrides Optional. An associative array of names=>values to
+		 * @param array  $overrides Optional. An associative array of names=>values to
 		 * 							  override default variables. Default false.
 		 * @since   1.0.0
 		 *
-		 * @return  array
+		 * @return array
 		 */
 		protected function get_file_overrides( $file_key, $overrides = array() ) {
-
 			$allowed_mimes = array(
 				'jpg|jpeg|jpe' => 'image/jpeg',
 				'gif'          => 'image/gif',
@@ -613,7 +609,6 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 			$overrides = wp_parse_args( $overrides, $defaults );
 
 			return $overrides;
-
 		}
 
 		/**
@@ -621,12 +616,13 @@ if ( ! class_exists( 'Charitable_Form' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param 	mixed $template Template we're checking.
-		 * @return  boolean
+		 * @param  mixed   $template Template we're checking.
+		 * @return boolean
 		 */
 		protected function is_valid_template( $template ) {
 			return is_object( $template ) && is_a( $template, 'Charitable_Template' );
 		}
+
 	}
 
 endif;
