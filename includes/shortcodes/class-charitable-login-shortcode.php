@@ -27,11 +27,10 @@ if ( ! class_exists( 'Charitable_Login_Shortcode' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   array $atts User-defined shortcode attributes.
-		 * @return  string
+		 * @param  array  $atts User-defined shortcode attributes.
+		 * @return string
 		 */
 		public static function display( $atts = array() ) {
-
 			$defaults = array(
 				'logged_in_message'      => __( 'You are already logged in!', 'charitable' ),
 				'redirect'               => esc_url( charitable_get_login_redirect_url() ),
@@ -81,7 +80,6 @@ if ( ! class_exists( 'Charitable_Login_Shortcode' ) ) :
 			charitable_template( 'shortcodes/login.php', $args );
 
 			return apply_filters( 'charitable_login_shortcode', ob_get_clean() );
-
 		}
 
 		/**
@@ -89,11 +87,10 @@ if ( ! class_exists( 'Charitable_Login_Shortcode' ) ) :
 		 *
 		 * @since   1.4.0
 		 *
-		 * @param   string $content
-		 * @return  string
+		 * @param  string $content
+		 * @return string
 		 */
 		public static function add_hidden_field_to_login_form( $content, $args ) {
-
 			if ( isset( $args['charitable'] ) && $args['charitable'] ) {
 				$content .= '<input type="hidden" name="charitable" value="1" />';
 			}
@@ -106,8 +103,8 @@ if ( ! class_exists( 'Charitable_Login_Shortcode' ) ) :
 		 *
 		 * @since   1.0.0
 		 *
-		 * @param   array   $args
-		 * @return  mixed[] $args
+		 * @param  array   $args
+		 * @return mixed[] $args
 		 */
 		protected static function get_login_form_args( $args ) {
 			$default = array(
@@ -121,6 +118,7 @@ if ( ! class_exists( 'Charitable_Login_Shortcode' ) ) :
 
 			return apply_filters( 'charitable_login_form_args', $default, $args );
 		}
+
 	}
 
 endif;
