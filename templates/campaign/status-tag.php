@@ -13,13 +13,13 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 $campaign = $view_args['campaign'];
-$tag = $campaign->get_status_tag();
+$tag      = $campaign->get_status_tag();
 
 if ( empty( $tag ) ) {
 	return;
 }
 
 ?>
-<div class="campaign-status-tag campaign-status-tag-<?php echo strtolower( str_replace( ' ', '-', $campaign->get_status_key() ) ) ?>">  
-	<?php echo $tag ?>
+<div class="campaign-status-tag campaign-status-tag-<?php echo strtolower( str_replace( ' ', '-', $campaign->get_status_key() ) ); ?>">
+	<?php echo $tag; ?>
 </div>
