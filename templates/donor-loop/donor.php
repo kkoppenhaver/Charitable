@@ -18,7 +18,7 @@ if ( ! array_key_exists( 'donor', $view_args ) ) {
 	return;
 }
 
-$donor  	 = $view_args['donor'];
+$donor       = $view_args['donor'];
 $campaign_id = $view_args['campaign'];
 
 ?>
@@ -29,8 +29,8 @@ $campaign_id = $view_args['campaign'];
 	 *
 	 * @since   1.5.0
 	 *
-	 * @param   Charitable_Donor $donor     The Donor object.
-	 * @param   array            $view_args View arguments.
+	 * @param Charitable_Donor $donor     The Donor object.
+	 * @param array            $view_args View arguments.
 	 */
 	do_action( 'charitable_donor_loop_before_donor', $donor, $view_args );
 
@@ -46,9 +46,9 @@ $campaign_id = $view_args['campaign'];
 			 *
 			 * @since   1.5.0
 			 *
-			 * @param   string $name      The name to be displayed.
-			 * @param   array  $view_args View arguments.
-			 * @return  string
+			 * @param  string $name      The name to be displayed.
+			 * @param  array  $view_args View arguments.
+			 * @return string
 			 */
 			echo apply_filters( 'charitable_donor_loop_donor_name', $donor->get_name(), $view_args );
 		?>
@@ -63,9 +63,9 @@ $campaign_id = $view_args['campaign'];
 			 *
 			 * @since   1.5.0
 			 *
-			 * @param   string $location  The location to be displayed.
-			 * @param   array  $view_args View arguments.
-			 * @return  string
+			 * @param  string $location  The location to be displayed.
+			 * @param  array  $view_args View arguments.
+			 * @return string
 			 */
 			echo apply_filters( 'charitable_donor_loop_donor_location', $donor->get_location(), $view_args );
 		?>
@@ -80,9 +80,9 @@ $campaign_id = $view_args['campaign'];
 			 *
 			 * @since   1.5.0
 			 *
-			 * @param   string $amount    The amount to be displayed.
-			 * @param   array  $view_args View arguments.
-			 * @return  string
+			 * @param  string $amount    The amount to be displayed.
+			 * @param  array  $view_args View arguments.
+			 * @return string
 			 */
 			echo apply_filters( 'charitable_donor_loop_donor_amount', charitable_format_money( $donor->get_amount( $campaign_id ) ), $view_args );
 		?>
@@ -94,10 +94,9 @@ $campaign_id = $view_args['campaign'];
 	 *
 	 * @since   1.5.0
 	 *
-	 * @param   Charitable_Donor $donor     The Donor object.
-	 * @param   array            $view_args View arguments.
+	 * @param Charitable_Donor $donor     The Donor object.
+	 * @param array            $view_args View arguments.
 	 */
 	do_action( 'charitable_donor_loop_after_donor', $donor, $view_args );
 	?>
-</li><!-- .donor-<?php echo $donor->donor_id ?> -->
-
+</li><!-- .donor-<?php echo $donor->donor_id; ?> -->
