@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  *
  * @since   1.0.0
  *
- * @return 	Charitable
+ * @return Charitable
  */
 function charitable() {
 	return Charitable::get_instance();
@@ -33,10 +33,10 @@ function charitable() {
  *
  * @since   1.0.0
  *
- * @param 	mixed $key 		Accepts an array of strings or a single string.
- * @param 	mixed $default  The value to return if key is not set.
- * @param 	array $settings Optional. Used when $key is an array.
- * @return 	mixed
+ * @param  mixed $key      Accepts an array of strings or a single string.
+ * @param  mixed $default  The value to return if key is not set.
+ * @param  array $settings Optional. Used when $key is an array.
+ * @return mixed
  */
 function charitable_get_option( $key, $default = false, $settings = array() ) {
 	if ( empty( $settings ) ) {
@@ -77,8 +77,8 @@ function charitable_get_option( $key, $default = false, $settings = array() ) {
  *
  * @since   1.0.0
  *
- * @param 	string $class_key
- * @return 	mixed
+ * @param  string $class_key
+ * @return mixed
  */
 function charitable_get_helper( $class_key ) {
 	if ( false !== strpos( $class_key, '_' ) ) {
@@ -92,7 +92,7 @@ function charitable_get_helper( $class_key ) {
 	}
 
 	$class_words = ucwords( $class_words );
-	$class_name = 'Charitable_' . str_replace( ' ', '_', $class_words );
+	$class_name  = 'Charitable_' . str_replace( ' ', '_', $class_words );
 
 	if ( ! class_exists( $class_name ) ) {
 		return false;
@@ -106,7 +106,7 @@ function charitable_get_helper( $class_key ) {
  *
  * @since   1.0.0
  *
- * @return 	Charitable_Notices
+ * @return Charitable_Notices
  */
 function charitable_get_notices() {
 	return Charitable_Notices::get_instance();
@@ -117,7 +117,7 @@ function charitable_get_notices() {
  *
  * @since   1.0.0
  *
- * @return  Charitable_Donation_Processor
+ * @return Charitable_Donation_Processor
  */
 function charitable_get_donation_processor() {
 	return Charitable_Donation_Processor::get_instance();
@@ -128,7 +128,7 @@ function charitable_get_donation_processor() {
  *
  * @since   1.0.0
  *
- * @return 	Charitable_Locations
+ * @return Charitable_Locations
  */
 function charitable_get_location_helper() {
 	return Charitable_Locations::get_instance();
@@ -139,7 +139,7 @@ function charitable_get_location_helper() {
  *
  * @since   1.0.0
  *
- * @return 	Charitable_Session
+ * @return Charitable_Session
  */
 function charitable_get_session() {
 	return Charitable_Session::get_instance();
@@ -150,7 +150,7 @@ function charitable_get_session() {
  *
  * @since   1.0.0
  *
- * @return 	Charitable_Request
+ * @return Charitable_Request
  */
 function charitable_get_request() {
 	return Charitable_Request::get_instance();
@@ -161,7 +161,7 @@ function charitable_get_request() {
  *
  * @since   1.0.0
  *
- * @return 	Charitable_User_Dashboard
+ * @return Charitable_User_Dashboard
  */
 function charitable_get_user_dashboard() {
 	return Charitable_User_Dashboard::get_instance();
@@ -172,8 +172,8 @@ function charitable_get_user_dashboard() {
  *
  * @since   1.0.0
  *
- * @param 	string 	$table
- * @return  Charitable_DB|null
+ * @param  string             $table
+ * @return Charitable_DB|null
  */
 function charitable_get_table( $table ) {
 	return charitable()->get_db_table( $table );
@@ -184,7 +184,7 @@ function charitable_get_table( $table ) {
  *
  * @since   1.0.0
  *
- * @return 	Charitable_Donation_Form_Interface|false
+ * @return Charitable_Donation_Form_Interface|false
  */
 function charitable_get_current_donation_form() {
 	$campaign = charitable_get_current_campaign();
@@ -196,8 +196,8 @@ function charitable_get_current_donation_form() {
  *
  * @since   1.0.0
  *
- * @param 	array 		$args
- * @return 	string
+ * @param  array  $args
+ * @return string
  */
 function charitable_get_action_args( $args ) {
 	return sprintf( "data-charitable-args='%s'", json_encode( $args ) );
@@ -208,7 +208,7 @@ function charitable_get_action_args( $args ) {
  *
  * @since   1.4.0
  *
- * @return 	Charitable_Deprecated
+ * @return Charitable_Deprecated
  */
 function charitable_get_deprecated() {
 	if ( ! class_exists( 'Charitable_Deprecated' ) ) {
