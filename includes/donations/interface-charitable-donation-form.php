@@ -28,7 +28,7 @@ interface Charitable_Donation_Form_Interface {
 	 *
 	 * @since   1.0.0
 	 *
-	 * @return 	void
+	 * @return void
 	 */
 	public function render();
 
@@ -37,7 +37,7 @@ interface Charitable_Donation_Form_Interface {
 	 *
 	 * @since   1.0.0
 	 *
-	 * @return  boolean
+	 * @return boolean
 	 */
 	public function validate_submission();
 
@@ -46,9 +46,9 @@ interface Charitable_Donation_Form_Interface {
 	 *
 	 * @since   1.0.0
 	 *
-	 * @return  array
+	 * @return array
 	 */
-	public function get_donation_values();	
+	public function get_donation_values();
 }
 
 endif; // End interface_exists check.
