@@ -27,7 +27,7 @@ if ( ! interface_exists( 'Charitable_Endpoint_Interface' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public static function get_endpoint_id();
 
@@ -36,7 +36,7 @@ if ( ! interface_exists( 'Charitable_Endpoint_Interface' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @return  string
+		 * @return string
 		 */
 		public function get_page_url();
 
@@ -45,7 +45,7 @@ if ( ! interface_exists( 'Charitable_Endpoint_Interface' ) ) :
 		 *
 		 * @since   1.5.0
 		 *
-		 * @return  boolean
+		 * @return boolean
 		 */
 		public function is_page();
 	}
