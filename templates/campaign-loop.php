@@ -14,21 +14,26 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 $campaigns = $view_args['campaigns'];
-$columns   = $view_args['columns'];
-$args      = charitable_campaign_loop_args( $view_args );
 
 if ( ! $campaigns->have_posts() ) :
 	return;
 endif;
 
-if ( $columns > 1 ) :
-	$loop_class = sprintf( 'campaign-loop campaign-grid campaign-grid-%d', $columns );
+if ( $view_args['columns'] > 1 ) :
+	$loop_class = sprintf( 'campaign-loop campaign-grid campaign-grid-%d', $view_args['columns'] );
 else :
 	$loop_class = 'campaign-loop campaign-list';
 endif;
 
+$args = charitable_campaign_loop_args( $view_args );
+
 /**
- * @hook charitable_campaign_loop_before
+ * Add something before the campaign loop.
+ *
+ * @since   1.5.0
+ *
+ * @param   WP_Query $campaigns The campaigns.
+ * @param   array    $args      Loop args.
  */
 do_action( 'charitable_campaign_loop_before', $campaigns, $args );
 
@@ -50,6 +55,11 @@ wp_reset_postdata();
 <?php
 
 /**
- * @hook charitable_campaign_loop_after
+ * Add something after the campaign loop.
+ *
+ * @since   1.5.0
+ *
+ * @param   WP_Query $campaigns The campaigns.
+ * @param   array    $args      Loop args.
  */
 do_action( 'charitable_campaign_loop_after', $campaigns, $args );

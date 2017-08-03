@@ -264,12 +264,12 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Add an update message.
 		 *
-		 * @since   1.4.6
+		 * @since  1.4.6
 		 *
-		 * @param  string   $message
-		 * @param  string   $type
-		 * @param  boolean  $dismissible
-		 * @return string[]
+		 * @param  string  $message     The message text.
+		 * @param  string  $type        The type of message. Options: 'error', 'success', 'warning', 'info'.
+		 * @param  boolean $dismissible Whether the message can be dismissed.
+		 * @return void
 		 */
 		public function add_update_message( $message, $type = 'error', $dismissible = true ) {
 			if ( ! in_array( $type, array( 'error', 'success', 'warning', 'info' ) ) ) {
@@ -282,10 +282,10 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Recursively add settings fields, given an array.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @param  array  $fields
-		 * @param  string $section_key
+		 * @param  array $field The setting field.
+		 * @param  array $keys  Array containing the section key and field key.
 		 * @return void
 		 */
 		private function register_field( $field, $keys ) {
@@ -320,10 +320,10 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Return the label for the given field.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @param  array  $field
-		 * @param  string $key
+		 * @param  array  $field The field definition.
+		 * @param  string $key   The field key.
 		 * @return string
 		 */
 		private function get_field_label( $field, $key ) {
@@ -343,9 +343,9 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Return a space separated string of classes for the given field.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @param  array  $field
+		 * @param  array $field Field definition.
 		 * @return string
 		 */
 		private function get_field_classes( $field ) {
@@ -505,10 +505,9 @@ if ( ! class_exists( 'Charitable_Settings' ) ) :
 		/**
 		 * Returns whether the given key indicates the start of a new section of the settings.
 		 *
-		 * @since   1.0.0
+		 * @since  1.0.0
 		 *
-		 * @param  string  $section
-		 * @param  array   $submitted
+		 * @param  string $composite_key The unique key for this group.
 		 * @return boolean
 		 */
 		private function is_dynamic_group( $composite_key ) {

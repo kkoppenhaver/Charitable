@@ -47,10 +47,11 @@ if ( ! class_exists( 'Charitable_Donors_Widget' ) ) :
 		public function widget( $args, $instance ) {
 			$instance              = $this->get_parsed_args( $instance );
 			$view_args             = array_merge( $args, $instance );
-			$view_args['donors']   = $this->get_widget_donors( $instance );
+			$instance['campaign']  = $view_args['campaign_id'];
+			$view_args['campaign'] = $view_args['campaign_id'];
 			$view_args['orderby']  = $view_args['order'];
 			$view_args['order']    = 'DESC';
-			$view_args['campaign'] = $view_args['campaign_id'];
+			$view_args['donors']   = $this->get_widget_donors( $instance );
 
 			charitable_template( 'widgets/donors.php', $view_args );
 		}
@@ -119,7 +120,12 @@ if ( ! class_exists( 'Charitable_Donors_Widget' ) ) :
 				<label for="<?php echo esc_attr( $this->get_field_id( 'hide_if_no_donors' ) ); ?>"><?php _e( 'Hide if there are no donors', 'charitable' ); ?></label>
 			</p>
 			<?php
-
+			/**
+			 * Add extra settings for the widget.
+			 *
+			 * @param 	array                    $args Widget instance arguments.
+			 * @param 	Charitable_Donors_Widget $this This widget instance.
+			 */
 			do_action( 'charitable_donor_widget_settings_bottom', $args, $this );
 		}
 
