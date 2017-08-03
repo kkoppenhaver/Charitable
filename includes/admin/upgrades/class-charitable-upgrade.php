@@ -77,8 +77,8 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.0.0
 		 *
-		 * @param 	false|string 	$db_version
-		 * @param 	string 			$edge_version
+		 * @param false|string $db_version
+		 * @param string       $edge_version
 		 */
 		protected function __construct( $db_version = '', $edge_version = '' ) {
 			/**
@@ -87,7 +87,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 			 */
 			if ( strlen( $db_version ) && strlen( $edge_version ) ) {
 
-				$this->db_version = $db_version;
+				$this->db_version   = $db_version;
 				$this->edge_version = $edge_version;
 
 				/**
@@ -104,51 +104,51 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 			} else {
 
 				$this->upgrade_actions = array(
-					'update_upgrade_system' => array(
+					'update_upgrade_system'                   => array(
 						'version' => '1.3.0',
 						'message' => __( 'Charitable needs to update the database.', 'charitable' ),
-						'prompt' => true,
+						'prompt'  => true,
 					),
-					'fix_donation_dates' => array(
+					'fix_donation_dates'                      => array(
 						'version' => '1.3.0',
 						'message' => __( 'Charitable needs to fix incorrect donation dates.', 'charitable' ),
-						'prompt' => true,
+						'prompt'  => true,
 					),
-					'trigger_cron' => array(
-						'version' => '1.3.4',
-						'message' => '',
-						'prompt' => false,
+					'trigger_cron'                            => array(
+						'version'  => '1.3.4',
+						'message'  => '',
+						'prompt'   => false,
 						'callback' => array( $this, 'trigger_cron' ),
 					),
-					'flush_permalinks_140' => array(
-						'version' => '1.4.0',
-						'message' => '',
-						'prompt' => false,
+					'flush_permalinks_140'                    => array(
+						'version'  => '1.4.0',
+						'message'  => '',
+						'prompt'   => false,
 						'callback' => array( $this, 'flush_permalinks' ),
 					),
-					'show_release_140_upgrade_notice' => array(
+					'show_release_140_upgrade_notice'         => array(
 						'version' => '1.4.0',
-						'notice' => 'release-140',
+						'notice'  => 'release-140',
 					),
-					'show_release_142_upgrade_notice' => array(
+					'show_release_142_upgrade_notice'         => array(
 						'version' => '1.4.2',
-						'notice' => 'release-142',
+						'notice'  => 'release-142',
 					),
-					'show_release_143_paypal_notice' => array(
+					'show_release_143_paypal_notice'          => array(
 						'version' => '1.4.3',
-						'notice' => 'release-143-paypal',
+						'notice'  => 'release-143-paypal',
 					),
-					'remove_campaign_manager_cap' => array(
+					'remove_campaign_manager_cap'             => array(
 						'version'  => '1.4.5',
 						'message'  => '',
 						'prompt'   => false,
 						'callback' => array( $this, 'remove_campaign_manager_cap' ),
 					),
-					'show_recurring_donations_notice' => array(
-						'version'  => '1.4.10',
-						'notice'   => 'release-1410-recurring-donations',
+					'show_recurring_donations_notice'         => array(
+						'version' => '1.4.10',
+						'notice'  => 'release-1410-recurring-donations',
 					),
-					'fix_empty_campaign_end_date_meta' => array(
+					'fix_empty_campaign_end_date_meta'        => array(
 						'version'  => '1.4.11',
 						'message'  => '',
 						'prompt'   => false,
@@ -160,7 +160,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 						'prompt'   => false,
 						'callback' => array( $this, 'clear_campaign_amount_donated_transient' ),
 					),
-					'trim_upgrade_log' => array(
+					'trim_upgrade_log'                        => array(
 						'version'  => '1.4.18',
 						'message'  => '',
 						'prompt'   => false,
@@ -175,7 +175,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.3.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function populate_upgrade_log_on_install() {
 			/**
@@ -209,7 +209,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.3.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function add_upgrade_notice() {
 			if ( isset( $_GET['page'] ) && 'charitable-upgrades' == $_GET['page'] ) {
@@ -231,9 +231,9 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 				if ( isset( $upgrade_progress['page'] ) && 'charitable-upgrade' == $upgrade_progress['page'] ) {
 					$upgrade_progress['page'] = 'charitable-upgrades';
 				}
-	?>		
+	?>
 				<div class="error">
-					<p><?php printf( __( 'Charitable needs to complete an upgrade that was started earlier. Click <a href="%s">here</a> to continue the upgrade.', 'charitable' ), esc_url( add_query_arg( $upgrade_progress, admin_url( 'index.php' ) ) ) ) ?>
+					<p><?php printf( __( 'Charitable needs to complete an upgrade that was started earlier. Click <a href="%s">here</a> to continue the upgrade.', 'charitable' ), esc_url( add_query_arg( $upgrade_progress, admin_url( 'index.php' ) ) ) ); ?>
 					</p>
 				</div>
 	<?php
@@ -270,7 +270,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 					}
 		?>
 					<div class="updated">
-						<p><?php printf( '%s %s', $upgrade['message'], sprintf( __( 'Click <a href="%s">here</a> to start the upgrade.', 'charitable' ), esc_url( admin_url( 'index.php?page=charitable-upgrades&charitable-upgrade=' . $action ) ) ) ) ?>
+						<p><?php printf( '%s %s', $upgrade['message'], sprintf( __( 'Click <a href="%s">here</a> to start the upgrade.', 'charitable' ), esc_url( admin_url( 'index.php?page=charitable-upgrades&charitable-upgrade=' . $action ) ) ) ); ?>
 						</p>
 					</div>
 		<?php
@@ -284,9 +284,9 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.0.0
 		 *
-		 * @param 	false|string $version_a Current stored version.
-		 * @param 	string 	     $version_b Version we are upgrading to.
-		 * @return 	bool
+		 * @param  false|string $version_a Current stored version.
+		 * @param  string       $version_b Version we are upgrading to.
+		 * @return bool
 		 */
 		public static function requires_upgrade( $version_a, $version_b ) {
 			return false === $version_a || version_compare( $version_a, $version_b, '<' );
@@ -297,8 +297,8 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.4.18
 		 *
-		 * @param 	string $action The upgrade action.
-		 * @return  boolean Whether the event was scheduled.
+		 * @param  string  $action The upgrade action.
+		 * @return boolean         Whether the event was scheduled.
 		 */
 		public function trigger_cron( $action ) {
 			return Charitable_Cron::schedule_events();
@@ -311,8 +311,8 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.1.3
 		 *
-		 * @param 	string $action The upgrade action.
-		 * @return  true Will always return true.
+		 * @param  string $action The upgrade action.
+		 * @return true           Will always return true.
 		 */
 		public function flush_permalinks( $action = '' ) {
 			return add_action( 'init', 'flush_rewrite_rules' );
@@ -325,7 +325,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.1.0
 		 *
-		 * @return  boolean Whether the event was scheduled.
+		 * @return boolean Whether the event was scheduled.
 		 */
 		public function upgrade_1_1_0() {
 			return Charitable_Cron::schedule_events();
@@ -342,7 +342,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.3.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function update_upgrade_system() {
 			if ( ! current_user_can( 'manage_charitable_settings' ) ) {
@@ -377,7 +377,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.3.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function fix_donation_dates() {
 			if ( ! current_user_can( 'manage_charitable_settings' ) ) {
@@ -393,7 +393,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 			$step   = isset( $_GET['step'] ) ? absint( $_GET['step'] ) : 1;
 			$number = 20;
 
-			$total  = Charitable_Donations::count_all();
+			$total = Charitable_Donations::count_all();
 
 			/**
 			 * If there are no donations to update, go ahead and wrap it up right now.
@@ -403,10 +403,10 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 			}
 
 			$donations = get_posts( array(
-				'post_type' => Charitable::DONATION_POST_TYPE,
+				'post_type'      => Charitable::DONATION_POST_TYPE,
 				'posts_per_page' => $number,
-				'paged' => $step,
-				'post_status' => array_keys( Charitable_Donation::get_valid_donation_statuses() ),
+				'paged'          => $step,
+				'post_status'    => array_keys( Charitable_Donation::get_valid_donation_statuses() ),
 			) );
 
 			if ( count( $donations ) ) {
@@ -441,8 +441,8 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 					$date = get_date_from_gmt( $date_gmt );
 
 					wp_update_post( array(
-						'ID' => $donation->ID,
-						'post_date' => $date,
+						'ID'            => $donation->ID,
+						'post_date'     => $date,
 						'post_date_gmt' => $date_gmt,
 					) );
 				}//end foreach
@@ -450,11 +450,11 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 				$step++;
 
 				$redirect = add_query_arg( array(
-					'page' => 'charitable-upgrades',
+					'page'               => 'charitable-upgrades',
 					'charitable-upgrade' => 'fix_donation_dates',
-					'step' => $step,
-					'number' => $number,
-					'total' => $total,
+					'step'               => $step,
+					'number'             => $number,
+					'total'              => $total,
 				), admin_url( 'index.php' ) );
 
 				wp_redirect( $redirect );
@@ -477,7 +477,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.3.0
 		 *
-		 * @return  void
+		 * @return void
 		 */
 		public function upgrade_logs() {
 			/**
@@ -530,8 +530,8 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.4.5
 		 *
-		 * @param 	string $action The upgrade action.
-		 * @return  true Will always return true.
+		 * @param  string $action The upgrade action.
+		 * @return true           Will always return true.
 		 */
 		public function remove_campaign_manager_cap( $action ) {
 			global $wp_roles;
@@ -554,8 +554,8 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.4.11
 		 *
-		 * @param 	string $action The upgrade action.
-		 * @return  boolean Whether the query was successfully executed.
+		 * @param  string  $action The upgrade action.
+		 * @return boolean         Whether the query was successfully executed.
 		 */
 		public function fix_empty_campaign_end_date_meta( $action ) {
 			global $wpdb;
@@ -578,8 +578,8 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.4.18
 		 *
-		 * @param 	string $action The upgrade action.
-		 * @return  boolean Whether the event was scheduled.
+		 * @param  string  $action The upgrade action.
+		 * @return boolean         Whether the event was scheduled.
 		 */
 		public function clear_campaign_amount_donated_transient( $action ) {
 			global $wpdb;
@@ -600,7 +600,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.4.18
 		 *
-		 * @return  boolean Whether the log was successfully updated.
+		 * @return boolean Whether the log was successfully updated.
 		 */
 		public function trim_upgrade_log() {
 			$log     = get_option( $this->upgrade_log_key );
@@ -640,9 +640,9 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.4.0
 		 *
-		 * @param 	array  $upgrade The upgrade details.
-		 * @param 	string $action  The action key for the upgrade.
-		 * @return  void
+		 * @param  array  $upgrade The upgrade details.
+		 * @param  string $action  The action key for the upgrade.
+		 * @return void
 		 */
 		public function set_update_notice_transient( $upgrade, $action ) {
 			set_transient( 'charitable_' . $upgrade['notice'] . '_notice', 1 );
@@ -655,8 +655,8 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.3.0
 		 *
-		 * @param 	string $action The upgrade action.
-		 * @return  boolean
+		 * @param  string  $action The upgrade action.
+		 * @return boolean
 		 */
 		protected function upgrade_has_been_completed( $action ) {
 			$log = get_option( $this->upgrade_log_key );
@@ -669,11 +669,10 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.3.4
 		 *
-		 * @param 	array $upgrade The upgrade parameters.
-		 * @return  boolean
+		 * @param  array   $upgrade The upgrade parameters.
+		 * @return boolean
 		 */
 		protected function do_upgrade_immediately( $upgrade ) {
-
 			/* If a prompt is required, return false. */
 			if ( ! isset( $upgrade['prompt'] ) || $upgrade['prompt'] ) {
 				return false;
@@ -688,7 +687,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.3.0
 		 *
-		 * @return  false|array False if the upgrade is not in progress.
+		 * @return false|array False if the upgrade is not in progress.
 		 */
 		protected function upgrade_is_in_progress() {
 			$doing_upgrade = get_option( 'charitable_doing_upgrade', false );
@@ -705,9 +704,9 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.3.0
 		 *
-		 * @param 	string $upgrade 	 The upgrade action.
-		 * @param 	string $redirect_url Optional URL to redirect to after the upgrade.
-		 * @return  void
+		 * @param  string $upgrade      The upgrade action.
+		 * @param  string $redirect_url Optional URL to redirect to after the upgrade.
+		 * @return void
 		 */
 		protected function finish_upgrade( $upgrade, $redirect_url = '' ) {
 			delete_option( 'charitable_doing_upgrade' );
@@ -728,8 +727,8 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.3.0
 		 *
-		 * @param 	string $upgrade The upgrade action.
-		 * @return  False if value was not updated and true if value was updated.
+		 * @param  string $upgrade The upgrade action.
+		 * @return False           if value was not updated and true if value was updated.
 		 */
 		protected function update_upgrade_log( $upgrade ) {
 			$log = get_option( $this->upgrade_log_key );
@@ -754,9 +753,9 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.0.0
 		 *
-		 * @param 	false|string $db_version   The version stored in the database.
-		 * @param 	string 		 $edge_version The new version to upgrade to.
-		 * @return 	void
+		 * @param  false|string $db_version   The version stored in the database.
+		 * @param  string       $edge_version The new version to upgrade to.
+		 * @return void
 		 */
 		public static function upgrade_from( $db_version, $edge_version ) {
 			if ( self::requires_upgrade( $db_version, $edge_version ) ) {
@@ -769,7 +768,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.0.0
 		 *
-		 * @return 	void
+		 * @return void
 		 */
 		protected function do_upgrades() {
 			/**
@@ -777,10 +776,10 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 			 * array format.
 			 *
 			 * $upgrade_actions = array(
-			 * 	'1.0.1' => 'flush_permalinks',
-			 * 	'1.1.0' => 'upgrade_1_1_0',
-			 * 	'1.1.3' => 'flush_permalinks',
-			 * 	'1.2.0' => 'flush_permalinks',
+			 * '1.0.1' => 'flush_permalinks',
+			 * '1.1.0' => 'upgrade_1_1_0',
+			 * '1.1.3' => 'flush_permalinks',
+			 * '1.2.0' => 'flush_permalinks',
 			 * );
 			 */
 
@@ -812,7 +811,7 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.0.0
 		 *
-		 * @return 	void
+		 * @return void
 		 */
 		protected function save_upgrade_log() {
 			$log = get_option( $this->upgrade_log_key );
@@ -822,9 +821,9 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 			}
 
 			$log[] = array(
-				'timestamp'		=> time(),
-				'from'			=> $this->db_version,
-				'to'			=> $this->edge_version,
+				'timestamp' => time(),
+				'from'      => $this->db_version,
+				'to'        => $this->edge_version,
 			);
 
 			update_option( $this->upgrade_log_key, $log );
@@ -835,11 +834,12 @@ if ( ! class_exists( 'Charitable_Upgrade' ) ) :
 		 *
 		 * @since 	1.0.0
 		 *
-		 * @return 	void
+		 * @return void
 		 */
 		protected function update_db_version() {
 			update_option( $this->version_key, $this->edge_version );
 		}
+
 	}
 
 endif;
