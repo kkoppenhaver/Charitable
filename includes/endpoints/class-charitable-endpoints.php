@@ -52,7 +52,7 @@ if ( ! class_exists( 'Charitable_Endpoints' ) ) :
 		 * @since  1.5.0
 		 *
 		 * @param  Charitable_Endpoint $endpoint The endpoint object.
-		 * @return boolean True if the endpoint was registered. False if it was already registered.
+		 * @return boolean                       True if the endpoint was registered. False if it was already registered.
 		 */
 		public function register( Charitable_Endpoint $endpoint ) {
 			$endpoint_id = $endpoint->get_endpoint_id();
@@ -77,8 +77,8 @@ if ( ! class_exists( 'Charitable_Endpoints' ) ) :
 		 *
 		 * @since  1.5.0
 		 *
-		 * @param  string $endpoint The endpoint id.
-		 * @param  array  $args     Optional array of arguments.
+		 * @param  string       $endpoint The endpoint id.
+		 * @param  array        $args     Optional array of arguments.
 		 * @return string|false
 		 */
 		public function get_page_url( $endpoint, $args = array() ) {
@@ -97,8 +97,8 @@ if ( ! class_exists( 'Charitable_Endpoints' ) ) :
 		 *
 		 * @since  1.5.0
 		 *
-		 * @param  string $endpoint The endpoint id.
-		 * @param  array  $args     Optional array of arguments.
+		 * @param  string  $endpoint The endpoint id.
+		 * @param  array   $args     Optional array of arguments.
 		 * @return boolean
 		 */
 		public function is_page( $endpoint, $args = array() ) {
@@ -190,7 +190,7 @@ if ( ! class_exists( 'Charitable_Endpoints' ) ) :
 				return $template_options;
 			}
 
-			$template_options = apply_filters( 'charitable_' . $current_endpoint. '_page_template', $template_options );
+			$template_options = apply_filters( 'charitable_' . $current_endpoint . '_page_template', $template_options );
 
 			return charitable_get_template_path( $template_options, $template );
 		}
@@ -281,6 +281,7 @@ if ( ! class_exists( 'Charitable_Endpoints' ) ) :
 
 			return $endpoint;
 		}
+
 	}
 
 endif;
