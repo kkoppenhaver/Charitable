@@ -48,9 +48,9 @@ function charitable_register_endpoint( Charitable_Endpoint $endpoint ) {
  *
  * @since  1.0.0
  *
- * @param  string  $page
- * @param  array   $args       Optional array of arguments.
- * @return string|false        String if page is found. False if none found.
+ * @param  string       $page
+ * @param  array        $args Optional array of arguments.
+ * @return string|false       String if page is found. False if none found.
  */
 function charitable_get_permalink( $page, $args = array() ) {
 	return charitable()->get_endpoints()->get_page_url( $page, $args );
@@ -71,7 +71,7 @@ function charitable_get_permalink( $page, $args = array() ) {
  * @since  1.0.0
  *
  * @param  string  $page
- * @param  array   $args       Optional array of arguments.
+ * @param  array   $args Optional array of arguments.
  * @return boolean
  */
 function charitable_is_page( $page, $args = array() ) {
@@ -100,7 +100,7 @@ function charitable_is_campaign_page() {
  * @uses    Charitable_Endpoints::get_page_url()
  * @since  1.0.0
  *
- * @param  string $url Deprecated argument.
+ * @param  string $url  Deprecated argument.
  * @param  array  $args
  * @return string
  */
@@ -124,7 +124,7 @@ function charitable_get_campaign_donation_page_permalink( $url = null, $args = a
  * @uses    Charitable_Endpoints::is_page()
  * @since  1.0.0
  *
- * @param  boolean $ret Unused argument.
+ * @param  boolean $ret  Unused argument.
  * @param  array   $args
  * @return boolean
  */
@@ -171,7 +171,7 @@ function charitable_is_donation_receipt_page() {
  *
  * @since  1.2.0
  *
- * @param  string $url Deprecated argument.
+ * @param  string $url  Deprecated argument.
  * @param  array  $args
  * @return string
  */
@@ -261,7 +261,7 @@ function charitable_is_campaign_widget_page() {
  *
  * @since  1.4.0
  *
- * @param  string $url Deprecated argument.
+ * @param  string $url  Deprecated argument.
  * @param  array  $args
  * @return string
  */
@@ -291,7 +291,7 @@ function charitable_is_forgot_password_page() {
  *
  * @since  1.4.0
  *
- * @param  string $url Deprecated argument.
+ * @param  string $url  Deprecated argument.
  * @param  array  $args
  * @return string
  */
@@ -321,7 +321,7 @@ function charitable_is_reset_password_page() {
  *
  * @since  1.0.0
  *
- * @param  string $url Deprecated argument.
+ * @param  string $url  Deprecated argument.
  * @param  array  $args
  * @return string
  */
@@ -351,7 +351,7 @@ function charitable_is_login_page() {
  *
  * @since  1.0.0
  *
- * @param  string $url Deprecated argument.
+ * @param  string $url  Deprecated argument.
  * @param  array  $args
  * @return string
  */
@@ -381,7 +381,7 @@ function charitable_is_registration_page() {
  *
  * @since  1.0.0
  *
- * @param  string $url Deprecated argument.
+ * @param  string $url  Deprecated argument.
  * @param  array  $args
  * @return string
  */
