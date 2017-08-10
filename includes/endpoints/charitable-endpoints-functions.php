@@ -28,7 +28,7 @@ function charitable_get_endpoints_api() {
  * @since  1.5.0
  *
  * @param  Charitable_Endpoint $endpoint The endpoint object to be registered.
- * @return void
+ * @return boolean
  */
 function charitable_register_endpoint( Charitable_Endpoint $endpoint ) {
 	return charitable()->get_endpoints()->register( $endpoint );

@@ -175,7 +175,7 @@ if ( ! class_exists( 'Charitable_Endpoints' ) ) :
 		 * @since  1.5.0
 		 *
 		 * @param  string $template The default template.
-		 * @return void
+		 * @return string
 		 */
 		public function template_loader( $template ) {
 			$current_endpoint = $this->get_current_endpoint();
@@ -241,7 +241,7 @@ if ( ! class_exists( 'Charitable_Endpoints' ) ) :
 		 *
 		 * @since  1.5.0
 		 *
-		 * @return string|false String if we're on one of our endpoints. False otherwise.
+		 * @return string String if we're on one of our endpoints. False otherwise.
 		 */
 		public function get_current_endpoint() {
 			if ( ! isset( $this->current_endpoint ) ) {
