@@ -184,7 +184,7 @@ if ( ! class_exists( 'Charitable' ) ) :
             require_once( $includes_path . 'abstracts/class-charitable-query.php' );
 
             /* Functions & Core Classes */
-            require_once( $includes_path . 'charitable-core-functions.php' );           
+            require_once( $includes_path . 'charitable-core-functions.php' );
             require_once( $includes_path . 'class-charitable-locations.php' );
             require_once( $includes_path . 'class-charitable-notices.php' );
             require_once( $includes_path . 'class-charitable-post-types.php' );
@@ -260,7 +260,7 @@ if ( ! class_exists( 'Charitable' ) ) :
             require_once( $includes_path . 'public/class-charitable-template.php' );
             require_once( $includes_path . 'public/class-charitable-template-part.php' );
             require_once( $includes_path . 'public/class-charitable-ghost-page.php' );
-            require_once( $includes_path . 'public/class-charitable-user-dashboard.php' );          
+            require_once( $includes_path . 'public/class-charitable-user-dashboard.php' );
 
             /* Shortcodes */
             require_once( $includes_path . 'shortcodes/class-charitable-campaigns-shortcode.php' );
@@ -507,7 +507,7 @@ if ( ! class_exists( 'Charitable' ) ) :
             return $this->endpoints;
         }
 
-        /*
+        /**
          * Load plugin compatibility files on plugins_loaded hook.
          *
          * @since   1.4.18
