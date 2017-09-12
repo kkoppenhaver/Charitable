@@ -153,7 +153,7 @@ final class WP_Session extends Recursive_ArrayAccess {
 		if( $this->container === array() ){
 			return;
 		}
-		
+
 		$option_key = "_wp_session_{$this->session_id}";
 
 		if ( false === get_option( $option_key ) ) {
