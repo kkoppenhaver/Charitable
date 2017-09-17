@@ -48,7 +48,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 		protected function __construct() {
 			$this->load_dependencies();
 
-			$this->donation_actions = new Charitable_Donation_Admin_Actions;			
+			$this->donation_actions = new Charitable_Donation_Admin_Actions;
 
 			do_action( 'charitable_admin_loaded' );
 		}
@@ -92,7 +92,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 			require_once( $admin_dir . 'campaigns/class-charitable-campaign-post-type.php' );
 			require_once( $admin_dir . 'campaigns/charitable-admin-campaign-hooks.php' );//
 
-			/* Donations */			
+			/* Donations */
 			require_once( $admin_dir . 'donations/class-charitable-donation-metaboxes.php' );
 			require_once( $admin_dir . 'donations/class-charitable-donation-list-table.php' );
 			require_once( $admin_dir . 'donations/charitable-admin-donation-hooks.php' );
@@ -273,7 +273,7 @@ if ( ! class_exists( 'Charitable_Admin' ) ) :
 
 			}
 
-			$notices['release-1410-recurring-donations'] = sprintf( __( "<strong>NEW:</strong> Supercharge your online fundraising with Recurring Donations. <a href='%s'>Read more</a>", 'charitable' ), 
+			$notices['release-1410-recurring-donations'] = sprintf( __( "<strong>NEW:</strong> Supercharge your online fundraising with Recurring Donations. <a href='%s'>Read more</a>", 'charitable' ),
 				'https://www.wpcharitable.com/supercharge-your-online-fundraising-in-2017-with-recurring-donations/?utm_source=notices&utm_medium=wordpress-dashboard&utm_campaign=recurring-donations-release-post&utm_content=release-1410'
 			);
 
