@@ -68,9 +68,9 @@ if ( ! class_exists( 'Charitable_Query' ) ) :
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param  string $key      The key of the argument.
-		 * @param  mixed  $fallback Default value to fall back to.
-		 * @return mixed|false      Returns fallback if the argument is not found.
+		 * @param  string      $key      The key of the argument.
+		 * @param  mixed       $fallback Default value to fall back to.
+		 * @return mixed|false           Returns fallback if the argument is not found.
 		 */
 		public function get( $key, $fallback = false ) {
 			return isset( $this->args[ $key ] ) ? $this->args[ $key ] : $fallback;
@@ -876,6 +876,7 @@ if ( ! class_exists( 'Charitable_Query' ) ) :
 		protected function get_placeholders( $count = 1, $placeholder = '%s' ) {
 			return charitable_get_query_placeholders( $count, $placeholder );
 		}
+
 	}
 
 endif;
