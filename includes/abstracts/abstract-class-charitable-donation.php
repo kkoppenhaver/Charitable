@@ -36,11 +36,11 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 		protected $donation_type;
 
 		/**
-	     * Charitable_Donation donation data for the donation plan this donation is part of
-	     *
-	     * @var false|Charitable_Donation
-	     */
-	    protected $donation_plan = false;
+		 * Charitable_Donation donation data for the donation plan this donation is part of
+		 *
+		 * @var false|Charitable_Donation
+		 */
+		protected $donation_plan = false;
 
 		/**
 		 * The database record for this donation from the Posts table.
@@ -185,7 +185,7 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param  boolean $sanitize Whether the value should be sanitized as a monetary amount.
+		 * @param  boolean                $sanitize Whether the value should be sanitized as a monetary amount.
 		 * @return decimal|float|WP_Error
 		 */
 		public function get_total_donation_amount( $sanitize = false ) {
@@ -295,9 +295,9 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 		 *
 		 * @since  1.4.2
 		 *
-		 * @param  string $taxonomy The taxonomy. Defaults to 'campaign_category'.
-		 * @param  array  $args     Optional arguments to pass to `wp_get_object_terms`.
-		 * @return array|WP_Error The requested term data or empty array if no terms found.
+		 * @param  string         $taxonomy The taxonomy. Defaults to 'campaign_category'.
+		 * @param  array          $args     Optional arguments to pass to `wp_get_object_terms`.
+		 * @return array|WP_Error           The requested term data or empty array if no terms found.
 		 *                        WP_Error if any of the $taxonomies don't exist.
 		 */
 		public function get_campaign_categories_donated_to( $taxonomy = 'campaign_category', $args = array() ) {
@@ -317,10 +317,10 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 		 */
 		public function get_campaign_categories_list() {
 			$categories = $this->get_campaign_categories_donated_to( 'campaign_category', array(
-                'fields' => 'names',
-            ) );
+				'fields' => 'names',
+			) );
 
-            return implode( ', ', $categories );
+			return implode( ', ', $categories );
 		}
 
 		/**
@@ -345,10 +345,10 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 		 */
 		protected function get_donation_summary_line( $campaign_donation ) {
 			$line_item = sprintf( '%s: %s%s',
-                $campaign_donation->campaign_name,
-                charitable_format_money( $campaign_donation->amount ),
-                PHP_EOL
-            );
+				$campaign_donation->campaign_name,
+				charitable_format_money( $campaign_donation->amount ),
+				PHP_EOL
+			);
 
 			/**
 			 * Filter the line item.
@@ -477,9 +477,9 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 
 			if ( $label ) {
 				charitable_get_deprecated()->deprecated_function(
-				    __METHOD__,
-				    '1.5.0',
-				    'Charitable_Donation::get_status_label()'
+					__METHOD__,
+					'1.5.0',
+					'Charitable_Donation::get_status_label()'
 				);
 				return $this->get_status_label( $status );
 			}
@@ -612,7 +612,7 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 		 *
 		 * @since  1.5.0
 		 *
-		 * @return string|boolean Whether to return 
+		 * @return string|boolean Whether to return
 		 */
 		public function get_test_mode( $text = true ) {
 			$test_mode = get_post_meta( $this->donation_id, 'test_mode', true );
@@ -626,7 +626,7 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 
 		/**
 		 * Return an array of meta relating to the donation.
-		 * 
+		 *
 		 * @since  1.2.0
 		 *
 		 * @return mixed[]
@@ -646,7 +646,7 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 			 * @param Charitable_Donation $donation This instance of `Charitable_Donation`.
 			 */
 			return apply_filters( 'charitable_donation_admin_meta', $meta, $this );
-		}		
+		}
 
 		/**
 		 * Checks whether the donation is from the current user.
@@ -675,7 +675,7 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 			}
 
 			return $donor->get_email() == $user->user_email;
-		}		
+		}
 
 		/**
 		 * Get a donation's log.
@@ -695,7 +695,7 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 				);
 			}
 
-			$log = get_post_meta( $this->donation_id, '_donation_log', true );;
+			$log = get_post_meta( $this->donation_id, '_donation_log', true );
 
 			return is_array( $log ) ? $log : array();
 		}
@@ -707,8 +707,8 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 		 *
 		 * @since  1.0.0
 		 *
-		 * @param  string $new_status
-		 * @return int|WP_Error The value 0 or WP_Error on failure. The donation ID on success.
+		 * @param  string       $new_status
+		 * @return int|WP_Error             The value 0 or WP_Error on failure. The donation ID on success.
 		 */
 		public function update_status( $new_status ) {
 			$statuses = charitable_get_valid_donation_statuses();
@@ -785,52 +785,52 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 		}
 
 		/**
-	     * Return the parent donation, if exists
-	     *
-	     * @since  1.4.5
-	     *
-	     * @return int
-	     */
-	    public function get_donation_plan_id() {
-	        return $this->donation_data->post_parent;
-	    }
+		 * Return the parent donation, if exists
+		 *
+		 * @since  1.4.5
+		 *
+		 * @return int
+		 */
+		public function get_donation_plan_id() {
+			return $this->donation_data->post_parent;
+		}
 
-	    /**
-	     * Return the parent donation, if exists
-	     *
-	     * @since  1.4.5
-	     *
-	     * @return false|Charitable_Donation
-	     */
-	    public function get_donation_plan() {
-	    	if ( ! isset( $this->parent_donation ) ) {
+		/**
+		 * Return the parent donation, if exists
+		 *
+		 * @since  1.4.5
+		 *
+		 * @return false|Charitable_Donation
+		 */
+		public function get_donation_plan() {
+			if ( ! isset( $this->parent_donation ) ) {
 
-	    		if ( $this->donation_data->post_parent > 0 ) {
+				if ( $this->donation_data->post_parent > 0 ) {
 
-		            $this->parent_donation = charitable_get_donation( $this->donation_data->post_parent );
+					$this->parent_donation = charitable_get_donation( $this->donation_data->post_parent );
 
-		        } else {
+				} else {
 
-		            $this->parent_donation = false;
+					$this->parent_donation = false;
 
-		        }
-	    	}
+				}
+			}
 
-	        return $this->parent_donation;
-	    }
+			return $this->parent_donation;
+		}
 
 		/**
 		 * Save the gateway's transaction ID
 		 *
 		 * @since  1.4.6
 		 *
-		 * @param  string   $value
+		 * @param  string $value
 		 * @return bool
 		 */
 		public function set_gateway_transaction_id( $value ) {
-			$key = '_gateway_transaction_id';
+			$key   = '_gateway_transaction_id';
 			$value = charitable_sanitize_donation_meta( $value, $key );
-			return update_post_meta( $this->donation_id, $key , $value );
+			return update_post_meta( $this->donation_id, $key, $value );
 		}
 
 		/**
@@ -841,8 +841,8 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 		 * @return string
 		 */
 		public function get_gateway_transaction_id() {
-			if ( ! isset( $this->gateway_transaction_id ) ){
-				$this->gateway_transaction_id = get_post_meta( $this->donation_id, '_gateway_transaction_id' , true );
+			if ( ! isset( $this->gateway_transaction_id ) ) {
+				$this->gateway_transaction_id = get_post_meta( $this->donation_id, '_gateway_transaction_id', true );
 			}
 			return $this->gateway_transaction_id;
 		}
@@ -972,9 +972,9 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 		 * @since  1.0.0
 		 * @since  1.4.0
 		 *
-		 * @param  mixed   $value
-		 * @param  string  $key
-		 * @return mixed		 
+		 * @param  mixed  $value
+		 * @param  string $key
+		 * @return mixed
 		 */
 		public function sanitize_meta( $value, $key ) {
 			charitable_get_deprecated()->deprecated_function(
@@ -996,7 +996,7 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 		 * @since  1.0.0
 		 * @since  1.4.0 Deprecated.
 		 *
-		 * @param  int $donation_id
+		 * @param  int  $donation_id
 		 * @return void
 		 */
 		public function flush_campaigns_donation_cache( $donation_id ) {
@@ -1008,6 +1008,7 @@ if ( ! class_exists( 'Charitable_Abstract_Donation' ) ) :
 
 			return charitable_flush_campaigns_donation_cache( $donation_id );
 		}
+
 	}
 
 endif;
