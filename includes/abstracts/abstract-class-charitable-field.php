@@ -50,15 +50,15 @@ if ( ! class_exists( 'Charitable_Field' ) ) :
 		public function __construct( $field, array $args = array() ) {
 			$this->field = $field;
 			$this->args  = $this->parse_args( $args );
-		}   
+		}
 
 		/**
 		 * Set a specific argument.
 		 *
 		 * @since  1.5.0
 		 *
-		 * @param  string The field's key.
-		 * @param  mixed  The field's value.
+		 * @param  string           The field's key.
+		 * @param  mixed            The field's value.
 		 * @return Charitable_Field
 		 */
 		public function __set( $key, $value ) {
@@ -86,7 +86,7 @@ if ( ! class_exists( 'Charitable_Field' ) ) :
 		 * @return array
 		 */
 		protected function get_defaults() {
-			return array();			
+			return array();
 		}
 
 		/**
@@ -97,7 +97,7 @@ if ( ! class_exists( 'Charitable_Field' ) ) :
 		 * @param  array $args Mixed set of field arguments.
 		 * @return array       Parsed arguments.
 		 */
-		protected function parse_args( $args ) {		
+		protected function parse_args( $args ) {
 			$args      = array_merge( $this->get_defaults(), $args );
 			$keys      = array_keys( $args );
 			$sanitized = array_map( array( $this, 'sanitize_arg' ), $keys, $args );
@@ -122,6 +122,7 @@ if ( ! class_exists( 'Charitable_Field' ) ) :
 
 			return $value;
 		}
+
 	}
 
 endif;
