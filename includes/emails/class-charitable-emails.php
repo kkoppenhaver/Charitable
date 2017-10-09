@@ -194,7 +194,7 @@ if ( ! class_exists( 'Charitable_Emails' ) ) :
 		public function get_enabled_emails_names() {
 			$emails = array();
 
-			foreach ( $this->get_enabled_emails() as $class ) {				
+			foreach ( $this->get_enabled_emails() as $class ) {
 				if ( ! class_exists( $class ) ) {
 					continue;
 				}
