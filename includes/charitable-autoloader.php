@@ -21,7 +21,7 @@ spl_autoload_register( 'charitable_autoloader' );
  * @param string $class_name The fully-qualified name of the class to load.
  */
 function charitable_autoloader( $class_name ) {
- 
+
     // If the specified $class_name already exists, bail.
     if ( class_exists( $class_name ) ) {
         return;
@@ -34,7 +34,7 @@ function charitable_autoloader( $class_name ) {
 
     // Map class to location.
     $mapping = array(
-        /* Interfaces */      
+        /* Interfaces */
         'Charitable_Admin_Actions_Interface'        => 'interfaces/interface-charitable-admin-actions.php',
         'Charitable_Donation_Form_Interface'        => 'interfaces/interface-charitable-donation-form.php',
         'Charitable_Email_Fields_Interface'         =>  'interfaces/interface-charitable-email-fields.php',
@@ -45,7 +45,7 @@ function charitable_autoloader( $class_name ) {
         'Charitable_Fields_Interface'               =>  'interfaces/interface-charitable-fields.php',
         'Charitable_Form_View_Interface'            =>  'interfaces/interface-charitable-form-view.php',
         'Charitable_Gateway_Interface'              =>  'interfaces/interface-charitable-gateway.php',
- 
+
         /* Abstracts */
         'Charitable_Admin_Actions'                  => 'abstracts/abstract-class-charitable-admin-actions.php',
         'Charitable_DB'                             =>  'abstracts/abstract-class-charitable-db.php',
@@ -57,7 +57,7 @@ function charitable_autoloader( $class_name ) {
         'Charitable_Gateway'                        =>  'abstracts/abstract-class-charitable-gateway.php',
         'Charitable_Query'                          =>  'abstracts/abstract-class-charitable-query.php',
 
-        /* Functions & Core Classes */          
+        /* Functions & Core Classes */
         'Charitable_Locations'                      =>  'class-charitable-locations.php',
         'Charitable_Notices'                        =>  'class-charitable-notices.php',
         'Charitable_Post_Types'                     =>  'class-charitable-post-types.php',
@@ -76,7 +76,7 @@ function charitable_autoloader( $class_name ) {
             'Charitable_Admin_Pages'                 => 'admin/class-charitable-admin-pages.php',
             'Charitable_Admin_Notices'               => 'admin/class-charitable-admin-notices.php',
 
-            /* Admin Actions */         
+            /* Admin Actions */
             'Charitable_Donation_Admin_Actions'      => 'admin/actions/class-charitable-donation-admin-actions.php',
 
             /* Campaigns */
@@ -90,7 +90,7 @@ function charitable_autoloader( $class_name ) {
             /* Dashboard widgets */
             'Charitable_Donations_Dashboard_Widget'  => 'admin/dashboard-widgets/class-charitable-donations-dashboard-widget.php',
 
-            /* Donations */                     
+            /* Donations */
             'Charitable_Donation_Metaboxes'          => 'admin/donations/class-charitable-donation-metaboxes.php',
             'Charitable_Donation_List_Table'         => 'admin/donations/class-charitable-donation-list-table.php',
 
@@ -122,13 +122,13 @@ function charitable_autoloader( $class_name ) {
         'Charitable_Campaign_Donations_DB'          =>  'db/class-charitable-campaign-donations-db.php',
         'Charitable_Donors_DB'                      =>  'db/class-charitable-donors-db.php',
 
-        /* Donations */    
+        /* Donations */
         'Charitable_Donation_Processor'             =>  'donations/class-charitable-donation-processor.php',
         'Charitable_Donation'                       =>  'donations/class-charitable-donation.php',
         'Charitable_Donation_Factory'               =>  'donations/class-charitable-donation-factory.php',
-        'Charitable_Donations'                      =>  'donations/class-charitable-donations.php',            
-        
-        /* Emails */            
+        'Charitable_Donations'                      =>  'donations/class-charitable-donations.php',
+
+        /* Emails */
         'Charitable_Emails'                         =>  'emails/class-charitable-emails.php',
         'Charitable_Email_Campaign_End'             =>  'emails/class-charitable-email-campaign-end.php',
         'Charitable_Email_Donation_Receipt'         =>  'emails/class-charitable-email-donation-receipt.php',
@@ -142,7 +142,7 @@ function charitable_autoloader( $class_name ) {
         'Charitable_Email_Fields'                   =>  'emails/fields/class-charitable-email-fields.php',
         'Charitable_Email_Fields_Donation'          =>  'emails/fields/class-charitable-email-fields-donation.php',
         'Charitable_Email_Fields_Campaign'          =>  'emails/fields/class-charitable-email-fields-campaign.php',
-        'Charitable_Email_Fields_User'              =>  'emails/fields/class-charitable-email-fields-user.php',            
+        'Charitable_Email_Fields_User'              =>  'emails/fields/class-charitable-email-fields-user.php',
 
         /* Endpoints */
         'Charitable_Campaign_Endpoint'              =>  'endpoints/class-charitable-campaign-endpoint.php',
@@ -172,7 +172,7 @@ function charitable_autoloader( $class_name ) {
         'Charitable_Profile_Form'                   =>  'forms/class-charitable-profile-form.php',
         'Charitable_Registration_Form'              =>  'forms/class-charitable-registration-form.php',
         'Charitable_Reset_Password_Form'            =>  'forms/class-charitable-reset-password-form.php',
-        'Charitable_Public_Form_View'               =>  'forms/views/class-charitable-public-form-view.php',           
+        'Charitable_Public_Form_View'               =>  'forms/views/class-charitable-public-form-view.php',
 
         /* Gateways */
         'Charitable_Gateways'                       =>  'gateways/class-charitable-gateways.php',
@@ -198,7 +198,7 @@ function charitable_autoloader( $class_name ) {
         'Charitable_Template'                       =>  'public/class-charitable-template.php',
         'Charitable_Template_Part'                  =>  'public/class-charitable-template-part.php',
         'Charitable_Ghost_Page'                     =>  'public/class-charitable-ghost-page.php',
-        'Charitable_User_Dashboard'                 =>  'public/class-charitable-user-dashboard.php',          
+        'Charitable_User_Dashboard'                 =>  'public/class-charitable-user-dashboard.php',
 
         /* Shortcodes */
         'Charitable_Campaigns_Shortcode'             =>  'shortcodes/class-charitable-campaigns-shortcode.php',
@@ -208,7 +208,7 @@ function charitable_autoloader( $class_name ) {
         'Charitable_Donation_Receipt_Shortcode'      =>  'shortcodes/class-charitable-donation-receipt-shortcode.php',
         'Charitable_Login_Shortcode'                 =>  'shortcodes/class-charitable-login-shortcode.php',
         'Charitable_Registration_Shortcode'          =>  'shortcodes/class-charitable-registration-shortcode.php',
-        'Charitable_Profile_Shortcode'               =>  'shortcodes/class-charitable-profile-shortcode.php',   
+        'Charitable_Profile_Shortcode'               =>  'shortcodes/class-charitable-profile-shortcode.php',
         'Charitable_Email_Shortcode'                 =>  'shortcodes/class-charitable-email-shortcode.php',
 
 
